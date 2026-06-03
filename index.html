@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Columnas · GH HCAI Lab</title>
+<meta name="description" content="Análisis político, social y tecnológico. Jorge Oyarce Kruger · GH HCAI Lab · Valdivia, Chile.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1410;
+    --ink-muted: #4a3f35;
+    --ink-faint: #8a7a6e;
+    --paper: #f5f0e8;
+    --paper-warm: #ede6d6;
+    --rule: #c8b89a;
+    --accent: #8b1a1a;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  /* CABECERA */
+  header {
+    border-bottom: 3px double var(--rule);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pub-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .pub-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .pub-meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* CONTENIDO */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* COLUMNA DESTACADA */
+  .featured {
+    border-top: 3px solid var(--ink);
+    padding-top: 1.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .featured .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .featured h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .featured h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .featured .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+  }
+
+  .featured .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .read-link {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .read-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .read-link::after {
+    content: ' →';
+  }
+
+  /* DIVISOR */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  /* GRID DE COLUMNAS */
+  .columns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .column-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+  }
+
+  .column-card .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .column-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .column-card h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .column-card p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .column-card .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  /* PRÓXIMAMENTE */
+  .coming-soon {
+    border-top: 1px dashed var(--rule);
+    padding-top: 1rem;
+    opacity: 0.5;
+  }
+
+  .coming-soon .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .coming-soon .soon-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* PIE */
+  footer {
+    border-top: 3px double var(--rule);
+    background: var(--paper-warm);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+
+  @media (max-width: 560px) {
+    header { padding: 2rem 1.25rem 1.5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    .pub-meta { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="pub-eyebrow">GH HCAI Lab · Valdivia, Chile</p>
+  <h1 class="pub-title">Columnas de <em>análisis</em></h1>
+  <p class="pub-subtitle">Política · Sociedad · Tecnología · Territorio</p>
+  <div class="pub-meta">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Médico Veterinario · MBA · Máster en Innovación</span>
+    <span>GH HCAI Lab</span>
+  </div>
+</header>
+
+<main>
+
+  <span class="section-label">Columna destacada</span>
+
+  <article class="featured">
+    <div class="tag">Política social · Estado · Derechos</div>
+    <h2>El registro de vándalos:<br><em>condenar la pobreza</em></h2>
+    <p class="deck">El gobierno Kast propone retirar beneficios sociales a quienes integren un registro de vándalos. Lo que parece una política de orden público es un mecanismo de expulsión progresiva de los más pobres de la ciudadanía. Y lo prueba una sola pregunta: ¿por qué la misma lógica no se aplica hacia arriba?</p>
+    <div class="meta">Jorge Oyarce Kruger · Junio 2026</div>
+    <a class="read-link" href="registro_vandalos_columna.html">Leer columna</a>
+  </article>
+
+  <hr class="rule">
+
+  <span class="section-label">Todas las columnas</span>
+
+  <div class="columns-grid">
+
+    <article class="column-card">
+      <div class="tag">Política social · Estado · Derechos</div>
+      <h3>El registro de vándalos: <em>condenar la pobreza</em></h3>
+      <p>Un análisis de la asimetría estructural entre el vandalismo desde abajo y el vandalismo corporativo, y lo que esa asimetría revela sobre el proyecto político del gobierno.</p>
+      <div class="meta">Junio 2026</div>
+      <a class="read-link" href="registro_vandalos_columna.html">Leer</a>
+    </article>
+
+    <article class="coming-soon">
+      <div class="tag">Próximamente</div>
+      <h3>En preparación</h3>
+      <p class="soon-label">Nuevas columnas · GH HCAI Lab</p>
+    </article>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>GH HCAI Lab · Jorge Oyarce Kruger · Valdivia, Chile</p>
+  <p>Médico Veterinario · MBA · Máster en Innovación</p>
+</footer>
+
+</body>
+</html>
