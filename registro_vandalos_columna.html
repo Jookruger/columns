@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El registro de vándalos: castigar la pobreza</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1410;
+    --ink-muted: #4a3f35;
+    --ink-faint: #8a7a6e;
+    --paper: #f5f0e8;
+    --paper-warm: #ede6d6;
+    --rule: #c8b89a;
+    --accent: #8b1a1a;
+    --accent-light: #c0392b;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a3f35;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Análisis político</p>
+  <p class="masthead-pub">GH HCAI Lab · Opinión</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Política social · Estado · Derechos</span>
+
+  <h1 class="headline">El registro de vándalos:<br><em>condenar la pobreza</em></h1>
+
+  <p class="deck">El gobierno Kast propone retirar beneficios sociales a quienes integren un registro de vándalos. Lo que parece una política de orden público es, en rigor, un mecanismo de expulsión progresiva de los más pobres de la ciudadanía. Y lo prueba una sola pregunta: ¿por qué la misma lógica no se aplica hacia arriba?</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger · GH HCAI Lab</span>
+    <span>Valdivia, 2026</span>
+  </div>
+
+  <div class="body-text">
+
+    <p>La propuesta tiene una apariencia de sentido común que vale la pena examinar con cuidado antes de que se convierta en ley. Si alguien destruye bienes públicos, dice el argumento, es razonable que el Estado lleve registro de ello. Y si esa persona recibe beneficios financiados con recursos colectivos, también es razonable que los pierda. El razonamiento suena ordenado. Es, sin embargo, una trampa lógica de consecuencias muy graves, y su trampa no está en los detalles sino en el principio mismo que lo sostiene.</p>
+
+    <p>Comencemos por lo más elemental: los beneficios sociales no existen para premiar conductas. Existen porque hay una necesidad objetiva. Una familia que vive en condición de pobreza multidimensional no deja de necesitar el subsidio habitacional porque uno de sus miembros pintó una pared o quebró un vidrio. La necesidad es anterior al acto, independiente de él, y persistirá después de él. Retirar el beneficio no castiga al vándalo. Castiga al grupo familiar completo que depende de ese ingreso: la madre, los hijos, los adultos mayores que comparten el techo. Ninguno de ellos participó en el acto. La pena real, entonces, recae sobre terceros absolutamente inocentes. Eso, en cualquier sistema jurídico medianamente coherente, es una aberración.</p>
+
+    <h2 class="section-head">El círculo que se cierra sobre sí mismo</h2>
+
+    <p>Pero hay algo todavía más grave que la injusticia del castigo colectivo. Es la perfecta circularidad del mecanismo. Eres pobre, entonces vives en territorios segregados, con espacio público deteriorado, con acceso limitado a educación de calidad, con mayor exposición a la violencia y a economías informales como única salida. En ese contexto, cometes un acto de vandalismo. El Estado te retira los beneficios que te mantenían fuera del umbral de indigencia. Caes más profundo. Las condiciones materiales que produjeron la conducta que el Estado quería corregir se agravan. La probabilidad de reincidencia aumenta. El registro se consolida. El círculo se cierra.</p>
+
+    <p>Esto no es política pública. Es administración del síntoma para perpetuar el problema y, de paso, hacerlo invisible bajo una capa de legitimidad jurídica. Porque el Estado no dice "te castigamos por ser pobre". Dice "te castigamos por haber rayado una pared". Pero el efecto es idéntico: más pobreza, más exclusión, menos posibilidades de salida.</p>
+
+    <div class="pull-quote">
+      <p>«El vándalo, casi universalmente en la aplicación concreta de estas normativas, es joven, pobre y urbano. Las empresas que destruyen ecosistemas completos tienen otro nombre.»</p>
+    </div>
+
+    <p>El vandalismo como categoría jurídica tiene fronteras profundamente asimétricas. Un municipio que destruye un humedal protegido en una operación de relleno irregular no es vándalo. Una empresa forestal que arrastra suelo en una cuenca que abastece agua potable a miles de personas no es vándalo. El especulador inmobiliario que demuele patrimonio arquitectótico para construir un edificio de departamentos sin estacionamientos tampoco. El vándalo, casi universalmente en la aplicación concreta de estas normativas, es joven, pobre, y urbano. Y eso no es un accidente estadístico. Es el diseño.</p>
+
+    <h2 class="section-head">Esto no es torpeza de diseño</h2>
+
+    <p>Sería más fácil, y más caritativo, atribuir este proyecto a una torpeza técnica. A funcionarios que no midieron las consecuencias. A una redacción apurada. Pero la evidencia no apoya esa lectura. El gobierno Kast opera bajo una premisa ideológica explícita y consistente: la pobreza es consecuencia de decisiones individuales defectuosas, no de estructuras. Desde esa premisa, tiene coherencia interna perfecta privar de beneficios a quien "se lo buscó". Lo que no tiene es coherencia con la evidencia empírica acumulada durante décadas de investigación en economía del comportamiento, sociología urbana y salud pública. Ni tiene coherencia con ningún principio básico de proporcionalidad penal.</p>
+
+    <p>El Comité DESC de Naciones Unidas ha sido explícito en esto: los derechos sociales, como el acceso a vivienda, alimentación o salud, no pueden condicionarse a conductas. Son derechos, no recompensas. Sujetarlos a registros de comportamiento es directamente incompatible con el Pacto Internacional de Derechos Económicos, Sociales y Culturales, que Chile ratificó y que tiene rango constitucional en virtud del artículo 5° inciso segundo de la Constitución. No es una opinión política. Es una incompatibilidad jurídica.</p>
+
+    <p>Pero quedarse en el argumento jurídico, siendo válido, es insuficiente. Porque el problema más profundo es político y moral, y requiere ser nombrado con más precisión. Para eso existe un experimento mental que tiene la virtud de ser incontestable.</p>
+
+  </div>
+
+  <div class="mirror-block">
+    <h2>La prueba del espejo</h2>
+
+    <p>Hay una pregunta que desnuda cualquier política punitiva: aplícala simétricamente y observa si sigue pareciendo razonable a quienes la proponen. Si el principio es que quien daña el bien común pierde protección del Estado, entonces ese principio debe ser universal. <strong>No puede tener código postal.</strong></p>
+
+    <p>Hagamos el ejercicio con rigor. Una empresa forestal que arrasa un humedal protegido genera un daño patrimonial al ecosistema compartido que es inconmensurablemente mayor que cien rayados de muro. Una constructora que soborna funcionarios para aprobar permisos en zona de riesgo destruye la confianza institucional, que es el bien público más frágil y más costoso de reconstruir que existe. Una firma que elude impuestos mediante ingeniería tributaria offshore sustrae recursos que financian exactamente los beneficios que el gobierno quiere retirar a los vándalos de barrio. Una sociedad anónima que vierte residuos industriales en una cuenca hídrica comete un acto de vandalismo sobre el territorio de decenas de miles de personas que no eligieron ese vecino ni pueden escapar de él.</p>
+
+    <p>¿Qué propone el gobierno para ellos? Nada. Silencio administrativo. En algunos casos, reducción de cargas regulatorias. En el mejor de los casos, una multa que la empresa contabiliza como costo operacional y traslada al precio del producto.</p>
+
+    <p>El espejo no miente: <strong>la política no es sobre conducta. Es sobre clase.</strong></p>
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">La asimetría como prueba de fuego</h2>
+
+    <p>Comparemos en paralelo lo que el Estado ve y lo que el Estado ignora, para que la asimetría quede sin posibilidad de evasión retórica:</p>
+
+    <div class="comparison-header">
+      <div class="col-label poor-col">Vandalismo desde abajo</div>
+      <div class="col-label rich-col">Vandalismo desde arriba</div>
+    </div>
+    <div class="examples-grid">
+      <div class="example-card poor">
+        <div class="label">El registro lo ve</div>
+        <div class="offense">Joven de 19 años raya mural en plaza pública. Daño estimado: $40.000.</div>
+        <div class="consequence">Pierde subsidio habitacional. Su familia queda sin protección.</div>
+      </div>
+      <div class="example-card rich">
+        <div class="label">El registro no lo ve</div>
+        <div class="offense">Empresa contamina río con relaves mineros. Daño ecosistémico: incalculable.</div>
+        <div class="consequence">Paga multa. Sigue operando. Mantiene exención tributaria.</div>
+      </div>
+      <div class="example-card poor">
+        <div class="label">El registro lo ve</div>
+        <div class="offense">Madre quiebra vidrina durante protesta. Daño: $15.000.</div>
+        <div class="consequence">Pierde bono de alimentación. Sus hijos lo padecen.</div>
+      </div>
+      <div class="example-card rich">
+        <div class="label">El registro no lo ve</div>
+        <div class="offense">Ejecutivo colude para fijar precio del papel higiénico. Daño a millones de hogares.</div>
+        <div class="consequence">Acuerdo extrajudicial. Sin registro. Sin pérdida de beneficio tributario.</div>
+      </div>
+      <div class="example-card poor">
+        <div class="label">El registro lo ve</div>
+        <div class="offense">Adolescente destroza semáforo en marcha. Daño: $200.000.</div>
+        <div class="consequence">Registro permanente. Acceso laboral comprometido.</div>
+      </div>
+      <div class="example-card rich">
+        <div class="label">El registro no lo ve</div>
+        <div class="offense">Forestal tala bosque nativo en zona de protección. Daño irreversible.</div>
+        <div class="consequence">Sumario administrativo. Reposición. Sigue con beneficios de la Ley del Bosque.</div>
+      </div>
+    </div>
+
+    <p>La asimetría no necesita interpretación. Se sostiene sola. Y cuando se le pone frente a quienes defienden el registro, la respuesta es siempre la misma: "pero esos son delitos distintos, hay otras regulaciones para eso, son materias separadas". Ese argumento es, precisamente, parte del problema. La separación de materias no es técnica. Es política. Es la decisión de mantener compartimentos estancos que protegen al vándalo de cuello y corbata de ser medido con la misma vara que el vándalo de zapatillas rotas.</p>
+
+    <h2 class="section-head">Si vamos a limitar derechos, que sea en serio</h2>
+
+    <p>Pero no queremos solo denunciar la asimetría. Queremos llevar el principio del gobierno hasta sus consecuencias lógicas, porque si lo hacemos en serio, el principio deja de ser cómodo para quienes lo proponen.</p>
+
+    <p>Si el Estado tiene derecho a retirar beneficios a quienes dañan el bien común, entonces apliquemos esa lógica con coherencia transversal. Que las empresas condenadas por delitos ambientales pierdan sus exenciones tributarias, incluyendo la depreciación acelerada, los regímenes especiales de renta presunta, y los beneficios de zonas francas. Que lo pierdan por el mismo período en que un joven pierde su subsidio habitacional: no un trimestre, no hasta que paguen la multa, sino el tiempo que el daño tarde en repararse, que en el caso de un humedal destruido puede ser décadas.</p>
+
+    <p>Que las sociedades imputadas por colusión queden excluidas de licitaciones públicas de manera automática. Que sus directores queden registrados con exactamente el mismo nivel de visibilidad y las mismas consecuencias de acceso que un joven en el registro de vándalos. Que los ejecutivos con condenas por evasión tributaria vean comprometido el acceso de sus empresas a los incentivos del Estado, desde los créditos CORFO hasta los fondos de innovación, durante el período equivalente a la privación impuesta a sus pares más pobres.</p>
+
+    <p>Que el Registro de Daño al Bien Común sea exactamente eso: un registro del bien común, no un registro de los pobres. Que incluya la cuenca contaminada, el acuífero sobreexplotado, el suelo agrícola sellado por una urbanización irregular aprobada por funcionarios corruptos, el sistema de salud colapsado por una empresa farmacéutica que infló precios de medicamentos esenciales. Que cada uno de esos actores enfrente la misma lógica que el gobierno quiere aplicar al adolescente que rompió un vidrio: daño al bien común, pérdida de protección estatal.</p>
+
+    <div class="confession-box">
+      <p>Si la respuesta es que eso «destruiría la inversión» o «ahuyentaría el capital», entonces ya tenemos la confesión. La política no es sobre conducta. Es sobre quién tiene derecho a dañar sin consecuencias.</p>
+    </div>
+
+    <h2 class="section-head">El nombre correcto de lo que ocurre</h2>
+
+    <p>Un Estado que retira el subsidio habitacional a una familia porque su hijo rayó una muralla, mientras mantiene intacta la exención del impuesto de primera categoría a una empresa que contaminó un río, no está administrando justicia. Está administrando ideología con apariencia de justicia. Y esa distinción importa, porque la apariencia es parte del mecanismo: si parece justo, es más difícil resistirlo.</p>
+
+    <p>Lo que Michel Foucault llamaba la gestión diferencial de las ilegalidades opera aquí con precisión clínica. Las ilegalidades de los pobres se penalizan, visibilizan y registran. Las de los poderosos se regulan, negocian, multan con cifras que no duelen, y se olvidan. El vándalo de zapatillas rotas queda en un registro permanente que puede perseguirlo durante años. El vándalo de traje queda en un expediente administrativo que se cierra con un acuerdo y no aparece en ningún buscador.</p>
+
+    <p>El registro de vándalos no es una política de convivencia. Es un sistema de puntos de ciudadanía donde los pobres acumulan deudas que los excluyen progresivamente de la protección estatal. Los ricos no necesitan ese registro porque no dependen de esos beneficios. La herramienta es, por diseño, de aplicación exclusiva sobre sectores populares. Es, para decirlo sin eufemismos, la criminalización de la pobreza con financiamiento público de la riqueza: ambas políticas, la punitiva hacia abajo y la permisiva hacia arriba, son caras del mismo proyecto político.</p>
+
+    <p>Y ese proyecto tiene un nombre. No es seguridad pública. Es disciplinamiento de clase con cobertura jurídica.</p>
+
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <p>La pregunta correcta nunca fue cómo registramos a los vándalos. La pregunta correcta es a cuáles vándalos estamos dispuestos a ver. Porque mientras solo veamos a los que rompen vidrios y no a los que rompen ecosistemas, cuencas, instituciones y mercados, el registro no es un instrumento de justicia. Es un instrumento de clase disfrazado de orden.</p>
+
+    <p>Y el disfraz, hay que decirlo, es bastante transparente.</p>
+
+  </div>
+
+  <div class="endnote">
+    <p>Nota de referencia jurídica: El Pacto Internacional de Derechos Económicos, Sociales y Culturales (PIDESC), ratificado por Chile en 1989, establece en su artículo 11 el derecho a un nivel de vida adecuado. El Comité DESC, en su Observación General N°3, ha señalado que los Estados no pueden adoptar medidas regresivas respecto de los derechos sociales sin justificación suficiente. La condicionalidad conductual de beneficios mínimos de subsistencia constituye, en términos del Comité, una medida regresiva injustificada.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
