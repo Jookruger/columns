@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco Teórico y Metodología de Cálculo — Estrategia de cobro CAE (TGR)</title>
+<meta name="description" content="Documento de trabajo reproducible: hipótesis, marco jurídico-económico, metodología de cálculo y análisis de sensibilidad del costo sistémico de la estrategia de cobro CAE de la Tesorería General de la República. Respaldo de las columnas 'Dos varas, una misma balanza' y 'El costo de equivocarse con la Constitución'.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f7f6;
+  --panel:#ffffff;
+  --ink:#16222c;
+  --ink-soft:#46555f;
+  --rule:#d4d9d6;
+  --azul:#1e4e66;
+  --rojo:#a8322a;
+  --verde:#2e6b4f;
+  --mono-bg:#102028;
+  --mono-fg:#d9e4e0;
+  --maxw:880px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Serif",Georgia,serif;
+  font-size:17px;
+  line-height:1.65;
+}
+header.doc-head{
+  border-bottom:3px double var(--ink);
+  background:var(--panel);
+  padding:48px 24px 36px;
+}
+.head-inner{max-width:var(--maxw);margin:0 auto}
+.kicker{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--azul);
+  margin:0 0 14px;
+}
+h1{
+  font-family:"IBM Plex Serif",serif;
+  font-weight:700;
+  font-size:clamp(1.7rem,4.4vw,2.5rem);
+  line-height:1.15;
+  margin:0 0 10px;
+}
+.subtitle{
+  font-style:italic;
+  font-size:1.08rem;
+  color:var(--ink-soft);
+  margin:0 0 24px;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px 28px;
+  border-top:1px solid var(--rule);
+  padding-top:18px;
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.86rem;
+}
+.meta dt{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin:0 0 2px;
+}
+.meta dd{margin:0;font-weight:500}
+main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 80px}
+nav.toc{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-left:4px solid var(--azul);
+  padding:18px 22px;
+  margin:0 0 44px;
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.92rem;
+}
+nav.toc strong{
+  display:block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:10px;
+}
+nav.toc ol{margin:0;padding-left:1.3em}
+nav.toc li{margin:4px 0}
+nav.toc a{color:var(--azul);text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+h2{
+  font-size:1.5rem;
+  font-weight:700;
+  margin:56px 0 16px;
+  padding-top:18px;
+  border-top:1px solid var(--rule);
+}
+h3{
+  font-size:1.12rem;
+  font-weight:600;
+  margin:34px 0 10px;
+}
+p{margin:0 0 16px}
+a{color:var(--azul)}
+.hipotesis{
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-left:4px solid var(--rojo);
+  padding:22px 26px;
+  margin:22px 0;
+  font-size:1.04rem;
+  font-weight:600;
+  line-height:1.55;
+}
+blockquote{
+  margin:18px 0;
+  padding:12px 20px;
+  border-left:3px solid var(--azul);
+  background:var(--panel);
+  font-size:.95rem;
+  color:var(--ink-soft);
+}
+blockquote p{margin:0}
+.table-wrap{overflow-x:auto;margin:18px 0}
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.88rem;
+  background:var(--panel);
+}
+caption{
+  caption-side:top;
+  text-align:left;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  padding:0 0 8px;
+}
+th{
+  text-align:left;
+  font-weight:600;
+  border-bottom:2px solid var(--ink);
+  padding:8px 12px;
+  white-space:nowrap;
+}
+td{
+  border-bottom:1px solid var(--rule);
+  padding:8px 12px;
+  vertical-align:top;
+}
+tr:last-child td{border-bottom:1px solid var(--ink)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.85em;
+  background:#e9edeb;
+  padding:1px 5px;
+  border-radius:3px;
+}
+pre{
+  background:var(--mono-bg);
+  color:var(--mono-fg);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.82rem;
+  line-height:1.55;
+  padding:18px 20px;
+  overflow-x:auto;
+  margin:18px 0;
+  border-radius:4px;
+}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+/* Ledger — cuadro de síntesis VPN, estilo estado contable */
+.ledger{
+  background:var(--panel);
+  border:1px solid var(--ink);
+  margin:26px 0;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.86rem;
+}
+.ledger .l-title{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600;
+  font-size:.95rem;
+  padding:12px 18px;
+  border-bottom:2px solid var(--ink);
+  letter-spacing:.02em;
+}
+.ledger .l-section{
+  padding:6px 18px 2px;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.ledger .l-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:5px 18px;
+}
+.ledger .l-row span:last-child{
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.ledger .l-sub{
+  border-top:1px solid var(--rule);
+  font-weight:500;
+}
+.ledger .l-total{
+  border-top:2px solid var(--ink);
+  font-weight:700;
+  padding:10px 18px;
+}
+.ledger .l-total.final{
+  border-bottom:3px double var(--ink);
+}
+.pos{color:var(--verde)}
+.neg{color:var(--rojo)}
+.nota-metodo{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.84rem;
+  color:var(--ink-soft);
+  border:1px dashed var(--rule);
+  padding:12px 16px;
+  margin:14px 0;
+}
+ol.limitaciones,ol.preguntas{counter-reset:lim;list-style:none;padding-left:0;margin:18px 0}
+ol.limitaciones li,ol.preguntas li{
+  counter-increment:lim;
+  position:relative;
+  padding:0 0 14px 52px;
+  margin:0 0 6px;
+}
+ol.limitaciones li::before,ol.preguntas li::before{
+  content:counter(lim,decimal-leading-zero);
+  position:absolute;
+  left:0;top:2px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.8rem;
+  border:1px solid var(--rule);
+  padding:2px 7px;
+  background:var(--panel);
+}
+ol.limitaciones li::before{color:var(--rojo)}
+ol.preguntas li::before{color:var(--azul)}
+footer.doc-foot{
+  border-top:3px double var(--ink);
+  margin-top:64px;
+  padding:24px 0 0;
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.84rem;
+  color:var(--ink-soft);
+  font-style:italic;
+}
+@media print{
+  body{background:#fff;font-size:11pt}
+  nav.toc{display:none}
+  pre{border:1px solid #999;background:#fff;color:#000}
+  .ledger{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <div class="head-inner">
+    <p class="kicker">Documento de trabajo · Repositorio de respaldo · v2</p>
+    <h1>Marco Teórico y Metodología de Cálculo</h1>
+    <p class="subtitle">Hipótesis: el Estado chileno puede salir "para atrás" con la estrategia de cobro CAE</p>
+    <dl class="meta">
+      <div><dt>Respaldo de columnas</dt><dd>"Dos varas, una misma balanza" · "El costo de equivocarse con la Constitución"</dd></div>
+      <div><dt>Fecha de elaboración</dt><dd>Junio 2026</dd></div>
+      <div><dt>Disciplinas</dt><dd>Derecho Público Constitucional + Economía Pública</dd></div>
+      <div><dt>Estado</dt><dd>Estimaciones de orden de magnitud sobre datos públicos verificables</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+<nav class="toc" aria-label="Tabla de contenidos">
+  <strong>Contenido</strong>
+  <ol>
+    <li><a href="#contexto">Contexto y propósito del documento</a></li>
+    <li><a href="#hipotesis">Hipótesis central</a></li>
+    <li><a href="#marco">Marco teórico</a></li>
+    <li><a href="#datos">Datos base verificables</a></li>
+    <li><a href="#metodologia">Metodología de cálculo</a></li>
+    <li><a href="#sensibilidad">Análisis de sensibilidad</a></li>
+    <li><a href="#limitaciones">Limitaciones del análisis</a></li>
+    <li><a href="#preguntas">Preguntas abiertas y agenda de verificación</a></li>
+    <li><a href="#fuentes">Fuentes citadas</a></li>
+    <li><a href="#replicar">Cómo replicar los cálculos</a></li>
+  </ol>
+</nav>
+
+<h2 id="contexto">1. Contexto y propósito del documento</h2>
+
+<p>En abril de 2026 la Tesorería General de la República inició un proceso masivo de cobranza coactiva sobre la cartera de deudores del Crédito con Aval del Estado cuyas garantías fueron ejecutadas. El proceso incluyó la retención de fondos en cuentas bancarias de más de 1.500 personas, ordenada a los bancos previa información de la Comisión para el Mercado Financiero, y el anuncio de embargos sobre bienes raíces en varias regiones del país. La reacción ciudadana se tradujo en casi dos mil recursos de protección ante las Cortes de Apelaciones, y la reacción judicial incluyó al menos un fallo de tribunal superior, dictado por la Corte de Apelaciones de Arica, que dejó sin efecto el procedimiento por considerar que el CAE no es una deuda tributaria y que, por tanto, no correspondía aplicarle el procedimiento ejecutivo del Código Tributario.</p>
+
+<p>En paralelo, y casi como espejo invertido de esa diligencia, un tribunal civil declaró la prescripción de una deuda tributaria de más de $30.000 millones de una sola empresa, porque el Fisco no realizó gestión de cobro alguna dentro del plazo legal.</p>
+
+<p>Este documento no es un peritaje ni un alegato. Es un ejercicio de contabilidad pública aplicada: pone números, con metodología explícita y supuestos discutibles a la vista, a una pregunta que el debate ha tratado solo en términos morales y jurídicos. La pregunta es económica y verificable: <em>¿cuánto cuesta, para el sistema completo, la estrategia de cobro elegida, y cuánto recupera?</em> Si la respuesta es que cuesta tanto o más de lo que recupera, entonces la estrategia falla incluso en sus propios términos recaudatorios, antes de cualquier consideración de equidad o legalidad. Todos los cálculos son reproducibles con la planilla de variables de la sección 4 y el script de la sección 10, y se invita expresamente a corregirlos con datos mejores.</p>
+
+<h2 id="hipotesis">2. Hipótesis central</h2>
+
+<div class="hipotesis">
+El Estado chileno, a través de la Tesorería General de la República (TGR), aplicó un procedimiento de cobro ejecutivo tributario sobre una cartera de créditos de naturaleza civil (CAE), en circunstancias en que dicho procedimiento ha sido declarado inaplicable por al menos un tribunal superior. La consecuencia es que el costo total del aparato coactivo desplegado, incluyendo costos del Poder Judicial, de la TGR, de los ciudadanos en defensa jurídica y el pasivo potencial por demandas civiles, se aproxima o supera el monto efectivamente recuperado, configurando una acción fiscalmente ineficiente y constitucionalmente cuestionable.
+</div>
+
+<p>Esta hipótesis se examina desde dos ángulos complementarios, que corresponden a las dos columnas de opinión que este repositorio respalda:</p>
+
+<p><strong>Ángulo de equidad (Columna 1).</strong> El Estado aplica criterios asimétricos según la capacidad económica del deudor: despliega cobranza activa, expedita y sin aviso previo sobre deudores personas naturales, y permite por inacción la prescripción de deudas de magnitud muy superior en manos de contribuyentes empresariales. La asimetría no es de resultado sino de conducta: el mismo órgano que dejó vencer plazos durante tres años frente a una deuda de $30.232 millones, ejecutó retenciones bancarias masivas en cuestión de semanas frente a deudores individuales.</p>
+
+<p><strong>Ángulo de eficiencia y legalidad (Columna 2).</strong> El procedimiento utilizado para el cobro fue declarado inaplicable por la Corte de Apelaciones de Arica (Rol 203-2026), que resolvió que la naturaleza civil del crédito CAE no muta por su inclusión en un formulario tributario. Ese vicio de origen genera una cascada de costos judiciales, operativos y de responsabilidad civil contingente que erosiona, y bajo supuestos realistas anula, el beneficio fiscal de la cobranza.</p>
+
+<h2 id="marco">3. Marco teórico</h2>
+
+<h3>3.1 Principios de derecho público aplicables</h3>
+
+<p><strong>Principio de igualdad ante la ley (Art. 19 N°2 CPR).</strong> La Constitución Política de Chile garantiza que ni la ley ni autoridad alguna pueden establecer diferencias arbitrarias. El fallo de Arica (Rol 203-2026) aplicó este principio directamente al concluir que el procedimiento tributario utilizado sometía a la deudora a un mecanismo "altamente restrictivo" en comparación con las vías ordinarias aplicables a otras deudas civiles de igual naturaleza. El contraste con el caso Cugat agrega una segunda dimensión al mismo principio: la igualdad no solo exige que deudas de igual naturaleza se cobren por igual vía, sino que el celo del acreedor fiscal no dependa de la capacidad de defensa del deudor.</p>
+
+<p><strong>Principio de legalidad administrativa (Art. 6 y 7 CPR; Art. 2 Ley 18.575).</strong> Los órganos del Estado solo pueden actuar dentro de su competencia y en la forma prescrita por la ley. La TGR tiene atribuciones de cobranza coactiva sobre créditos fiscales y tributarios. La controversia jurídica reside en si el CAE, una vez pagada la garantía estatal, constituye un crédito fiscal ejecutivo asimilable a una obligación tributaria, o si mantiene su naturaleza civil originaria. El fallo de Arica resolvió lo segundo, con un argumento adicional de peso: la propia Ley 20.027 contempla la posibilidad de ceder estos créditos a terceros, atributo incompatible con cualquier obligación tributaria, que es por definición intransferible.</p>
+
+<p><strong>Principio de eficiencia y eficacia administrativa (Art. 3 Ley 18.575).</strong> La Ley Orgánica Constitucional de Bases Generales de la Administración del Estado obliga a los órganos del Estado a orientar su acción al logro de los objetivos para los que fueron creados, con el menor costo posible. Este principio convierte el cálculo económico de la sección 5 en un argumento jurídico: una estrategia de cobranza cuyos costos sistémicos igualan o superan lo recaudado vulnera el mandato de eficiencia, con independencia de su eventual legalidad formal.</p>
+
+<p><strong>Inembargabilidad de remuneraciones (Art. 57 Código del Trabajo).</strong> Las remuneraciones son inembargables hasta el equivalente a 56 UF (~$2.100.000 a junio 2026). Esta protección es de orden público laboral y no puede ser renunciada ni desconocida por ningún acreedor, incluyendo el Estado. El problema operativo identificado es que la orden de retención sobre cuentas bancarias no distingue entre fondos provenientes de remuneraciones y fondos de ahorro: el dinero, una vez depositado, pierde su trazabilidad de origen. Si esa indistinción configura o no una vulneración de la garantía, y quién responde por ella, es una de las preguntas abiertas que se examinan en la sección 8.</p>
+
+<h3>3.2 Marco económico: análisis costo-beneficio de políticas públicas coactivas</h3>
+
+<p>En economía pública, una política de cobranza coactiva se justifica cuando el valor presente neto de lo recuperado supera el costo total del aparato desplegado. La función objetivo es:</p>
+
+<pre><code>VPN_política = Σ(Recaudación_i) − Σ(Costo_operativo_i) − Σ(Costo_judicial_i)
+               − Σ(Pasivo_contingente_i) − Σ(Externalidades_negativas_i)</code></pre>
+
+<p>Tres precisiones conceptuales. Primero, el costo judicial pertenece al cálculo aunque no salga del presupuesto de la TGR: el Poder Judicial se financia con rentas generales, de modo que cada hora de sala consumida por un recurso de protección es gasto público real, no externalidad ajena. Segundo, el costo de defensa de los ciudadanos también pertenece al cálculo desde la perspectiva del bienestar social, aunque no afecte las cuentas fiscales: es recurso privado destruido por el diseño del procedimiento. Tercero, las externalidades negativas, que este documento no monetiza pero deja registradas, incluyen el daño reputacional institucional, la erosión de la cultura de pago si el proceso es percibido como arbitrario, y el costo social de dejar hogares sin liquidez de un día para otro.</p>
+
+<p>Adicionalmente, el <strong>principio de proporcionalidad</strong> exige que el instrumento elegido sea el menos gravoso entre los disponibles para lograr el objetivo. Si existe una vía de cobro civil ordinaria, más lenta pero respetuosa de garantías, el uso de un procedimiento tributario expedito requiere justificación legal sólida. El fallo de Arica cuestionó precisamente esa justificación.</p>
+
+<h3>3.3 El problema de la asimetría informacional en la cobranza estatal</h3>
+
+<p>La TGR tiene acceso, vía CMF, a información completa sobre las cuentas bancarias de todos los deudores. Los deudores, en cambio, no conocen de antemano ni el momento ni el monto de la retención. Esta asimetría genera un daño patrimonial inmediato, como la imposibilidad de cumplir arriendos, dividendos, pensiones de alimentos o servicios básicos, antes de que el deudor pueda ejercer cualquier defensa. En la literatura del debido proceso, esto se conoce como privación previa a la audiencia: la sanción material ocurre antes de que exista oportunidad de ser oído, lo que es incompatible con el debido proceso en su dimensión sustantiva, salvo que medie un título indubitado, que es exactamente lo que el fallo de Arica puso en duda.</p>
+
+<h2 id="datos">4. Datos base verificables</h2>
+
+<p>Todos los datos utilizados en los cálculos provienen de fuentes públicas citadas al pie de cada tabla. Los supuestos de estimación están explicitados y separados de los datos duros.</p>
+
+<h3>4.1 Datos duros (cifras oficiales)</h3>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 4.1 — Variables base y fuentes</caption>
+<thead><tr><th>Variable</th><th class="num">Valor</th><th>Fuente</th></tr></thead>
+<tbody>
+<tr><td>Deuda total CAE en TGR</td><td class="num">$4.000.000 MM (aprox.)</td><td>TGR, comunicado 8 jun. 2026</td></tr>
+<tr><td>Deudores CAE con garantía ejecutada (cartera TGR)</td><td class="num">550.000+</td><td>TGR, comunicado 8 jun. 2026</td></tr>
+<tr><td>Deudores CAE en quintiles 1 y 2 (sobre universo total ~1,28 M)</td><td class="num">46,7% (~593.000)</td><td>Acción Educar, dic. 2025</td></tr>
+<tr><td>Embargados a la fecha</td><td class="num">1.500+</td><td>TGR, comunicado 8 jun. 2026</td></tr>
+<tr><td>Criterio de focalización declarado por el Gobierno</td><td class="num">ingresos &gt; $2.000.000/mes</td><td>Declaraciones oficiales, jun. 2026</td></tr>
+<tr><td>Convenios de pago suscritos 2026</td><td class="num">32.000+</td><td>TGR, comunicado 8 jun. 2026</td></tr>
+<tr><td>Recursos de protección ingresados</td><td class="num">1.968</td><td>Radio U. Chile, 17 may. 2026</td></tr>
+<tr><td>Recursos declarados inadmisibles</td><td class="num">1.453 (74%)</td><td>Radio U. Chile, 17 may. 2026</td></tr>
+<tr><td>Recursos admitidos a tramitación</td><td class="num">236</td><td>Radio U. Chile, 17 may. 2026</td></tr>
+<tr><td>Recursos en estudio de admisibilidad (residuo)</td><td class="num">279</td><td>Derivado: 1.968 − 1.453 − 236</td></tr>
+<tr><td>Apelaciones de inadmisibilidad rechazadas en Suprema</td><td class="num">239+</td><td>TGR, 8 jun. 2026</td></tr>
+<tr><td>Deuda tributaria declarada prescrita, caso Cugat (F.21, vencimientos sep. 2010 – ene. 2017)</td><td class="num">$30.232,5 MM</td><td>Sentencia 2° Juzg. Civil de Rancagua, Rol C-4525-2025, juez C. Fernández González — <em>apelada por la TGR, no firme, ver §8</em></td></tr>
+<tr><td>Causas PJUD primera instancia 2025</td><td class="num">2.857.000</td><td>Cuenta Pública PJUD 2026</td></tr>
+<tr><td>Inembargabilidad remuneraciones</td><td class="num">hasta 56 UF (~$2.100.000)</td><td>Art. 57 Código del Trabajo</td></tr>
+<tr><td>Fallo Arica: CAE no es deuda tributaria</td><td class="num">Rol 203-2026, unánime</td><td>PJUD, 15 may. 2026</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="nota-metodo"><strong>Nota sobre universos:</strong> el porcentaje de quintiles 1 y 2 (46,7%) está medido sobre el universo total de deudores CAE (~1,28 millones), no sobre la subcartera de 550.000 deudores con garantía ejecutada en manos de la TGR. Ambas cifras se reportan por separado para evitar la mezcla de denominadores.</div>
+
+<h3>4.2 Remuneraciones PJUD: base para cálculo hora-hombre</h3>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 4.2 — Costo hora-hombre Poder Judicial</caption>
+<thead><tr><th>Cargo</th><th class="num">Remuneración bruta mensual estimada</th><th class="num">Horas mensuales (176 h)</th><th class="num">Costo/hora</th></tr></thead>
+<tbody>
+<tr><td>Ministro Corte de Apelaciones</td><td class="num">~$9.350.000</td><td class="num">176</td><td class="num">~$53.000</td></tr>
+<tr><td>Relator Corte de Apelaciones</td><td class="num">~$4.200.000</td><td class="num">176</td><td class="num">~$24.000</td></tr>
+<tr><td>Secretario / Actuario</td><td class="num">~$3.200.000</td><td class="num">176</td><td class="num">~$18.000</td></tr>
+</tbody>
+</table>
+</div>
+
+<blockquote><p><strong>Fuente:</strong> Escalafón del Personal Superior del Poder Judicial, publicado en pjud.cl/transparencia. Las cifras corresponden a rangos publicados; se usa el valor medio del rango para efectos del cálculo.</p></blockquote>
+
+<h2 id="metodologia">5. Metodología de cálculo</h2>
+
+<h3>5.1 Estimación del monto recuperado con los embargos</h3>
+
+<p><strong>Criterio de focalización oficial:</strong> según lo declarado por el Gobierno, las retenciones se concentraron en deudores con ingresos superiores a $2.000.000 mensuales.</p>
+
+<p><strong>Construcción del supuesto:</strong> el saldo disponible en cuenta corriente de un trabajador suele oscilar entre medio sueldo y un sueldo completo, dependiendo del día del mes y de sus compromisos de pago. Para ingresos del orden de $2.000.000, el saldo retenible se estima entonces en un rango de <strong>$1.000.000 a $2.000.000 por cuenta</strong>, con valor central de <strong>$1.500.000</strong>.</p>
+
+<pre><code>Recaudado_mínimo  = 1.500 × $1.000.000 = $1.500 MM
+Recaudado_central = 1.500 × $1.500.000 = $2.250 MM
+Recaudado_máximo  = 1.500 × $2.000.000 = $3.000 MM</code></pre>
+
+<p><strong>Límite del supuesto:</strong> la TGR informó el número de embargados pero no el monto efectivamente retenido. Algunos deudores pudieron tener saldos menores al rango, otros mayores; los convenios suscritos pudieron detener retenciones en curso. La cifra oficial, cuando se publique o se obtenga por transparencia, reemplaza este rango. Nótese que la incertidumbre opera en contra de la estrategia: cuanto menor el monto real recaudado, peor el balance final.</p>
+
+<h3>5.2 Costo del proceso para el Poder Judicial</h3>
+
+<p>El costo se calcula <strong>por etapa procesal efectivamente cursada</strong>, evitando asignar el ciclo completo a recursos que solo llegaron al examen de admisibilidad. El universo de 1.968 recursos se descompone en cuatro grupos excluyentes según su estado, y a cada grupo se asigna solo el costo de las etapas que consumió.</p>
+
+<p><strong>Costo del ciclo completo</strong> (admisibilidad + vista de fondo + fallo), aplicable solo a los recursos admitidos a tramitación:</p>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 5.2.a — Recurso admitido: ciclo completo</caption>
+<thead><tr><th>Etapa</th><th>Responsable</th><th class="num">Horas estimadas</th><th class="num">Costo estimado</th></tr></thead>
+<tbody>
+<tr><td>Revisión admisibilidad inicial</td><td>Relator</td><td class="num">1,5 h</td><td class="num">$36.000</td></tr>
+<tr><td>Preparación cuenta</td><td>Relator</td><td class="num">2,5 h</td><td class="num">$60.000</td></tr>
+<tr><td>Vista de la causa</td><td>3 ministros × 2 h</td><td class="num">6 h</td><td class="num">$318.000</td></tr>
+<tr><td>Deliberación y redacción del fallo</td><td>3 ministros × 1 h</td><td class="num">3 h</td><td class="num">$159.000</td></tr>
+<tr><td>Tramitación administrativa</td><td>Secretario / actuario</td><td class="num">3 h</td><td class="num">$54.000</td></tr>
+<tr><td>Infraestructura y sistemas (prorrata)</td><td>—</td><td class="num">—</td><td class="num">~$40.000</td></tr>
+<tr><td><strong>Total ciclo completo</strong></td><td></td><td class="num"><strong>~16 h</strong></td><td class="num"><strong>~$667.000 → se usa $720.000</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Costo del ciclo de inadmisibilidad</strong>, aplicable a los recursos declarados inadmisibles. La declaración de inadmisibilidad no es gratuita: exige estudio del relator, resolución de la sala en cuenta (tres ministros) y redacción de la resolución:</p>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 5.2.b — Recurso inadmisible: ciclo parcial</caption>
+<thead><tr><th>Etapa</th><th>Responsable</th><th class="num">Horas estimadas</th><th class="num">Costo estimado</th></tr></thead>
+<tbody>
+<tr><td>Estudio y cuenta de admisibilidad</td><td>Relator</td><td class="num">2 h</td><td class="num">$48.000</td></tr>
+<tr><td>Resolución de sala en cuenta</td><td>3 ministros × 0,5 h</td><td class="num">1,5 h</td><td class="num">$80.000</td></tr>
+<tr><td>Redacción resolución y notificación</td><td>Relator / secretaría</td><td class="num">2 h</td><td class="num">$52.000</td></tr>
+<tr><td>Infraestructura y sistemas (prorrata)</td><td>—</td><td class="num">—</td><td class="num">~$30.000</td></tr>
+<tr><td><strong>Total inadmisibilidad</strong></td><td></td><td class="num"><strong>~5,5 h</strong></td><td class="num"><strong>~$210.000 → se usa $240.000</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Costos complementarios:</strong> apelación de la inadmisibilidad ante la Corte Suprema, $480.000 por causa (sala de Suprema más relator); recursos aún en estudio de admisibilidad, $120.000 por causa (etapas de relator y secretaría devengadas, sin resolución de sala).</p>
+
+<pre><code>Costo_total_PJUD = (1.453 inadmisibles × $240.000)        = $348,7 MM
+                 + (236 admitidos × $720.000)             = $169,9 MM
+                 + (239 apelaciones Suprema × $480.000)   = $114,7 MM
+                 + (279 en estudio × $120.000)            =  $33,5 MM
+                 ─────────────────────────────────────────────────────
+                 = $666,8 MM ≈ $700 MM (con varianza al alza)</code></pre>
+
+<div class="nota-metodo"><strong>Nota de versión:</strong> la v1 de este documento estimaba el costo PJUD en ~$1.815 MM aplicando el costo de ciclo completo a la totalidad de los recursos ingresados, lo que sobreestimaba el gasto en los recursos declarados inadmisibles y contaba parcialmente dos veces a los admitidos. La presente versión corrige ambos efectos asignando a cada grupo procesal solo las etapas que efectivamente cursó. La corrección reduce el costo PJUD a ~$700 MM y se traslada íntegra al cuadro de síntesis y al análisis de sensibilidad.</div>
+
+<h3>5.3 Costo operativo TGR</h3>
+
+<p>No existe cifra oficial publicada por la TGR sobre costo por expediente de cobranza. Se estima por analogía con procesos ejecutivos similares del sector público:</p>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 5.3 — Estimación costo operativo TGR</caption>
+<thead><tr><th>Ítem</th><th class="num">Estimación unitaria</th><th class="num">Volumen</th><th class="num">Total</th></tr></thead>
+<tbody>
+<tr><td>Expediente cobranza judicial (abogado TGR + sistema)</td><td class="num">$120.000 – $250.000</td><td class="num">1.500</td><td class="num">$180 – $375 MM</td></tr>
+<tr><td>Gestión embargo (notificación + coordinación CMF + banco)</td><td class="num">$80.000 – $150.000</td><td class="num">1.500</td><td class="num">$120 – $225 MM</td></tr>
+<tr><td>Coordinación masiva con bancos (prorrateable)</td><td class="num">estimado global</td><td class="num">—</td><td class="num">$100 – $200 MM</td></tr>
+<tr><td><strong>Total TGR</strong></td><td></td><td></td><td class="num"><strong>$400 – $800 MM</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<blockquote><p>Cifra central: <strong>~$600 MM</strong>. El hecho mismo de que el Estado no publique, ni aparentemente mida, el costo unitario de su propio aparato coactivo es un hallazgo del análisis, no solo una limitación.</p></blockquote>
+
+<h3>5.4 Costo para los ciudadanos en defensa jurídica</h3>
+
+<pre><code>Costo_ciudadanos = 1.453 recursos rechazados × honorario_promedio_abogado
+Rango honorario recurso de protección (mercado Chile 2026): $150.000 – $400.000
+Costo_ciudadanos = $218 MM (mínimo) – $581 MM (máximo)
+Cifra central: ~$400 MM</code></pre>
+
+<blockquote><p>Este costo no es recuperable. Los recursos fueron declarados inadmisibles, en su mayoría sin condena en costas. Los ciudadanos absorbieron íntegramente el gasto de defensa. Desde la perspectiva del bienestar social, es recurso privado destruido por el diseño del procedimiento.</p></blockquote>
+
+<h3>5.5 Escenario de contrademanda civil</h3>
+
+<p><strong>Base jurídica:</strong> Fallo Arica Rol 203-2026 + Art. 57 Código del Trabajo + Art. 19 N°2 CPR.</p>
+
+<p><strong>Supuestos del escenario mínimo:</strong></p>
+
+<pre><code>Universo potencialmente afectado = 1.500 embargados
+Tasa de litigación estimada = 10% (supuesto conservador)
+Demandantes potenciales = 150
+
+Por cada demandante:
+  - Daño emergente: monto embargado (~$1.500.000, valor central §5.1)
+  - Daño moral mínimo: $2.000.000 (piso habitual en vulneración de garantías)
+  - Total por demanda: ~$3.500.000
+
+Pasivo_contingente_mínimo = 150 × $3.500.000 = $525 MM</code></pre>
+
+<p><strong>Escenario si la Suprema consolida la jurisprudencia de Arica:</strong></p>
+
+<pre><code>Universo ampliado = todos los embargados donde se retuvo remuneración
+Tasa de litigación = 20 – 30% (con jurisprudencia favorable, aumenta)
+Demandantes potenciales = 300 – 450
+
+Pasivo_contingente_alto = 450 × $3.500.000 = $1.575 MM</code></pre>
+
+<div class="nota-metodo"><strong>Tratamiento contable del daño emergente:</strong> la partida de daño emergente corresponde a la devolución de fondos que en la línea de ingresos figuran como recaudados. El modelo cuenta ambos flujos por separado, el ingreso al momento de la retención y la salida al momento de la condena, de modo que el efecto neto por demandante acogido equivale al daño moral más costas y costo de tramitación. Presentarlos por separado mantiene la trazabilidad: permite ver cuánto entró, cuánto saldría y cuánto cuesta el tránsito judicial entre ambos momentos.</div>
+
+<h2 id="sensibilidad">6. Análisis de sensibilidad: cuadro de síntesis VPN</h2>
+
+<p>Dado que la variable de mayor incertidumbre es el monto efectivamente recaudado, el VPN se presenta en tres escenarios. Los costos directos y pasivos contingentes se mantienen en sus valores centrales.</p>
+
+<div class="ledger" role="table" aria-label="Estado de resultados de la estrategia de cobro CAE, escenario central">
+  <div class="l-title">VPN de la estrategia · escenario central · millones de pesos chilenos (MM$)</div>
+
+  <div class="l-section">Ingresos</div>
+  <div class="l-row"><span>Monto recuperado con embargos (1.500 × $1,5 MM)</span><span class="pos">+$2.250</span></div>
+
+  <div class="l-section">Costos directos</div>
+  <div class="l-row"><span>Costo operativo TGR</span><span class="neg">−$600</span></div>
+  <div class="l-row"><span>Costo PJUD (por etapa procesal cursada)</span><span class="neg">−$700</span></div>
+  <div class="l-row"><span>Costo ciudadanos en defensa jurídica</span><span class="neg">−$400</span></div>
+  <div class="l-row l-sub"><span>Subtotal costos directos</span><span class="neg">−$1.700</span></div>
+
+  <div class="l-section">Pasivos contingentes (escenario mínimo)</div>
+  <div class="l-row"><span>Demandas civiles (150 × $3,5 MM, incluye devoluciones)</span><span class="neg">−$525</span></div>
+  <div class="l-row"><span>Costo PJUD de tramitar esas demandas (150 × $2,1 MM)</span><span class="neg">−$315</span></div>
+  <div class="l-row l-sub"><span>Subtotal pasivos contingentes</span><span class="neg">−$840</span></div>
+
+  <div class="l-section">Costo de oportunidad</div>
+  <div class="l-row"><span>Deuda prescrita caso Cugat (inacción)</span><span class="neg">−$30.232</span></div>
+
+  <div class="l-row l-total"><span>VPN estrategia (sin costo de oportunidad)</span><span class="neg">−$290</span></div>
+  <div class="l-row l-total final"><span>VPN estrategia (con costo de oportunidad)</span><span class="neg">−$30.522</span></div>
+</div>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 6 — Sensibilidad del VPN al monto recaudado (MM$)</caption>
+<thead><tr><th>Escenario</th><th class="num">Saldo promedio/cuenta</th><th class="num">Recaudado</th><th class="num">VPN sin Cugat</th><th class="num">VPN con Cugat</th></tr></thead>
+<tbody>
+<tr><td>Favorable a la estrategia</td><td class="num">$2.000.000</td><td class="num">+3.000</td><td class="num">+460</td><td class="num">−29.772</td></tr>
+<tr><td><strong>Central</strong></td><td class="num"><strong>$1.500.000</strong></td><td class="num"><strong>+2.250</strong></td><td class="num"><strong>−290</strong></td><td class="num"><strong>−30.522</strong></td></tr>
+<tr><td>Desfavorable</td><td class="num">$1.000.000</td><td class="num">+1.500</td><td class="num">−1.040</td><td class="num">−31.272</td></tr>
+</tbody>
+</table>
+</div>
+
+<blockquote><p><strong>Interpretación:</strong> incluso en el escenario más favorable a la estrategia, el margen neto (+$460 MM, un 15% de lo recaudado) queda dentro de la banda de error de las propias estimaciones y desaparece si el pasivo contingente escala al rango alto ($1.575 MM). En el escenario central el VPN ya es negativo, y en el desfavorable la estrategia pierde más de lo que recauda aun antes de cualquier condena judicial. Incorporar el costo de oportunidad del caso Cugat hace la relación costo/beneficio insostenible bajo cualquier combinación de supuestos: el Fisco perdió por inacción entre 10 y 20 veces lo que recuperó con el máximo despliegue coactivo. Esta última partida queda condicionada al resultado de la apelación interpuesta por la TGR contra la sentencia de primera instancia (ver §8); aun si la apelación prospera y el efecto patrimonial se revierte, el hecho probado de la inacción durante el plazo legal subsiste como evidencia del trato asimétrico. La conclusión robusta no es una cifra sino una asimetría: <em>la estrategia, en el mejor de los casos, ronda el punto de equilibrio; en cualquier escenario realista, destruye valor fiscal y social.</em></p></blockquote>
+
+<h2 id="limitaciones">7. Limitaciones del análisis</h2>
+
+<ol class="limitaciones">
+<li><strong>La TGR no publica costo por expediente.</strong> Los costos operativos son estimaciones por analogía. Para un análisis definitivo se requeriría un requerimiento de transparencia a la TGR sobre costos unitarios del proceso de cobranza CAE.</li>
+<li><strong>El monto real embargado no está publicado.</strong> La TGR informó el número de embargados (1.500+) pero no el monto total retenido. El rango de la sección 5.1 se construye desde el criterio de focalización declarado por el Gobierno (ingresos sobre $2.000.000), no desde cifras de retención efectiva.</li>
+<li><strong>El pasivo contingente depende de decisiones judiciales futuras.</strong> Si la Corte Suprema rechaza la jurisprudencia de Arica, el escenario de contrademanda se reduce significativamente. Si la confirma, se amplía hacia el rango alto.</li>
+<li><strong>Los costos del PJUD son estimaciones de orden de magnitud.</strong> Las remuneraciones corresponden a rangos publicados en el escalafón; el tiempo real por causa varía según complejidad. La descomposición por etapa procesal de la sección 5.2 reduce, pero no elimina, esa incertidumbre.</li>
+<li><strong>No se incluyen costos de sistema completo.</strong> El análisis no incorpora la estrategia comunicacional, el impacto en mora futura si el proceso erosiona los pagos voluntarios, ni el costo político-institucional de la controversia. Todos operan en contra de la estrategia, por lo que su omisión es conservadora.</li>
+<li><strong>El criterio de focalización oficial es una declaración, no un dato auditado.</strong> El umbral de ingresos sobre $2.000.000 proviene de declaraciones gubernamentales; la distribución real de ingresos de los 1.500 embargados no es pública.</li>
+</ol>
+
+<h2 id="preguntas">8. Preguntas abiertas y agenda de verificación</h2>
+
+<p>Este documento deja registradas las preguntas que no puede responder con la información pública disponible, como invitación explícita a periodistas, investigadores y parlamentarios:</p>
+
+<ol class="preguntas">
+<li><strong>¿Podían los bancos oponerse a la orden de retención?</strong> Esta es la pregunta jurídica abierta más relevante del caso. Existen dos hipótesis en tensión. <em>Hipótesis del ejecutor obligado:</em> los bancos actúan como meros agentes de retención frente a una orden de autoridad competente revestida de presunción de legalidad, y carecen de facultades para calificar su mérito; su eventual responsabilidad sería inexistente o derivada. <em>Hipótesis del deber de diligencia:</em> los bancos, como custodios profesionales de fondos de sus clientes y conocedores del Art. 57 del Código del Trabajo, tenían al menos el deber de representar la imposibilidad de distinguir remuneraciones de ahorro antes de ejecutar retenciones totales, y su ejecución indiscriminada genera responsabilidad civil autónoma, especialmente desde que el fallo de Arica puso en duda el título mismo de la orden. No existe precedente exacto en Chile a escala masiva. La respuesta probablemente exigirá pronunciamiento de la Corte Suprema o de la CMF, y este documento se limita a dejar planteada la disyuntiva sin resolverla.</li>
+<li><strong>¿Cuál es el monto efectivamente retenido?</strong> Solicitud de transparencia a la TGR: monto total retenido, distribución por tramos, y cuántas retenciones alcanzaron fondos identificables como remuneración.</li>
+<li><strong>¿Cuánto cuesta el aparato coactivo?</strong> Solicitud de transparencia a la TGR: costo unitario por expediente de cobranza CAE, incluyendo honorarios, sistemas y coordinación interinstitucional.</li>
+<li><strong>Resultado de la apelación del caso Cugat.</strong> La causa fue identificada: Rol C-4525-2025 del 2° Juzgado Civil de Rancagua, sentencia del juez Cristián Fernández González que declaró prescritas las acciones de cobro de Formularios N°21 con vencimientos entre septiembre de 2010 y enero de 2017, por $30.232.487.243, sin costas por motivo plausible, ordenando además eliminar a la empresa de la nómina de deudores morosos. La sentencia fue apelada por la TGR, cuyo argumento central es que la deuda estaba declarada incobrable y no había gestiones pendientes, defensa que el fallo de primera instancia ya desechó al resolver que la declaración administrativa de incobrabilidad no suspende ni interrumpe la prescripción. El costo de oportunidad de la sección 6 queda por tanto sujeto al resultado de la apelación ante la Corte de Apelaciones de Rancagua: si se confirma, el dato se consolida; si se revoca, el argumento de la inacción durante el plazo legal subsiste como hecho probado en primera instancia, pero el efecto patrimonial se revierte.</li>
+<li><strong>¿Cuántos de los 236 recursos admitidos serán acogidos con la doctrina de Arica?</strong> El seguimiento de los fallos de las Cortes de Talca, Valparaíso y La Serena durante julio y agosto de 2026 permitirá pasar del escenario contingente al dato observado.</li>
+</ol>
+
+<h2 id="fuentes">9. Fuentes citadas</h2>
+
+<div class="table-wrap">
+<table>
+<caption>Tabla 9 — Registro de fuentes</caption>
+<thead><tr><th class="num">#</th><th>Fuente</th><th>Fecha</th><th>URL / Referencia</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>TGR — Comunicado oficial embargos CAE</td><td>8 jun. 2026</td><td>tgr.cl/noticias</td></tr>
+<tr><td class="num">2</td><td>Acción Educar — Radiografía deudores CAE 2025</td><td>dic. 2025</td><td>accioneducar.cl</td></tr>
+<tr><td class="num">3</td><td>2° Juzgado Civil de Rancagua — Sentencia Rol C-4525-2025, Cugat c/ Fisco (apelada); cobertura de prensa: Diario Financiero, BioBioChile</td><td>jun. 2026</td><td>oficinajudicialvirtual.pjud.cl · df.cl · biobiochile.cl</td></tr>
+<tr><td class="num">4</td><td>Poder Judicial — Fallo Arica Rol 203-2026</td><td>15 may. 2026</td><td>pjud.cl/noticias/145089</td></tr>
+<tr><td class="num">5</td><td>Radio Universidad de Chile — Recursos de protección CAE</td><td>17 may. 2026</td><td>radio.uchile.cl</td></tr>
+<tr><td class="num">6</td><td>Cuenta Pública PJUD 2026</td><td>jun. 2026</td><td>cuentapublica.pjud.cl</td></tr>
+<tr><td class="num">7</td><td>PJUD — Escala de remuneraciones vigente</td><td>2026</td><td>pjud.cl/transparencia/escala-remuneraciones-vigentes</td></tr>
+<tr><td class="num">8</td><td>BioBioChile — Embargos de cuentas corrientes CAE</td><td>6 jun. 2026</td><td>biobiochile.cl</td></tr>
+<tr><td class="num">9</td><td>La Tercera — Embargos de bienes raíces CAE</td><td>6 jun. 2026</td><td>latercera.com</td></tr>
+<tr><td class="num">10</td><td>La Tercera — Proyecto "Sueldos Protegidos"</td><td>8 jun. 2026</td><td>latercera.com</td></tr>
+<tr><td class="num">11</td><td>El Periodista — Fallo Arica, análisis</td><td>16 may. 2026</td><td>elperiodista.cl</td></tr>
+<tr><td class="num">12</td><td>The Clinic — Fallo Arica, comentario</td><td>16 may. 2026</td><td>theclinic.cl</td></tr>
+<tr><td class="num">13</td><td>Ley N°20.027 — Establece normas CAE</td><td>2005</td><td>bcn.cl</td></tr>
+<tr><td class="num">14</td><td>Código Tributario de Chile — Título V Libro III</td><td>vigente</td><td>bcn.cl</td></tr>
+<tr><td class="num">15</td><td>Código del Trabajo — Art. 57 inembargabilidad</td><td>vigente</td><td>bcn.cl</td></tr>
+<tr><td class="num">16</td><td>CPR Art. 19 N°2 — Igualdad ante la ley</td><td>vigente</td><td>bcn.cl</td></tr>
+<tr><td class="num">17</td><td>Ley 18.575 — LOCBGAE Art. 3, eficiencia</td><td>vigente</td><td>bcn.cl</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="replicar">10. Cómo replicar los cálculos</h2>
+
+<p>Todos los cálculos de este documento son reproducibles con operaciones aritméticas simples sobre los datos de la Tabla 4.1. Para replicarlos:</p>
+
+<pre><code># Cálculo VPN estrategia de cobro CAE — v2
+# Todos los valores en millones de pesos chilenos (MM$)
+
+# INGRESOS — tres escenarios según saldo promedio por cuenta
+embargados = 1500
+escenarios_saldo = {"favorable": 2.0, "central": 1.5, "desfavorable": 1.0}  # MM$
+
+# COSTOS PJUD — por etapa procesal efectivamente cursada (sin doble conteo)
+inadmisibles   = 1453
+admitidos      = 236
+suprema        = 239
+en_estudio     = 1968 - inadmisibles - admitidos   # = 279
+
+costo_inadmisible   = 0.24   # MM$ ciclo de admisibilidad con resolución de sala
+costo_admitido      = 0.72   # MM$ ciclo completo (admisibilidad + fondo + fallo)
+costo_suprema       = 0.48   # MM$ incremental por apelación en 2ª instancia
+costo_en_estudio    = 0.12   # MM$ etapas devengadas sin resolución
+
+costo_pjud = (inadmisibles * costo_inadmisible
+            + admitidos * costo_admitido
+            + suprema * costo_suprema
+            + en_estudio * costo_en_estudio)
+# ≈ 667 MM$ (se usa 700 con varianza al alza)
+costo_pjud = 700
+
+# COSTOS TGR
+costo_tgr = 600  # MM$ (estimación central del rango 400-800)
+
+# COSTOS CIUDADANOS
+honorario_promedio = 0.275  # MM$ (media del rango 0.15-0.40)
+costo_ciudadanos = round(inadmisibles * honorario_promedio)  # ≈ 400 MM$
+
+# PASIVO CONTINGENTE MÍNIMO
+tasa_litigacion = 0.10
+demandantes = int(embargados * tasa_litigacion)        # = 150
+dano_por_demanda = 1.5 + 2.0   # devolución (emergente) + daño moral, MM$
+pasivo_contingente = demandantes * dano_por_demanda    # = 525 MM$
+costo_pjud_demandas = demandantes * 2.1                # ≈ 315 MM$
+
+costos_directos = costo_pjud + costo_tgr + costo_ciudadanos   # = 1.700
+pasivos = pasivo_contingente + costo_pjud_demandas            # = 840
+
+# COSTO DE OPORTUNIDAD (caso Cugat)
+deuda_prescrita_cugat = 30232  # MM$
+
+for nombre, saldo in escenarios_saldo.items():
+    recaudado = embargados * saldo
+    vpn = recaudado - costos_directos - pasivos
+    print(f"{nombre:>12}: recaudado {recaudado:>6.0f} | "
+          f"VPN sin Cugat {vpn:>7.0f} | con Cugat {vpn - deuda_prescrita_cugat:>8.0f}")
+
+# favorable    : recaudado  3.000 | VPN sin Cugat    +460 | con Cugat  -29.772
+# central      : recaudado  2.250 | VPN sin Cugat    -290 | con Cugat  -30.522
+# desfavorable : recaudado  1.500 | VPN sin Cugat  -1.040 | con Cugat  -31.272</code></pre>
+
+<blockquote><p><strong>Nota:</strong> este script es ilustrativo. Los supuestos pueden modificarse ajustando las variables al inicio de cada bloque. Se invita a cualquier investigador a replicar y cuestionar estos cálculos con datos más precisos, especialmente si se obtienen cifras oficiales de la TGR mediante solicitudes de transparencia.</p></blockquote>
+
+<footer class="doc-foot">
+<p>Documento elaborado en junio de 2026 (versión 2, con corrección metodológica del costo PJUD y actualización del supuesto de focalización). Las estimaciones son de orden de magnitud y no constituyen peritaje jurídico ni económico. Su propósito es proveer un marco de análisis reproducible para el debate público.</p>
+</footer>
+
+</main>
+</body>
+</html>
