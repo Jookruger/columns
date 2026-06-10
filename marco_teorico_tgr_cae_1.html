@@ -10,17 +10,24 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f6f7f6;
+  --paper:#faf9fd;
   --panel:#ffffff;
-  --ink:#16222c;
-  --ink-soft:#46555f;
-  --rule:#d4d9d6;
-  --azul:#1e4e66;
+  --ink:#1e1b4b;
+  --ink-soft:#52527a;
+  --rule:#e0dcee;
+  --azul:#6d28d9;
+  --fucsia:#d946ef;
   --rojo:#a8322a;
   --verde:#2e6b4f;
-  --mono-bg:#102028;
-  --mono-fg:#d9e4e0;
+  --mono-bg:#1e1b4b;
+  --mono-fg:#e6e1f7;
   --maxw:880px;
+}
+body::before{
+  content:"";
+  display:block;
+  height:4px;
+  background:linear-gradient(90deg,var(--fucsia),var(--azul));
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -117,7 +124,7 @@ a{color:var(--azul)}
 .hipotesis{
   background:var(--panel);
   border:1px solid var(--rule);
-  border-left:4px solid var(--rojo);
+  border-left:4px solid var(--fucsia);
   padding:22px 26px;
   margin:22px 0;
   font-size:1.04rem;
@@ -168,7 +175,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:now
 code{
   font-family:"IBM Plex Mono",monospace;
   font-size:.85em;
-  background:#e9edeb;
+  background:#efeaf9;
   padding:1px 5px;
   border-radius:3px;
 }
@@ -284,7 +291,7 @@ footer.doc-foot{
     <h1>Marco Teórico y Metodología de Cálculo</h1>
     <p class="subtitle">Hipótesis: el Estado chileno puede salir "para atrás" con la estrategia de cobro CAE</p>
     <dl class="meta">
-      <div><dt>Respaldo de columnas</dt><dd>"Dos varas, una misma balanza" · "El costo de equivocarse con la Constitución"</dd></div>
+      <div><dt>Respaldo de columnas</dt><dd>"Dos varas, una misma balanza" · "Crónica de una deuda mal cobrada"</dd></div>
       <div><dt>Fecha de elaboración</dt><dd>Junio 2026</dd></div>
       <div><dt>Disciplinas</dt><dd>Derecho Público Constitucional + Economía Pública</dd></div>
       <div><dt>Estado</dt><dd>Estimaciones de orden de magnitud sobre datos públicos verificables</dd></div>
@@ -679,6 +686,8 @@ for nombre, saldo in escenarios_saldo.items():
 
 <footer class="doc-foot">
 <p>Documento elaborado en junio de 2026 (versión 2, con corrección metodológica del costo PJUD y actualización del supuesto de focalización). Las estimaciones son de orden de magnitud y no constituyen peritaje jurídico ni económico. Su propósito es proveer un marco de análisis reproducible para el debate público.</p>
+<p style="margin-top:14px;font-style:normal;font-weight:600;letter-spacing:.04em;color:var(--ink)">GH HCAI Lab <span style="color:var(--ink-soft);font-weight:400">· Human Centered Artificial Intelligence Lab · Geohumano</span></p>
+<div style="height:3px;max-width:180px;margin-top:8px;background:linear-gradient(90deg,var(--fucsia),var(--azul))"></div>
 </footer>
 
 </main>
