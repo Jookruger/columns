@@ -66,14 +66,20 @@ h1{
   color:var(--ink-soft);
   margin:0 0 24px;
 }
+.author-line{
+  font-family:monospace;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+  margin:0 0 24px;
+}
 .meta{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:10px 28px;
-  border-top:1px solid var(--rule);
-  padding-top:18px;
   font-family:"Source Serif 4",sans-serif;
   font-size:.86rem;
+  font-style:normal;
 }
 .meta dt{
   font-family:monospace;
@@ -311,12 +317,7 @@ footer.doc-foot{
     <p class="kicker">Serie Política Fiscal · Análisis de datos · v1</p>
     <h1>Veinte años de desvío fiscal en Chile</h1>
     <p class="subtitle">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección. Una lectura de la regla de Balance Estructural aplicada a la acusación constitucional contra el exministro de Hacienda.</p>
-    <dl class="meta">
-      <div><dt>Autoría</dt><dd>Jorge Oyarce Kruger, Médico Veterinario, MBA, Máster en Innovación · Director, GH HCAI Lab</dd></div>
-      <div><dt>Fecha de publicación</dt><dd>25 de junio de 2026 · Valdivia, Región de Los Ríos, Chile</dd></div>
-      <div><dt>Disciplinas</dt><dd>Economía Pública · Política Fiscal · Filosofía del Derecho</dd></div>
-      <div><dt>Datos</dt><dd>Serie reproducible CFA 2006–2026 · Licencia CC BY 4.0</dd></div>
-    </dl>
+    <p class="author-line">Jorge Oyarce Kruger · GH HCAI Lab</p>
   </div>
 </header>
 
@@ -528,7 +529,13 @@ La barbaridad mayor es de fechas. Se afirma con todas sus letras que el balance 
 </div>
 
 <footer class="doc-foot">
-<p><strong style="font-style:normal;color:var(--ink)">Cómo citar.</strong> GH HCAI Lab. Veinte años de desvío fiscal en Chile. Serie Política Fiscal. 25 de junio de 2026. Licencia Creative Commons Atribución 4.0 Internacional. El conjunto de datos reproducible acompaña esta publicación en formato de hoja de cálculo abierta. Las estimaciones se construyen sobre datos públicos verificables y no constituyen peritaje jurídico ni económico.</p>
+<dl class="meta">
+  <div><dt>Autoría</dt><dd>Jorge Oyarce Kruger, Médico Veterinario, MBA, Máster en Innovación · Director, GH HCAI Lab</dd></div>
+  <div><dt>Fecha de publicación</dt><dd>25 de junio de 2026 · Valdivia, Región de Los Ríos, Chile</dd></div>
+  <div><dt>Disciplinas</dt><dd>Economía Pública · Política Fiscal · Filosofía del Derecho</dd></div>
+  <div><dt>Datos</dt><dd>Serie reproducible CFA 2006–2026 · Licencia CC BY 4.0</dd></div>
+</dl>
+<p style="margin-top:18px"><strong style="font-style:normal;color:var(--ink)">Cómo citar.</strong> GH HCAI Lab. Veinte años de desvío fiscal en Chile. Serie Política Fiscal. 25 de junio de 2026. Licencia Creative Commons Atribución 4.0 Internacional. El conjunto de datos reproducible acompaña esta publicación en formato de hoja de cálculo abierta. Las estimaciones se construyen sobre datos públicos verificables y no constituyen peritaje jurídico ni económico.</p>
 <p style="margin-top:14px;font-style:normal;font-weight:600;letter-spacing:.04em;color:var(--ink)">GH HCAI Lab <span style="color:var(--ink-soft);font-weight:400">· Human Centered Artificial Intelligence Lab · Geohumano</span></p>
 <div style="height:3px;max-width:180px;margin-top:8px;background:linear-gradient(90deg,var(--fucsia),var(--azul))"></div>
 </footer>
