@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH HCAiLab | Proyecto QPI</title>
+    <style>
+        :root {
+            --bg-base: #020617;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --accent-blue: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-fuchsia: #d946ef;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: var(--bg-base);
+            /* LA MAGIA: TU IMAGEN COMO FONDO FIJO 3D */
+            background-image: url('https://jookruger.github.io/columns/pxs/img/QPI.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
 
+        /* CAPA OSCURA SOBRE LA IMAGEN PARA QUE EL TEXTO SE LEA */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.95) 100%);
+            z-index: 0;
+            pointer-events: none; /* Permite hacer scroll a través de ella */
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1; /* Asegura que el texto flote sobre la imagen y el overlay */
+        }
+        
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            margin-bottom: 40px;
+        }
+        .brand {
+            font-size: 0.9em;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin: 10px 0;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-fuchsia));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { color: var(--text-dim); font-size: 1em; }
+        h2 {
+            color: var(--accent-blue);
+            font-size: 1.3em;
+            margin-top: 40px;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 15px;
+        }
+        p { margin-bottom: 20px; color: #cbd5e1; }
+        .highlight { color: #ffffff; font-weight: 600; }
+        
+        /* TARJETAS CRISTAL (Glassmorphism) */
+        .card, .formula-box {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            backdrop-filter: blur(12px); /* Desenfoca la imagen detrás del texto */
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .formula-box {
+            text-align: center;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1em;
+            color: var(--accent-blue);
+            border: 1px dashed var(--accent-purple);
+            overflow-x: auto;
+        }
+        .var { color: #ffffff; font-weight: bold; }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: #cbd5e1; }
+        
+        .methodology-note {
+            margin-top: 50px;
+            padding: 20px;
+            border-left: 2px solid var(--accent-purple);
+            background-color: rgba(139, 92, 246, 0.1);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9em;
+            color: var(--text-dim);
+            backdrop-filter: blur(8px);
+        }
+        .methodology-note .highlight { color: var(--accent-fuchsia); }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            padding-top: 20px;
+        }
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- Esta es la capa que oscurece tu imagen para dar profundidad y leer el texto -->
+    <div class="bg-overlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="brand">GH HCAiLab</div>
+        <h1>Proyecto QPI</h1>
+        <p class="subtitle">Quinetic Point Index: Un nuevo estándar de medición sísmica</p>
+    </header>
+
+    <h2>Nuestra Metodología en HCAiLab</h2>
+    <p>En <span class="highlight">GH HCAiLab</span> tenemos una convicción: lo que no se puede medir con una métrica estándar en tiempo real, no se puede gestionar ni predecir con Inteligencia Artificial.</p>
+    <p>Nuestro desarrollo inicial fue un algoritmo polinómico capaz de traducir el caos de las interacciones a un índice único que mide la salud emocional de un entorno humano. Esa misma arquitectura lógica (aislar variables, estandarizar la captura, procesar mediante un polinomio y emitir un índice comparable) la estamos aplicando ahora a las geociencias.</p>
+    <p>El <b>QPI</b> es el primer caso de estudio de nuestra línea de I+D en geofísica aplicada.</p>
+
+    <h2>El Problema: La Falta de una Métrica Superficial</h2>
+    <p>La sismología actual comunica eventos mediante la <b>Magnitud</b> (energía en el hipocentro) o la <b>Escala Mercalli</b> (percepción subjetiva y daño a infraestructuras). Ninguna de las dos permite comparar el <span class="highlight">impacto físico real en la superficie</span> entre dos puntos geográficos. Un sismo de Magnitud 7 a 10km de profundidad no genera la misma descarga cinemática que uno de 80km, independientemente de los códigos de construcción locales.</p>
+
+    <h2>La Solución: El Polinomio QPI (v2.0)</h2>
+    <p>Proponemos un índice cinemático universal que aísla la "amenaza" de la "vulnerabilidad". QPI mide exclusivamente el golpe absoluto que la corteza terrestre propinó a un punto específico, expresable en una sola cifra comparable globalmente.</p>
+
+    <div class="formula-box">
+        <span class="var">QPI</span> = [ (<span class="var">A<sub>x</sub></span>·<span class="var">F<sub>h</sub></span>) + (<span class="var">A<sub>y</sub></span>·<span class="var">F<sub>h</sub></span>) + (<span class="var">A<sub>z</sub></span>·<span class="var">F<sub>v</sub></span>) ] × <span class="var">T</span> × <span class="var">F<sub>d</sub></span> × <span class="var">C<sub>s</sub></span>
+    </div>
+
+    <div class="card">
+        <h2>Desglose de Variables</h2>
+        <ul>
+            <li><span class="highlight">A (x, y, z):</span> Aceleración pico en los 3 ejes vectoriales.</li>
+            <li><span class="highlight">F<sub>h</sub> y F<sub>v</sub>:</span> Factores de ajuste direccional. Se asume Fh=1.0. Fv es dinámico: escala exponencialmente si la aceleración vertical supera 1G (fenómeno de rebote epicentral documentado en Northridge o Kobe, donde la gravedad es superada instantáneamente).</li>
+            <li><span class="highlight">T:</span> Duración. La fatiga material dicta que el impacto es exponencialmente mayor si el ciclo se repite en el tiempo.</li>
+            <li><span class="highlight">F<sub>d</sub>:</span> Factor de Frecuencia/Resonancia. Penaliza las ondas de baja frecuencia que, aunque tienen poca fuerza G, generan desplazamientos masivos (efecto observable en piscinas durante sismos lejanos) y resonancia en estructuras altas.</li>
+            <li><span class="highlight">C<sub>s</sub>:</span> Corrección litológica del suelo.</li>
+        </ul>
+    </div>
+
+    <h2>Arquitectura de Captura: "El Hito"</h2>
+    <p>Para evitar el ruido de sensores no estandarizados (celulares, diferentes alturas en edificios), el QPI requiere una red de sensores IoT de bajo costo diseñada bajo un estándar físico estricto: un acelerómetro instalado a 1 metro de altura sobre un módulo de concreto prefabricado (anclado al sustrato), alimentado por energía solar y con transmisión de baja latencia (LoRa/Satélite).</p>
+
+    <h2>El Ecosistema HCAiLab (Siguiente Fase)</h2>
+    <p>El QPI no es un fin en sí mismo, es el input. Al estandarizar el impacto superficial en una variable númerica limpia, permitimos que modelos de Inteligencia Artificial predictivos entrenados en GH HCAiLab crucen datos de micro-zonificación, resistencia de materiales y respuesta humana en tiempo real.</p>
+
+    <h2>Estado del Proyecto</h2>
+    <p>Actualmente contamos con el <b>framework teórico</b> validado lógicamente y el diseño conceptual del hardware. Buscamos validación académica para la calibración empírica de los factores de peso (Fh, Fv, Fd) y alianzas para el despliegue del prototipo piloto.</p>
+
+    <div class="methodology-note">
+        <p><span class="highlight">Nota Metodológica:</span> El contenido de este documento fue desarrollado mediante <i>propiocepción con IA</i>. En GH HCAiLab no entendemos la inteligencia artificial como un oráculo que reemplaza el pensamiento, sino como la raqueta para el tenista o el balón para el futbolista: un instrumento que amplifica, estructura y da forma a la concepción humana. El paradigma, la lógica del polinomio y el enfoque sistémico son estrictamente obra humana; la IA actuó como catalizador para su expresión técnica y visual.</p>
+    </div>
+
+    <div class="footer">
+        <p>Documento técnico preliminar v1.0 - GH HCAiLab<br>
+        Marco Teórico Propio</p>
+    </div>
+
+</div>
+
+</body>
+</html>
