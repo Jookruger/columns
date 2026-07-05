@@ -10,17 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f5f0e8;
-  --panel:#ede6d6;
-  --ink:#1a1410;
-  --ink-soft:#4a3f35;
-  --rule:#c8b89a;
-  --azul:#8b1a1a;
-  --fucsia:#c0392b;
-  --rojo:#8b1a1a;
+  --paper:#DCDBC9;
+  --panel:#A3BCBA;
+  --ink:#000000;
+  --ink-soft:#4a4055;
+  --rule:#D8C4D2;
+  --azul:#563F67;
+  --fucsia:#9C83A4;
+  --rojo:#563F67;
   --verde:#2e6b4f;
-  --mono-bg:#1a1410;
-  --mono-fg:#f5f0e8;
+  --mono-bg:#000000;
+  --mono-fg:#DCDBC9;
   --maxw:880px;
 }
 body::before{
@@ -413,8 +413,8 @@ Imputar a una proyección de un año aún abierto la categoría de infracción c
   <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-family:'Source Serif 4',sans-serif;font-size:.78rem;color:var(--ink-soft)">
     <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#cdb8e0;display:inline-block"></span>Ajuste cíclico (cobre)</span>
     <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#2e6b4f;display:inline-block"></span>Desvío: cumplió meta</span>
-    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#8b1a1a;display:inline-block"></span>Desvío: bajo meta</span>
-    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#8a7a6e;display:inline-block"></span>2026 = proyección</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#563F67;display:inline-block"></span>Desvío: bajo meta</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#786680;display:inline-block"></span>2026 = proyección</span>
   </div>
   <figcaption><b>Figura 1. Cómo leerla:</b> cada año muestra dos barras. La clara es el <b>ajuste cíclico</b>, el "factor suerte" del cobre y de la economía: hacia arriba cuando empujan a favor, hacia abajo cuando empujan en contra. La oscura es el <b>desvío</b>: cuánto se alejó el resultado de la promesa (arriba si se cumplió o superó la meta, abajo si no). Las franjas sombreadas marcan los años con un shock —crisis, terremoto, pandemia, guerra—. El 2026 va aparte y rayado porque todavía no termina: su barra es un pronóstico, no un hecho. Fuente: elaboración propia con datos del Consejo Fiscal Autónomo y la Dirección de Presupuestos<sup class="ref"><a href="#r1">1</a></sup>.</figcaption>
 </figure>
@@ -446,8 +446,8 @@ Imputar a una proyección de un año aún abierto la categoría de infracción c
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-family:'Source Serif 4',sans-serif;font-size:.78rem;color:var(--ink-soft)">
     <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#2e6b4f;display:inline-block"></span>Cumplió o superó la meta</span>
-    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#8b1a1a;display:inline-block"></span>Quedó bajo la meta</span>
-    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#8a7a6e;display:inline-block"></span>2026 = proyección, año abierto</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#563F67;display:inline-block"></span>Quedó bajo la meta</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#786680;display:inline-block"></span>2026 = proyección, año abierto</span>
   </div>
   <figcaption><b>Figura 2. Cómo leerla:</b> aquí solo se mira una cosa, la distancia entre el resultado y la promesa. <b>Verde</b> cuando el año cumplió o superó la meta; <b>rojo</b> cuando quedó por debajo; <b>gris</b> para 2026, porque todavía no se puede pintar de ningún color: el año no ha cerrado. La barra roja más larga, lejos, es la de 2021. La de la proyección 2026 es más corta que la barra real de 2009. Fuente: elaboración propia con datos del Consejo Fiscal Autónomo<sup class="ref"><a href="#r1">1</a></sup>.</figcaption>
 </figure>
@@ -551,11 +551,11 @@ La barbaridad mayor es de fechas. Se afirma con todas sus letras que el balance 
   var shockYears = [2008,2009,2010,2019,2020,2021];
   var projYear = 2026;
 
-  var ink = "#1a1410";
-  var inkMuted = "#4a3f35";
-  var inkFaint = "#8a7a6e";
+  var ink = "#000000";
+  var inkMuted = "#4a4055";
+  var inkFaint = "#786680";
   var verde = "#2e6b4f";
-  var rojo = "#8b1a1a";
+  var rojo = "#563F67";
   var lila = "#cdb8e0";
 
   function fmt(v) { return (v > 0 ? "+" : "") + v.toFixed(1) + " pp PIB"; }
