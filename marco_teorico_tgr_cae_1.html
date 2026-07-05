@@ -3,319 +3,755 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marco Teórico y Metodología de Cálculo — Estrategia de cobro CAE (TGR)</title>
-<meta name="description" content="Documento de trabajo reproducible: hipótesis, marco jurídico-económico, metodología de cálculo y análisis de sensibilidad del costo sistémico de la estrategia de cobro CAE de la Tesorería General de la República. Respaldo de las columnas 'Dos varas, una misma balanza' y 'El costo de equivocarse con la Constitución'.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Marco teórico y metodología de cálculo — CAE (TGR) · GH HCAI Lab</title>
+<meta name="description" content="Documento de trabajo reproducible: hipótesis, marco jurídico-económico, metodología de cálculo y análisis de sensibilidad del costo sistémico de la estrategia de cobro CAE de la TGR. Por Jorge Oyarce Kruger — GH HCAI Lab.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#faf9fd;
-  --panel:#ffffff;
-  --ink:#1e1b4b;
-  --ink-soft:#52527a;
-  --rule:#e0dcee;
-  --azul:#6d28d9;
-  --fucsia:#d946ef;
-  --rojo:#a8322a;
-  --verde:#2e6b4f;
-  --mono-bg:#1e1b4b;
-  --mono-fg:#e6e1f7;
-  --maxw:880px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+/* ===== columna más ancha para documento con tablas ===== */
+:root { --column-width: 780px; }
+
+/* ===== byline note, colofón, carrusel (compartido con las columnas de opinión) ===== */
+.byline-note {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-muted);
 }
-body::before{
-  content:"";
-  display:block;
-  height:4px;
-  background:linear-gradient(90deg,var(--fucsia),var(--azul));
+.byline-note .who { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.colophon {
+  max-width: var(--column-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:"IBM Plex Serif",Georgia,serif;
-  font-size:17px;
-  line-height:1.65;
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
 }
-header.doc-head{
-  border-bottom:3px double var(--ink);
-  background:var(--panel);
-  padding:48px 24px 36px;
+.colophon p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  font-weight: 300;
 }
-.head-inner{max-width:var(--maxw);margin:0 auto}
-.kicker{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.74rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--azul);
-  margin:0 0 14px;
+.colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.colophon a:hover { border-color: var(--accent); }
+.colophon .mono { font-family: ui-monospace, 'Cascadia Code', Menlo, monospace; font-size: 0.8rem; }
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
 }
-h1{
-  font-family:"IBM Plex Serif",serif;
-  font-weight:700;
-  font-size:clamp(1.7rem,4.4vw,2.5rem);
-  line-height:1.15;
-  margin:0 0 10px;
+.meta-dl .m-k {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
 }
-.subtitle{
-  font-style:italic;
-  font-size:1.08rem;
-  color:var(--ink-soft);
-  margin:0 0 24px;
+.meta-dl .m-v { font-family: 'Source Serif 4', serif; font-size: 0.85rem; color: var(--ink); }
+
+/* ===== Carrusel "Seguir leyendo" ===== */
+.more-columns {
+  max-width: var(--column-width);
+  margin: 3.5rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 3px double var(--rule);
 }
-.meta{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:10px 28px;
-  border-top:1px solid var(--rule);
-  padding-top:18px;
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:.86rem;
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1;
+  width: 2.1rem; height: 2.1rem;
+  border: 1px solid var(--rule); background: var(--paper-warm); color: var(--accent);
+  cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.meta dt{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.68rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin:0 0 2px;
+.mc-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.mc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-track {
+  display: flex; gap: 1rem; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding-bottom: 1.5rem; -webkit-overflow-scrolling: touch;
 }
-.meta dd{margin:0;font-weight:500}
-main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 80px}
-nav.toc{
-  background:var(--panel);
-  border:1px solid var(--rule);
-  border-left:4px solid var(--azul);
-  padding:18px 22px;
-  margin:0 0 44px;
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:.92rem;
+.mc-track::-webkit-scrollbar { height: 6px; }
+.mc-track::-webkit-scrollbar-track { background: var(--paper-warm); }
+.mc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+.mc-card {
+  scroll-snap-align: start; flex: 0 0 240px;
+  display: flex; flex-direction: column;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule); background: var(--paper-warm);
+  text-decoration: none; color: var(--ink);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
 }
-nav.toc strong{
-  display:block;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.7rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin-bottom:10px;
+.mc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(26,20,16,0.08); }
+.mc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-tag { font-family: 'Playfair Display', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-family: 'Source Serif 4', serif; font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--accent); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; box-shadow: none; }
+.mc-card.is-current .mc-tag { color: var(--paper-warm); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: 0.85; }
+
+/* ===== Documento técnico: meta, TOC, tablas, código, ledger, notas, listas numeradas ===== */
+.doc-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem 1.75rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.15rem 0;
+  margin: 1.5rem 0 2rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.86rem;
 }
-nav.toc ol{margin:0;padding-left:1.3em}
-nav.toc li{margin:4px 0}
-nav.toc a{color:var(--azul);text-decoration:none}
-nav.toc a:hover{text-decoration:underline}
-h2{
-  font-size:1.5rem;
-  font-weight:700;
-  margin:56px 0 16px;
-  padding-top:18px;
-  border-top:1px solid var(--rule);
+.doc-meta > div { margin: 0; }
+.doc-meta dt {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.2rem;
 }
-h3{
-  font-size:1.12rem;
-  font-weight:600;
-  margin:34px 0 10px;
+.doc-meta dd { margin: 0; font-weight: 400; color: var(--ink); }
+
+.doc-toc {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.15rem 1.4rem;
+  margin: 0 0 2.75rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.92rem;
 }
-p{margin:0 0 16px}
-a{color:var(--azul)}
-.hipotesis{
-  background:var(--panel);
-  border:1px solid var(--rule);
-  border-left:4px solid var(--fucsia);
-  padding:22px 26px;
-  margin:22px 0;
-  font-size:1.04rem;
-  font-weight:600;
-  line-height:1.55;
+.doc-toc strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  font-weight: 700;
 }
-blockquote{
-  margin:18px 0;
-  padding:12px 20px;
-  border-left:3px solid var(--azul);
-  background:var(--panel);
-  font-size:.95rem;
-  color:var(--ink-soft);
+.doc-toc ol { margin: 0; padding-left: 1.35em; color: var(--ink); }
+.doc-toc li { margin: 0.25rem 0; }
+.doc-toc a { color: var(--accent); text-decoration: none; }
+.doc-toc a:hover { text-decoration: underline; }
+
+.body-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  margin: 3.5rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  scroll-margin-top: 1.5rem;
 }
-blockquote p{margin:0}
-.table-wrap{overflow-x:auto;margin:18px 0}
-table{
-  border-collapse:collapse;
-  width:100%;
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:.88rem;
-  background:var(--panel);
+.body-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  margin: 2rem 0 0.6rem;
+  color: var(--ink);
 }
-caption{
-  caption-side:top;
-  text-align:left;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.7rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  padding:0 0 8px;
+.body-text strong { color: var(--ink); font-weight: 700; }
+
+.hipotesis {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.04rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
 }
-th{
-  text-align:left;
-  font-weight:600;
-  border-bottom:2px solid var(--ink);
-  padding:8px 12px;
-  white-space:nowrap;
+
+.body-text blockquote {
+  margin: 1.2rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--accent-light);
+  background: transparent;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  font-weight: 300;
 }
-td{
-  border-bottom:1px solid var(--rule);
-  padding:8px 12px;
-  vertical-align:top;
+.body-text blockquote p { margin: 0; }
+.body-text blockquote strong { color: var(--ink); font-style: normal; }
+
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.body-text table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
+  background: transparent;
+  color: var(--ink);
 }
-tr:last-child td{border-bottom:1px solid var(--ink)}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-code{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.85em;
-  background:#efeaf9;
-  padding:1px 5px;
-  border-radius:3px;
+.body-text caption {
+  caption-side: top;
+  text-align: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0 0 0.6rem;
+  font-weight: 700;
 }
-pre{
-  background:var(--mono-bg);
-  color:var(--mono-fg);
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.82rem;
-  line-height:1.55;
-  padding:18px 20px;
-  overflow-x:auto;
-  margin:18px 0;
-  border-radius:4px;
+.body-text th {
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid var(--ink);
+  padding: 0.55rem 0.75rem;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.82rem;
 }
-pre code{background:none;padding:0;color:inherit;font-size:inherit}
-/* Ledger — cuadro de síntesis VPN, estilo estado contable */
-.ledger{
-  background:var(--panel);
-  border:1px solid var(--ink);
-  margin:26px 0;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.86rem;
+.body-text td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.55rem 0.75rem;
+  vertical-align: top;
 }
-.ledger .l-title{
-  font-family:"IBM Plex Sans",sans-serif;
-  font-weight:600;
-  font-size:.95rem;
-  padding:12px 18px;
-  border-bottom:2px solid var(--ink);
-  letter-spacing:.02em;
+.body-text tr:last-child td { border-bottom: 1px solid var(--ink); }
+.body-text td.num, .body-text th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.ledger .l-section{
-  padding:6px 18px 2px;
-  font-size:.68rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
+
+.body-text code {
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.85em;
+  background: var(--paper-warm);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--ink);
 }
-.ledger .l-row{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  padding:5px 18px;
+.body-text pre {
+  background: var(--accent);
+  color: var(--paper);
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  padding: 1.15rem 1.3rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-radius: 3px;
 }
-.ledger .l-row span:last-child{
-  font-variant-numeric:tabular-nums;
-  white-space:nowrap;
+.body-text pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  border-radius: 0;
 }
-.ledger .l-sub{
-  border-top:1px solid var(--rule);
-  font-weight:500;
+
+.ledger {
+  background: var(--paper-warm);
+  border: 1px solid var(--ink);
+  margin: 1.75rem 0;
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.86rem;
+  color: var(--ink);
 }
-.ledger .l-total{
-  border-top:2px solid var(--ink);
-  font-weight:700;
-  padding:10px 18px;
+.ledger .l-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.1rem;
+  border-bottom: 2px solid var(--ink);
 }
-.ledger .l-total.final{
-  border-bottom:3px double var(--ink);
+.ledger .l-section {
+  padding: 0.4rem 1.1rem 0.15rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
 }
-.pos{color:var(--verde)}
-.neg{color:var(--rojo)}
-.nota-metodo{
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:.84rem;
-  color:var(--ink-soft);
-  border:1px dashed var(--rule);
-  padding:12px 16px;
-  margin:14px 0;
+.ledger .l-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.32rem 1.1rem;
 }
-ol.limitaciones,ol.preguntas{counter-reset:lim;list-style:none;padding-left:0;margin:18px 0}
-ol.limitaciones li,ol.preguntas li{
-  counter-increment:lim;
-  position:relative;
-  padding:0 0 14px 52px;
-  margin:0 0 6px;
+.ledger .l-row span:last-child {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-ol.limitaciones li::before,ol.preguntas li::before{
-  content:counter(lim,decimal-leading-zero);
-  position:absolute;
-  left:0;top:2px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.8rem;
-  border:1px solid var(--rule);
-  padding:2px 7px;
-  background:var(--panel);
+.ledger .l-sub { border-top: 1px solid var(--rule); font-weight: 500; }
+.ledger .l-total {
+  border-top: 2px solid var(--ink);
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
 }
-ol.limitaciones li::before{color:var(--rojo)}
-ol.preguntas li::before{color:var(--azul)}
-footer.doc-foot{
-  border-top:3px double var(--ink);
-  margin-top:64px;
-  padding:24px 0 0;
-  font-family:"IBM Plex Sans",sans-serif;
-  font-size:.84rem;
-  color:var(--ink-soft);
-  font-style:italic;
+.ledger .l-total.final { border-bottom: 3px double var(--ink); }
+.pos { color: #2e6b4f; font-weight: 700; }
+.neg { color: var(--accent); font-weight: 700; }
+
+.nota-metodo {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  border: 1px dashed var(--accent-light);
+  padding: 0.85rem 1.1rem;
+  margin: 1rem 0;
+  font-weight: 300;
+  background: transparent;
+  line-height: 1.55;
 }
-@media print{
-  body{background:#fff;font-size:11pt}
-  nav.toc{display:none}
-  pre{border:1px solid #999;background:#fff;color:#000}
-  .ledger{break-inside:avoid}
-  a{color:inherit;text-decoration:none}
+.nota-metodo strong { color: var(--ink); font-weight: 700; }
+
+.body-text ol.limitaciones,
+.body-text ol.preguntas {
+  counter-reset: lim;
+  list-style: none;
+  padding-left: 0;
+  margin: 1.25rem 0;
 }
+.body-text ol.limitaciones li,
+.body-text ol.preguntas li {
+  counter-increment: lim;
+  position: relative;
+  padding: 0 0 0.9rem 3.2rem;
+  margin: 0 0 0.4rem;
+  font-family: 'Source Serif 4', serif;
+  line-height: 1.6;
+}
+.body-text ol.limitaciones li::before,
+.body-text ol.preguntas li::before {
+  content: counter(lim, decimal-leading-zero);
+  position: absolute;
+  left: 0; top: 0.15rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid var(--rule);
+  padding: 0.18rem 0.55rem;
+  background: var(--paper-warm);
+  color: var(--accent);
+}
+.body-text em { font-style: italic; }
+
+@media (max-width: 600px) {
+  .more-columns, .colophon { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .mc-card { flex-basis: 82%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-track { scroll-behavior: auto; }
+  .mc-card, .mc-btn { transition: none; }
+}
+
 </style>
 </head>
 <body>
 
-<header class="doc-head">
-  <div class="head-inner">
-    <p class="kicker">Documento de trabajo · Repositorio de respaldo · v2</p>
-    <h1>Marco Teórico y Metodología de Cálculo</h1>
-    <p class="subtitle">Hipótesis: el Estado chileno puede salir "para atrás" con la estrategia de cobro CAE</p>
-    <dl class="meta">
-      <div><dt>Respaldo de columnas</dt><dd>"Dos varas, una misma balanza" · "Crónica de una deuda mal cobrada"</dd></div>
-      <div><dt>Fecha de elaboración</dt><dd>Junio 2026</dd></div>
-      <div><dt>Disciplinas</dt><dd>Derecho Público Constitucional + Economía Pública</dd></div>
-      <div><dt>Estado</dt><dd>Estimaciones de orden de magnitud sobre datos públicos verificables</dd></div>
-    </dl>
+<div class="masthead">
+  <p class="masthead-label">Documento de trabajo · Repositorio de respaldo · v2</p>
+  <p class="masthead-pub">GH HCAI Lab · Marco teórico</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Metodología · CAE · Análisis fiscal</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Marco Teórico <em>y Metodología de Cálculo</em></h1>
+
+  <p class="deck">Hipótesis: el Estado chileno puede salir "para atrás" con la estrategia de cobro CAE</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia, junio de 2026</span>
   </div>
-</header>
 
-<main>
+  <dl class="doc-meta">
+    <div><dt>Respaldo de columnas</dt><dd>"Dos varas, una misma balanza" · "Crónica de una deuda mal cobrada"</dd></div>
+    <div><dt>Fecha de elaboración</dt><dd>Junio 2026</dd></div>
+    <div><dt>Disciplinas</dt><dd>Derecho Público Constitucional + Economía Pública</dd></div>
+    <div><dt>Estado</dt><dd>Estimaciones de orden de magnitud sobre datos públicos verificables</dd></div>
+  </dl>
 
-<nav class="toc" aria-label="Tabla de contenidos">
-  <strong>Contenido</strong>
-  <ol>
-    <li><a href="#contexto">Contexto y propósito del documento</a></li>
-    <li><a href="#hipotesis">Hipótesis central</a></li>
-    <li><a href="#marco">Marco teórico</a></li>
-    <li><a href="#datos">Datos base verificables</a></li>
-    <li><a href="#metodologia">Metodología de cálculo</a></li>
-    <li><a href="#sensibilidad">Análisis de sensibilidad</a></li>
-    <li><a href="#limitaciones">Limitaciones del análisis</a></li>
-    <li><a href="#preguntas">Preguntas abiertas y agenda de verificación</a></li>
-    <li><a href="#fuentes">Fuentes citadas</a></li>
-    <li><a href="#replicar">Cómo replicar los cálculos</a></li>
-  </ol>
-</nav>
+  <nav class="doc-toc" aria-label="Tabla de contenidos">
+    <strong>Contenido</strong>
+    <ol>
+      <li><a href="#contexto">Contexto y propósito del documento</a></li>
+      <li><a href="#hipotesis">Hipótesis central</a></li>
+      <li><a href="#marco">Marco teórico</a></li>
+      <li><a href="#datos">Datos base verificables</a></li>
+      <li><a href="#metodologia">Metodología de cálculo</a></li>
+      <li><a href="#sensibilidad">Análisis de sensibilidad</a></li>
+      <li><a href="#limitaciones">Limitaciones del análisis</a></li>
+      <li><a href="#preguntas">Preguntas abiertas y agenda de verificación</a></li>
+      <li><a href="#fuentes">Fuentes citadas</a></li>
+      <li><a href="#replicar">Cómo replicar los cálculos</a></li>
+    </ol>
+  </nav>
+
+  <div class="body-text">
 
 <h2 id="contexto">1. Contexto y propósito del documento</h2>
 
@@ -684,12 +1120,76 @@ for nombre, saldo in escenarios_saldo.items():
 
 <blockquote><p><strong>Nota:</strong> este script es ilustrativo. Los supuestos pueden modificarse ajustando las variables al inicio de cada bloque. Se invita a cualquier investigador a replicar y cuestionar estos cálculos con datos más precisos, especialmente si se obtienen cifras oficiales de la TGR mediante solicitudes de transparencia.</p></blockquote>
 
-<footer class="doc-foot">
-<p>Documento elaborado en junio de 2026 (versión 2, con corrección metodológica del costo PJUD y actualización del supuesto de focalización). Las estimaciones son de orden de magnitud y no constituyen peritaje jurídico ni económico. Su propósito es proveer un marco de análisis reproducible para el debate público.</p>
-<p style="margin-top:14px;font-style:normal;font-weight:600;letter-spacing:.04em;color:var(--ink)">GH HCAI Lab <span style="color:var(--ink-soft);font-weight:400">· Human Centered Artificial Intelligence Lab · Geohumano</span></p>
-<div style="height:3px;max-width:180px;margin-top:8px;background:linear-gradient(90deg,var(--fucsia),var(--azul))"></div>
-</footer>
+  </div>
 
-</main>
+  <div class="byline-note">
+    <span class="who">Jorge Oyarce Kruger</span> — Dirección GH HCAI Lab. Documento elaborado en junio de 2026 (versión 2, con corrección metodológica del costo PJUD y actualización del supuesto de focalización).
+  </div>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAI Lab · Human Centered Artificial Intelligence Lab · Geohumano · Valdivia, Chile</p>
+  <p>Documento de trabajo. Las estimaciones son de orden de magnitud y no constituyen peritaje jurídico ni económico. Su propósito es proveer un marco de análisis reproducible para el debate público. Serie completa en <span class="mono">jookruger.github.io/columns</span>.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Versión</span><span class="m-v">v2 — junio 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Documento metodológico · Serie GH HCAI Lab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card" href="el-gobierno-que-enferma.html">
+      <span class="mc-tag">Salud mental · Estado</span>
+      <span class="mc-title">El gobierno que enferma</span>
+      <span class="mc-deck">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a class="mc-card" href="incubacion-violencia-nominal.html">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card is-current" href="marco_teorico_tgr_cae_1.html" aria-current="page">
+      <span class="mc-tag">Metodología · CAE</span>
+      <span class="mc-title">Marco teórico y metodología de cálculo</span>
+      <span class="mc-deck">Hipótesis: el Estado chileno puede salir «para atrás» con la estrategia de cobro del CAE.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
