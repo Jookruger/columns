@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incubación de la violencia nominal — GH HCAI Lab</title>
+<meta name="description" content="Ensayo: cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja de miles de movilizados a una sola psiquis agobiada con un destinatario. Anatomía preventiva de un riesgo en incubación. Por Jorge Oyarce Kruger — GH HCAI Lab.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+:root { --column-width: 780px; }
+
+/* ===== byline note, colofón, carrusel ===== */
+.byline-note{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--rule);font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic;color:var(--ink-muted)}
+.byline-note .who{font-style:normal;font-weight:700;color:var(--ink)}
+.colophon{max-width:var(--column-width);margin:0 auto;padding:2rem 2rem 3rem}
+.colophon-rule{border:0;border-top:3px double var(--rule);margin-bottom:1.5rem}
+.colophon-brand{font-family:'Playfair Display',serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.6rem}
+.colophon p{font-family:'Source Serif 4',serif;font-size:.85rem;line-height:1.65;color:var(--ink-muted);font-weight:300}
+.colophon a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+.colophon a:hover{border-color:var(--accent)}
+.colophon .mono{font-family:ui-monospace,'Cascadia Code',Menlo,monospace;font-size:.8rem}
+.meta-dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem 1.5rem;margin-top:1.5rem;border-top:1px solid var(--rule);padding-top:1.25rem}
+.meta-dl .m-k{display:block;font-family:'Playfair Display',serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.meta-dl .m-v{font-family:'Source Serif 4',serif;font-size:.85rem;color:var(--ink)}
+
+.more-columns{max-width:var(--column-width);margin:3.5rem auto 0;padding:2rem 2rem 0;border-top:3px double var(--rule)}
+.mc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.mc-label{font-family:'Playfair Display',serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint)}
+.mc-controls{display:flex;gap:.5rem}
+.mc-btn{font-family:'Playfair Display',serif;font-size:1.15rem;line-height:1;width:2.1rem;height:2.1rem;border:1px solid var(--rule);background:var(--paper-warm);color:var(--accent);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.mc-btn:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.mc-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mc-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:1.5rem;-webkit-overflow-scrolling:touch}
+.mc-track::-webkit-scrollbar{height:6px}
+.mc-track::-webkit-scrollbar-track{background:var(--paper-warm)}
+.mc-track::-webkit-scrollbar-thumb{background:var(--rule)}
+.mc-card{scroll-snap-align:start;flex:0 0 240px;display:flex;flex-direction:column;padding:1.15rem 1.25rem;border:1px solid var(--rule);background:var(--paper-warm);text-decoration:none;color:var(--ink);transition:transform .18s,border-color .18s,box-shadow .18s}
+.mc-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 18px rgba(26,20,16,.08)}
+.mc-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mc-tag{font-family:'Playfair Display',serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.mc-title{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}
+.mc-deck{font-family:'Source Serif 4',serif;font-size:.82rem;font-weight:300;line-height:1.45;color:var(--ink-muted);flex-grow:1}
+.mc-card.is-current{border-color:var(--accent);background:var(--accent);cursor:default}
+.mc-card.is-current:hover{transform:none;box-shadow:none}
+.mc-card.is-current .mc-tag{color:var(--paper-warm)}
+.mc-card.is-current .mc-title{color:var(--paper)}
+.mc-card.is-current .mc-deck{color:var(--paper);opacity:.85}
+
+/* ===== documento técnico: meta, TOC, tablas, notas ===== */
+.doc-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem 1.75rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.15rem 0;margin:1.5rem 0 2rem;font-family:'Source Serif 4',serif;font-size:.86rem}
+.doc-meta > div{margin:0}
+.doc-meta dt{font-family:'Playfair Display',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 .2rem}
+.doc-meta dd{margin:0;font-weight:400;color:var(--ink)}
+
+.doc-toc{background:var(--paper-warm);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:1.15rem 1.4rem;margin:2rem 0 2.75rem;font-family:'Source Serif 4',serif;font-size:.92rem}
+.doc-toc .lbl{display:block;font-family:'Playfair Display',serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;font-weight:700}
+.doc-toc ol{margin:0;padding-left:0;list-style:none;counter-reset:toc;color:var(--ink)}
+.doc-toc li{counter-increment:toc;margin:.3rem 0}
+.doc-toc li::before{content:"§" counter(toc) " · ";font-family:'Playfair Display',serif;color:var(--accent-light);font-size:.9rem;font-weight:700}
+.doc-toc li.anexo::before{content:"Anexo · "}
+.doc-toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.doc-toc a:hover{border-bottom-color:var(--accent)}
+
+/* ===== body-text: h2, h3, secciones, párrafos ===== */
+.body-text section{margin-top:3.5rem;scroll-margin-top:1.5rem}
+.body-text section:first-child{margin-top:0}
+.body-text h2{font-family:'Playfair Display',serif;font-weight:700;font-size:1.7rem;line-height:1.2;margin:0 0 1rem;padding-top:1.5rem;border-top:1px solid var(--rule);color:var(--ink)}
+.body-text h2 .num{display:block;font-family:'Playfair Display',serif;font-weight:400;font-size:.85rem;letter-spacing:.15em;color:var(--accent-light);margin-bottom:.4rem;text-transform:uppercase}
+.body-text h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;margin:2rem 0 .6rem;color:var(--ink)}
+.body-text strong{color:var(--ink);font-weight:700}
+.body-text em{font-style:italic}
+.body-text a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+.body-text a:hover{border-bottom-color:var(--accent)}
+.body-text sup{font-size:.72em;vertical-align:super;line-height:0}
+.body-text sup a{border:none;font-family:'Playfair Display',serif;font-weight:700}
+
+/* ===== cajas: abstract, definicion, hipotesis, nota-metodo, ensimple ===== */
+.box-label{display:block;font-family:'Playfair Display',serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;font-weight:700}
+
+.abstract{background:var(--paper-warm);border-left:4px solid var(--accent);padding:1.35rem 1.5rem;margin:2rem 0;font-family:'Source Serif 4',serif;font-size:1rem;line-height:1.65}
+.abstract .lbl{display:block;font-family:'Playfair Display',serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;font-weight:700}
+
+.definicion{border:2px solid var(--ink);padding:1.35rem 1.5rem;margin:1.75rem 0;background:transparent;font-family:'Source Serif 4',serif}
+.definicion .lbl{display:inline-block;font-family:'Playfair Display',serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);background:var(--accent);padding:.2rem .55rem;margin-bottom:.8rem;font-weight:700}
+
+.hipotesis{border-left:4px solid var(--accent-light);background:var(--paper-warm);padding:1.25rem 1.4rem;margin:1.6rem 0;font-family:'Source Serif 4',serif}
+.hipotesis .lbl{display:block;font-family:'Playfair Display',serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.55rem;font-weight:700}
+
+.nota-metodo{border:1px dashed var(--accent-light);padding:1rem 1.25rem;margin:1.5rem 0;font-family:'Source Serif 4',serif;font-size:.9rem;color:var(--ink-muted);line-height:1.6;font-weight:300}
+.nota-metodo .lbl{display:block;font-family:'Playfair Display',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:700}
+.nota-metodo strong{color:var(--ink)}
+
+.ensimple{background:var(--paper-warm);padding:1.15rem 1.35rem;margin:1.5rem 0;font-family:'Source Serif 4',serif;font-size:.95rem;line-height:1.6;border-left:3px solid var(--rule)}
+.ensimple .lbl{display:block;font-family:'Playfair Display',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:700}
+
+.body-text blockquote{margin:1.75rem 0;padding:.5rem 0 .5rem 1.5rem;border-left:3px solid var(--accent);font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--ink)}
+.body-text blockquote .who{display:block;font-style:normal;font-family:'Source Serif 4',serif;font-size:.78rem;color:var(--ink-faint);margin-top:.75rem;letter-spacing:.05em}
+
+/* ===== figuras ===== */
+figure{margin:2.5rem 0}
+figure img{width:100%;height:auto;border:1px solid var(--rule);background:var(--paper-warm);display:block}
+figcaption{font-family:'Source Serif 4',serif;font-size:.85rem;color:var(--ink-muted);margin-top:.85rem;line-height:1.55;font-weight:300}
+figcaption .fig-n{font-family:'Playfair Display',serif;color:var(--accent);font-weight:700;letter-spacing:.02em}
+figcaption .como{display:block;margin-top:.6rem;padding-top:.6rem;border-top:1px dashed var(--rule)}
+figcaption .como b{color:var(--ink);font-weight:700}
+
+/* ===== fórmula + tabla del anexo ===== */
+.formula{font-family:ui-monospace,'Cascadia Code',Menlo,monospace;background:var(--accent);color:var(--paper);padding:1.15rem 1.4rem;margin:1.75rem 0;font-size:1.05rem;text-align:center;border-radius:3px;overflow-x:auto;letter-spacing:.05em}
+
+.var-tab{width:100%;border-collapse:collapse;margin:1.25rem 0;font-family:'Source Serif 4',serif;font-size:.9rem}
+.var-tab th{font-family:'Playfair Display',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;text-align:left;color:var(--accent);border-bottom:2px solid var(--ink);padding:.55rem .75rem;font-weight:700}
+.var-tab td{border-bottom:1px solid var(--rule);padding:.65rem .75rem;vertical-align:top;color:var(--ink)}
+.var-tab tr:last-child td{border-bottom:1px solid var(--ink)}
+.var-tab td:first-child{font-family:ui-monospace,'Cascadia Code',Menlo,monospace;color:var(--accent);white-space:nowrap;font-weight:700}
+
+/* ===== referencias ===== */
+.refs{margin-top:3.5rem;padding-top:2rem;border-top:3px double var(--rule)}
+.refs h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;border:none;padding:0}
+.refs ol{padding-left:1.5em;font-family:'Source Serif 4',serif;font-size:.83rem;color:var(--ink-muted);font-weight:300}
+.refs li{margin:.75rem 0;line-height:1.55;scroll-margin-top:1.5rem}
+.refs li em{font-style:italic}
+.refs li strong{color:var(--ink);font-weight:700}
+
+@media (max-width:600px){
+  .more-columns,.colophon{padding-left:1.25rem;padding-right:1.25rem}
+  .mc-card{flex-basis:82%}
+  .body-text h2{font-size:1.45rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .mc-track{scroll-behavior:auto}
+  .mc-card,.mc-btn{transition:none}
+}
+
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Ensayo · Serie Política Fiscal · v1.0</p>
+  <p class="masthead-pub">GH HCAI Lab · Ensayo</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Violencia estructural · Salud mental · Análisis de riesgo</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Incubación de la <em>violencia nominal</em></h1>
+
+  <p class="deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja de miles de movilizados a una sola psiquis agobiada con destinatario. Anatomía preventiva de un riesgo en incubación.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia, julio de 2026</span>
+  </div>
+
+  <dl class="doc-meta">
+    <div><dt>Autor</dt><dd>Jorge Oyarce Kruger — GH HCAI Lab</dd></div>
+    <div><dt>Fecha</dt><dd>Julio de 2026</dd></div>
+    <div><dt>Lugar</dt><dd>Valdivia, Región de Los Ríos</dd></div>
+    <div><dt>Tipo</dt><dd>Ensayo académico · v1.0</dd></div>
+  </dl>
+
+  <div class="abstract">
+    <span class="lbl">Resumen</span>
+    <p>Este ensayo propone y examina el concepto de <strong>violencia nominal</strong>: la violencia ejercida <em>por</em> nombres identificables y descargada <em>contra</em> nombres identificables. Sostiene que Chile atraviesa una transición peligrosa: la violencia estructural (económica, administrativa, comunicacional) que históricamente operó de forma anónima está adquiriendo firma, mientras la salud mental de la población se deteriora bajo un régimen de incertidumbre política crónica. La combinación de ambos procesos no requiere, para producir un episodio grave, la masa crítica que exigió el estallido de 2019: requiere una sola víctima del sistema que identifique nominalmente a su victimario. Sobre la base del marco probabilístico de Woo (2002), la literatura forense de la violencia de actor solitario alimentada por agravio (LAGFV) y la evidencia internacional 2022–2026, el ensayo describe el circuito de incubación completo, propone una función de riesgo estilizada y concluye con una tesis institucional: la nominalización del poder sin responsabilidad institucional incuba violencia; la nominalización con responsabilidad institucional es, simplemente, democracia. Este es un ejercicio de alarma temprana en favor de la desescalada, no una profecía y bajo ninguna interpretación una justificación. Nunca una justificación. Nunca una justificación.</p>
+  </div>
+
+  <nav class="doc-toc" aria-label="Tabla de contenidos">
+    <span class="lbl">Contenido</span>
+    <ol>
+      <li><a href="#s1">El fenómeno: definición y tesis</a></li>
+      <li><a href="#s2">De la estructura al rostro: la desanonimización chilena</a></li>
+      <li><a href="#s3">La evidencia: frecuencia, mecanismo y dos niveles probatorios</a></li>
+      <li><a href="#s4">El espejo estocástico: emisión asimétrica, recepción ciega</a></li>
+      <li><a href="#s5">El gobierno que enferma: el estanque y la cola</a></li>
+      <li><a href="#s6">El circuito completo</a></li>
+      <li><a href="#s7">La víctima con nombre: Girard, Arendt y la coherencia de Beccaria</a></li>
+      <li><a href="#s8">La válvula institucional</a></li>
+      <li><a href="#s9">Conclusión: la invitación a prevenir</a></li>
+      <li class="anexo"><a href="#anexo">Anexo metodológico: una función de riesgo estilizada</a></li>
+    </ol>
+  </nav>
+
+  <div class="body-text">
+
+<section id="s1">
+  <h2><span class="num">§1</span>El fenómeno: definición y tesis</h2>
+
+  <p>El establishment siempre ha creído que su violencia era <em>nominal</em> en el sentido contable de la palabra: de nombre, sin realidad tangible. Una tasa de interés, una glosa presupuestaria, una resolución de cobranza, una fila en una planilla. Violencia estadística, sin autor y sin rostro, que por eso mismo nunca pareció violencia. Este ensayo trata del momento en que esa palabra se da vuelta: cuando la víctima descubre que la violencia que le agobia tiene nombre y apellido, y cuando, en el extremo de la distribución, decide devolverle una del mismo tipo.</p>
+
+  <div class="definicion">
+    <span class="lbl">Definición de trabajo</span>
+    <p><strong>Violencia nominal</strong>: violencia ejercida <em>por</em> un nombre y descargada <em>contra</em> un nombre. El concepto tiene doble vector. El primer vector es la violencia estructural que deja de ser anónima porque llega firmada: el decreto con autor, la retención ordenada por un servicio con jefatura conocida, el registro que estigmatiza con timbre institucional, la colusión con razón social sancionada. El segundo vector es la respuesta que esa firma habilita: el agravio individual que, en lugar de disolverse contra un sistema difuso, encuentra un destinatario con dirección postal. Un rasgo del período agrava el primer vector: la firma no es un accidente administrativo que el poder quisiera disimular. El gobernante se jacta de ella; exhibe la medida punitiva como trofeo de gestión, y con cada jactancia refuerza la asociación entre el daño y el nombre. La tesis de este ensayo es que el primer vector incuba el segundo.</p>
+  </div>
+
+  <p>El estallido social de 2019 requirió una masa crítica: miles de personas movilizadas contra un orden percibido como abusivo pero esencialmente <em>anónimo</em>: «el modelo», «el sistema», «los treinta años», «los $30». La ira era real; el destinatario, difuso. Lo que este ensayo sostiene es que la configuración actual invierte esa aritmética. Cuando la violencia económica y social que motiva el conflicto es ejercida por actores identificables (autoridades que firman, sectores empresariales con prontuario documentado, un estilo de gobierno que personaliza su agenda punitiva), el exaltado ya no necesita multitud. El próximo episodio no exige miles de movilizados: exige <strong>una</strong> psiquis agobiada que haya resuelto, correcta o incorrectamente, la pregunta «¿quién me hizo esto?» con un nombre propio.</p>
+
+  <div class="hipotesis">
+    <span class="lbl">Hipótesis central</span>
+    <p>La coincidencia entre violencia de Estado y violencia económico-social ejercida por actores identificables desplaza el objeto del agravio popular desde el <em>establishment anónimo</em> hacia <em>personas con nombre y apellido</em>: desde la Presidencia hasta autoridades menores, y desde controladores de empresas sancionadas hasta ejecutores administrativos. Ese desplazamiento reduce el umbral del estallido violento: de un fenómeno de masas a un fenómeno de cola estadística, individualmente impredecible pero poblacionalmente esperable.</p>
+  </div>
+
+  <div class="ensimple">
+    <span class="lbl">En simple</span>
+    <p>El rencor difuso no dispara: no sabe hacia dónde. El rencor con destinatario, a veces sí. Durante décadas el malestar chileno no tenía a quién escribirle la carta; hoy el sobre ya trae nombre impreso. Y no hace falta que millones quieran enviarla: basta con que uno la envíe.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="num">§2</span>De la estructura al rostro: la desanonimización chilena</h2>
+
+  <p>Johan Galtung definió la violencia estructural precisamente por la ausencia de actor: es la violencia incrustada en la estructura social, que priva, empobrece y mata sin que nadie apriete un gatillo ni firme una orden.<sup><a href="#ref-galtung">1</a></sup> Su rasgo político más importante es que resulta difícil de odiar con precisión: uno no puede citar a declarar a «la desigualdad». Esa opacidad fue, durante mucho tiempo, un amortiguador involuntario. La estructura dañaba, pero no ofrecía blanco.</p>
+
+  <p>Lo que aquí llamamos <strong>desanonimización</strong> es el paso de esa violencia sin sujeto a una violencia con firma: una transición de fase en sentido estricto. Y en el Chile actual la firma se está estampando por tres vías simultáneas.</p>
+
+  <h3>2.1 La firma política</h3>
+  <p>El actual gobierno ha hecho de la personalización punitiva un estilo: el anuncio de un «registro de vándalos» en su primera cuenta pública<sup><a href="#ref-cnn">2</a></sup> es el ejemplo más nítido, porque constituye una operación de nominalización en sentido literal: el Estado confeccionando listas de ciudadanos con nombre y apellido. Y de nuevo la jactancia: el registro no se filtró, se anunció; no se administra en silencio, se exhibe como logro ante el Congreso. La estrategia de cobranza del CAE por la Tesorería General de la República, analizada en columnas anteriores de esta serie,<sup><a href="#ref-tgr">3</a></sup> opera en la misma lógica: retenciones y apremios que el deudor no experimenta como «el sistema financiero», sino como la decisión de un servicio con jefatura conocida. La ironía estructural es evidente y conviene enunciarla sin eufemismo: <strong>un Estado que nominaliza a sus ciudadanos enseña a sus ciudadanos a nominalizar al Estado</strong>. Las listas se aprenden en ambas direcciones.</p>
+
+  <h3>2.2 La firma biográfica o curricular: densidad de agravio del nombre</h3>
+  <p>El segundo vector de nominalización es biográfico. Una parte relevante de los actores hoy visibles en el eje político-económico proviene de sectores empresariales cuya conducta abusiva no es una imputación difusa sino un hecho sancionado: la colusión del papel tissue (CMPC y SCA, requerimiento FNE 2015, con delación compensada del propio partícipe); la colusión de los pollos (Agrosuper, Ariztía y Don Pollo, sancionada por el TDLC en 2014 y confirmada por la Corte Suprema en 2015); la colusión de las farmacias (sancionada tras el caso de 2008); las repactaciones unilaterales de La Polar (2011).<sup><a href="#ref-colusion">4</a></sup> Cada uno de estos episodios dejó, en la memoria colectiva, nombres asociados a violencia económica documentada. A esa acumulación biográfica o curricular la llamaremos <strong>densidad de agravio del nombre</strong>: no es lo mismo nominalizar a un tecnócrata sin historia que a un apellido que la ciudadanía ya asocia, con sentencia en mano, al abuso. Cuando la política recluta sus rostros desde sectores con prontuario, cada nombramiento importa el agravio acumulado del sector al cargo público que lo recibe.</p>
+
+  <p>Que el mecanismo curricular ya opera a la vista lo muestra incluso una controversia menor y en curso. En medio de la polémica por la complejizada venida de los famosísimos BTS al Estadio Nacional (julio de 2026), sectores del fandom ARMY han vuelto a recordarle en redes a la exatleta y actual ministra del Deporte, Natalia Ducó, su sanción por dopaje de 2019, a mi juicio sin motivo alguno: aquella sanción nada tiene que ver con la evaluación técnica de un recinto deportivo. Pero eso es exactamente la densidad de agravio del nombre operando en tiempo real: apenas una decisión adquiere rostro, la biografía completa del rostro se convierte en munición, pertinente o no. Si esto ocurre por un concierto, calcúlese lo que ocurre cuando lo que llega firmado es un embargo.</p>
+
+  <div class="nota-metodo">
+    <span class="lbl">Nota metodológica — qué cuenta como prontuario</span>
+    <p>En este ensayo solo se consideran «abusos documentados» aquellos con sanción firme de tribunales, del TDLC o requerimiento de la FNE con resultado sancionatorio, citables con rol y fecha. La asociación sectorial difusa («los empresarios», «el retail») no constituye densidad de agravio en el sentido aquí definido, y usarla replicaría el mecanismo que este ensayo describe: nominalizar por contagio. La fuerza del argumento reside justamente en que basta con lo sancionado.</p>
+  </div>
+
+  <h3>2.3 La firma comunicacional</h3>
+  <p>La tercera vía es el estilo comunicacional del poder, tratado en extenso en la columna «El gobierno que enferma»<sup><a href="#ref-gqe">5</a></sup> y retomado en §5: la comunicación disonante sostenida (anunciar sin comprometer, prometer sin cumplir, retroceder sin explicar) tiene siempre un rostro que anuncia. Y pareciese que se jactan de ello: el anuncio grandilocuente no es el costo del estilo, es el estilo. La política del acordeón no la ejecuta «el Estado»: la ejecuta, en pantalla y con nombre, una autoridad específica. Cada ciclo de anuncio y retroceso es también un ciclo de asociación entre el daño percibido y la cara que lo comunicó.</p>
+
+  <div class="ensimple">
+    <span class="lbl">En simple</span>
+    <p>Antes, el malestar era contra «el modelo», y al modelo no se le puede pegar. Hoy el malestar tiene tres etiquetas pegadas encima: la autoridad que firma la medida, el apellido empresarial con condena a cuestas, y el rostro que anuncia por televisión. La estructura consiguió cara. Y las caras, a diferencia de las estructuras, caben en la fijación de una sola persona.</p>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">§3</span>La evidencia: frecuencia, mecanismo y dos niveles probatorios</h2>
+
+  <p>La tesis de este ensayo hace dos afirmaciones empíricas distintas, y la honestidad metodológica exige evidencia distinta para cada una.</p>
+
+  <p>La <strong>primera afirmación es de frecuencia</strong>: los atentados contra figuras públicas con nombre propio se han multiplicado en el ciclo 2022–2026. Para acreditarla basta el hecho verificado del atentado, con independencia del motivo: Shinzo Abe, ex primer ministro de Japón, asesinado en 2022; Fernando Villavicencio, candidato presidencial ecuatoriano, asesinado en 2023; Robert Fico, primer ministro eslovaco, gravemente herido en 2024; dos atentados contra Donald Trump durante la campaña de 2024; Brian Thompson, CEO de UnitedHealthcare, asesinado en Manhattan en diciembre de 2024; el senador y precandidato colombiano Miguel Uribe Turbay, atacado en junio de 2025 y fallecido después; la legisladora demócrata Melissa Hortman, asesinada junto a su esposo en Minnesota en 2025; el activista conservador Charlie Kirk, asesinado en Utah en septiembre de 2025; el alcalde de Uruapan, Carlos Manzo, asesinado en noviembre de 2025. La consultora de riesgo Control Risks elevó la «violencia personalizada» de actores solitarios a tendencia global para 2025, señalando que agravios personales y principios ideológicos se mezclan de maneras inesperadas que dificultan la detección.<sup><a href="#ref-cr">6</a></sup></p>
+
+  <figure>
+    <img src="images/incubacion-01.png" alt="Línea temporal de atentados contra figuras públicas 2022–2026">
+    <figcaption>
+      <span class="fig-n">Figura 1.</span> Atentados contra figuras públicas, 2022–2026 (casos seleccionados, no exhaustivo). Elaboración propia sobre reportes de prensa internacional y registros judiciales.
+      <span class="como"><b>Cómo leerla:</b> cada marca es un atentado contra una persona con nombre y apellido. Los círculos llenos indican casos donde la motivación fue establecida por sentencia o confesión; los círculos vacíos, casos con motivación en disputa o proceso judicial abierto. Todos los casos acreditan la <em>frecuencia</em> del fenómeno; solo los llenos pueden usarse como evidencia de <em>mecanismo</em>. Nótese la aceleración: la mitad de la serie ocurre en los últimos dieciocho meses del período.</span>
+    </figcaption>
+  </figure>
+
+  <p>La <strong>segunda afirmación es de mecanismo</strong>: que el agravio nominalizado es lo que arma la mano. Para esta afirmación solo sirven los casos con motivación documentada en fuente primaria o establecida judicialmente. El caso Abe es el más limpio: el autor confeso actuó por un agravio específico y de larga incubación (la ruina de su familia a manos de la Iglesia de la Unificación), dirigido contra el nombre público que percibía asociado a esa organización. El caso Thompson es el más severo para la tesis, y por eso exige el máximo cuidado: el proceso contra Luigi Mangione permanece abierto y su autoría es materia de juicio, pero las piezas documentales presentadas por la fiscalía (un manifiesto contra la industria aseguradora, casquillos inscritos con el vocabulario de la negación de coberturas) son públicas, y la propia fiscalía caracterizó a la víctima como blanco elegido en tanto <em>símbolo nominal</em> de una industria percibida como depredadora.<sup><a href="#ref-mangione">7</a></sup> Dos rasgos del caso lo vuelven paradigmático con independencia de su resolución judicial. Primero, extiende la violencia nominal del Estado al actor privado: la violencia estructural corporativa también se nominaliza. Segundo, el atacante, según la evidencia pública, <em>no era víctima directa</em> de la empresa: canalizó un agravio colectivo ajeno. Es la demostración límite de la tesis: ni siquiera se requiere ser víctima; basta que el agravio de muchos tenga un nombre disponible para uno.</p>
+
+  <div class="nota-metodo">
+    <span class="lbl">Nota metodológica — dos niveles probatorios y presunción de inocencia</span>
+    <p>Los casos listados en este ensayo acreditan <em>frecuencia</em>, no mecanismo. Solo se atribuye motivación donde existe sentencia firme, confesión o documentación primaria de acceso público, y todo proceso abierto se trata bajo presunción de inocencia, incluida la de los imputados por los crímenes aquí mencionados. Este estándar no es una cortesía: es el mismo principio (la falta no consumada no se condena; el juicio a mitad de carrera es epistémicamente incoherente) que esta serie defendió a propósito de la acusación constitucional contra el ex ministro Grau.<sup><a href="#ref-desvio">8</a></sup> Sería inconsistente exigirle al acusador constitucional un estándar que este ensayo no se aplica a sí mismo.</p>
+  </div>
+
+  <p>El caso Kirk merece un párrafo aparte, no como evidencia de mecanismo (su proceso está abierto y su motivación en disputa) sino como <strong>dato del fenómeno por otra vía</strong>. Antes de que existiera investigación concluida, cada bando ya había nominalizado a su culpable: la izquierda radical, la retórica del propio Kirk, la cultura de armas. Esa instrumentalización instantánea del cadáver, previa a toda evidencia, es la economía de la violencia nominal operando en tiempo real: el reflejo colectivo de asignar el agravio a un nombre antes de que los hechos existan. El caso ambiguo no debilita la tesis; la ilustra desde el lado de la demanda.</p>
+
+  <h3>3.1 La validación forense: agravio y fijación</h3>
+  <p>La intuición de que el agravio necesita un objeto nominal para volverse ataque no es especulación de columnista: es el hallazgo central de la literatura de evaluación de amenazas. El campo de la <em>lone-actor grievance-fuelled violence</em> (LAGFV) y los Fixated Threat Assessment Centres (unidades conjuntas de psiquiatras y policías operativas en Reino Unido, Australia y Nueva Zelanda) estudian precisamente el tránsito del agravio a la aproximación física contra figuras públicas.<sup><a href="#ref-ftac">9</a></sup> Tres hallazgos importan aquí. Primero, la «fijación» (preocupación intensa y creciente con una persona o causa, con opinión cada vez más estridente y caracterización cada vez más negativa del objeto) es una de las conductas de advertencia centrales en la tipología forense estándar.<sup><a href="#ref-meloy">10</a></sup> Segundo, un estudio prospectivo de 126 casos de amenazas contra figuras públicas encontró que ciertos tipos de amenaza predicen la aproximación física posterior <em>solo</em> en los casos motivados por agravio, no en los demás.<sup><a href="#ref-james">11</a></sup> Tercero, y es el hallazgo con consecuencias de política pública: la estrategia preventiva eficaz no consiste en predecir al individuo (tarea que la propia literatura declara imposible) sino en intervenir sanitariamente sobre <em>la población angustiada de la que el atacante emerge</em>.<sup><a href="#ref-ftac">9</a></sup> Retengamos esa frase: la prevención opera sobre el estanque, no sobre el pez. Volveremos a ella en §5.</p>
+
+  <div class="ensimple">
+    <span class="lbl">En simple</span>
+    <p>La ciencia forense lo dice sin poesía: el rencor que amenaza de lejos casi nunca se acerca, <em>salvo</em> cuando el rencor es por un agravio y tiene una persona concreta al frente. Y agrega algo más incómodo: no hay manera de adivinar quién será el que se acerque. Lo único que se puede hacer es que haya menos gente desesperada y menos nombres ofrecidos como blanco. Todo lo demás es lotería.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="num">§4</span>El espejo estocástico: emisión asimétrica, recepción ciega</h2>
+
+  <p>El pariente conceptual más cercano de la violencia nominal es el <strong>terrorismo estocástico</strong>, término acuñado en 2002 por el matemático y analista de riesgo Gordon Woo y consolidado en la definición de Hamm y Spaaij: el uso de medios masivos para provocar actos de violencia ideológicamente motivada que son <em>estadísticamente predecibles pero individualmente impredecibles</em>.<sup><a href="#ref-woo">12</a></sup> El aporte matemático de Woo es decisivo para este ensayo: la relación entre la exposición mediática de un blanco señalado y la probabilidad de que alguien actúe no es lineal, y el resultado agregado es esperable aunque ningún caso individual pueda anticiparse. Nadie ordena nada; la probabilidad se fabrica por acumulación.</p>
+
+  <p>Pero la dirección del vector difiere, y la diferencia es el aporte de este ensayo. En el terrorismo estocástico, un emisor poderoso demoniza a un blanco y un seguidor anónimo ataca. En la violencia nominal, es el propio sistema el que, al firmar sus políticas, al reclutar apellidos con prontuario, al confeccionar registros, <strong>se auto-señala</strong>. El mecanismo probabilístico es idéntico; el dedo que apunta es la arquitectura misma de las decisiones.</p>
+
+  <p>Aquí es indispensable una distinción que la evidencia obliga a hacer y que, bien hecha, fortalece el argumento: <strong>la emisión es asimétrica; la recepción es ciega</strong>. Del lado de la emisión, la investigación académica sobre el terrorismo estocástico lo caracteriza como un fenómeno de naturaleza específicamente autoritaria, que no solo demoniza sino deshumaniza a sus blancos, y las figuras estocásticas analizadas por esa literatura pertenecen de manera desproporcionada al populismo autoritario contemporáneo.<sup><a href="#ref-angove">13</a></sup> Los gobiernos que hacen del odio un instrumento de gestión, que gobiernan confeccionando enemigos con nombre, son los grandes emisores del período. Pero del lado de la recepción, la violencia resultante es indiferente a la ideología: la serie 2022–2026 registra víctimas de derecha, de izquierda, de centro y del mundo corporativo, en proporciones que desmienten cualquier lectura de bando.<sup><a href="#ref-transversal">14</a></sup> De la combinación de ambos hechos se sigue el corolario más incómodo del fenómeno, que conviene formular como bumerán:</p>
+
+  <blockquote>
+    El odio incubado no reconoce a su padre. Quien gobierna nominalizando enemigos no controla sobre qué nombre se descargará la violencia que fabrica; con frecuencia creciente, se descarga sobre los propios incubadores. La herencia del odio se cobra sin consultar el árbol genealógico.
+    <span class="who">— Corolario del bumerán estocástico</span>
+  </blockquote>
+
+  <p>Esta es, además, la aplicación a este dominio del principio de la misma vara que ordena toda esta serie: el mecanismo aquí descrito condenaría con idéntica severidad a un gobierno de cualquier signo que nominalizara enemigos. La incubadora no tiene ideología. El incubador de turno, en cambio, siempre tiene nombre; ese es exactamente el problema que él mismo se está fabricando.</p>
+</section>
+
+<section id="s5">
+  <h2><span class="num">§5</span>El gobierno que enferma: el estanque y la cola</h2>
+
+  <p>La columna «El gobierno que enferma» documentó el mecanismo fisiológico que aquí opera como medio de cultivo.<sup><a href="#ref-gqe">5</a></sup> La comunicación disonante sostenida, la política del acordeón (anunciar con fanfarria, achicar sin explicar, sustituir por el siguiente anuncio), somete a la población a un estrés impredecible y crónico. La neurobiología de ese estrés está establecida desde McEwen: la activación sostenida del eje hipotalámico-hipofisario-adrenal produce carga alostática con deterioro medible en memoria, regulación emocional y toma de decisiones.<sup><a href="#ref-mcewen">15</a></sup> El daño conductual característico es la retirada: la gente no se enoja, se repliega; deja de planificar; acorta su horizonte al mes. Es la indefensión aprendida que Arendt anticipó como efecto político de la destrucción del referente compartido. Y todo esto ocurre sobre una base sanitaria precaria: Chile destina a salud mental menos del 3% de su presupuesto de salud contra una media OCDE cercana al 13%, con algunos de los peores indicadores epidemiológicos de la región.<sup><a href="#ref-oms">16</a></sup></p>
+
+  <figure>
+    <img src="images/incubacion-02.png" alt="Gasto en salud mental Chile versus media OCDE">
+    <figcaption>
+      <span class="fig-n">Figura 2.</span> Gasto en salud mental como proporción del presupuesto de salud: Chile versus media OCDE. Fuentes: OMS (2019), OCDE.
+      <span class="como"><b>Cómo leerla:</b> la barra corta es el sistema que debería contener el daño psíquico; la barra larga es lo que gastan los países que se lo toman en serio. Sobre esa brecha de contención actúa el multiplicador de la incertidumbre crónica descrito en el texto: el estrés se produce a escala industrial y se contiene a escala artesanal.</span>
+    </figcaption>
+  </figure>
+
+  <p>Ahora bien, la retirada es la <strong>respuesta modal</strong>: lo que le ocurre al centro de la distribución. Pero toda distribución tiene cola, y la matemática de Woo trata precisamente de eventos de cola. En una población de millones sometida a estrés impredecible sostenido, la retirada masiva coexiste con una probabilidad pequeña pero creciente de que algunos individuos no se retiren: se fijen. El perfil forense de la fijación descrito en §3.1 (perseveración creciente sobre una persona o causa, estridencia en aumento, caracterización cada vez más negativa del objeto) es, visto desde aquí, la descripción clínica de la cola de esa distribución.</p>
+
+  <figure>
+    <img src="images/incubacion-03.png" alt="Distribución conceptual de respuestas al estrés político crónico">
+    <figcaption>
+      <span class="fig-n">Figura 3.</span> Esquema conceptual: distribución de respuestas individuales al estrés político crónico. Elaboración propia; las curvas son ilustrativas, no estimaciones empíricas.
+      <span class="como"><b>Cómo leerla:</b> la curva punteada es una población en condiciones normales; la curva sólida, la misma población bajo incertidumbre crónica: se desplaza y se ensancha. El cuerpo de la curva es la mayoría que se retira y deja de planificar. La zona sombreada a la derecha del umbral es la cola: la fracción minúscula que en vez de retirarse se fija. El gobierno que enferma no convierte a nadie en atacante; hace algo más sutil y más medible: agranda la masa de la cola. La nominalización hace el resto: le entrega a esa cola un destinatario. <b>Cómo se construye:</b> dos densidades normales ilustrativas; la curva bajo estrés se desplaza y aumenta su varianza respecto de la basal, y el umbral de fijación es conceptual. La masa de la cola más allá del umbral corresponde al componente N(t) de la función λ(t) ∝ N·I·D·A del anexo, en el espíritu del modelamiento poblacional de Woo: estadísticamente esperable, individualmente impredecible. No es una estimación empírica y no admite lectura predictiva sobre individuos.</span>
+    </figcaption>
+  </figure>
+
+  <p>Este es el punto de soldadura entre las dos columnas, y conviene enunciarlo con precisión porque es el corazón del ensamble. «El gobierno que enferma» describe la media de la distribución; este ensayo describe su cola. El deterioro de la salud mental poblacional <strong>agranda el estanque</strong> del que, según la evidencia forense, emerge el actor solitario; la nominalización simultánea del poder <strong>le da puntería a la cola</strong>. Un gobierno que deteriora la salud psíquica de la población mientras multiplica los nombres disponibles como blanco está haciendo, sin saberlo o sin importarle, las dos mitades del trabajo de incubación: más psiquis agobiadas, mejor dirección postal.</p>
+
+  <div class="ensimple">
+    <span class="lbl">En simple</span>
+    <p>Piense en una lotería macabra que nadie quiere que se sortee. La cantidad de boletos emitidos depende de cuánta gente está desesperada; el premio (el blanco) depende de cuántos nombres el propio poder puso en vitrina. El gobierno actual está haciendo las dos cosas a la vez: imprime boletos con su política sanitaria y comunicacional, y llena la vitrina con su política de nominalización. Nadie puede decir qué boleto saldrá ni cuándo. Eso es exactamente lo que significa «estadísticamente esperable, individualmente impredecible». Y es exactamente por eso que la única jugada sensata es dejar de imprimir boletos.</p>
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">§6</span>El circuito completo</h2>
+
+  <p>Reunidas las piezas, el circuito de incubación puede enunciarse en cinco pasos:</p>
+
+  <p><strong>Paso 1 — Violencia estructural anónima.</strong> El punto de partida histórico: daño real, difuso, sin autor citables. Genera malestar de masas sin destinatario (el 2019 como forma límite).</p>
+
+  <p><strong>Paso 2 — Nominalización.</strong> La estructura adquiere firma por tres vías simultáneas: la firma política (registros, apremios, agenda punitiva personalizada), la firma biográfica o curricular (reclutamiento de nombres con densidad de agravio sectorial documentada) y la firma comunicacional (el rostro del acordeón).</p>
+
+  <p><strong>Paso 3 — Deterioro del medio de cultivo.</strong> La incertidumbre política crónica degrada la salud mental poblacional sobre un sistema de contención subfinanciado: el estanque de psiquis agobiadas crece.</p>
+
+  <p><strong>Paso 4 — Acoplamiento probabilístico.</strong> Sobre ese estanque agrandado, cada nombre en vitrina opera como atractor de fijación. La función de riesgo (Anexo) crece multiplicativamente: más agraviados × blancos más identificables × nombres con más agravio acumulado × más amplificación mediática.</p>
+
+  <p><strong>Paso 5 — El evento de cola.</strong> Estadísticamente esperable, individualmente impredecible, moralmente injustificable y, esto es lo decisivo, <em>institucionalmente prevenible</em>, porque cada factor del paso 4 es una variable de política pública, no una fatalidad.</p>
+
+  <div class="hipotesis">
+    <span class="lbl">La contabilidad salvaje del daño difuso</span>
+    <p>«El gobierno que enferma» cerraba con una factura sin firma: el daño difuso es políticamente impune precisamente porque no es atribuible, y preguntaba si habría alguien dispuesto a firmarla. Este ensayo entrega la respuesta que nadie quisiera: <strong>cuando el sistema no le pone firma a la factura, la psiquis agobiada se la pone por mano propia</strong>. El actor solitario de la cola funciona como un auditor perverso que resuelve extrajudicialmente el problema de atribución que la institucionalidad se negó a resolver. La violencia nominal es la contabilidad salvaje del daño difuso, y la única manera de impedir esa contabilidad es que exista una civilizada (§8).</p>
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="num">§7</span>La víctima con nombre: Girard, Arendt y la coherencia de Beccaria</h2>
+
+  <p>El fenómeno tiene una genealogía filosófica que conviene explicitar, porque ilumina tanto su mecánica como sus límites morales.</p>
+
+  <p><strong>Girard, invertido y democratizado.</strong> René Girard describió el mecanismo del chivo expiatorio como la operación fundacional del orden social: la violencia difusa de todos contra todos se resuelve concentrándose sobre una víctima única, cuyo sacrificio pacifica a la comunidad.<sup><a href="#ref-girard">17</a></sup> La violencia nominal es ese mecanismo con dos torsiones. Primero, se invierte la dirección: no es la comunidad la que elige a la víctima desde arriba, sino el agraviado individual quien elige a su chivo desde abajo; y lo elige, con lógica girardiana impecable, entre los nombres que el propio poder puso en circulación. Segundo, se democratiza: ya no hay un solo sacrificio unificador, sino millones de elecciones privadas de culpable, cada una incubándose en silencio. Girard advertía que el mecanismo solo pacifica mientras permanece inconsciente; una sociedad que fabrica chivos expiatorios a sabiendas no obtiene paz, obtiene una cola de distribución cargada.</p>
+
+  <p><strong>Arendt, dos veces.</strong> La primera aparición de Arendt ya la dio la columna anterior: el poder mentiroso destruye el referente compartido y produce indefensión: la media de la distribución. La segunda aparición es más incómoda y pertenece a este ensayo: su análisis de la banalidad describe al funcionario que firma sin sentirse autor, engranaje que ejecuta sin odiar.<sup><a href="#ref-arendt">18</a></sup> La violencia nominal revela el reverso perceptual de esa banalidad: <em>para la víctima, el que firma es el autor</em>. La distancia moral que el funcionario siente entre su firma y el daño no existe en la experiencia de quien recibe el daño con esa firma adjunta. El engranaje se percibe a sí mismo como pieza; desde abajo se lo ve como mano. Toda la incubación cabe en ese desajuste de percepciones.</p>
+
+  <p><strong>Beccaria, o la coherencia que este ensayo se debe a sí mismo.</strong> Esta serie defendió, a propósito de la acusación constitucional contra el ex ministro Grau, el principio de Beccaria y Locke: solo los actos consumados se juzgan; la condena preventiva es epistémica y moralmente incoherente.<sup><a href="#ref-desvio">8</a></sup> Ese principio obliga aquí en dos direcciones. Obliga hacia los casos abiertos, como quedó dicho en §3. Y obliga hacia el futuro: este ensayo describe una probabilidad, no un culpable anticipado. No hay un atacante que condenar porque no existe; hay condiciones de incubación que desmontar porque sí existen. Quien lea aquí una profecía lee mal; quien lea una justificación, peor: la violencia contra personas (cualquier persona, incluidos los nombres que este ensayo describe como blancos probables) es moral y jurídicamente injustificable sin excepción, y el propósito íntegro de este análisis es que la probabilidad descrita <em>no se realice jamás</em>.</p>
+</section>
+
+<section id="s8">
+  <h2><span class="num">§8</span>La válvula institucional</h2>
+
+  <p>Queda por resolver la tensión que un lector atento habrá acumulado: la rendición de cuentas democrática <em>necesita</em> nombres. El anonimato del sistema fue precisamente lo que hizo inmanejable el 2019: no se puede negociar con «el modelo», no se puede destituir a «la desigualdad». ¿No es entonces la nominalización, en sí misma, un avance? La respuesta ordena todo el argumento:</p>
+
+  <div class="definicion">
+    <span class="lbl">Tesis institucional</span>
+    <p>El problema no es que el poder tenga nombres. Es que los nombres tengan impunidad. <strong>Nominalización con responsabilidad institucional es democracia: nominalización sin responsabilidad institucional es incubación.</strong> Cuando la firma viene acompañada de consecuencias exigibles por vías institucionales (tribunales que fallan, contralorías que objetan, elecciones que castigan, prensa que documenta), el agravio tiene un cauce y el nombre tiene un juez. Cuando la firma existe pero las consecuencias no, el agravio queda con el nombre en la mano y sin ventanilla donde presentarlo. Toda la diferencia entre la rendición de cuentas y la lista de blancos cabe ahí.</p>
+  </div>
+
+  <p>Esta serie documentó, sin proponérselo, un ejemplo de la válvula funcionando. En el caso <em>Cugat</em> (Rol C-4524-2025, sentencia de mayo de 2026), un tribunal examinó la conducta de la Tesorería General de la República, le exigió exhibir sus propios actos, aplicó las reglas de carga de la prueba y declaró prescrita una deuda mal cobrada.<sup><a href="#ref-tgr">3</a></sup> Obsérvese lo que ocurrió en términos de este ensayo: la institucionalidad <strong>le asignó la factura a un nombre</strong> (un servicio público, con jefatura y responsabilidad) mediante un procedimiento con reglas, prueba y apelación. El agraviado obtuvo la atribución que buscaba sin que nadie tuviera que cobrarla de otro modo. Cada sentencia de ese tipo es un boleto menos en la lotería de §5; cada agravio que la institucionalidad se niega a procesar es un boleto más. La contabilidad civilizada del daño y la contabilidad salvaje compiten por la misma clientela: los agraviados con nombre en la mano. La política pública decide, todos los días, a cuál de las dos ventanillas los manda.</p>
+
+  <p>De aquí se sigue la agenda preventiva, que no requiere ninguna innovación heroica sino la operación seria de lo que ya existe: fortalecer, no hostilizar, la judicatura, las superintendencias y la FNE que procesan agravios contra nombres poderosos; financiar la salud mental a escala del daño que la política produce (cerrar la brecha de la Figura 2 es prevención de violencia, no solo gasto sanitario); desescalar la comunicación gubernamental disonante; y abandonar la nominalización punitiva de ciudadanos (los registros, las listas) que enseña, con el ejemplo del propio Estado, que los conflictos se resuelven confeccionando nóminas de enemigos.</p>
+</section>
+
+<section id="s9">
+  <h2><span class="num">§9</span>Conclusión: la invitación a prevenir</h2>
+
+  <p>Resumamos la trayectoria. Chile pasó décadas gobernado por una violencia estructural sin rostro, y su forma límite de protesta fue proporcional a ese anonimato: masiva, difusa, sin destinatario. Hoy esa violencia está adquiriendo firma por tres vías simultáneas (la política, la biográfica o curricular, la comunicacional) mientras la salud psíquica de la población se degrada bajo incertidumbre crónica y sobre un sistema de contención subfinanciado. La literatura forense enseña que el atacante solitario emerge de manera impredecible de la población agobiada, y que se fija sobre nombres; la matemática de Woo enseña que el agregado es esperable aunque el caso sea impredecible; la serie 2022–2026 enseña que el fenómeno ya está ocurriendo en el mundo, y que la violencia incubada no distingue bandos ni perdona a sus incubadores. Nada de esto es profecía: es la descripción de una función de riesgo cuyas variables están, todas, bajo control de la política pública.</p>
+
+  <p>Por eso este ensayo es, en su totalidad, una invitación a prevenir. El epidemiólogo que advierte el brote no lo desea: lo advierte precisamente porque todavía se puede impedir. La probabilidad aquí descrita no debería querer realizarla nadie: ni el más agobiado de los agraviados, porque la violencia contra un nombre no repara ningún daño, no reforma ningún sistema y entrega al poder exactamente la justificación represiva que necesita; ni el más cínico de los gobernantes, porque el bumerán estocástico no consulta ideologías antes de volver. La desescalada no es una concesión de nadie a nadie: es el único equilibrio en que todos los nombres (los de arriba y los de abajo) duermen tranquilos.</p>
+
+  <p>La columna anterior preguntaba si habría alguien dispuesto a firmar la factura del daño difuso. Este ensayo precisa la alternativa, que ya no es entre firmar o no firmar. Es entre dos contabilidades: la civilizada, donde tribunales, urnas y contralorías asignan las facturas a los nombres con reglas, prueba y apelación; y la salvaje, donde la asignación la hace, un día cualquiera, la cola de una distribución que llevamos años engordando. La primera contabilidad hay que financiarla, protegerla y obedecerla incluso cuando falla contra uno. La segunda no hay que conocerla jamás. Ese es todo el argumento; y todavía estamos a tiempo de que sea solo un argumento.</p>
+</section>
+
+<section id="anexo">
+  <h2><span class="num">Anexo</span>Una función de riesgo estilizada</h2>
+
+  <p>Siguiendo el enfoque de Woo (modelar la violencia individualmente impredecible como proceso probabilístico poblacional), la intensidad de riesgo de un episodio de violencia nominal en una ventana temporal puede estilizarse como el producto de cuatro factores:</p>
+
+  <div class="formula">λ(t) ∝ N(t) · I(t) · D(t) · A(t)</div>
+
+  <table class="var-tab">
+    <tr><th>Variable</th><th>Definición</th><th>Qué la mueve</th></tr>
+    <tr>
+      <td>N(t)</td>
+      <td>Tamaño de la población agraviada en condición de estrés crónico: el «estanque» del que emerge la cola de fijación.</td>
+      <td>Política sanitaria y de salud mental; violencia económica (endeudamiento, cobranza, precariedad); comunicación gubernamental disonante.</td>
+    </tr>
+    <tr>
+      <td>I(t)</td>
+      <td>Identificabilidad del blanco: grado en que el daño percibido llega con firma (decretos con autor, registros, rostros que anuncian).</td>
+      <td>Estilo de gobierno; personalización punitiva de la agenda; exposición pública voluntaria de los ejecutores.</td>
+    </tr>
+    <tr>
+      <td>D(t)</td>
+      <td>Densidad de agravio del nombre: agravio históricamente acumulado sobre el nombre disponible (sanciones firmes por colusión, abusos documentados).</td>
+      <td>Biografía verificable de los actores reclutados al poder; memoria colectiva de sanciones; impunidad percibida de las sanciones leves.</td>
+    </tr>
+    <tr>
+      <td>A(t)</td>
+      <td>Amplificación mediática y de redes del binomio agravio–nombre, con la no linealidad documentada por Woo.</td>
+      <td>Ecosistema mediático; viralización; instrumentalización partidaria de los casos.</td>
+    </tr>
+  </table>
+
+  <p>La estructura multiplicativa captura la intuición central del ensayo: los factores no se suman, se potencian, y basta llevar cualquiera a cero para desactivar el producto. Un país con población agraviada pero poder efectivamente anónimo (I≈0) genera malestar de masas, no fijación individual: la configuración de 2019. Un país con poder nominalizado pero población psíquicamente contenida y con cauces institucionales eficaces (N bajo, y la válvula de §8 drenando D) convive con nombres visibles sin incubar violencia: la configuración de cualquier democracia sana. La configuración peligrosa es la actual: los cuatro factores creciendo a la vez y empujados por las mismas decisiones.</p>
+
+  <div class="nota-metodo">
+    <span class="lbl">Advertencias de uso — leer antes de citar</span>
+    <p>(1) λ(t) es una intensidad de riesgo <em>poblacional</em>, conceptual y de orden cualitativo: no predice individuos, fechas ni blancos, y la literatura forense declara explícitamente imposible esa predicción. (2) El modelo describe, no prescribe ni justifica: ninguna magnitud de λ convierte en legítimo un acto de violencia contra persona alguna. (3) Las variables son de política pública: el uso correcto del modelo es identificar qué decisiones las reducen. (4) Como todo marco de esta serie, se invita a cuestionarlo, refinarlo y contrastarlo con datos; la especificación funcional es deliberadamente la más simple que preserva la estructura multiplicativa del argumento.</p>
+  </div>
+</section>
+
+<section class="refs">
+  <h2>Referencias y fuentes</h2>
+  <ol>
+    <li id="ref-galtung">Galtung, J. (1969). «Violence, Peace, and Peace Research». <em>Journal of Peace Research</em>, 6(3), 167–191.</li>
+    <li id="ref-cnn">CNN Chile / CNN en Español (2026). Cobertura de la primera cuenta pública del gobierno de José Antonio Kast y del anuncio del «registro de vándalos».</li>
+    <li id="ref-tgr">Oyarce Kruger, J. (2026). «Dos varas, una misma balanza» y «Crónica de una deuda mal cobrada», con su marco teórico y metodológico reproducible. Serie Política Fiscal, GH HCAI Lab. Caso <em>Cugat</em>: Rol C-4524-2025, sentencia del 23 de mayo de 2026 (fuente primaria, código de verificación XLHNCXYXRJB).</li>
+    <li id="ref-colusion">FNE, requerimiento por colusión del papel tissue contra CMPC y SCA (2015); TDLC, Sentencia 139/2014 (caso pollos: Agrosuper, Ariztía, Don Pollo), confirmada por la Corte Suprema (2015); caso colusión de farmacias (2008–2012); caso repactaciones unilaterales La Polar (2011). Registros públicos de tribunales y FNE.</li>
+    <li id="ref-gqe">Oyarce Kruger, J. (2026). «El gobierno que enferma: cuando la incertidumbre es política y la salud mental, decoración». GH HCAI Lab.</li>
+    <li id="ref-cr">Control Risks (2025). <em>RiskMap 2025</em>: «Aumento de la violencia política», sección «violencia personalizada».</li>
+    <li id="ref-mangione">Presentaciones de la fiscalía del distrito de Manhattan en <em>People v. Mangione</em> (2025), incluida la caracterización de la víctima como símbolo de la industria; resolución del juez G. Carro desestimando los cargos de terrorismo estatal (septiembre de 2025). Proceso abierto; rige presunción de inocencia.</li>
+    <li id="ref-desvio">Oyarce Kruger, J. (2026). «Veinte años de desvío fiscal en Chile», §6 (el dilema de <em>Minority Report</em>: Kant, Locke, Beccaria, Orwell, Arendt). Serie Política Fiscal, GH HCAI Lab.</li>
+    <li id="ref-ftac">Barry-Walsh, J., James, D.V. &amp; Mullen, P.E. (2020). «Fixated Threat Assessment Centers: preventing harm and facilitating care in public figure threat cases and those thought to be at risk of lone-actor grievance-fueled violence». <em>CNS Spectrums</em>, 25(5), 630–637. Brooks, N. &amp; Barry-Walsh, J. (2022). «Understanding the role of grievance and fixation in lone actor violence». <em>Frontiers in Psychology</em>, 13.</li>
+    <li id="ref-meloy">Meloy, J.R., Hoffmann, J., Guldimann, A. &amp; James, D. (2012). «The Role of Warning Behaviors in Threat Assessment: An Exploration and Suggested Typology». <em>Behavioral Sciences &amp; the Law</em>, 30(3), 256–279.</li>
+    <li id="ref-james">James, D.V., Farnham, F.R. et al. (2022). «Threats to public figures and association with approach, as a proxy for violence: The importance of grievance». <em>Frontiers in Psychology</em>, 13.</li>
+    <li id="ref-woo">Woo, G. (2002). «Quantitative Terrorism Risk Assessment». <em>Journal of Risk Finance</em>, 4(1). Hamm, M.S. &amp; Spaaij, R. (2017). <em>The Age of Lone Wolf Terrorism</em>. Columbia University Press.</li>
+    <li id="ref-angove">Angove, J. (2024). «Stochastic terrorism: critical reflections on an emerging concept». <em>Critical Studies on Terrorism</em>. Biondi, K. &amp; Curtis, J. (2018), sobre violencia estocástica y estructuras autoritarias.</li>
+    <li id="ref-transversal">Recuentos de prensa internacional del ciclo 2022–2026 (agencias y medios citados en la Figura 1); Data Cívica (2025), <em>Votar entre balas</em>, para el caso mexicano; MOE Colombia (2026), informe de violencia contra liderazgos políticos.</li>
+    <li id="ref-mcewen">McEwen, B.S. &amp; Stellar, E. (1993). «Stress and the individual: mechanisms leading to disease». <em>Archives of Internal Medicine</em>, 153(18). Raut, S.B. et al. (2025). <em>Int. J. Mol. Sci.</em>, 26(7), 2940.</li>
+    <li id="ref-oms">OMS (2019), estimación del costo global de los trastornos depresivos y de ansiedad en productividad; OCDE, comparativa de gasto en salud mental como proporción del gasto en salud.</li>
+    <li id="ref-girard">Girard, R. (1972). <em>La violencia y lo sagrado</em>; (1982). <em>El chivo expiatorio</em>. Anagrama.</li>
+    <li id="ref-arendt">Arendt, H. (1967). «Verdad y política»; (1963). <em>Eichmann en Jerusalén: un estudio sobre la banalidad del mal</em>.</li>
+  </ol>
+</section>
+
+  </div>
+
+  <div class="byline-note">
+    <span class="who">Jorge Oyarce Kruger</span> — Dirección GH HCAI Lab, Consultoría en salud territorial, Región de Los Ríos. Ensayo elaborado en julio de 2026. Los casos judiciales abiertos se tratan bajo presunción de inocencia. Este documento constituye análisis preventivo de riesgo y debate de política pública; no predice individuos ni eventos, y rechaza sin excepción la violencia contra cualquier persona.
+  </div>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAI Lab · Human Centered Artificial Intelligence Lab · Geohumano · Valdivia, Chile</p>
+  <p>Ensayo académico · Serie GH HCAI Lab. Se invita a replicar, cuestionar y refinar el marco propuesto. Serie completa en <span class="mono">jookruger.github.io/columns</span>.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Fecha</span><span class="m-v">Julio de 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Ensayo · Serie GH HCAI Lab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card" href="el-gobierno-que-enferma.html">
+      <span class="mc-tag">Salud mental · Estado</span>
+      <span class="mc-title">El gobierno que enferma</span>
+      <span class="mc-deck">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a class="mc-card is-current" href="incubacion-violencia-nominal.html" aria-current="page">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card" href="marco_teorico_tgr_cae_1.html">
+      <span class="mc-tag">Metodología · CAE</span>
+      <span class="mc-title">Marco teórico y metodología de cálculo</span>
+      <span class="mc-deck">Hipótesis: el Estado chileno puede salir «para atrás» con la estrategia de cobro del CAE.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
