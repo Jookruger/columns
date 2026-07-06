@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnifica Humanitas — GH HCAI Lab</title>
+<meta name="description" content="Magnifica Humanitas: la primera encíclica de León XIV frente a la inteligencia artificial, el poder y la dignidad humana. Cuatro entregas reunidas: Rerum Novarum y su sombra, el sujeto oculto, la fidelidad a la verdad y la parábola del balón que no se pasa.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+/* ===== Añadidos GH HCAI Lab: notas, firma institucional, colofón, carrusel ===== */
+
+sup { font-size: 0.72em; vertical-align: super; line-height: 0; }
+sup a {
+  text-decoration: none;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.byline-note {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.byline-note .who { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.footnotes {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.footnotes p { margin-bottom: 0.6em; scroll-margin-top: 1.5rem; }
+.footnotes .fn-num {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+.footnotes em { font-style: italic; }
+
+.colophon {
+  max-width: var(--column-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+.colophon p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.colophon a:hover { border-color: var(--accent); }
+.colophon .mono { font-family: ui-monospace, 'Cascadia Code', Menlo, monospace; font-size: 0.8rem; }
+
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
+}
+.meta-dl .m-k {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.meta-dl .m-v { font-family: 'Source Serif 4', serif; font-size: 0.85rem; color: var(--ink); }
+
+/* ===== Carrusel "Seguir leyendo" ===== */
+.more-columns {
+  max-width: var(--column-width);
+  margin: 3.5rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 3px double var(--rule);
+}
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mc-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.mc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mc-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.mc-track::-webkit-scrollbar { height: 6px; }
+.mc-track::-webkit-scrollbar-track { background: var(--paper-warm); }
+.mc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+
+.mc-card {
+  scroll-snap-align: start;
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+.mc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(26,20,16,0.08); }
+.mc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-tag {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-family: 'Source Serif 4', serif; font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--accent); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; box-shadow: none; }
+.mc-card.is-current .mc-tag { color: var(--paper-warm); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .more-columns { padding: 2rem 1.25rem 0; }
+  .colophon { padding: 2rem 1.25rem 3rem; }
+  .mc-card { flex-basis: 82%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-track { scroll-behavior: auto; }
+  .mc-card, .mc-btn { transition: none; }
+}
+
+/* ===== Añadidos Magnifica Humanitas: divisores de parte, epígrafe, cierre «Despierta» ===== */
+
+.part-divider {
+  text-align: center;
+  color: var(--rule);
+  font-size: 1.05rem;
+  letter-spacing: 0.6em;
+  margin: 3.75rem 0 0;
+  user-select: none;
+}
+
+.part-head { margin: 1.25rem 0 1.9rem; text-align: center; }
+.part-head.first { margin-top: 0; }
+
+.part-head .part-kicker {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+
+.part-head .part-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 3.4vw, 1.95rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.16;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.part-epigraph {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 34rem;
+  margin: 0 auto 2.25rem;
+}
+
+.despierta {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin: 2.75rem 0 0.5rem !important;
+}
+
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Doctrina social · Inteligencia artificial</p>
+  <p class="masthead-pub">GH HCAI Lab · Opinión</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">León XIV · IA · Dignidad humana</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Magnifica <em>Humanitas</em></h1>
+
+  <p class="deck">La primera encíclica de León XIV frente a la inteligencia artificial, el poder y la verdad. Cuatro entregas reunidas en una sola.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia · Junio 2026</span>
+  </div>
+
+  <!-- ============================= PARTE I ============================= -->
+  <div class="part-head first">
+    <p class="part-kicker">Parte I</p>
+    <h2 class="part-title">Un nuevo golpe de timón o un grito de ahogado, uno más en el contexto global</h2>
+  </div>
+
+  <div class="body-text">
+
+    <p>Hoy el Papa León XIV presentará su primera encíclica. Se llamará <em>Magnifica Humanitas</em> y sabemos que entrará en la inteligencia artificial. El Vaticano eligió la fecha con precisión y simbolismo: el 25 de mayo marca 135 años de <em>Rerum Novarum</em>, el documento con el que León XIII entró a la revolución industrial del siglo XIX y se convirtió en el enemigo del 1% del 1%, los más ricos de los más ricos.</p>
+
+    <p>Pero esa genealogía tiene una sombra que conviene recordar.</p>
+
+    <p><em>Rerum Novarum</em> fue también, en América Latina, la amenaza que el orden neoliberal decidió neutralizar antes de que terminara de arraigar. No la encíclica en sí, sino lo que representaba: una Iglesia con doctrina social propia, con llegada territorial, con capacidad de organizar a los pobres. La Iglesia de Hurtado, de Silva Henríquez, del padre Jarlan leyendo la Biblia en La Victoria mientras una bala de Carabineros le atravesaba la nuca. Eso era intolerable para el 1% del 1% del 1%, las dos o tres familias en cada país que no necesitan apellido porque todo el mundo sabe quiénes son, y los nodos globales que las conectan en red. La respuesta fue sistemática: financiamiento masivo al protestantismo reactivo, evangelismo televisivo, sectas de toda índole, todo diseñado para fragmentar el tejido comunitario que la doctrina social había construido durante décadas. Las dictaduras del Cono Sur no fueron ajenas a esa geometría. Fueron parte de ella.</p>
+
+    <p>La Iglesia, por su parte, colaboró en su propio descrédito. Los casos de abuso sexual del clero no fueron una anomalía institucional: son la expresión predecible del poder sin contrapeso. Estadísticamente, el abuso atraviesa todas las instituciones con acceso privilegiado a menores —el cura, el jefe, el millonario— y la conducta en sí no tiene una expresión significativamente distinta del resto de la sociedad. Lo que distingue a la Iglesia no es la frecuencia del delito, sino su respuesta: negligencia criminal ante verdades atroces que resultó funcionalmente conveniente para otros. Mientras el escándalo clerical consumía la conversación pública, las redes de abuso del poder secular operaban en la sombra. En Chile, Colonia Dignidad y Paul Schäfer construyeron durante décadas un sistema de pederastia sistemática protegido por la dictadura. Epstein hizo lo mismo a escala global. El patrón es idéntico: poder, acceso, impunidad. Y cuando la verdad emerge, suficiente ruido para que nadie mire demasiado hacia arriba.</p>
+
+    <p>Hoy Anthropic manda a su cofundador al Vaticano. Dario Amodei se presenta como blanca paloma, habla de «democracias» como si ese fuera un valor universal y no un bloque geopolítico. El informe «2028: Two Scenarios» encuadra a China como amenaza y a Occidente como custodio del orden legítimo. Pero ¿cuál es ese orden? ¿Qué dirá de ello la <em>Magnifica Humanitas</em>?</p>
+
+    <p>Lo que León XIV tiene la oportunidad histórica de decir, y que nadie más puede decir con igual autoridad moral, es esto:</p>
+
+    <div class="pull-quote">
+      <p>La dignidad humana no tiene hemisferio. Y la IA que no puede entrar en la mitad del planeta ya nació capturada.</p>
+    </div>
+
+    <p>Pero somos nosotros los llamados a crear opinión propia, a resistir ser capturados por la marea que inunda y penetra, golpeando la reflexión y anulando el pensamiento crítico. El <em>doomscrolling</em> es la nueva caja boba: más adictiva, más fragmentada, más eficaz en la aniquilación del pensar. La diferencia es que la televisión era pasiva. El scroll te hace cómplice de tu propio vaciamiento, de la destrucción de tu propio bienestar.</p>
+
+    <p class="despierta">Despierta.</p>
+
+  </div>
+
+  <!-- ============================= PARTE II ============================= -->
+  <div class="part-divider">❦ ❦ ❦</div>
+  <div class="part-head">
+    <p class="part-kicker">Parte II</p>
+    <h2 class="part-title">Proteger la dignidad humana: la persona no es un recurso que se pueda explotar</h2>
+  </div>
+
+  <div class="body-text">
+
+    <p><em>Rerum Novarum</em> y <em>Magnifica Humanitas</em>. Dos encíclicas romanas que pretendieron y pretenden ser luz, ser guía, la Iglesia volviendo a ser Cristo, separadas por 135 años y hermanadas por una misma operación de ocultamiento: en ambas, los medios, la prensa y el poder se afanan en esconder al sujeto, mientras la propia Iglesia prefiere hacer lo políticamente correcto.</p>
+
+    <p><em>Rerum Novarum</em> no habló del capital y el trabajo, sino del ser humano aplastado entre ambos. <em>Magnifica Humanitas</em> no habla de la inteligencia artificial ni del algoritmo, sino del ser humano aplastado bajo su peso. La espada cambia; la mano que la empuña como clase es la misma y permanece oculta. El capital, el trabajo, la IA, el algoritmo: abstracciones sin rostro, sin nombre, sin historia. Eufemismos que el mundo prefirió ayer y vuelve a preferir hoy.</p>
+
+    <p>Y la razón es simple: lo que no tiene rostro no puede ser reconocido, lo que no tiene nombre no puede ser perseguido, lo que no tiene historia no puede ser castigado.</p>
+
+    <p>León XIII lo sabía. Por eso <em>Rerum Novarum</em> fue la primera encíclica en usar la palabra «empresario»: para que hubiera un sujeto al cual interpelar. León XIV también lo sabe. En el Par. N.° 5 pregunta sin rodeos quién detenta hoy ese poder y hacia qué fines lo orienta; y en el Par. N.° 9 sentencia que la tecnología nunca es neutral, porque toma el rostro de quien la concibe, la financia, la regula y la utiliza.</p>
+
+    <div class="pull-quote">
+      <p>Ambos pusieron el rostro. El mundo eligió la máscara.</p>
+    </div>
+
+    <p>Y en el centro de todo late la pregunta que ningún algoritmo puede responder: ¿somos todavía capaces de conocer la verdad? León XIV la plantea desde el Par. N.° 1, con Cristo como fundamento —el camino, la verdad y la vida—; y en el Par. N.° 237 la trae a ras de suelo: custodiar un corazón que ame la verdad por sobre los contenidos de mayor atractivo. Eso no es tecnología. Es epistemología. Es lo fundacional. Es el problema más antiguo y más urgente de nuestra especie.</p>
+
+    <p>¿Esperamos otros 135 años para que algo más abyecto explote? ¿O seguimos como Chile, que necesitó ese mismo tiempo para retirar de su Código Penal las palabras «amo» y «criado» —figura que aún regula su relación con el patronato y que recién hoy, 25 de mayo de 2026, se discute en el parlamento?</p>
+
+    <p>«La verdad como bien común» es el inicio del capítulo cuarto, y es contundente: la verdad es el centro de la discusión y el norte de nuestro futuro, si lo queremos sano, íntegro, correcto. Elige tú el adjetivo. Ese es tu compromiso con la verdad: el adjetivo que eliges para tu futuro.</p>
+
+    <p class="despierta">Despierta.</p>
+
+  </div>
+
+  <!-- ============================= PARTE III ============================= -->
+  <div class="part-divider">❦ ❦ ❦</div>
+  <div class="part-head">
+    <p class="part-kicker">Parte III</p>
+    <h2 class="part-title">¡Permanezcamos fieles a la verdad!</h2>
+  </div>
+  <p class="part-epigraph">Viviendo inmersos en flujos incesantes de información, opiniones e imágenes, sabemos lo fácil que es influir en decisiones y preferencias a través de algoritmos cada vez más sofisticados.</p>
+
+  <div class="body-text">
+
+    <p>Hace 135 años la <em>Rerum Novarum</em> llegó tarde. No pudo evitar lo que ya había ocurrido antes de 1891: la Comuna de París aplastada con miles de muertos en 1871, los niños de diez años sacados de las minas británicas recién en 1842 después de décadas de explotación, los mártires de Haymarket ejecutados sin pruebas en 1886 por pedir ocho horas de trabajo. La Iglesia no anticipó la crisis. Respondió cuando el mundo empezaba a arder y la conciencia ya dolía.</p>
+
+    <p>Es más: tampoco pudo evitar lo que vino después. Iquique 1907, entre dos mil y tres mil seiscientos obreros del salitre masacrados por el Estado chileno. Nueva York 1911, ciento cuarenta y seis obreras muertas encerradas en el Triangle Shirtwaist porque las puertas estaban con llave para que no robaran tela. Las trincheras de la Primera Guerra Mundial, donde obreros europeos fueron enviados a matarse entre sí por sus patrones de distintas banderas. La Gran Depresión del 29, que colapsó el sistema que la encíclica había intentado humanizar sin tocarlo. Un desastre que se pudo evitar, pero nadie escuchó.</p>
+
+    <p>Lo notable es que llegó igual. Y cuarenta años después llegó el refuerzo. <em>Quadragesimo Anno</em>, 1931: Roma salía del clóset. La Doctrina Social de la Iglesia se consolidó como cuerpo doctrinal explícito, la Iglesia marchando junto a los más pobres en plena Gran Depresión, cuando el capitalismo financiero especulativo acababa de destruir el mundo. Eso erizó a los poderosos. Y en particular al Tío Sam imperialista, que entendió que una Iglesia con llegada territorial en América Latina —organizando a los pobres, fundando sindicatos, inspirando democracias cristianas— era una amenaza latente para su modelo de dominación. La respuesta ya la contamos en la Parte I.</p>
+
+    <p>Hoy llega <em>Magnifica Humanitas</em>. ¿Tarde? Quizás sí. Los eventos ya están ocurriendo. El triunfo de un loco que ha destrozado la relativa estabilidad mundial para intereses mezquinos, que ha levantado piedras para crear guerras donde no las había, que se ha puesto del lado de quienes se refugian en no reconocer en Cristo al Hijo de Dios porque su enseñanza incomoda. Los mismos que hace poco menos de 2.000 años lo crucificaron. Estos hitos históricos, al margen de doctrinas y declaraciones de fe, son innegables. Las coincidencias son más que correlaciones. Son olas de tiempo que se repiten. Son lecciones que no se aprenden.</p>
+
+    <p>Son la escuela que hoy nos debería permitir evitar que en 40 años más se repita la misma película de 1931. No podemos esperar otra <em>Quadragesimo Anno</em>. Es hoy que estamos llamados a entender el mensaje. El hilo conductor de estos análisis sigue siendo el que menos importa al poder: el enemigo no es la IA ni el algoritmo. Son quienes los controlan. Lo dijo León XIV en el Par. N.° 5. Lo dijo León XIII hace 135 años nombrando al empresario. Lo dijo Cristo hace 2.025 años expulsando a los mercaderes del templo.</p>
+
+    <div class="pull-quote">
+      <p>El sujeto siempre estuvo ahí. El mundo siempre eligió no verlo.</p>
+    </div>
+
+    <p class="despierta">Despierta.</p>
+
+  </div>
+
+  <!-- ============================= CODA / PARTE IV ============================= -->
+  <div class="part-divider">❦ ❦ ❦</div>
+  <div class="part-head">
+    <p class="part-kicker">Coda · Parte IV</p>
+    <h2 class="part-title">Hoy el Vaticano, sin jugar un partido, ya levantó la Copa Mundial</h2>
+  </div>
+
+  <div class="body-text">
+
+    <p>Hoy comenzó el Mundial. Cuarenta y ocho selecciones, tres países anfitriones, miles de millones de espectadores y la maquinaria comercial más poderosa del deporte planetario puesta en marcha. Y sin embargo, el primer gol del torneo no se marcó en una cancha. Se marcó en las gradas del Santiago Bernabéu, días antes del pitazo inicial, cuando León XIV pronunció una frase que ningún comentarista deportivo podrá superar en lo que queda de campeonato:</p>
+
+    <div class="pull-quote">
+      <p>Quien no sabe pasar el balón, aunque tenga todo el talento, todavía no ha entendido el juego.</p>
+      <cite>León XIV · Santiago Bernabéu</cite>
+    </div>
+
+    <p>Léala de nuevo. Despacio. Porque ahí no hay teología, no hay ideología, no hay doctrina. Hay un profundo sentido común y de bienestar. Es lo que Jesús habría dicho si fuera nuestro DT. Hay una sentencia que cabe en un tuit y que, sin embargo, desarma siglos de justificación del egoísmo, del «quiquismo» y de quién es el dueño de la pelota.</p>
+
+    <h2 class="section-head">El verbo que lo cambia todo</h2>
+
+    <p>Lo primero que hay que notar es la elección del verbo. El Papa no dijo <em>quien no quiere</em> pasar el balón. Dijo <em>quien no sabe</em>. Y esa diferencia es monstruosa. Porque al que no quiere lo acusamos de egoísta, y el egoísta moderno ya aprendió a defenderse: es mi mérito, es mi esfuerzo, es mi libertad. Pero al que no sabe no se le acusa de nada. Se le diagnostica algo peor: no entendió de qué se trataba el juego. Toda su acumulación, todo su brillo individual, toda su gambeta solitaria es, en el fondo, analfutbolismo, ignorancia absoluta del sentido de bien común.</p>
+
+    <p>El acumulador no es un villano. Es alguien que todavía está en la fase previa a la comprensión. Y no hay condena más demoledora que esa, porque no admite la defensa del mérito: nadie presume de no haber entendido.</p>
+
+    <h2 class="section-head">El talento son los recursos</h2>
+
+    <p>Aquí la frase abandona el césped y entra en la globalidad. Porque el balón es metáfora de todo lo que circula o se retiene: la riqueza, el conocimiento, la tierra, el agua, el poder y, en nuestra época, la inteligencia artificial, que es el talento concentrado del siglo veintiuno; pero también la inteligencia individual, los dones, las capacidades de ponernos a disposición para contribuir al desarrollo de los más necesitados.</p>
+
+    <p>El talento, dice la frase, es condición individual. Pero el juego es realidad colectiva y comunitaria. Y el sentido del primero sólo existe dentro del segundo. Un delantero que no la toca nunca no es un crack: es un jugador detenido en la incomprensión, por más estadísticas que acumule. Una economía donde la riqueza no circula no es próspera: es una suma de soledades compitiendo en la misma cancha. Un país donde el conocimiento, el capital y las decisiones se concentran en los centros mientras las regiones miran desde la banca no es un equipo: es un espectáculo de gambetas para la galería.</p>
+
+    <p>Lo mismo vale para la revolución tecnológica en curso. Las corporaciones que hoy concentran la capacidad de cómputo, los datos y los modelos de inteligencia artificial tienen, literalmente, todo el talento. La pregunta que les deja León XIV es si saben pasar el balón o si todavía no entendieron el juego.</p>
+
+    <h2 class="section-head">La copa que no se disputa</h2>
+
+    <p>Por eso el título de esta columna no es una exageración. Mientras la FIFA inaugura su torneo de mil millones de dólares, el Vaticano ya levantó la copa que de verdad importa: la de definir, en una sola frase, el criterio con que deberá juzgarse este Mundial y todo lo demás. No quién mete más goles, sino quién entiende el juego. No quién acumula más talento, sino quién lo pone a disposición de lo comunitario.</p>
+
+    <p>Es el mismo hilo que el Papa viene tejiendo en su gira: en Cibeles dijo que si el progreso deja atrás a los más débiles no es progreso, es descarte. En Canarias advirtió que el peor monstruo no son las mafias, sino el acostumbramiento. Y en el Bernabéu lo tradujo al idioma más universal que existe, el único que se habla en todos los continentes sin necesidad de traductor.</p>
+
+    <p>Durante un mes el mundo entero va a mirar veintidós personas pasándose un balón. Ojalá alguien, en algún palco de los que deciden el destino de los recursos del planeta, entienda que el mensaje no era para los futbolistas.</p>
+
+    <p>Porque el partido de verdad no dura noventa minutos. Y en ese partido, el que no sabe pasar el balón, aunque tenga todo el talento del mundo, todavía no ha entendido nada.</p>
+
+  </div>
+
+  <p class="byline-note"><span class="who">Jorge Andrés Oyarce Kruger</span> — Médico Veterinario, MBA, Máster en Innovación. Director de Geohumano y GH HCAI Lab.</p>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAI Lab — Geohumano · Valdivia, Región de Los Ríos, Chile</p>
+  <p>Serie de columnas de opinión. Serie completa en <span class="mono">jookruger.github.io/columns</span>. Esta entrega reúne cuatro columnas sobre la encíclica «Magnifica Humanitas» de León XIV, escritas entre mayo y junio de 2026. También publicadas en <a href="https://medium.com/@jokruger/leon-xiv-agustino-y-leontino-f73f231a8680">Medium</a> y en <a href="https://www.elnaveghable.cl/noticia/sociedad/magnifica-humanitas">El Naveghable</a>.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Fecha</span><span class="m-v">Junio 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Columna · Serie GH HCAI Lab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card" href="incubacion-violencia-nominal.html">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card" href="marco_teorico_tgr_cae_1.html">
+      <span class="mc-tag">Metodología · CAE</span>
+      <span class="mc-title">Marco teórico y metodología de cálculo</span>
+      <span class="mc-deck">Hipótesis: el Estado chileno puede salir «para atrás» con la estrategia de cobro del CAE.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+    <a class="mc-card" href="el-gobierno-que-enferma.html">
+      <span class="mc-tag">Salud mental · Estado</span>
+      <span class="mc-title">El gobierno que enferma</span>
+      <span class="mc-deck">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a class="mc-card is-current" href="magnifica-humanitas.html" aria-current="page">
+      <span class="mc-tag">León XIV · IA · Dignidad</span>
+      <span class="mc-title">Magnifica Humanitas</span>
+      <span class="mc-deck">La primera encíclica de León XIV frente a la IA, el poder y la verdad. Cuatro entregas en una.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
