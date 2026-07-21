@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punto de equilibrio fiscal de la megarreforma — GH HCAI Lab</title>
+<meta name="description" content="Análisis: con el costo fiscal que declara el propio informe financiero y la ganancia de crecimiento que estima el FMI, Chile terminaría de pagar la megarreforma en 2098. En el escenario adverso, en 2124. Y bajo el modelo estándar de crecimiento, no la paga nunca. Por Jorge Oyarce Kruger — GH HCAI Lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#DCDBC9;
+  --salvia:#A3BCBA;
+  --rosa:#D8C4D2;
+  --purpura:#563F67;
+  --purpura-medio:#9C83A4;
+  --tinta:#2E2433;
+  --papel:#F2F1E7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:18px;
+  line-height:1.72;
+}
+.topbar{
+  background:var(--purpura);
+  color:var(--crema);
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:10px 24px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.topbar span{opacity:.9}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px}
+header.hero{padding:56px 0 34px;border-bottom:3px solid var(--purpura)}
+.tags{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--purpura);margin-bottom:8px}
+.tags .sep{color:var(--purpura-medio);margin:0 6px}
+.volver{display:inline-block;font-size:14px;color:var(--purpura);text-decoration:none;border-bottom:1px solid var(--purpura-medio);margin-bottom:26px}
+.volver:hover{color:var(--purpura-medio)}
+h1{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(34px,5.4vw,52px);
+  line-height:1.12;
+  color:var(--purpura);
+  margin-bottom:18px;
+}
+h1 em{font-style:italic;font-weight:600}
+.bajada{
+  font-size:21px;
+  line-height:1.55;
+  color:var(--tinta);
+  font-weight:400;
+  margin-bottom:26px;
+  max-width:56ch;
+}
+.firma{font-size:16px;color:var(--purpura)}
+.meta-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:1px;
+  background:var(--purpura-medio);
+  border:1px solid var(--purpura-medio);
+  margin:34px 0 0;
+}
+.meta-grid div{background:var(--papel);padding:12px 14px}
+.meta-grid .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura-medio);margin-bottom:3px}
+.meta-grid .v{font-size:15px;color:var(--tinta)}
+main{padding:40px 0 20px}
+.resumen{
+  background:var(--papel);
+  border-left:5px solid var(--purpura);
+  padding:26px 28px;
+  margin:0 0 36px;
+}
+.resumen h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--purpura);margin-bottom:10px}
+.resumen p{font-size:17px}
+.resumen p + p{margin-top:12px}
+.toc{
+  background:var(--salvia);
+  padding:24px 28px;
+  margin-bottom:48px;
+}
+.toc h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--purpura);margin-bottom:12px}
+.toc ol{padding-left:22px;font-size:16px}
+.toc li{margin:4px 0}
+.toc a{color:var(--tinta);text-decoration:none;border-bottom:1px solid rgba(86,63,103,.35)}
+.toc a:hover{color:var(--purpura)}
+section{margin-bottom:52px}
+h2.sec{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  line-height:1.2;
+  color:var(--purpura);
+  margin-bottom:18px;
+  padding-top:8px;
+}
+h2.sec .num{
+  display:inline-block;
+  font-size:15px;
+  letter-spacing:.1em;
+  color:var(--purpura-medio);
+  margin-right:10px;
+  vertical-align:middle;
+}
+h3{font-family:'Playfair Display',serif;font-size:21px;color:var(--purpura);margin:26px 0 10px}
+p + p{margin-top:14px}
+section p{max-width:70ch}
+strong{font-weight:600;color:var(--purpura)}
+a{color:var(--purpura)}
+.callout{
+  background:var(--rosa);
+  padding:22px 26px;
+  margin:24px 0;
+  border-left:5px solid var(--purpura);
+}
+.callout h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--purpura);margin-bottom:8px}
+.callout p{font-size:16.5px}
+.ensimple{
+  background:var(--papel);
+  border:1px solid var(--salvia);
+  border-left:6px solid var(--salvia);
+  padding:20px 24px;
+  margin:26px 0;
+}
+.ensimple h4{
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--purpura);margin-bottom:8px;font-family:'Source Serif 4',serif;font-weight:600;
+}
+.ensimple p{font-size:16.5px}
+.formula{
+  background:var(--papel);
+  border:1px solid var(--purpura-medio);
+  padding:16px 22px;
+  margin:18px 0;
+  font-family:'Source Serif 4',serif;
+  font-size:17.5px;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+.formula .f{display:block;margin:4px 0;color:var(--purpura)}
+.formula .fl{font-size:14px;color:var(--tinta);white-space:normal}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15.5px;background:var(--papel)}
+th{background:var(--purpura);color:var(--crema);text-align:left;padding:10px 12px;font-weight:600;font-size:14px;letter-spacing:.02em}
+td{padding:9px 12px;border-bottom:1px solid var(--salvia);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.hl{background:var(--rosa);font-weight:600}
+.figure{
+  background:var(--papel);
+  border:1px solid var(--purpura-medio);
+  padding:22px 22px 16px;
+  margin:28px 0;
+}
+.figure svg{width:100%;height:auto;display:block}
+.figcap{font-size:14.5px;line-height:1.6;color:var(--tinta);margin-top:12px;border-top:1px solid var(--salvia);padding-top:10px}
+.figcap strong{color:var(--purpura)}
+blockquote{
+  border-left:5px solid var(--purpura-medio);
+  padding:14px 22px;
+  margin:22px 0;
+  background:var(--papel);
+  font-style:italic;
+  font-size:18px;
+  color:var(--purpura);
+}
+blockquote .who{display:block;font-style:normal;font-size:14px;margin-top:8px;color:var(--tinta)}
+.refs{font-size:15px}
+.refs ol{padding-left:24px}
+.refs li{margin:9px 0}
+.pendiente{color:var(--purpura);font-weight:600}
+footer.colofon{
+  border-top:3px solid var(--purpura);
+  margin-top:30px;
+  padding:34px 0 20px;
+  font-size:15px;
+}
+footer.colofon .lab{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura);margin-bottom:14px}
+.leer{margin:34px 0 10px}
+.leer h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--purpura);margin-bottom:14px}
+.car-shell{position:relative}
+.car{
+  display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;
+  padding-bottom:10px;scrollbar-width:thin;
+}
+.car a{
+  flex:0 0 240px;background:var(--papel);border:1px solid var(--purpura-medio);
+  padding:16px 16px 18px;text-decoration:none;color:var(--tinta);
+}
+.car a:hover{border-color:var(--purpura)}
+.car .cat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura-medio);display:block;margin-bottom:6px}
+.car .tit{font-family:'Playfair Display',serif;font-size:17px;color:var(--purpura);display:block;line-height:1.25;margin-bottom:6px}
+.car .des{font-size:13.5px;line-height:1.5;display:block}
+.car-btn{
+  position:absolute;top:40%;transform:translateY(-50%);
+  background:var(--purpura);color:var(--crema);border:none;cursor:pointer;
+  width:34px;height:34px;border-radius:50%;font-size:18px;line-height:1;
+}
+.car-btn:focus-visible{outline:3px solid var(--purpura-medio)}
+.car-prev{left:-12px}.car-next{right:-12px}
+@media (max-width:640px){
+  .car-btn{display:none}
+  .figure{padding:14px 10px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .car{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>GH HCAI Lab · Análisis</span>
+  <span>Análisis · Serie Política Fiscal · v2.0</span>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="tags">Política fiscal<span class="sep">·</span>Impuesto corporativo<span class="sep">·</span>Boletín 18.216-05</div>
+  <a class="volver" href="https://jookruger.github.io/columns/index.html">← Volver a Columnas</a>
+  <h1>Punto de equilibrio fiscal de la <em>megarreforma</em></h1>
+  <p class="bajada">Con el costo fiscal que declara el propio informe financiero y la ganancia de crecimiento que estima el Fondo Monetario Internacional, Chile terminaría de pagar la reforma en 2098. En el escenario adverso, en 2124. Y bajo el modelo estándar de crecimiento, no la paga nunca.</p>
+  <p class="firma">Jorge Oyarce Kruger &nbsp;·&nbsp; Valdivia, julio de 2026</p>
+  <div class="meta-grid">
+    <div><span class="k">Autor</span><span class="v">Jorge Oyarce Kruger — GH HCAI Lab</span></div>
+    <div><span class="k">Fecha</span><span class="v">Julio de 2026</span></div>
+    <div><span class="k">Lugar</span><span class="v">Valdivia, Región de Los Ríos</span></div>
+    <div><span class="k">Tipo</span><span class="v">Análisis económico · v2.0</span></div>
+  </div>
+</header>
+
+<main>
+
+<div class="resumen">
+  <h2>Resumen</h2>
+  <p>Este análisis responde una pregunta acotada sobre el componente tributario del proyecto de Reconstrucción Nacional y Desarrollo Económico y Social: ¿en qué año la recaudación adicional acumulada por el crecimiento supuestamente inducido iguala la recaudación acumulada que se dejó de percibir? La versión 2 corrige un error de diseño de la versión anterior —usar el objetivo de crecimiento del proponente como parámetro— mediante dos decisiones: los parámetros de crecimiento provienen exclusivamente de organismos multilaterales independientes, y la pregunta se invierte: en lugar de asumir un crecimiento y calcular la fecha, se calcula el crecimiento <strong>requerido</strong> y se contrasta contra lo que las fuentes independientes consideran plausible.</p>
+  <p>El resultado combina dos cifras que no provienen del autor: el costo neto peak de 0,71% del PIB declarado por el informe financiero del propio proyecto, y la ganancia de 0,1 punto porcentual de crecimiento que el FMI atribuye a una reforma estructural chilena. Con ellas, el fisco dejaría de perder recursos cada ejercicio hacia 2063 y recuperaría lo perdido hacia 2098. Y una conclusión anterior y más fuerte: bajo el modelo neoclásico estándar, que predice efecto de nivel y no de tasa, no existe punto de equilibrio en ningún horizonte. Una sección final contrasta estos resultados con el informe que el Consejo Fiscal Autónomo expuso ante la Comisión de Hacienda en mayo de 2026, que confirma la cifra central de costo y dos de las tesis estructurales de este análisis.</p>
+</div>
+
+<div class="toc">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#s1">La pregunta invertida</a></li>
+    <li><a href="#s2">Respuesta breve</a></li>
+    <li><a href="#s3">Las dos identidades: por qué el acumulado tarda el doble</a></li>
+    <li><a href="#s4">El calendario del equilibrio</a></li>
+    <li><a href="#s5">Cuánto crecimiento haría falta</a></li>
+    <li><a href="#s6">Si el efecto es de nivel, no hay fechas</a></li>
+    <li><a href="#s7">El canal de transmisión y sus fugas</a></li>
+    <li><a href="#s8">El componente ambiental: incertidumbre, no costo</a></li>
+    <li><a href="#s9">La matriz reconstruida</a></li>
+    <li><a href="#s10">Verificación posterior: el Consejo Fiscal Autónomo</a></li>
+    <li><a href="#s11">Conclusiones</a></li>
+    <li><a href="#s12">Limitaciones y lo que no se puede establecer</a></li>
+    <li><a href="#anexo">Anexo: fórmulas y parámetros</a></li>
+  </ol>
+</div>
+
+<section id="s1">
+<h2 class="sec"><span class="num">§1</span>La pregunta invertida</h2>
+<p>La versión anterior de este documento incurrió en un error de diseño: utilizó el objetivo de crecimiento declarado por el proponente como parámetro de referencia. Un objetivo de política macroeconómica no es una estimación del efecto causal de un instrumento tributario, y el proponente es la parte con mayor interés en el resultado. Esta versión corrige el problema mediante dos decisiones metodológicas. <strong>Primera:</strong> los parámetros de crecimiento provienen exclusivamente de proyecciones de organismos multilaterales independientes, OCDE y Fondo Monetario Internacional. <strong>Segunda, y más importante:</strong> se invierte la pregunta. En lugar de asumir un incremento de crecimiento y calcular el año de recuperación, se calcula el incremento <em>requerido</em> para recuperar dentro de un horizonte dado, y se contrasta ese requerimiento contra las magnitudes que fuentes independientes consideran plausibles. Esta inversión elimina el supuesto del proponente del modelo.</p>
+
+<p>El proyecto sostiene que la menor recaudación derivada de la rebaja del Impuesto de Primera Categoría desde 27% a 23% será compensada por la mayor recaudación asociada al crecimiento inducido. La pregunta se reformula así:</p>
+
+<blockquote>¿Qué incremento permanente de crecimiento se requeriría para que la recaudación adicional acumulada iguale la recaudación acumulada no percibida, y es ese incremento compatible con lo que estiman fuentes independientes?</blockquote>
+
+<p>La distinción entre equilibrio de flujo y equilibrio acumulado es central y suele omitirse. Que en un año la recaudación adicional iguale la pérdida anual no significa que se haya recuperado lo perdido en los años previos. Esa distinción va a ordenar todo lo que sigue.</p>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>Que un año dejes de perder plata no significa que hayas recuperado lo que perdiste antes. La pregunta interesante no es cuándo se equilibra la caja de este año, sino cuándo se salda la cuenta acumulada. Son dos fechas distintas y la segunda es la que importa.</p>
+</div>
+</section>
+
+<section id="s2">
+<h2 class="sec"><span class="num">§2</span>Respuesta breve</h2>
+<p>Combinando el costo fiscal que declara el propio informe financiero del proponente, 0,71% del PIB de costo neto peak, con la única magnitud de ganancia de crecimiento que un organismo independiente atribuye a una reforma estructural chilena, una décima de punto porcentual según el FMI, y contando desde la entrada en vigencia en 2027: el fisco chileno dejaría de perder recursos cada ejercicio hacia <strong>2063</strong> y habría recuperado la totalidad de lo dejado de percibir hacia <strong>2098</strong>. En el escenario de mayor pérdida esas fechas se desplazan a 2075 y <strong>2124</strong>. Bajo el modelo neoclásico estándar, que predice efecto de nivel y no efecto de tasa, no existe punto de equilibrio en ningún horizonte.</p>
+
+<p>Cuatro afirmaciones estructuran el resto del documento. Existe una identidad exacta bajo efecto de tasa: el equilibrio acumulado se alcanza en el doble del año del equilibrio de flujo, con independencia de los parámetros. Recuperar lo perdido dentro de diez años requeriría un incremento permanente de entre 0,45 y 0,97 puntos porcentuales de crecimiento anual; dentro de treinta años, entre 0,15 y 0,32 puntos. La única estimación independiente disponible sobre la ganancia de crecimiento atribuible a una reforma regulatoria chilena es de una décima de punto porcentual, y el requerimiento para recuperar en una década excede esa magnitud entre 4,5 y 10 veces. Bajo efecto de nivel, que es lo que predice la teoría neoclásica estándar, el equilibrio de flujo requiere que el PIB quede permanentemente más alto entre 2,25% y 4,85%, equivalente aproximadamente a un año completo de crecimiento chileno ganado de forma permanente y atribuible solo a esta reforma.</p>
+</section>
+
+<section id="s3">
+<h2 class="sec"><span class="num">§3</span>Las dos identidades: por qué el acumulado tarda el doble</h2>
+
+<p>El modelo es deliberadamente austero. Pérdida anual constante <span style="font-family:Georgia,serif">P(t) = λ · Y₀</span>. Ganancia anual creciente con el tiempo, porque el crecimiento adicional se acumula sobre una base cada vez más grande: <span style="font-family:Georgia,serif">G(t) = τ · Y₀ · δ · t</span>. De ahí se siguen dos identidades exactas.</p>
+
+<div class="formula">
+<span class="f">Equilibrio de flujo:&nbsp;&nbsp;&nbsp;t* = λ / (τ · δ)</span>
+<span class="f">Equilibrio acumulado:&nbsp;T* = 2λ / (τ · δ) = 2 · t*</span>
+<span class="fl">Con λ = pérdida como fracción del PIB, τ = carga tributaria marginal, δ = incremento permanente de crecimiento en puntos porcentuales, t = tiempo en años desde la entrada en vigencia.</span>
+</div>
+
+<p>El resultado más elegante del análisis es la segunda identidad: <strong>el equilibrio acumulado ocurre siempre al doble del año del equilibrio de flujo, con independencia de los parámetros</strong>. La razón es geométrica y admite ilustración directa. La pérdida se acumula linealmente en el tiempo, formando un rectángulo. La ganancia se acumula cuadráticamente, formando un triángulo. El área del triángulo solo iguala a la del rectángulo cuando su altura duplica la del rectángulo, y eso ocurre exactamente al doble del tiempo.</p>
+
+<div class="figure">
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparación entre pérdida acumulada lineal y ganancia acumulada cuadrática">
+  <defs>
+    <pattern id="rayado" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#563F67" stroke-width="1.4" opacity=".35"/>
+    </pattern>
+  </defs>
+  <!-- ejes -->
+  <line x1="60" y1="320" x2="670" y2="320" stroke="#563F67" stroke-width="1.5"/>
+  <line x1="60" y1="30" x2="60" y2="320" stroke="#563F67" stroke-width="1.5"/>
+  <text x="60" y="20" font-family="Source Serif 4,serif" font-size="12" fill="#563F67">recaudación acumulada</text>
+  <text x="620" y="340" font-family="Source Serif 4,serif" font-size="12" fill="#563F67">tiempo →</text>
+
+  <!-- pérdida lineal: recta desde (60,320) hasta (620, 320-260) -->
+  <line x1="60" y1="320" x2="620" y2="60" stroke="#9C83A4" stroke-width="2.5"/>
+  <text x="470" y="130" font-family="Playfair Display,serif" font-size="15" fill="#9C83A4" font-style="italic">pérdida acumulada (lineal)</text>
+
+  <!-- ganancia cuadrática: parábola que cruza la recta en x = 620 -->
+  <path d="M 60 320 Q 340 320 620 60" fill="none" stroke="#563F67" stroke-width="2.8"/>
+  <text x="130" y="285" font-family="Playfair Display,serif" font-size="15" fill="#563F67" font-style="italic">ganancia acumulada (cuadrática)</text>
+
+  <!-- marca t* -->
+  <line x1="340" y1="320" x2="340" y2="120" stroke="#A3BCBA" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="340" cy="190" r="5" fill="#A3BCBA" stroke="#563F67" stroke-width="1.5"/>
+  <text x="248" y="345" font-family="Source Serif 4,serif" font-size="13" fill="#563F67" font-weight="600">t* — equilibrio de flujo</text>
+  <text x="285" y="185" font-family="Source Serif 4,serif" font-size="11" fill="#563F67">pendientes iguales</text>
+
+  <!-- marca T* -->
+  <line x1="620" y1="320" x2="620" y2="60" stroke="#563F67" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="620" cy="60" r="7" fill="#563F67"/>
+  <text x="530" y="345" font-family="Source Serif 4,serif" font-size="13" fill="#563F67" font-weight="600">T* = 2·t* — acumulado</text>
+
+  <!-- área entre curvas -->
+  <path d="M 60 320 Q 340 320 620 60 L 60 320 Z" fill="url(#rayado)" opacity=".55"/>
+</svg>
+<p class="figcap"><strong>Figura 1. Por qué el equilibrio acumulado ocurre al doble del equilibrio de flujo.</strong> La recta clara es la pérdida acumulada, que crece de forma constante. La curva oscura es la ganancia acumulada, que crece de forma cuadrática porque el crecimiento adicional se aplica cada año sobre una base más grande. <strong>Cómo leerla:</strong> el punto <em>t*</em> es el año en que ambas curvas tienen la misma pendiente, es decir, cuando el flujo anual de ganancia iguala al flujo anual de pérdida. Ese es el equilibrio de flujo. Pero en ese momento el área rayada acumulada de pérdida sigue siendo el doble del área de ganancia. La ganancia solo alcanza al doble de tiempo, en <em>T*</em>. La identidad <em>T* = 2·t*</em> es geométrica y no depende de los parámetros: aplica a cualquier λ, τ o δ.</p>
+</div>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>Si estás perdiendo cien pesos al año y algún día empiezas a ganar cien pesos al año, ese día no recuperas nada de los años previos: recién dejas de perder más. Para saldar la cuenta vieja necesitas seguir ganando al doble del tiempo. Esa es la única aritmética del asunto y no depende de cuánto pierdas ni de cuánto crezca la economía.</p>
+</div>
+</section>
+
+<section id="s4">
+<h2 class="sec"><span class="num">§4</span>El calendario del equilibrio</h2>
+
+<p>Aplicando <span style="font-family:Georgia,serif">t* = λ / (τ · δ)</span> y <span style="font-family:Georgia,serif">T* = 2 · t*</span>, con τ = 0,20, δ = 0,1 punto porcentual (la magnitud que el FMI atribuye a la ley de permisos sectoriales) y entrada en vigencia en 2027, los resultados son los siguientes.</p>
+
+<table>
+<thead>
+<tr><th>Escenario de pérdida</th><th>Deja de perder cada año</th><th>Recupera lo perdido</th></tr>
+</thead>
+<tbody>
+<tr><td>λ = 0,45% del PIB</td><td>2049</td><td>2072</td></tr>
+<tr class=""><td class="hl">λ = 0,71% del PIB — informe financiero</td><td class="hl">2063</td><td class="hl"><strong>2098</strong></td></tr>
+<tr><td>λ = 0,97% del PIB</td><td>2075</td><td>2124</td></tr>
+</tbody>
+</table>
+
+<p>El valor de 0,71% del PIB no se obtiene promediando las dos cotas, aunque coincida con su punto medio. Corresponde al costo neto peak de las medidas tributarias declarado por el propio informe financiero del proyecto, al cuarto año de vigencia. Esa coincidencia entre el punto medio de las dos estimaciones adversarias y la cifra del proponente es aritmética, no metodológica. Promediar dos estimaciones de partes con interés opuesto no constituye un estimador, porque no son dos extracciones de una misma distribución. El uso de 0,71% se justifica únicamente porque es la cifra que declara el proponente, lo que permite construir el escenario central sin recurrir a ninguna estimación de la contraparte ni del autor.</p>
+
+<div class="figure">
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Línea temporal del equilibrio fiscal en tres escenarios">
+  <!-- eje -->
+  <line x1="70" y1="200" x2="700" y2="200" stroke="#563F67" stroke-width="1.5"/>
+  <!-- marcas de año -->
+  <g font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="middle">
+    <line x1="70" y1="200" x2="70" y2="208" stroke="#563F67"/>
+    <text x="70" y="222">2027</text>
+    <line x1="245" y1="200" x2="245" y2="208" stroke="#563F67"/>
+    <text x="245" y="222">2050</text>
+    <line x1="365" y1="200" x2="365" y2="208" stroke="#563F67"/>
+    <text x="365" y="222">2075</text>
+    <line x1="480" y1="200" x2="480" y2="208" stroke="#563F67"/>
+    <text x="480" y="222">2100</text>
+    <line x1="590" y1="200" x2="590" y2="208" stroke="#563F67"/>
+    <text x="590" y="222">2125</text>
+  </g>
+  <text x="385" y="248" font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="middle" font-style="italic">Cada barra: desde el equilibrio de flujo (○) hasta el equilibrio acumulado (●)</text>
+
+  <!-- escenario bajo λ=0.45 -->
+  <text x="60" y="55" font-family="Source Serif 4,serif" font-size="12" fill="#563F67" text-anchor="end">λ = 0,45%</text>
+  <line x1="245" y1="55" x2="360" y2="55" stroke="#A3BCBA" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="245" cy="55" r="6" fill="#F2F1E7" stroke="#563F67" stroke-width="2"/>
+  <circle cx="360" cy="55" r="7" fill="#563F67"/>
+  <text x="240" y="42" font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="end">2049</text>
+  <text x="368" y="42" font-family="Source Serif 4,serif" font-size="11" fill="#563F67">2072</text>
+
+  <!-- escenario central λ=0.71 -->
+  <text x="60" y="115" font-family="Source Serif 4,serif" font-size="12" fill="#563F67" text-anchor="end" font-weight="700">λ = 0,71%</text>
+  <text x="60" y="128" font-family="Source Serif 4,serif" font-size="10" fill="#9C83A4" text-anchor="end">informe financiero</text>
+  <line x1="315" y1="115" x2="475" y2="115" stroke="#563F67" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="315" cy="115" r="6" fill="#F2F1E7" stroke="#563F67" stroke-width="2"/>
+  <circle cx="475" cy="115" r="8" fill="#563F67"/>
+  <text x="310" y="102" font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="end" font-weight="700">2063</text>
+  <text x="483" y="102" font-family="Source Serif 4,serif" font-size="12" fill="#563F67" font-weight="700">2098</text>
+
+  <!-- escenario alto λ=0.97 -->
+  <text x="60" y="175" font-family="Source Serif 4,serif" font-size="12" fill="#563F67" text-anchor="end">λ = 0,97%</text>
+  <line x1="365" y1="175" x2="590" y2="175" stroke="#9C83A4" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="365" cy="175" r="6" fill="#F2F1E7" stroke="#563F67" stroke-width="2"/>
+  <circle cx="590" cy="175" r="7" fill="#563F67"/>
+  <text x="360" y="162" font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="end">2075</text>
+  <text x="598" y="162" font-family="Source Serif 4,serif" font-size="11" fill="#563F67">2124</text>
+
+  <!-- marca vigencia -->
+  <line x1="70" y1="30" x2="70" y2="200" stroke="#9C83A4" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="76" y="30" font-family="Source Serif 4,serif" font-size="11" fill="#9C83A4" font-style="italic">Entrada en vigencia</text>
+</svg>
+<p class="figcap"><strong>Figura 2. El calendario de la recuperación en tres escenarios.</strong> Cada barra parte en el año en que el fisco deja de perder recursos (círculo hueco, equilibrio de flujo) y termina en el año en que la recaudación adicional acumulada iguala la recaudación acumulada no percibida (círculo pleno, equilibrio acumulado). <strong>Cómo leerla:</strong> la barra central, destacada, es el escenario construido con la cifra del propio informe financiero. La recuperación completa cae en 2098, esto es, a fines del siglo XXI. El siglo XXII aparece solo en el escenario de mayor pérdida. Cualquier titular que sitúe la recuperación en el próximo siglo debe apoyarse explícitamente en la cota superior, no en el escenario central.</p>
+</div>
+
+<div class="callout">
+<h4>Sobre el escenario central</h4>
+<p>El escenario central sitúa la recuperación en 2098, que corresponde al final del siglo XXI. El siglo XXII aparece únicamente en la cota superior de 2124. Esa precisión importa: es la diferencia entre la afirmación conservadora, defendible con la cifra del proponente, y la afirmación fuerte, que requiere apoyarse en estimaciones adversas.</p>
+</div>
+</section>
+
+<section id="s5">
+<h2 class="sec"><span class="num">§5</span>Cuánto crecimiento haría falta</h2>
+
+<p>La sección anterior fija el crecimiento y calcula la fecha. Esta invierte la operación: fija un horizonte de recuperación y calcula el crecimiento necesario. La expresión es <span style="font-family:Georgia,serif">δ<sub>requerido</sub> = 2λ / (τ · H)</span>. La tabla siguiente entrega el resultado en puntos porcentuales de crecimiento permanente adicional para varios horizontes.</p>
+
+<table>
+<thead>
+<tr><th>Horizonte</th><th>λ = 0,45%</th><th>λ = 0,97%</th><th>Múltiplo del ancla FMI (0,1 pp)</th></tr>
+</thead>
+<tbody>
+<tr><td>10 años</td><td>+0,45 pp</td><td>+0,97 pp</td><td>4,5 a 10 veces</td></tr>
+<tr><td>15 años</td><td>+0,30 pp</td><td>+0,65 pp</td><td>3,0 a 6,5 veces</td></tr>
+<tr><td>20 años</td><td>+0,23 pp</td><td>+0,49 pp</td><td>2,3 a 4,9 veces</td></tr>
+<tr><td>30 años</td><td>+0,15 pp</td><td>+0,32 pp</td><td>1,5 a 3,2 veces</td></tr>
+<tr><td>50 años</td><td>+0,09 pp</td><td>+0,19 pp</td><td>0,9 a 1,9 veces</td></tr>
+</tbody>
+</table>
+
+<div class="figure">
+<svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Crecimiento requerido según horizonte de recuperación, comparado con la magnitud FMI">
+  <!-- ejes -->
+  <line x1="80" y1="280" x2="700" y2="280" stroke="#563F67" stroke-width="1.5"/>
+  <line x1="80" y1="30" x2="80" y2="280" stroke="#563F67" stroke-width="1.5"/>
+  <text x="30" y="30" font-family="Source Serif 4,serif" font-size="11" fill="#563F67">pp</text>
+  <text x="700" y="300" font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="end">horizonte (años)</text>
+
+  <!-- grilla horizontal y etiquetas y -->
+  <g font-family="Source Serif 4,serif" font-size="10" fill="#563F67">
+    <line x1="80" y1="55" x2="700" y2="55" stroke="#D8C4D2" stroke-width=".7"/>
+    <text x="74" y="58" text-anchor="end">1,0</text>
+    <line x1="80" y1="130" x2="700" y2="130" stroke="#D8C4D2" stroke-width=".7"/>
+    <text x="74" y="133" text-anchor="end">0,7</text>
+    <line x1="80" y1="205" x2="700" y2="205" stroke="#D8C4D2" stroke-width=".7"/>
+    <text x="74" y="208" text-anchor="end">0,3</text>
+    <text x="74" y="283" text-anchor="end">0</text>
+  </g>
+
+  <!-- eje x etiquetas -->
+  <g font-family="Source Serif 4,serif" font-size="11" fill="#563F67" text-anchor="middle">
+    <text x="140" y="298">10</text>
+    <text x="240" y="298">15</text>
+    <text x="360" y="298">20</text>
+    <text x="500" y="298">30</text>
+    <text x="660" y="298">50</text>
+  </g>
+
+  <!-- curva alta λ=0.97: 10→0.97, 15→0.65, 20→0.49, 30→0.32, 50→0.19 -->
+  <!-- mapeo y: 0=280, 1.0=55  → escala: 225 px por 1.0 -->
+  <!-- 0.97→ 280-218=62; 0.65→ 280-146=134; 0.49→ 280-110=170; 0.32→ 280-72=208; 0.19→ 280-43=237 -->
+  <path d="M 140 62 L 240 134 L 360 170 L 500 208 L 660 237" fill="none" stroke="#563F67" stroke-width="2.5"/>
+  <g fill="#563F67">
+    <circle cx="140" cy="62" r="4"/><circle cx="240" cy="134" r="4"/><circle cx="360" cy="170" r="4"/><circle cx="500" cy="208" r="4"/><circle cx="660" cy="237" r="4"/>
+  </g>
+  <text x="150" y="55" font-family="Playfair Display,serif" font-size="13" fill="#563F67" font-style="italic">λ = 0,97%</text>
+
+  <!-- curva baja λ=0.45: 10→0.45, 15→0.30, 20→0.23, 30→0.15, 50→0.09 -->
+  <!-- 0.45→ 280-101=179; 0.30→ 280-68=212; 0.23→ 280-52=228; 0.15→ 280-34=246; 0.09→ 280-20=260 -->
+  <path d="M 140 179 L 240 212 L 360 228 L 500 246 L 660 260" fill="none" stroke="#9C83A4" stroke-width="2.5"/>
+  <g fill="#9C83A4">
+    <circle cx="140" cy="179" r="4"/><circle cx="240" cy="212" r="4"/><circle cx="360" cy="228" r="4"/><circle cx="500" cy="246" r="4"/><circle cx="660" cy="260" r="4"/>
+  </g>
+  <text x="150" y="172" font-family="Playfair Display,serif" font-size="13" fill="#9C83A4" font-style="italic">λ = 0,45%</text>
+
+  <!-- línea horizontal ancla FMI: 0.1 pp -->
+  <!-- 0.10 → 280-22.5 = 257.5 -->
+  <line x1="80" y1="258" x2="700" y2="258" stroke="#A3BCBA" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <rect x="480" y="243" width="215" height="20" fill="#DCDBC9"/>
+  <text x="485" y="257" font-family="Source Serif 4,serif" font-size="11.5" fill="#563F67" font-weight="600">ancla FMI: 0,1 pp (permisos sectoriales)</text>
+</svg>
+<p class="figcap"><strong>Figura 3. El crecimiento adicional requerido contra el que un organismo independiente considera plausible.</strong> Las dos curvas muestran los puntos porcentuales de crecimiento anual permanente que serían necesarios para recuperar lo perdido dentro de cada horizonte, en el escenario bajo (mauve) y en el escenario alto (púrpura) de pérdida. La línea horizontal verde-salvia marca los 0,1 pp que el FMI atribuye en su escenario base a la ley de permisos sectoriales. <strong>Cómo leerla:</strong> solo en el horizonte de cincuenta años el requerimiento desciende al orden de magnitud del ancla independiente. Para plazos relevantes en términos de planificación fiscal (10 a 20 años) el requerimiento excede esa referencia por un múltiplo de entre 2,3 y 10. La brecha vertical entre las curvas y la línea horizontal es, literalmente, el tamaño del supuesto que hay que hacer para sostener la promesa de autofinanciamiento.</p>
+</div>
+
+<p>El ancla de 0,1 punto porcentual se refiere a la ley de permisos sectoriales, que es una reforma regulatoria distinta de la rebaja tributaria evaluada aquí. Se utiliza como referencia de orden de magnitud sobre cuánto crecimiento adicional atribuye un organismo independiente a una reforma estructural chilena, no como estimación del efecto de la medida tributaria. No se dispone de una estimación independiente específica para esta última, y esa ausencia es en sí un resultado que debe declararse.</p>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>Para que la reforma se pague en diez años tendría que agregarle a Chile entre 4,5 y 10 veces el crecimiento extra que el FMI le atribuye a la reforma de permisos completa. Y la reforma de permisos es más grande, más específica y más medible que una rebaja de cuatro puntos al impuesto corporativo. No es un problema de escepticismo: es un problema de proporciones.</p>
+</div>
+</section>
+
+<section id="s6">
+<h2 class="sec"><span class="num">§6</span>Si el efecto es de nivel, no hay fechas</h2>
+
+<p>Todas las fechas de las secciones anteriores presuponen que la reforma produce un efecto permanente sobre la <em>tasa</em> de crecimiento. La teoría neoclásica estándar predice algo distinto: una reducción permanente de la tasa impositiva sobre el capital reduce el costo de uso del capital, eleva el stock deseado y genera un período de inversión superior a la de estado estacionario. Al término de la transición el producto se sitúa en una trayectoria permanentemente más alta, pero la tasa de crecimiento de largo plazo retorna a la determinada por el progreso técnico y el crecimiento poblacional. Es un <strong>efecto de nivel</strong>, no un efecto de tasa. Un efecto de tasa requeriría un modelo de crecimiento endógeno, y la evidencia empírica que lo sostiene a partir de cambios en la tasa estatutaria corporativa es considerablemente más débil que la que sostiene efectos de nivel.</p>
+
+<p>Bajo efecto de nivel, la ganancia anual converge a <span style="font-family:Georgia,serif">G∞ = τ · Y₀ · θ</span>, donde θ es el incremento porcentual permanente del PIB. El equilibrio de flujo existe únicamente si <span style="font-family:Georgia,serif">θ &gt; λ / τ</span>, esto es, si el PIB queda permanentemente más alto en al menos cinco veces la pérdida expresada como fracción del PIB (para τ = 0,20).</p>
+
+<div class="figure">
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Umbral requerido versus efecto de nivel plausible">
+  <!-- ejes -->
+  <line x1="220" y1="220" x2="670" y2="220" stroke="#563F67" stroke-width="1.5"/>
+  <text x="440" y="248" font-family="Source Serif 4,serif" font-size="11.5" fill="#563F67" text-anchor="middle" font-style="italic">Incremento permanente del nivel del PIB (%)</text>
+
+  <!-- marcas eje x -->
+  <g font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">
+    <line x1="220" y1="220" x2="220" y2="226" stroke="#563F67"/><text x="220" y="238">0</text>
+    <line x1="295" y1="220" x2="295" y2="226" stroke="#563F67"/><text x="295" y="238">1</text>
+    <line x1="370" y1="220" x2="370" y2="226" stroke="#563F67"/><text x="370" y="238">2</text>
+    <line x1="445" y1="220" x2="445" y2="226" stroke="#563F67"/><text x="445" y="238">3</text>
+    <line x1="520" y1="220" x2="520" y2="226" stroke="#563F67"/><text x="520" y="238">4</text>
+    <line x1="595" y1="220" x2="595" y2="226" stroke="#563F67"/><text x="595" y="238">5</text>
+  </g>
+
+  <!-- Barra θ plausible: 1.0 a 1.5 → x=295 a 332.5 -->
+  <text x="215" y="55" font-family="Source Serif 4,serif" font-size="13" fill="#563F67" text-anchor="end" font-weight="600">θ plausible</text>
+  <text x="215" y="70" font-family="Source Serif 4,serif" font-size="11" fill="#9C83A4" text-anchor="end">calibración favorable</text>
+  <rect x="295" y="45" width="37.5" height="26" fill="#A3BCBA" stroke="#563F67" stroke-width="1"/>
+  <text x="313" y="35" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">1,0 – 1,5%</text>
+
+  <!-- Barra umbral λ=0.45: 2.25 → x=220+2.25·75=388.75 -->
+  <text x="215" y="120" font-family="Source Serif 4,serif" font-size="13" fill="#563F67" text-anchor="end">umbral λ = 0,45%</text>
+  <rect x="220" y="110" width="169" height="20" fill="#D8C4D2" stroke="#563F67" stroke-width="1"/>
+  <line x1="388.75" y1="102" x2="388.75" y2="138" stroke="#563F67" stroke-width="2"/>
+  <text x="395" y="115" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67">2,25%</text>
+
+  <!-- Barra umbral λ=0.97: 4.85 → x=220+4.85·75=583.75 -->
+  <text x="215" y="175" font-family="Source Serif 4,serif" font-size="13" fill="#563F67" text-anchor="end">umbral λ = 0,97%</text>
+  <rect x="220" y="165" width="364" height="20" fill="#D8C4D2" stroke="#563F67" stroke-width="1"/>
+  <line x1="583.75" y1="157" x2="583.75" y2="193" stroke="#563F67" stroke-width="2"/>
+  <text x="590" y="170" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67">4,85%</text>
+
+  <!-- Franja plausible sombreada verticalmente para comparar -->
+  <rect x="295" y="30" width="37.5" height="195" fill="#A3BCBA" opacity=".15"/>
+</svg>
+<p class="figcap"><strong>Figura 4. La conclusión más incómoda del análisis, en una sola imagen.</strong> Las dos barras rosa-pálido marcan el incremento permanente de nivel del PIB que sería necesario para que exista siquiera un punto de equilibrio de flujo (no de acumulado): entre 2,25% y 4,85% según el escenario de pérdida. La barra salvia marca el rango que una calibración generosa con el proponente considera plausible: entre 1% y 1,5%. <strong>Cómo leerla:</strong> la barra salvia ni siquiera alcanza al umbral inferior. Bajo efecto de nivel, que es lo que predice la teoría estándar, no existe punto de equilibrio en ningún horizonte y la brecha fiscal es permanente. La pregunta pública supone que hay que discutir <em>cuándo</em> se paga la reforma; la pregunta previa es si se paga.</p>
+</div>
+
+<div class="callout">
+<h4>La pregunta previa</h4>
+<p>La discusión pública supone que la pregunta es cuánto tarda la reforma en pagarse, cuando la pregunta previa es si se paga. Bajo el modelo neoclásico estándar la respuesta es que no: la brecha fiscal es permanente y crece proporcionalmente al PIB. Las fechas del §4 solo tienen sentido si la reforma logra lo que la evidencia empírica sostiene con menos fuerza, que es alterar la tasa de crecimiento de largo plazo.</p>
+</div>
+</section>
+
+<section id="s7">
+<h2 class="sec"><span class="num">§7</span>El canal de transmisión y sus fugas</h2>
+
+<p>El canal estándar procede desde la tasa estatutaria hacia la tasa marginal efectiva, desde allí hacia el costo de uso del capital según Hall y Jorgenson, luego hacia el stock de capital deseado y finalmente hacia el producto. Cada eslabón introduce atenuación, y en el caso chileno esas atenuaciones no son teóricas.</p>
+
+<p><strong>Inframarginalidad.</strong> Una rebaja de tasa estatutaria remunera por igual el capital ya instalado y la inversión nueva. La mayor parte del alivio se dirige a rentas inframarginales, esto es a proyectos que se habrían ejecutado de todas formas. El costo fiscal por unidad de inversión inducida resulta en consecuencia muy superior al de instrumentos que operan sobre el margen intensivo.</p>
+
+<p><strong>Integración del sistema.</strong> Con reintegración total al año tributario 2031, el impuesto de primera categoría pasa a ser un anticipo acreditable con techo de 35% en el impuesto global complementario o adicional. Para utilidades distribuidas, la carga total es 35% con independencia de que la tasa sea 27 o 23. La rebaja afecta entonces el valor del diferimiento sobre utilidades retenidas, no la carga sobre el dividendo.</p>
+
+<p><strong>Convenios de doble tributación.</strong> Los inversionistas residentes en jurisdicciones con convenio vigente ya acceden a crédito completo y enfrentan carga total de 35%. Para esa fracción de la inversión extranjera directa, la rebaja redistribuye recaudación entre primera categoría e impuesto adicional sin alterar el costo de capital.</p>
+
+<p><strong>Rentas locacionales.</strong> Una porción sustantiva de la inversión chilena está ligada a recursos naturales, donde la renta es específica al sitio y la elasticidad al impuesto es estructuralmente baja. Las proyecciones de la OCDE atribuyen la recuperación de la inversión chilena hacia 2027 precisamente a proyectos de minería, energía y maquinaria asociada.</p>
+
+<p><strong>Incidencia.</strong> El modelo de economía pequeña y abierta con capital perfectamente móvil predice traslado íntegro al salario en el largo plazo. La evidencia empírica de incidencia encuentra traslado parcial.</p>
+
+<h3>La evidencia chilena, que no converge</h3>
+
+<p>La evidencia con datos chilenos no converge, y esa divergencia es en sí un hallazgo que debe declararse antes de proyectar magnitudes. Bustos, Engel y Galetovic (2004) no encuentran efecto de la tasa corporativa sobre la demanda de capital de largo plazo, y encuentran además evidencia de velo corporativo: las firmas ignoran las tasas marginales de sus accionistas al decidir inversiones. Ese hallazgo corta el canal por el cual operaría la reintegración. Cerda y Larraín (2010) y Vergara (2010) encuentran efecto negativo de la tributación sobre la inversión privada. Hsieh y Parker (2007) encuentran un efecto grande en el episodio chileno de 1984 a 1986, pero mediante un canal de liquidez sobre firmas restringidas financieramente, con una rebaja de aproximadamente cuarenta puntos sobre utilidades retenidas. No es transportable a una rebaja de cuatro puntos sobre la tasa general.</p>
+
+<h3>El diseño evaluado, adverso al canal identificado</h3>
+
+<p>Zwick y Mahon (2017), con datos de más de 120 mil firmas, documentan que las firmas responden fuertemente cuando la política genera flujo de caja inmediato, pero no cuando el flujo de caja solo llega en el futuro, y que las firmas pequeñas responden 95% más que las grandes. La rebaja escalonada entre 2027 y 2029 con reintegración total en 2031 constituye, punto por punto, una política de flujo de caja diferido operando sobre el margen difuso. La literatura predice para ese diseño la respuesta débil, y el sesgo distributivo agrava el problema porque el alivio se concentra en grandes empresas, que son el grupo de menor elasticidad estimada.</p>
+</section>
+
+<section id="s8">
+<h2 class="sec"><span class="num">§8</span>El componente ambiental: incertidumbre, no costo</h2>
+
+<p>Las medidas del eje institucional (reducción del plazo de invalidación de RCA desde dos años a seis meses, limitación de precautorias a seis meses, facultad del SEA para filtrar observaciones, indemnización estatal ante revocación de RCA favorable) no admiten evaluación mediante el mismo criterio que las medidas tributarias. La distinción de Knight entre riesgo e incertidumbre es operativa aquí: un plazo administrativo constituye riesgo, con distribución conocida y costo calculable; un daño ecosistémico constituye incertidumbre, con distribución desconocida y en ocasiones espacio muestral no especificado. Agregar ambos en un mismo eje de certeza es un error de categoría.</p>
+
+<h3>El resultado de Arrow, Fisher y Henry</h3>
+
+<p>Arrow y Fisher (1974) y Henry (1974) demostraron que cuando un decisor debe elegir entre dos acciones, una de las cuales es irreversible, y los beneficios futuros son inciertos en el primer período, la maximización del valor esperado produce un resultado sesgado: la acción irreversible se elige con demasiada frecuencia. La corrección de ese sesgo es lo que Arrow y Fisher denominaron cuasi valor de opción, el valor de esperar cuando el daño ambiental es irreversible. Conrad (1980) mostró que el cuasi valor de opción equivale al valor esperado de la información.</p>
+
+<p>La implicancia es directa: la ventana de invalidación de veinticuatro meses es el intervalo durante el cual puede llegar información capaz de corregir la decisión antes de que se consolide la irreversibilidad. Reducirla a seis meses no elimina un costo administrativo, extingue un activo. Ese activo no aparece en ningún balance del proyecto.</p>
+
+<h3>Indemnización por revocación de RCA como asignación de riesgo</h3>
+
+<p>Quien controla la calidad de la línea de base ambiental es el titular del proyecto. Si el fisco absorbe el costo de la revocación, la parte que controla la información deja de soportar el costo de su deficiencia. El resultado predicho por la teoría estándar de contratos no es mayor certeza sino mayor volumen de solicitudes con información débil, dado que el escenario adverso quedó socializado. El mecanismo es análogo al de un seguro sin deducible.</p>
+
+<p>Corresponde registrar, como observación de consistencia y no de posición política, que el evento que da nombre al proyecto (los incendios de Ñuble y Biobío) constituye un evento de cola en una distribución cuya varianza está siendo modificada por el cambio climático. Una ley de reconstrucción motivada por un evento extremo que simultáneamente comprime los plazos del instrumento encargado de evaluar riesgos ambientales presenta una tensión interna que debe explicitarse.</p>
+</section>
+
+<section id="s9">
+<h2 class="sec"><span class="num">§9</span>La matriz reconstruida</h2>
+
+<p>Las medidas del paquete no admiten una sola escala de evaluación. La matriz siguiente separa dos dimensiones: la magnitud del efecto esperado y el estatus epistémico del canal causal. Este último se registra en cuatro estados discretos:</p>
+
+<p><strong>E1.</strong> Canal identificado con evidencia causal convergente. &nbsp;·&nbsp; <strong>E2.</strong> Canal identificado con evidencia divergente en signo o magnitud. &nbsp;·&nbsp; <strong>E3.</strong> Canal teóricamente especificado sin identificación empírica en el contexto relevante. &nbsp;·&nbsp; <strong>E4.</strong> Incertidumbre knightiana: la distribución de resultados no es conocida ni estimable con la información disponible.</p>
+
+<table>
+<thead>
+<tr><th>Medida</th><th>Bloque</th><th>Magnitud</th><th>Estatus</th></tr>
+</thead>
+<tbody>
+<tr><td>Rebaja IDPC 27% a 23%</td><td>Tributario</td><td>Media-baja agregada</td><td>E2</td></tr>
+<tr><td>Reintegración total a 2031</td><td>Tributario</td><td>Baja</td><td>E2</td></tr>
+<tr><td>Invariabilidad tributaria 25 años</td><td>Tributario</td><td>Media</td><td>E3</td></tr>
+<tr><td>Crédito tributario al empleo</td><td>Tributario</td><td>Media</td><td>E2</td></tr>
+<tr><td>IVA cero vivienda por 12 meses</td><td>Tributario</td><td>Media corto plazo, nula régimen</td><td>E1</td></tr>
+<tr><td>Exención contribuciones sobre 65 años</td><td>Tributario</td><td>Baja sobre crecimiento</td><td>E1</td></tr>
+<tr><td>Reducción plazos de invalidación</td><td>Ambiental</td><td>Media-alta corto plazo</td><td>E4</td></tr>
+<tr><td>Limitación de precautorias a 6 meses</td><td>Ambiental</td><td>Media sobre inversión</td><td>E4</td></tr>
+<tr><td>Indemnización por revocación de RCA</td><td>Ambiental</td><td>Baja sobre inversión</td><td>E3</td></tr>
+<tr><td>Fondo de emergencia por incendios</td><td>Reconstrucción</td><td>Alta en territorio afectado</td><td>E1</td></tr>
+</tbody>
+</table>
+
+<p><strong>Regla de lectura.</strong> Las medidas en E4 no deben compararse con las de E1 mediante el mismo criterio de decisión. Para E1 y E2 el análisis costo beneficio con valor esperado es apropiado. Para E4 corresponde aplicar criterios bajo incertidumbre que incorporen el cuasi valor de opción, y en presencia de colas gruesas el valor esperado no constituye un estadístico suficiente.</p>
+</section>
+
+<section id="s10">
+<h2 class="sec"><span class="num">§10</span>Verificación posterior: el Consejo Fiscal Autónomo</h2>
+
+<p>La versión 2 de este análisis declaraba, en su sección de limitaciones, que la principal debilidad metodológica era no haber consultado el informe del Consejo Fiscal Autónomo, organismo chileno con mandato de independencia sobre esta materia. Corresponde cerrar esa deuda. El CFA expuso ante la Comisión de Hacienda de la Cámara el 5 de mayo de 2026, encabezado por su presidenta Paula Benavides. Su informe no estaba disponible cuando este documento se elaboró en su versión original y llegó a las mismas conclusiones estructurales por vía institucional. Vale la pena enunciar la coincidencia con precisión.</p>
+
+<p><strong>Sobre la cifra central de costo.</strong> El CFA declara que el efecto fiscal directo del proyecto, sin considerar mayor crecimiento, presenta un déficit persistente en todo el horizonte de evaluación, alcanzando un máximo de 0,71% del PIB en 2030 y de 0,43% del PIB en 2050. Esto tiene dos consecuencias para este análisis. Primero, el 0,71% peak que este documento tomaba de reportes secundarios queda corroborado por el organismo con mandato de independencia. Segundo, y más interesante, el 0,43% en régimen prácticamente coincide con la cota inferior de 0,45% usada aquí. El rango de escenarios de este análisis, presentado como proponente-vs-críticos, resulta ser en realidad peak-vs-régimen según el propio informe financiero analizado por el CFA. La cota superior de 0,97% queda entonces como escenario de estrés, no como estimación central alternativa.</p>
+
+<p><strong>Sobre el descalce temporal.</strong> El CFA lo enuncia así:</p>
+
+<blockquote>Un riesgo transversal que vemos es un descalce entre costos y beneficios fiscales. Los costos son más ciertos y predecibles, mientras que los beneficios son inciertos, graduales y condicionales.<span class="who">Paula Benavides, presidenta del CFA, Comisión de Hacienda, 5 de mayo de 2026</span></blockquote>
+
+<p>Esa es, en lenguaje institucional, la distinción entre equilibrio de flujo y equilibrio acumulado que ordena todo este documento. El CFA agrega que el proyecto presenta déficits fiscales al menos hasta 2031 incluso considerando el efecto crecimiento, y recomienda expresamente realizar escenarios de sensibilidad y estrés del efecto fiscal de recaudación por crecimiento. Este análisis es precisamente ese ejercicio.</p>
+
+<p><strong>Sobre la no autocompensación del IDPC.</strong> En su lista de riesgos directos, el CFA identifica textualmente: «rebaja de la tasa de Impuesto de Primera Categoría (IDPC): costo no es compensado por mayor crecimiento de la medida». Es la conclusión del §5 y del §6 de este documento, formulada por el organismo independiente.</p>
+
+<p><strong>Sobre la indemnización por revocación de RCA.</strong> El CFA identifica que el mecanismo de restitución por anulación de una Resolución de Calificación Ambiental carece de cláusula de gasto máximo. Confirma el pasivo contingente no acotado descrito en el §8.</p>
+
+<p><strong>Sobre el ancla del FMI.</strong> El Country Report 26/169 dice, en su descripción del escenario base: «The baseline scenario already assumes a 0.1 percentage point gain in growth from implementation of the law to streamline sectoral permits». Y en el escenario de riesgo a la baja: «If the implementation of the sectoral permitting law is delayed or investment responses are weak, the 0.1 percentage point growth gain assumed in the baseline would not materialize». El parámetro δ = 0,1 pp queda verificado contra fuente primaria. En julio de 2026 el FMI recortó la proyección de crecimiento de Chile para 2026 desde 2,2% a 1,8%. En el escenario optimista con cobre sostenido en US$ 5,5-6,0 y reformas plenamente implementadas, el crecimiento llegaría a cerca de 3% en 2027-2030, pero <em>más de la mitad del impulso está asociado al precio del cobre, no a las reformas</em>. Ese dato refuerza la prudencia del ancla.</p>
+
+<div class="callout">
+<h4>El principio de la misma vara aplicado al propio documento</h4>
+<p>Este análisis se construyó sin conocer el informe del CFA. El CFA llegó, por vía institucional y con acceso al informe financiero primario, a las dos conclusiones estructurales de este documento: descalce temporal entre costos y beneficios, y no autocompensación de la rebaja del IDPC por vía de crecimiento. Esa convergencia no valida el documento, pero sí desplaza el terreno de la discusión: la pregunta ya no es si el análisis es plausible, sino qué se hace con dos diagnósticos independientes que apuntan al mismo lugar.</p>
+</div>
+</section>
+
+<section id="s11">
+<h2 class="sec"><span class="num">§11</span>Conclusiones</h2>
+
+<p><strong>Sobre el plazo de recuperación.</strong> Con el costo neto peak de 0,71% del PIB declarado por el informe financiero del proyecto y confirmado por el CFA, y la ganancia de crecimiento de 0,1 punto porcentual que el FMI atribuye a una reforma estructural chilena, contando desde la entrada en vigencia en 2027: el fisco chileno dejaría de perder recursos cada ejercicio hacia 2063 y habría recuperado lo perdido hacia 2098. En el escenario de mayor pérdida, esas fechas se desplazan a 2075 y 2124. El escenario central sitúa la recuperación completa a fines del siglo XXI y no en el siglo XXII; el siglo XXII aparece únicamente en el escenario de mayor pérdida.</p>
+
+<p><strong>Sobre la existencia misma del punto de equilibrio.</strong> Las fechas anteriores presuponen que la reforma produce un efecto permanente sobre la tasa de crecimiento. Si el efecto es de nivel, que es lo que predice el modelo neoclásico estándar, el equilibrio de flujo requiere que el PIB quede permanentemente más alto en al menos cinco veces la pérdida como fracción del PIB, esto es entre 2,25% y 4,85%. Una calibración generosa con el proponente sitúa el efecto de nivel plausible entre 1% y 1,5%, por debajo de ambos umbrales. Bajo ese régimen no existe punto de equilibrio en ningún horizonte y la brecha fiscal es permanente. Esta es la conclusión menos intuitiva y más importante del documento: la discusión pública supone que la pregunta es cuánto tarda la reforma en pagarse, cuando la pregunta previa es si se paga.</p>
+
+<p><strong>Sobre el canal de transmisión.</strong> La evidencia chilena no converge, y el diseño específico evaluado (rebaja escalonada 2027-2029 con reintegración total a 2031, concentrada en grandes empresas) es precisamente el tipo de política de flujo de caja diferido para la cual Zwick y Mahon documentan respuesta débil, sobre el segmento de firmas de menor elasticidad estimada.</p>
+
+<p><strong>Sobre el componente ambiental.</strong> El resultado de Arrow, Fisher y Henry establece que cuando una de dos acciones es irreversible y los beneficios son inciertos, la maximización del valor esperado elige la irreversible con demasiada frecuencia. La ventana de invalidación no es solo un costo de incertidumbre para el titular del proyecto: es una opción cuyo valor equivale al valor esperado de la información. Reducirla de veinticuatro a seis meses no elimina un costo administrativo, extingue un activo que no aparece en ningún balance del proyecto.</p>
+</section>
+
+<section id="s12">
+<h2 class="sec"><span class="num">§12</span>Limitaciones y lo que no se puede establecer</h2>
+
+<p>El informe del CFA cierra la principal debilidad metodológica declarada en la versión 2, pero corresponde registrar las que subsisten. El ancla de 0,1 pp corresponde a la ley de permisos sectoriales, no a la medida tributaria evaluada, y se utiliza como referencia de orden de magnitud. La calibración del efecto de nivel es ilustrativa y no constituye una estimación econométrica. La ubicación de cada medida en la matriz de la §9 corresponde a juicio del autor a partir de la literatura revisada, no a una medición. No se dispone de estimación causal contemporánea del efecto de esta medida tributaria específica sobre el crecimiento chileno bajo la estructura tributaria vigente; los estudios chilenos disponibles corresponden a episodios con arquitecturas tributarias distintas, y esa falta de transportabilidad constituye en sí un resultado. Tampoco existe cuantificación del pasivo contingente creado por la indemnización ante revocación de RCA. Ambas ausencias son resultados que deben declararse, no vacíos que corresponda llenar con supuestos.</p>
+
+<p>El análisis no incorpora efectos de equilibrio general ni interacciones entre las medidas del paquete. El cálculo ignora también el costo financiero del déficit acumulado durante la transición: incorporar deuda a tasa real positiva desplaza ambas fechas hacia adelante, es decir refuerza la conclusión sin alterarla.</p>
+</section>
+
+<section id="anexo">
+<h2 class="sec"><span class="num">Anexo</span>Fórmulas y parámetros</h2>
+
+<div class="formula">
+<span class="f">Equilibrio de flujo:&nbsp;&nbsp;&nbsp;&nbsp;t* = λ / (τ · δ)</span>
+<span class="f">Equilibrio acumulado:&nbsp;T* = 2λ / (τ · δ) = 2 · t*</span>
+<span class="f">Crecimiento requerido:&nbsp;&nbsp;δ<sub>req</sub> = 2λ / (τ · H)</span>
+<span class="f">Umbral efecto de nivel:&nbsp;θ &gt; λ / τ</span>
+</div>
+
+<table>
+<thead>
+<tr><th>Parámetro</th><th>Valor</th><th>Procedencia</th><th>Calidad</th></tr>
+</thead>
+<tbody>
+<tr><td>δ, ganancia de crecimiento</td><td>0,1 pp</td><td>FMI Country Report 26/169</td><td>Independiente</td></tr>
+<tr><td>Crecimiento base mediano plazo</td><td>2,3% a 2,4%</td><td>OCDE y FMI</td><td>Independiente</td></tr>
+<tr><td>Crecimiento potencial</td><td>~2,5%</td><td>FMI Artículo IV 2026</td><td>Independiente</td></tr>
+<tr><td>λ escenario central</td><td>0,71% del PIB</td><td>Informe financiero, ratificado por CFA</td><td>Proponente + verificación CFA</td></tr>
+<tr><td>λ cota inferior (régimen)</td><td>0,43-0,45% del PIB</td><td>Efecto directo en régimen (CFA)</td><td>Independiente (CFA)</td></tr>
+<tr><td>λ cota superior (estrés)</td><td>0,97% del PIB</td><td>Economistas críticos</td><td>Parte opositora</td></tr>
+<tr><td>τ, carga tributaria marginal</td><td>0,20</td><td>Recaudación sobre PIB, Chile</td><td>Estadística</td></tr>
+</tbody>
+</table>
+
+<p><em>Toda la aritmética es lineal en λ y por tanto reproducible con estimaciones alternativas. Cualquier estimación distinta del costo fiscal reescala los resultados proporcionalmente sin alterar la estructura del análisis.</em></p>
+</section>
+
+<section id="referencias" class="refs">
+<h2 class="sec"><span class="num">§</span>Fuentes</h2>
+
+<h3>Proyecciones y verificaciones institucionales</h3>
+<ol>
+<li>Consejo Fiscal Autónomo (2026). Presentación ante la Comisión de Hacienda de la Cámara de Diputadas y Diputados sobre el Proyecto de Ley de Reconstrucción Nacional y Desarrollo Económico y Social, 5 de mayo. Presidenta: Paula Benavides. Disponible en cfachile.cl.</li>
+<li>International Monetary Fund (2026). <em>Chile</em>. IMF Country Report No. 26/169. Fuente del parámetro δ = 0,1 pp.</li>
+<li>International Monetary Fund (2026). <em>Chile: Staff Concluding Statement of the 2026 Article IV Mission</em>, 4 de mayo.</li>
+<li>International Monetary Fund (2026). <em>IMF Executive Board Concludes 2026 Article IV Consultation with Chile</em>, 6 de julio.</li>
+<li>OECD (2026). <em>Economic Outlook, Volume 2026 Issue 1</em>. Capítulo de Chile.</li>
+<li>OECD (2025). <em>Economic Outlook, Volume 2025 Issue 2</em>. Capítulo de Chile.</li>
+<li>World Bank (2026). <em>Global Economic Prospects</em>, edición de enero.</li>
+<li>Dirección de Presupuestos. Informe financiero del proyecto de ley de Reconstrucción Nacional y Desarrollo Económico y Social, Boletín 18.216-05. <span class="pendiente">Referido por CFA; consulta directa pendiente.</span></li>
+</ol>
+
+<h3>Literatura económica</h3>
+<ol start="9">
+<li>Arrow, K.J. y Fisher, A.C. (1974). Environmental Preservation, Uncertainty, and Irreversibility. <em>Quarterly Journal of Economics</em> 88, 312-319.</li>
+<li>Bond, S. y Van Reenen, J. (2007). Microeconometric Models of Investment and Employment. <em>Handbook of Econometrics</em>, volumen 6A.</li>
+<li>Bustos, A., Engel, E.M.R.A. y Galetovic, A. (2004). Could higher taxes increase the long-run demand for capital? Theory and evidence for Chile. <em>Journal of Development Economics</em> 73(2), 675-697.</li>
+<li>Cerda, R. y Larraín, F. (2010). Corporate taxes and the demand for labor and capital in developing countries. <em>Small Business Economics</em> 34(2), 187-201.</li>
+<li>Cerda, R. y Llodrá, J.I. (2017). Impuestos corporativos y capital: veintiséis años de evidencia. <em>Economía Chilena</em> 20(1), 50-71.</li>
+<li>Cerda, R. y Saravia, D. (2009). Corporate Tax, Firm Destruction and Capital Stock Accumulation. Working Paper 521, Banco Central de Chile.</li>
+<li>Conrad, J.M. (1980). Quasi-option Value and the Expected Value of Information. <em>Quarterly Journal of Economics</em> 95, 813-820.</li>
+<li>Dixit, A.K. y Pindyck, R.S. (1994). <em>Investment under Uncertainty</em>. Princeton University Press.</li>
+<li>Hall, R.E. y Jorgenson, D.W. (1967). Tax Policy and Investment Behavior. <em>American Economic Review</em> 57(3).</li>
+<li>Henry, C. (1974). Option Values in the Economics of Irreplaceable Assets. <em>Review of Economic Studies</em> 41, 89-104.</li>
+<li>Hsieh, C.-T. y Parker, J.A. (2007). Taxes and Growth in a Financially Underdeveloped Country: Evidence from the Chilean Investment Boom. <em>Economía</em> 8(1).</li>
+<li>Knight, F.H. (1921). <em>Risk, Uncertainty and Profit</em>. Houghton Mifflin.</li>
+<li>Mensink, P. y Requate, T. (2005). The Dixit-Pindyck and the Arrow-Fisher-Hanemann-Henry option values are not equivalent. <em>Resource and Energy Economics</em> 27(1).</li>
+<li>Vergara, R. (2010). Taxation and private investment: evidence for Chile. <em>Applied Economics</em> 42(6), 717-725.</li>
+<li>Weitzman, M.L. (2009). On Modeling and Interpreting the Economics of Catastrophic Climate Change. <em>Review of Economics and Statistics</em> 91(1).</li>
+<li>Zwick, E. y Mahon, J. (2017). Tax Policy and Heterogeneous Investment Behavior. <em>American Economic Review</em> 107(1), 217-248.</li>
+</ol>
+</section>
+
+</main>
+
+<section class="leer">
+<h2>Seguir leyendo</h2>
+<div class="car-shell">
+  <button class="car-btn car-prev" aria-label="Anterior" onclick="document.getElementById('car').scrollBy({left:-260,behavior:'smooth'})">‹</button>
+  <div class="car" id="car">
+    <a href="https://jookruger.github.io/columns/incubacion-violencia-nominal.html">
+      <span class="cat">Análisis de riesgo</span>
+      <span class="tit">Incubación de la violencia nominal</span>
+      <span class="des">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/el-gobierno-que-enferma.html">
+      <span class="cat">Salud mental · Estado</span>
+      <span class="tit">El gobierno que enferma</span>
+      <span class="des">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/registro_vandalos_columna.html">
+      <span class="cat">Política social</span>
+      <span class="tit">El registro de vándalos</span>
+      <span class="des">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/marco_teorico_tgr_cae_1.html">
+      <span class="cat">Metodología · CAE</span>
+      <span class="tit">Marco teórico y metodología de cálculo</span>
+      <span class="des">Hipótesis: el Estado chileno puede salir «para atrás» con la estrategia de cobro del CAE.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/desvio_fiscal_20anos.html">
+      <span class="cat">Política fiscal</span>
+      <span class="tit">Veinte años de desvío fiscal en Chile</span>
+      <span class="des">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/magnifica-humanitas.html">
+      <span class="cat">Doctrina social · IA</span>
+      <span class="tit">Magnifica Humanitas</span>
+      <span class="des">La encíclica de León XIV y sus implicancias para la inteligencia artificial y la dignidad humana.</span>
+    </a>
+  </div>
+  <button class="car-btn car-next" aria-label="Siguiente" onclick="document.getElementById('car').scrollBy({left:260,behavior:'smooth'})">›</button>
+</div>
+</section>
+
+<footer class="colofon">
+<div class="lab">GH HCAI Lab · Human Centered Artificial Intelligence Lab · Geohumano · Valdivia, Chile</div>
+<p>Análisis económico · Serie Política Fiscal / Geohumano. Toda la aritmética es lineal en los parámetros declarados y por tanto reproducible con estimaciones alternativas. Las conclusiones dependen de los supuestos explicitados en cada sección. Se invita a replicar, cuestionar y refinar el análisis. Serie completa en jookruger.github.io/columns.</p>
+<div class="meta-grid" style="margin-top:22px">
+  <div><span class="k">Autor</span><span class="v">Jorge Oyarce Kruger</span></div>
+  <div><span class="k">Fecha</span><span class="v">Julio de 2026</span></div>
+  <div><span class="k">Lugar</span><span class="v">Valdivia, Región de Los Ríos</span></div>
+  <div><span class="k">Tipo</span><span class="v">Análisis · Serie GH HCAI Lab</span></div>
+</div>
+</footer>
+
+</div>
+
+</body>
+</html>
