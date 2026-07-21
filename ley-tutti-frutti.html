@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La ley tutti frutti — GH HCAI Lab</title>
+<meta name="description" content="Cómo detectar el contrabando legislativo antes de que la Constitución tenga que hacerlo. Un radar de nueve sensores aplicado al Boletín 18.216-05. Por Jorge Oyarce Kruger — GH HCAI Lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#DCDBC9;
+  --salvia:#A3BCBA;
+  --rosa:#D8C4D2;
+  --purpura:#563F67;
+  --purpura-medio:#9C83A4;
+  --tinta:#2E2433;
+  --papel:#F2F1E7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:18px;
+  line-height:1.72;
+}
+.topbar{
+  background:var(--purpura);
+  color:var(--crema);
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:10px 24px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.topbar span{opacity:.9}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px}
+header.hero{padding:56px 0 34px;border-bottom:3px solid var(--purpura)}
+.tags{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--purpura);margin-bottom:8px}
+.tags .sep{color:var(--purpura-medio);margin:0 6px}
+.volver{display:inline-block;font-size:14px;color:var(--purpura);text-decoration:none;border-bottom:1px solid var(--purpura-medio);margin-bottom:26px}
+.volver:hover{color:var(--purpura-medio)}
+h1{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(34px,5.4vw,52px);
+  line-height:1.12;
+  color:var(--purpura);
+  margin-bottom:18px;
+}
+h1 em{font-style:italic;font-weight:600}
+.bajada{
+  font-size:21px;
+  line-height:1.55;
+  color:var(--tinta);
+  font-weight:400;
+  margin-bottom:26px;
+  max-width:56ch;
+}
+.firma{font-size:16px;color:var(--purpura)}
+.meta-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  margin:34px 0 0;
+  border-top:1px solid var(--purpura);
+  border-bottom:1px solid var(--purpura);
+}
+.meta-grid div{
+  background:transparent;
+  padding:14px 18px 14px 0;
+  border-right:1px solid var(--purpura-medio);
+}
+.meta-grid div:first-child{padding-left:0}
+.meta-grid div:last-child{border-right:none}
+.meta-grid .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura-medio);margin-bottom:4px}
+.meta-grid .v{font-size:15px;color:var(--tinta);line-height:1.4}
+@media (max-width:640px){
+  .meta-grid{grid-template-columns:repeat(2,1fr);row-gap:14px}
+  .meta-grid div{padding:10px 14px 10px 0}
+  .meta-grid div:nth-child(2){border-right:none}
+  .meta-grid div:nth-child(3){padding-left:0;border-right:1px solid var(--purpura-medio)}
+  .meta-grid div:nth-child(3),.meta-grid div:nth-child(4){border-top:1px solid var(--purpura-medio);padding-top:14px}
+}
+main{padding:40px 0 20px}
+.resumen{
+  background:var(--papel);
+  border-left:5px solid var(--purpura);
+  padding:26px 28px;
+  margin:0 0 36px;
+}
+.resumen h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--purpura);margin-bottom:10px}
+.resumen p{font-size:17px}
+.resumen p + p{margin-top:12px}
+.epistemica{
+  background:var(--rosa);
+  border:1px dashed var(--purpura);
+  padding:22px 26px;
+  margin:0 0 36px;
+  font-size:16px;
+}
+.epistemica h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--purpura);margin-bottom:8px;font-style:italic}
+.toc{
+  background:var(--salvia);
+  padding:24px 28px;
+  margin-bottom:48px;
+}
+.toc h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--purpura);margin-bottom:12px}
+.toc ol{padding-left:22px;font-size:16px}
+.toc li{margin:4px 0}
+.toc a{color:var(--tinta);text-decoration:none;border-bottom:1px solid rgba(86,63,103,.35)}
+.toc a:hover{color:var(--purpura)}
+section{margin-bottom:52px}
+h2.sec{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  line-height:1.2;
+  color:var(--purpura);
+  margin-bottom:18px;
+  padding-top:8px;
+}
+h2.sec .num{
+  display:inline-block;
+  font-size:15px;
+  letter-spacing:.1em;
+  color:var(--purpura-medio);
+  margin-right:10px;
+  vertical-align:middle;
+}
+h3{font-family:'Playfair Display',serif;font-size:21px;color:var(--purpura);margin:26px 0 10px}
+p + p{margin-top:14px}
+section p{max-width:70ch}
+strong{font-weight:600;color:var(--purpura)}
+a{color:var(--purpura)}
+.callout{
+  background:var(--rosa);
+  padding:22px 26px;
+  margin:24px 0;
+  border-left:5px solid var(--purpura);
+}
+.callout h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--purpura);margin-bottom:8px}
+.callout p{font-size:16.5px}
+.ensimple{
+  background:var(--papel);
+  border:1px solid var(--salvia);
+  border-left:6px solid var(--salvia);
+  padding:20px 24px;
+  margin:26px 0;
+}
+.ensimple h4{
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--purpura);margin-bottom:8px;font-family:'Source Serif 4',serif;font-weight:600;
+}
+.ensimple p{font-size:16.5px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15.5px;background:var(--papel)}
+th{background:var(--purpura);color:var(--crema);text-align:left;padding:10px 12px;font-weight:600;font-size:14px;letter-spacing:.02em}
+td{padding:9px 12px;border-bottom:1px solid var(--salvia);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.hl{background:var(--rosa);font-weight:600}
+.figure{
+  background:var(--papel);
+  border:1px solid var(--purpura-medio);
+  padding:22px 22px 16px;
+  margin:28px 0;
+}
+.figure svg{width:100%;height:auto;display:block}
+.figcap{font-size:14.5px;line-height:1.6;color:var(--tinta);margin-top:12px;border-top:1px solid var(--salvia);padding-top:10px}
+.figcap strong{color:var(--purpura)}
+blockquote{
+  border-left:5px solid var(--purpura-medio);
+  padding:14px 22px;
+  margin:22px 0;
+  background:var(--papel);
+  font-style:italic;
+  font-size:18px;
+  color:var(--purpura);
+}
+blockquote .who{display:block;font-style:normal;font-size:14px;margin-top:8px;color:var(--tinta)}
+.fruta{
+  background:var(--papel);
+  border:1px solid var(--purpura-medio);
+  padding:20px 24px;
+  margin:18px 0;
+}
+.fruta h4{font-family:'Playfair Display',serif;font-size:19px;color:var(--purpura);margin-bottom:6px}
+.fruta .procede{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--purpura-medio);margin-bottom:10px}
+.fruta .veredicto{font-size:14px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--salvia);color:var(--purpura);font-weight:600}
+.refs{font-size:15px}
+.refs ol{padding-left:24px}
+.refs li{margin:9px 0}
+footer.colofon{
+  border-top:3px solid var(--purpura);
+  margin-top:30px;
+  padding:34px 0 20px;
+  font-size:15px;
+}
+footer.colofon .lab{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura);margin-bottom:14px}
+.leer{margin:34px 0 10px}
+.leer h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--purpura);margin-bottom:14px}
+.car-shell{position:relative}
+.car{
+  display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;
+  padding-bottom:10px;scrollbar-width:thin;
+}
+.car a{
+  flex:0 0 240px;background:var(--papel);border:1px solid var(--purpura-medio);
+  padding:16px 16px 18px;text-decoration:none;color:var(--tinta);
+}
+.car a:hover{border-color:var(--purpura)}
+.car .cat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purpura-medio);display:block;margin-bottom:6px}
+.car .tit{font-family:'Playfair Display',serif;font-size:17px;color:var(--purpura);display:block;line-height:1.25;margin-bottom:6px}
+.car .des{font-size:13.5px;line-height:1.5;display:block}
+.car .actual{border-color:var(--purpura);background:var(--rosa)}
+.car-btn{
+  position:absolute;top:40%;transform:translateY(-50%);
+  background:var(--purpura);color:var(--crema);border:none;cursor:pointer;
+  width:34px;height:34px;border-radius:50%;font-size:18px;line-height:1;
+}
+.car-btn:focus-visible{outline:3px solid var(--purpura-medio)}
+.car-prev{left:-12px}.car-next{right:-12px}
+@media (max-width:640px){
+  .car-btn{display:none}
+  .figure{padding:14px 10px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .car{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>GH HCAI Lab · Ensayo metodológico</span>
+  <span>Serie Política Fiscal · v1.0</span>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="tags">Técnica legislativa<span class="sep">·</span>Metodología<span class="sep">·</span>Boletín 18.216-05</div>
+  <a class="volver" href="https://jookruger.github.io/columns/index.html">← Volver a Columnas</a>
+  <h1>La ley <em>tutti frutti</em></h1>
+  <p class="bajada">Cómo detectar el contrabando legislativo antes de que la Constitución tenga que hacerlo. Un radar de nueve sensores aplicado al Boletín 18.216-05.</p>
+  <p class="firma">Jorge Oyarce Kruger &nbsp;·&nbsp; Valdivia, abril de 2026</p>
+  <div class="meta-grid">
+    <div><span class="k">Autor</span><span class="v">Jorge Oyarce Kruger — GH HCAI Lab</span></div>
+    <div><span class="k">Fecha</span><span class="v">Abril de 2026</span></div>
+    <div><span class="k">Lugar</span><span class="v">Valdivia, Región de Los Ríos</span></div>
+    <div><span class="k">Tipo</span><span class="v">Ensayo metodológico · v1.0</span></div>
+  </div>
+</header>
+
+<main>
+
+<div class="resumen">
+  <h2>Resumen</h2>
+  <p>Toda ley ómnibus se parece a una macedonia: uvas, plátano, un poco de todo, y en algún lugar un trozo que nadie sabe cómo llegó ahí. La diferencia es que la macedonia se come; la ley se aprueba. Este ensayo propone la <em>Lógica de Radar</em> como método para detectar los frutos ajenos antes de que pasen la caja: un sistema de nueve sensores que mide, para cada disposición, dos distancias objetivas: la que la separa del núcleo temático del proyecto, y la que la separa de la jerarquía normativa preexistente.</p>
+  <p>El análisis se aplica al Mensaje N° 018-374 de 2026, el proyecto de ley para la Reconstrucción Nacional y el Desarrollo Económico y Social (Boletín 18.216-05). Los hallazgos se clasifican en dos categorías técnicas: <strong>Materias de Incidencia Orgánica</strong>, disposiciones que modifican leyes de rango orgánico-constitucional con quórum de ley simple, y <strong>Materias de Incoherencia Estructural</strong>, disposiciones sin conexión causal con el diagnóstico que justifica la urgencia. Este texto se construyó desde fuera de la formación jurídica y con asistencia de inteligencia artificial. Su valor está en la reproducibilidad del método, no en la autoridad de sus conclusiones.</p>
+</div>
+
+<div class="epistemica">
+  <h3>Nota epistémica (léase antes que nada)</h3>
+  <p>Este documento se armó sin formación jurídica y con asistencia de IA. Es probable que contenga errores. La virtud del método propuesto es que cualquiera puede aplicarlo a cualquier proyecto de ley y llegar a otras conclusiones; la virtud del autor es reconocer que quien abre la macedonia también es aficionado. Todo hallazgo aquí consignado es una hipótesis analítica, no un dictamen jurídico, y debe ser revisado por conocimiento humano especializado antes de cualquier uso en un contexto parlamentario. El propósito no es consignar verdades, sino abrir la discusión y señalar los flancos por donde vale la pena mirar.</p>
+</div>
+
+<div class="toc">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#s1">El chiste, en serio</a></li>
+    <li><a href="#s2">El radar: nueve sensores para una fruta</a></li>
+    <li><a href="#s3">El diagnóstico que promete manzanas</a></li>
+    <li><a href="#s4">Barrido inicial: lo que canta el radar</a></li>
+    <li><a href="#s5">Catálogo de frutos ajenos</a></li>
+    <li><a href="#s6">Frutos con precio mal marcado</a></li>
+    <li><a href="#s7">Zonas grises: la fruta sospechosa</a></li>
+    <li><a href="#s8">Cuatro hitos del método (de la perplejidad al rigor)</a></li>
+    <li><a href="#s9">Conclusiones: comer o pesar la macedonia</a></li>
+  </ol>
+</div>
+
+<section id="s1">
+<h2 class="sec"><span class="num">§1</span>El chiste, en serio</h2>
+
+<p>Un día decidí, con la ingenuidad del recién llegado, hacerle a un proyecto de ley una pregunta elemental: <em>¿existen límites a la variedad de contenido que puede llevar dentro?</em> Uno esperaría que sí. Uno esperaría, incluso, que esos límites estuvieran redactados con la solemnidad de una advertencia sanitaria: <em>«prohibido introducir en la misma botella un impuesto y una salmonera»</em>. Uno esperaría mal.</p>
+
+<p>La respuesta corta es que los límites existen y están razonablemente bien escritos. La respuesta larga es que los límites viven en un edificio de tres pisos (la Ley Orgánica del Congreso, los reglamentos de ambas cámaras y la Constitución), tienen porteros, y aun así casi cualquier proyecto de envergadura logra colar en su interior alguna cosa que no tiene nada que ver con el resto. A eso le llamaremos <strong>ley tutti frutti</strong>: una ley que se presenta como postre único pero que, al fondo del plato, esconde un pedacito de piña que llegó por otra ruta.</p>
+
+<p>Este ensayo hace dos cosas. Primero propone un método (la <em>Lógica de Radar</em>) para detectar esos frutos ajenos con criterios objetivos y reproducibles. Después lo aplica al Mensaje N° 018-374, el proyecto de Reconstrucción Nacional y Desarrollo Económico y Social (Boletín 18.216-05), que es la macedonia que hoy se sirve en el Congreso. El objetivo declarado no es impugnar la ley (para eso están los abogados y los diputados, que estudiaron para eso) sino demostrar que muchos problemas de coherencia son detectables <em>antes</em> del control constitucional, y con instrumentos que ya existen en el propio Congreso.</p>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>Uno abre el envase esperando manzanas de la reconstrucción y sale, por ejemplo, un capítulo sobre minería de datos aplicable a inteligencia artificial. No es una anécdota. Es el modo en que funcionan las leyes ómnibus: aprovechan la urgencia del titular para meter, en el mismo carro, cosas que por sí solas no habrían llegado a la caja.</p>
+</div>
+
+<p>La imagen del radar no es adorno. Un radar no opina sobre lo que detecta: mide distancias. En este caso, dos: (a) la distancia entre cada artículo y las ideas matrices del proyecto (¿esto es manzana o es piña?), y (b) la distancia entre cada artículo y las leyes de rango superior con las que debería convivir (¿esta piña puede venderse a este precio, o requiere otro trámite?). Ninguna de las dos mediciones es política. Ambas son técnicas. Y el hallazgo central del ejercicio es que el sistema chileno tiene los sensores para hacer las dos, pero rara vez los enciende.</p>
+</section>
+
+<section id="s2">
+<h2 class="sec"><span class="num">§2</span>El radar: nueve sensores para una fruta</h2>
+
+<p>Antes de mirar el proyecto conviene decir cómo se mira. La <em>Lógica de Radar</em> se estructura en nueve sensores. El Sensor 0 es el más importante y el menos glamoroso: opera al nivel del reglamento interno del Congreso, es decir, antes del control constitucional. Los sensores 1 al 8 integran la Constitución y la jurisprudencia del Tribunal Constitucional. La lógica del orden es deliberada: si el fruto ajeno es detectable en la caja del supermercado (Sensor 0), no hace falta llevarlo al laboratorio (Sensores 1 al 8).</p>
+
+<div class="figure">
+<svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar de nueve sensores">
+  <!-- círculos concéntricos -->
+  <g fill="none" stroke="#9C83A4" stroke-width="1" opacity=".55">
+    <circle cx="350" cy="230" r="60"/>
+    <circle cx="350" cy="230" r="115"/>
+    <circle cx="350" cy="230" r="170"/>
+    <circle cx="350" cy="230" r="215"/>
+  </g>
+  <!-- ejes -->
+  <g stroke="#9C83A4" stroke-width=".8" opacity=".35">
+    <line x1="350" y1="15" x2="350" y2="445"/>
+    <line x1="135" y1="230" x2="565" y2="230"/>
+    <line x1="200" y1="80" x2="500" y2="380"/>
+    <line x1="500" y1="80" x2="200" y2="380"/>
+  </g>
+  <!-- centro -->
+  <circle cx="350" cy="230" r="42" fill="#563F67"/>
+  <text x="350" y="225" font-family="Playfair Display,serif" font-size="12" fill="#DCDBC9" text-anchor="middle" font-style="italic">Ideas</text>
+  <text x="350" y="242" font-family="Playfair Display,serif" font-size="12" fill="#DCDBC9" text-anchor="middle" font-style="italic">matrices</text>
+
+  <!-- Sensor 0: anillo exterior, arriba -->
+  <g>
+    <circle cx="350" cy="25" r="16" fill="#A3BCBA" stroke="#563F67" stroke-width="1.5"/>
+    <text x="350" y="30" font-family="Playfair Display,serif" font-size="13" fill="#563F67" text-anchor="middle" font-weight="700">0</text>
+    <text x="350" y="60" font-family="Source Serif 4,serif" font-size="11.5" fill="#563F67" text-anchor="middle" font-weight="600">Admisibilidad interna</text>
+    <text x="350" y="73" font-family="Source Serif 4,serif" font-size="10" fill="#563F67" text-anchor="middle" font-style="italic">(pre-constitucional)</text>
+  </g>
+
+  <!-- Sensor 1 -->
+  <g>
+    <circle cx="480" cy="110" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="480" y="115" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">1</text>
+    <text x="580" y="103" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Ideas matrices</text>
+    <text x="580" y="115" font-family="Source Serif 4,serif" font-size="9.5" fill="#9C83A4" text-anchor="middle">art. 69 CPR</text>
+  </g>
+  <!-- Sensor 2 -->
+  <g>
+    <circle cx="555" cy="230" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="555" y="235" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">2</text>
+    <text x="622" y="228" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Coherencia</text>
+    <text x="622" y="240" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">sistemática</text>
+  </g>
+  <!-- Sensor 3 -->
+  <g>
+    <circle cx="480" cy="350" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="480" y="355" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">3</text>
+    <text x="580" y="352" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Vicio de forma</text>
+    <text x="580" y="364" font-family="Source Serif 4,serif" font-size="9.5" fill="#9C83A4" text-anchor="middle">art. 69 CPR</text>
+  </g>
+  <!-- Sensor 4 -->
+  <g>
+    <circle cx="350" cy="435" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="350" y="440" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">4</text>
+    <text x="350" y="405" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Iniciativa exclusiva</text>
+  </g>
+  <!-- Sensor 5 -->
+  <g>
+    <circle cx="220" cy="350" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="220" y="355" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">5</text>
+    <text x="120" y="352" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Comisiones unidas</text>
+  </g>
+  <!-- Sensor 6 -->
+  <g>
+    <circle cx="145" cy="230" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="145" y="235" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">6</text>
+    <text x="75" y="228" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Filtro de</text>
+    <text x="75" y="240" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">admisibilidad</text>
+  </g>
+  <!-- Sensor 7 -->
+  <g>
+    <circle cx="220" cy="110" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="220" y="115" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">7</text>
+    <text x="120" y="103" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle" font-weight="600">Jerarquía de quórum</text>
+    <text x="120" y="115" font-family="Source Serif 4,serif" font-size="9.5" fill="#9C83A4" text-anchor="middle">art. 66 CPR</text>
+  </g>
+  <!-- Sensor 8 -->
+  <g>
+    <circle cx="480" cy="60" r="14" fill="#D8C4D2" stroke="#563F67" stroke-width="1.2"/>
+    <text x="480" y="65" font-family="Playfair Display,serif" font-size="12" fill="#563F67" text-anchor="middle" font-weight="700">8</text>
+    <text x="480" y="35" font-family="Source Serif 4,serif" font-size="10.5" fill="#563F67" text-anchor="middle">Reserva de ley</text>
+  </g>
+</svg>
+<p class="figcap"><strong>Figura 1. El radar completo.</strong> El centro son las <em>ideas matrices</em> del proyecto (¿de qué trata realmente?). Cada sensor mide, desde una regla distinta, si un artículo está dentro o fuera del alcance del centro. El sensor 0 (verde-salvia, arriba) opera al nivel del reglamento del Congreso: es la primera línea de detección y no requiere invocar la Constitución. Los sensores 1 al 8 (rosa) operan al nivel constitucional. Los sensores más grandes —1 (ideas matrices, art. 69) y 7 (jerarquía de quórum, art. 66)— son los que más disparan en el análisis del Boletín 18.216-05.</p>
+</div>
+
+<h3>El sensor pre-constitucional que casi nadie usa</h3>
+
+<p>Antes de que un proyecto llegue a discutirse en el Tribunal Constitucional pasa por un edificio con conserjería: la Ley Orgánica del Congreso (Ley N° 18.918) y los reglamentos de la Cámara y del Senado establecen condiciones mínimas de admisibilidad. La Secretaría de la respectiva cámara y la Mesa Directiva pueden rechazar disposiciones que no guarden relación con las ideas matrices, que mezclen materias, o que exhiban problemas evidentes de técnica legislativa. Ese conserje existe. Rara vez está de servicio, o al menos su bitácora rara vez se publica.</p>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>El Congreso ya tiene un detector de metales en la puerta. Lo que este ensayo intenta demostrar es que si lo prendieran, sonaría bastante seguido.</p>
+</div>
+
+<h3>Los ocho sensores del piso constitucional</h3>
+
+<table>
+<thead>
+<tr><th>#</th><th>Sensor</th><th>Qué mide</th><th>Fundamento</th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>Admisibilidad técnica interna</td><td>Coherencia formal, ideas matrices, corrección de ingreso</td><td>Ley 18.918 y Reglamentos</td></tr>
+<tr><td>1</td><td>Ideas matrices</td><td>Relación directa entre cada artículo y el núcleo temático</td><td>Art. 69 CPR</td></tr>
+<tr><td>2</td><td>Coherencia sistemática</td><td>Armonía con el ordenamiento vigente, sin contradicciones nuevas</td><td>Técnica legislativa</td></tr>
+<tr><td>3</td><td>Vicio de forma</td><td>Errores procedimentales o de congruencia temática</td><td>CPR / Reglamento</td></tr>
+<tr><td>4</td><td>Iniciativa exclusiva</td><td>Competencia del autor para proponer la materia</td><td>Art. 65 CPR</td></tr>
+<tr><td>5</td><td>Comisiones unidas</td><td>Si la amplitud temática obliga a revisión por varias comisiones</td><td>Reglamento</td></tr>
+<tr><td>6</td><td>Filtro de admisibilidad</td><td>La Secretaría puede rechazar artículos sin relación con las ideas matrices</td><td>Reglamento / Mesa</td></tr>
+<tr><td>7</td><td>Jerarquía de quórum (LOC)</td><td>Si se intenta alterar leyes orgánicas con quórum simple</td><td>Art. 66 CPR</td></tr>
+<tr><td>8</td><td>Reserva de ley</td><td>Invasión entre potestad reglamentaria del Ejecutivo y reserva legal</td><td>Arts. 32 N°6 y 63 CPR</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<h4>Una distinción que confunde a todos, empezando por el autor</h4>
+<p>El <strong>Vicio de Forma</strong> (sensor 3) mira el <em>artículo</em>: independientemente de quién lo proponga, esta disposición no tiene relación con el proyecto. La <strong>Iniciativa Exclusiva</strong> (sensor 4) mira el <em>autor</em>: quien propone esta disposición no tiene facultad para hacerlo. Cuando el proyecto viene del Ejecutivo (como este), el sensor 4 casi siempre se enciende con luz verde. El problema entonces se desplaza al sensor 3: la facultad de iniciativa no otorga carta blanca para ignorar el artículo 69 de la Constitución.</p>
+</div>
+</section>
+
+<section id="s3">
+<h2 class="sec"><span class="num">§3</span>El diagnóstico que promete manzanas</h2>
+
+<p>Antes de mirar el articulado hay que fijar el <em>ratio legis</em> del proyecto: la vara contra la cual cada disposición debe pesarse. El Mensaje N° 018-374 declara sin ambigüedad qué son las manzanas que promete: revertir el estancamiento del crecimiento, corregir la brecha tributaria con la OCDE, racionalizar los permisos que traban la inversión y recuperar la certeza jurídica. Los efectos esperados vienen con cifra: 180.000 empleos en el corto plazo, desempleo al 6,5% hacia 2030, crecimiento promedio de 4% anual.</p>
+
+<table>
+<thead>
+<tr><th>Dimensión de crisis</th><th>Indicador declarado</th></tr>
+</thead>
+<tbody>
+<tr><td>Estancamiento productivo</td><td>Crecimiento promedio 2% anual (2014–2025)</td></tr>
+<tr><td>Actividad reciente</td><td>–0,4% en enero–marzo de 2026</td></tr>
+<tr><td>Desempleo total</td><td>860.000 personas sin trabajo</td></tr>
+<tr><td>Desempleo juvenil</td><td>22,2% en menores de 25</td></tr>
+<tr><td>Creación de empleo</td><td>0,2% (casi estancamiento)</td></tr>
+<tr><td>Déficit habitacional</td><td>834.000 hogares; 120.000 familias en campamentos</td></tr>
+<tr><td>Empleo en construcción</td><td>~180.000 puestos perdidos desde 2019</td></tr>
+<tr><td>Deuda pública</td><td>De 5% a ~42% del PIB (2008–2025)</td></tr>
+<tr><td>Tasa IDPC vs. OCDE</td><td>27% en Chile vs. 24% promedio OCDE</td></tr>
+</tbody>
+</table>
+
+<p>Esta lista es la vara. Cada artículo del proyecto tiene que poder mirarse en al menos uno de estos indicadores para pasar el sensor 1. Si un artículo no puede explicar su presencia recurriendo a ninguno de ellos, no está en el envase por casualidad: está de contrabando. No es una crítica moral al Ejecutivo; es una regla técnica del artículo 69 de la Constitución.</p>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>La caja promete «postre de manzana». Si al fondo hay piña, no importa qué tan rica sea la piña ni cuán buena idea sea comerla: no era lo que decía la caja.</p>
+</div>
+</section>
+
+<section id="s4">
+<h2 class="sec"><span class="num">§4</span>Barrido inicial: lo que canta el radar</h2>
+
+<p>Aplicado el radar al articulado completo del Boletín 18.216-05, el primer barrido entrega el siguiente resultado. Es una foto rápida: la lectura fina viene después.</p>
+
+<table>
+<thead>
+<tr><th>#</th><th>Sensor</th><th>Lectura sobre el 18.216-05</th><th>Nivel</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Ideas matrices</td><td>Convive condonación de multas municipales con Ley de Monumentos y con relocalización de salmoneras. Riesgo alto en los artículos más alejados del eje fiscal.</td><td class="hl">MEDIO-ALTO</td></tr>
+<tr><td>2</td><td>Coherencia sistemática</td><td>Introduce cambios al SEIA (exime micro-relocalizaciones acuícolas). Roza la normativa ambiental vigente.</td><td>MEDIO</td></tr>
+<tr><td>3</td><td>Vicio de forma</td><td>Ingreso correcto por la Cámara. Los artículos más ajenos al núcleo podrían caer aquí.</td><td>MEDIO</td></tr>
+<tr><td>4</td><td>Iniciativa exclusiva</td><td>Se cumple formalmente. Foco analítico se desplaza al Vicio de Forma.</td><td>BAJO</td></tr>
+<tr><td>5</td><td>Comisiones unidas</td><td>Amplitud temática obliga a Comisiones Unidas: es el principal filtro de calidad del proceso.</td><td>OBSERVAR</td></tr>
+<tr><td>6</td><td>Filtro admisibilidad</td><td>La Secretaría deberá revisar cruces de datos SII–MDS y plazos de invalidación.</td><td>MEDIO</td></tr>
+<tr><td>7</td><td>Jerarquía de quórum</td><td>Punto crítico. Modifica atribuciones municipales y del CMN, materias de rango orgánico-constitucional.</td><td class="hl">CRÍTICO</td></tr>
+<tr><td>8</td><td>Reserva de ley</td><td>Fija por ley plazos de invalidación administrativa. Posible invasión de la potestad reglamentaria.</td><td class="hl">MEDIO-ALTO</td></tr>
+</tbody>
+</table>
+
+<p>Dos sensores se encienden fuerte: el 1 (ideas matrices) y el 7 (quórum orgánico). El 4, en cambio, se queda en verde: el Ejecutivo sí tiene facultad para proponer las materias tributarias del corazón del proyecto. El problema, entonces, no es <em>quién</em> lo propone, sino <em>qué</em> se propone en el mismo envase.</p>
+</section>
+
+<section id="s5">
+<h2 class="sec"><span class="num">§5</span>Catálogo de frutos ajenos</h2>
+
+<p>La sección más divertida. Recorramos, con nombre, marca y procedencia, los frutos que aparecieron en el postre sin haber sido invitados. La regla del catálogo es simple: cada fruto debe (a) no encontrar sustento en ninguno de los indicadores del §3, y (b) admitir una explicación plausible de por qué termina, sin embargo, dentro del envase.</p>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 1 — Origen: OCDE o CPTPP, no consta</div>
+<h4>La piña del <em>text mining</em></h4>
+<p>El artículo 8° del proyecto incorpora un nuevo artículo 71T a la Ley de Propiedad Intelectual. En cristiano: autoriza la reproducción, adaptación o comunicación de obras lícitamente publicadas, sin autorización ni pago al titular, cuando el uso tenga por objeto la extracción, clasificación o análisis estadístico de grandes volúmenes de datos (<em>text mining</em>, <em>data mining</em>). Es, literalmente, la habilitación legal para entrenar modelos de inteligencia artificial con obras protegidas.</p>
+<p>Uno abre el envase esperando reconstrucción post-incendios y sale un capítulo sobre cómo alimentar algoritmos. Ningún indicador del §3 vincula el régimen de propiedad intelectual con el desempleo, la vivienda o el estancamiento productivo. El Ejecutivo argumentará, quizás, que la economía del conocimiento es una dimensión del desarrollo. Correcto y, para el artículo 69 de la Constitución, insuficiente: la relación con las ideas matrices debe ser directa, no transversal.</p>
+<p class="veredicto">Veredicto del radar: incoherencia estructural. Riesgo alto.</p>
+</div>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 2 — Origen: reforma sectorial acuícola</div>
+<h4>La lima del salmón que se muda</h4>
+<p>Los artículos 6° y 7° eximen del Sistema de Evaluación de Impacto Ambiental (SEIA) a las relocalizaciones de concesiones acuícolas bajo ciertas condiciones. La justificación empírica es contundente: de 1.060 solicitudes desde 2010, solo dos completaron exitosamente el proceso. Es un dato que amerita discusión. La discusión, sin embargo, no debería estar aquí.</p>
+<p>El diagnóstico del Mensaje no menciona a la acuicultura, ni a la salmonicultura, como sectores cuyo desempeño explique el desempleo masivo o el déficit habitacional que motivan la urgencia. La reforma tiene mérito propio; pero su mérito propio no es lo que discute este proyecto.</p>
+<p class="veredicto">Veredicto del radar: incoherencia estructural. Riesgo medio.</p>
+</div>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 3 — Origen: la Ley de Procedimiento Administrativo</div>
+<h4>La ciruela del plazo cortito</h4>
+<p>El artículo 5° modifica la Ley N° 19.880 y reduce de dos años a seis meses el plazo para que la Administración invalide sus propios actos. En castellano: si el Estado emitió un acto ilegal, tiene la cuarta parte del tiempo que antes tenía para corregirlo. Después, el acto queda firme.</p>
+<p>El vínculo con la certeza jurídica del inversionista es defendible en abstracto, pero la medida tiene un alcance que trasciende con creces el ámbito económico: afecta la capacidad del Estado de corregir sus propios errores en cualquier materia, incluidos beneficios sociales, derechos laborales y sanciones. Es un cambio de arquitectura administrativa disfrazado de estímulo a la inversión.</p>
+<p class="veredicto">Veredicto del radar: reserva de ley / potestad reglamentaria en tensión. Riesgo medio-alto.</p>
+</div>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 4 — Origen: régimen de datos personales</div>
+<h4>La uva del cruce de datos</h4>
+<p>El artículo 24° habilita cruces de información entre el SII y el Ministerio de Desarrollo Social. Tiene sentido para la focalización del gasto y para el combate a la evasión: ninguno de los dos objetivos es objetable en sí. El sensor 2 (coherencia sistemática), sin embargo, obliga a mirar esta facultad en armonía con la Ley N° 19.628 sobre protección de la vida privada. En el articulado no se leen garantías explícitas de anonimización, propósito específico ni control ex post. Puede ser un olvido; puede ser un olvido conveniente.</p>
+<p class="veredicto">Veredicto del radar: coherencia sistemática comprometida. Riesgo medio.</p>
+</div>
+
+<div class="ensimple">
+<h4>En simple</h4>
+<p>El proyecto se presenta como postre único para reactivar la economía. En su interior conviven un capítulo para entrenar inteligencia artificial, uno para mudar salmoneras, uno para restringir la autocorrección del Estado y uno para intercambiar bases de datos personales. Ninguno de los cuatro necesita estar aquí para existir. Todos necesitan estar aquí para <em>llegar más rápido</em>. Ese es exactamente el problema.</p>
+</div>
+</section>
+
+<section id="s6">
+<h2 class="sec"><span class="num">§6</span>Frutos con precio mal marcado</h2>
+
+<p>Los frutos del §5 tienen un problema de temario: no van con el postre. Los frutos de esta sección tienen un problema distinto y más grave: <strong>llevan el precio mal marcado</strong>. Se venden como si fueran ley simple cuando técnicamente exigen quórum de Ley Orgánica Constitucional (art. 66 CPR). Si el Congreso los cobra al precio marcado, la venta es válida pero pasible de anulación por el Tribunal Constitucional.</p>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 5 — Precio: ley simple. Precio real: LOC de Municipalidades</div>
+<h4>La sandía municipal (arts. 42–45)</h4>
+<p>El proyecto faculta a los Concejos Municipales para condonar, de forma permanente, multas, intereses y derechos de aseo, patentes comerciales y otros cobros. La lectura práctica: se modifica de manera permanente la potestad sancionatoria y de cobro de un órgano autónomo del Estado, cuya organización y atribuciones están reguladas por la LOC de Municipalidades (Ley N° 18.695). Alterar esa arquitectura con quórum simple es venderle a la caja la sandía como si fuera cereza.</p>
+<p>Este es, con diferencia, el riesgo constitucional más severo del proyecto. No porque la condonación sea buena o mala idea (esa discusión es política y no le compete al radar), sino porque el instrumento elegido no calza con el precio de la etiqueta.</p>
+<p class="veredicto">Veredicto del radar: incidencia orgánica. Riesgo crítico.</p>
+</div>
+
+<div class="fruta">
+<div class="procede">Fruto N.° 6 — Precio: ley simple. Precio real: Ley 17.288 sobre Monumentos</div>
+<h4>El durazno del silencio patrimonial (art. 22)</h4>
+<p>El proyecto establece que si el Consejo de Monumentos Nacionales no se pronuncia dentro de veinte días corridos, se entiende <em>aprobada</em> la continuación de las faenas. Para intervenciones menores elimina directamente la autorización previa y la reemplaza por un aviso electrónico con aprobación automática. Es una modificación sustantiva de las potestades del CMN, órgano cuya organización toca la Ley N° 17.288.</p>
+<p>Y aquí un detalle que revela más ignorancia que malicia: existe un proyecto paralelo (Boletín N° 12.712-24) que aborda específicamente la modernización del CMN. La sensación es que la disposición se metió al envase equivocado por descuido: el durazno cayó del cajón vecino y quedó ahí.</p>
+<p class="veredicto">Veredicto del radar: incidencia orgánica + incoherencia estructural. Riesgo alto.</p>
+</div>
+
+<h3>Síntesis: cómo queda la macedonia</h3>
+
+<table>
+<thead>
+<tr><th>Componente</th><th>Clasificación</th><th>Riesgo</th></tr>
+</thead>
+<tbody>
+<tr><td>Propiedad intelectual — text mining (art. 8°)</td><td>Incoherencia estructural</td><td>Alto</td></tr>
+<tr><td>Condonaciones municipales permanentes (arts. 42–45)</td><td class="hl">Incidencia orgánica</td><td class="hl">Crítico</td></tr>
+<tr><td>Silencio positivo del CMN (art. 22)</td><td>Incidencia orgánica + incoherencia estructural</td><td>Alto</td></tr>
+<tr><td>Exención SEIA acuícola (arts. 6° y 7°)</td><td>Incoherencia estructural</td><td>Medio</td></tr>
+<tr><td>Reducción plazo invalidación (art. 5°)</td><td>Reserva de ley / potestad reglamentaria</td><td>Medio-alto</td></tr>
+<tr><td>Cruce de datos SII–MDS (art. 24°)</td><td>Coherencia sistemática</td><td>Medio</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="s7">
+<h2 class="sec"><span class="num">§7</span>Zonas grises: la fruta sospechosa</h2>
+
+<p>El radar también reconoce patrones que no son artículos individuales sino <em>estructuras</em> que reaparecen en proyectos ómnibus de distintos gobiernos, sin importar el color político. Vale la pena nombrarlos, porque el radar no sirve solo para este proyecto: sirve para todos los que vengan después.</p>
+
+<h3>El «título versus cuerpo»</h3>
+<p>El título de la ley promete tributos y actividad económica; el cuerpo interviene, por ejemplo, la Ley Orgánica de Municipalidades. Cuando el envase no describe el contenido, el radar marca vicio de forma. Es el equivalente legislativo de que la caja diga «uvas» y adentro haya lentejas.</p>
+
+<h3>La «invasión de atribuciones»</h3>
+<p>Cuando la ley toca atribuciones que la Constitución entrega privativamente a otros órganos (Banco Central, Ministerio Público, Contraloría, Poder Judicial), el sensor de jerarquía debería encenderse por reflejo. Estas invasiones se cuelan por técnica más que por doctrina: alguien escribió un artículo sin revisar si otro órgano ya tenía asignada esa competencia por norma superior.</p>
+
+<h3>El «caballo de Troya»</h3>
+<p>La versión más antigua del contrabando legislativo. El Mensaje justifica la urgencia por un tema (seguridad, reconstrucción, empleo) y el articulado cambia reglas de concursos públicos, plantas de personal o régimen tributario de sectores específicos. La distancia entre el fundamento declarado y el contenido real es, precisamente, lo que la <em>Lógica de Radar</em> está diseñada para medir.</p>
+</section>
+
+<section id="s8">
+<h2 class="sec"><span class="num">§8</span>Cuatro hitos del método (de la perplejidad al rigor)</h2>
+
+<p>Documentar cómo se llegó al método es parte de la contribución del ejercicio. Al menos para el aficionado, hay cuatro momentos que vale la pena registrar.</p>
+
+<p><strong>Primer hito: la exploración pre-constitucional.</strong> Preguntarse si existen límites a la variedad de contenido de una ley llevó, sin buscarlo, a descubrir que el Congreso tiene reglas internas (Ley 18.918, reglamentos) con criterios de admisibilidad, coherencia y estructura. El concepto de <em>ideas matrices</em> emergió aquí como límite operativo, y la Mesa Directiva se reveló como filtro técnico. La figura del <em>contrabando legislativo</em> fue el primer hallazgo conceptual: nombrar el problema es el primer paso para verlo.</p>
+
+<p><strong>Segundo hito: el nivel constitucional.</strong> Al superponer los reglamentos con la Constitución, los vicios adquirieron una dimensión adicional. Ya no eran solo procedimentales: eran orgánicos y de competencia. La distinción entre <em>vicio de forma</em> e <em>iniciativa exclusiva</em> como dos rutas autónomas a la inconstitucionalidad fue un momento de madurez del análisis. Hasta ese punto, todo se resolvía diciendo «el Ejecutivo tiene facultad»; después, quedó claro que la facultad no exime del artículo 69.</p>
+
+<p><strong>Tercer hito: el terminológico.</strong> Traducir la percepción inicial de «esto no va acá» a categorías técnicas precisas fue lo que impidió que el ejercicio se volviera opinión. <em>Materias de Incidencia Orgánica</em> y <em>Materias de Incoherencia Estructural</em> son etiquetas frías; describen el vicio sin juzgar la intención. La política queda para otros; el radar solo mide.</p>
+
+<p><strong>Cuarto hito: la metáfora del radar.</strong> Un radar no opina sobre lo que detecta. Mide la distancia entre el objeto y el punto de referencia. Del mismo modo, este análisis no opina sobre la conveniencia de las políticas propuestas; mide la distancia entre cada disposición y el núcleo temático del proyecto, y entre cada norma y la jerarquía constitucional. Esa imagen captura con precisión tanto el alcance como los límites del instrumento.</p>
+</section>
+
+<section id="s9">
+<h2 class="sec"><span class="num">§9</span>Conclusiones: comer o pesar la macedonia</h2>
+
+<p>El Mensaje N° 018-374 es una pieza legislativa de envergadura, con un diagnóstico económico algo acomodado a sus propias soluciones. Su núcleo (reactivación tributaria, empleo formal, vivienda, reconstrucción post-incendios) encuentra respaldo relativo en los indicadores que declara. Pero el barrido del radar identifica un patrón, no una anomalía aislada: hay demasiados componentes heterogéneos que no superan el test de conexidad causal del artículo 69, y en los casos más graves hay vulneraciones a la jerarquía normativa que el quórum simple no puede resolver.</p>
+
+<p>La <em>Incidencia Orgánica</em> más crítica es la modificación permanente de las facultades municipales de condonación: si el Congreso la despacha con quórum simple, esa sección de la ley nace viciada y admite anulación por el Tribunal Constitucional. No es un defecto menor ni una cuestión de forma: es el punto donde la estructura del Estado queda expuesta a una reforma que no contó con el debate reforzado que le correspondía. El silencio positivo aplicado al CMN sigue una lógica similar, con el agravante de que existe legislación paralela en tramitación sobre la misma materia. Esa duplicidad revela más desprolijidad que intencionalidad.</p>
+
+<p>Más allá de los hallazgos artículo por artículo, lo que el radar detecta es un patrón. La exención SEIA para acuicultura, las modificaciones a la permisología sectorial, los plazos de invalidación administrativa, el text mining: son reformas que pueden tener mérito propio, pero que en este envase no encuentran sustento en el diagnóstico que justifica la urgencia. Esa distancia entre el fundamento declarado y el contenido real es, precisamente, lo que la <em>Lógica de Radar</em> está diseñada para medir.</p>
+
+<p>Una conclusión adicional emerge del propio ejercicio. El control técnico de la coherencia legislativa no requiere formación jurídica especializada como punto de partida. Requiere una pregunta bien formulada, un marco de evaluación objetivo y la disposición a distinguir entre lo que una ley dice ser y lo que efectivamente contiene. La inteligencia artificial, empleada no como asistente sino como agente activo de análisis iterativo, puede operar ese control con una sistematicidad difícil de alcanzar en la lectura individual de un proyecto de alta complejidad. Con supervisión humana, se entiende. Sin supervisión humana, la IA también hace macedonias.</p>
+
+<div class="callout">
+<h4>Lo que este radar no es</h4>
+<p>No es una herramienta de impugnación ni un instrumento político. Es una metodología de lectura: permite desglosar un proyecto no como una unidad política indivisible, sino como una estructura técnica susceptible de ser medida en términos de coherencia interna y de alineación con la arquitectura jurídica preexistente. Su mayor valor no está en los hallazgos particulares de este análisis, sino en su reproducibilidad: cualquier proyecto puede someterse al mismo proceso y quien lo aplique llegará, con probabilidad razonable, a conclusiones parecidas o mejor fundadas.</p>
+</div>
+
+<p>Este documento, construido desde la ignorancia de las materias jurídicas y parlamentarias, no pretende ser la última palabra. Pretende ser una primera pregunta bien formulada, y dejar abierto el espacio para que el conocimiento humano especializado la lleve más lejos. La macedonia sigue en la mesa. Al menos, ahora, sabemos que trae piña.</p>
+</section>
+
+<section id="referencias" class="refs">
+<h2 class="sec"><span class="num">§</span>Fuentes normativas y contexto</h2>
+<ol>
+<li>Constitución Política de la República de Chile. Artículos 6, 7, 19 N°20, 32 N°6, 63, 65, 66, 69 y 93 N°3.</li>
+<li>Ley N° 18.918, Orgánica Constitucional del Congreso Nacional.</li>
+<li>Reglamento de la Cámara de Diputadas y Diputados.</li>
+<li>Reglamento del Senado de la República.</li>
+<li>Ley N° 18.695, Orgánica Constitucional de Municipalidades.</li>
+<li>Ley N° 17.288, sobre Monumentos Nacionales.</li>
+<li>Ley N° 19.628, sobre Protección de la Vida Privada.</li>
+<li>Ley N° 19.880, sobre Bases de los Procedimientos Administrativos.</li>
+<li>Ley N° 19.300, sobre Bases Generales del Medio Ambiente (SEIA).</li>
+<li>Mensaje N° 018-374 de 2026. Proyecto de Ley para la Reconstrucción Nacional y el Desarrollo Económico y Social. Boletín 18.216-05.</li>
+<li>Boletín N° 12.712-24. Proyecto de ley que moderniza el Consejo de Monumentos Nacionales (tramitación paralela).</li>
+<li>Jurisprudencia del Tribunal Constitucional sobre ideas matrices y quórum orgánico-constitucional (referencia general).</li>
+</ol>
+</section>
+
+</main>
+
+<section class="leer">
+<h2>Seguir leyendo</h2>
+<div class="car-shell">
+  <button class="car-btn car-prev" aria-label="Anterior" onclick="document.getElementById('car').scrollBy({left:-260,behavior:'smooth'})">‹</button>
+  <div class="car" id="car">
+    <a href="https://jookruger.github.io/columns/incubacion-violencia-nominal.html">
+      <span class="cat">Análisis de riesgo</span>
+      <span class="tit">Incubación de la violencia nominal</span>
+      <span class="des">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/el-gobierno-que-enferma.html">
+      <span class="cat">Salud mental · Estado</span>
+      <span class="tit">El gobierno que enferma</span>
+      <span class="des">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/registro_vandalos_columna.html">
+      <span class="cat">Política social</span>
+      <span class="tit">El registro de vándalos</span>
+      <span class="des">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/marco_teorico_tgr_cae_1.html">
+      <span class="cat">Metodología · CAE</span>
+      <span class="tit">Marco teórico y metodología de cálculo</span>
+      <span class="des">Hipótesis: el Estado chileno puede salir «para atrás» con la estrategia de cobro del CAE.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/desvio_fiscal_20anos.html">
+      <span class="cat">Política fiscal</span>
+      <span class="tit">Veinte años de desvío fiscal en Chile</span>
+      <span class="des">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+    <a href="https://jookruger.github.io/columns/magnifica-humanitas.html">
+      <span class="cat">Doctrina social · IA</span>
+      <span class="tit">Magnifica Humanitas</span>
+      <span class="des">La encíclica de León XIV y sus implicancias para la inteligencia artificial y la dignidad humana.</span>
+    </a>
+  </div>
+  <button class="car-btn car-next" aria-label="Siguiente" onclick="document.getElementById('car').scrollBy({left:260,behavior:'smooth'})">›</button>
+</div>
+</section>
+
+<footer class="colofon">
+<div class="lab">GH HCAI Lab · Human Centered Artificial Intelligence Lab · Geohumano · Valdivia, Chile</div>
+<p>Ensayo metodológico · Serie Política Fiscal / Geohumano. Se invita a replicar, cuestionar y refinar la <em>Lógica de Radar</em>. Todo hallazgo aquí consignado es hipótesis analítica y debe ser revisado por conocimiento humano especializado. Serie completa en jookruger.github.io/columns.</p>
+<div class="meta-grid" style="margin-top:22px">
+  <div><span class="k">Autor</span><span class="v">Jorge Oyarce Kruger</span></div>
+  <div><span class="k">Fecha</span><span class="v">Abril de 2026</span></div>
+  <div><span class="k">Lugar</span><span class="v">Valdivia, Región de Los Ríos</span></div>
+  <div><span class="k">Tipo</span><span class="v">Ensayo metodológico · Serie GH HCAI Lab</span></div>
+</div>
+</footer>
+
+</div>
+
+</body>
+</html>
