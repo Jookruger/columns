@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maltrato y violencia de género en el poder político</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p { margin-bottom: 1.4em; }
+
+  .body-text p.drop:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  h3.sub-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--accent);
+    margin: 1.8rem 0 0.7rem;
+  }
+
+  .part-divider {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    border-top: 3px double var(--accent);
+    border-bottom: 3px double var(--accent);
+    padding: 0.9rem 0;
+    margin: 3.5rem 0 2.5rem;
+  }
+
+  .part-divider strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 0.35rem;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong { color: var(--paper); font-weight: 400; }
+
+  .mirror-block .quote-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--paper);
+    border-left: 2px solid var(--accent-light);
+    padding-left: 1rem;
+    margin: 1.4em 0;
+  }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: attr(data-label);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .table-wrap { overflow-x: auto; margin: 2rem -0.5rem; }
+
+  table.data {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  table.data th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.7rem 0.75rem;
+    vertical-align: bottom;
+  }
+
+  table.data td {
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    font-weight: 300;
+  }
+
+  table.data tbody tr:nth-child(odd) { background: var(--paper-warm); }
+
+  table.data td.norm { color: var(--ink-muted); font-size: 0.76rem; }
+
+  table.data td.mech {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .tc {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: rgba(86,63,103,0.09);
+    padding: 0.05rem 0.3rem;
+    white-space: nowrap;
+  }
+
+  .case-card {
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    background: var(--paper-warm);
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0;
+  }
+
+  .case-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .case-card .case-meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  .case-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    font-weight: 300;
+    margin: 0 0 0.6rem;
+  }
+
+  .case-card p:last-child { margin-bottom: 0; }
+
+  .case-card .verdict {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--accent);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  ul.plain { margin: 0 0 1.4em 1.1rem; }
+  ul.plain li { margin-bottom: 0.6em; line-height: 1.7; font-weight: 300; }
+
+  .caveat {
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: 1px solid var(--ink-faint);
+    padding: 1.1rem 0;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .caveat strong { font-style: normal; color: var(--ink); font-weight: 400; }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .endnote p { margin-bottom: 0.8em; }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+    .masthead { padding: 1.5rem 1.25rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Estudio de caso</p>
+  <p class="masthead-pub">GH HCAI Lab · Investigación</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Violencia de género · Poder político · Ley Karin</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Maltrato y violencia de género<br><em>en el poder político</em></h1>
+
+  <p class="deck">El testimonio de la exministra vocera de gobierno, leído bajo la Ley N° 21.643 y la Ley N° 21.675. Un caso donde la fuente es performativa, el relato es negociado y el maltrato es real. Sostener las tres cosas a la vez no es una concesión: es el método.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger · GH HCAI Lab</span>
+    <span>Valdivia, 2026</span>
+  </div>
+
+  <div class="body-text">
+
+    <p class="drop">Este trabajo analiza el relato entregado por la exministra secretaria general de gobierno en la entrevista emitida por Sin Filtros en julio de 2026, con el objeto de examinar de qué modo las situaciones que describe pueden leerse como violencia de género en el ejercicio del poder político. Lo hacemos desde dos cuerpos legales que se complementan: la Ley N° 21.643, conocida como Ley Karin, que ordena el eje laboral, y la Ley N° 21.675, que nombra la violencia política y simbólica que la primera no tipifica.</p>
+
+    <p>Advertimos desde el inicio que el ejercicio es doctrinal e hipotético. Trabajamos sobre un relato unilateral, no contrastado y no probado en sede administrativa ni judicial. La propia entrevistada evita entregar nombres y, en varios puntos, declina imputar intención. Nada de lo aquí sistematizado constituye una imputación de responsabilidad contra persona determinada.</p>
+
+    <p>Y advertimos algo más incómodo, que desarrollamos en detalle más adelante: la fuente está comprometida. La entrevista tuvo condiciones negociadas por la entrevistada, y en al menos un pasaje ella representa sorpresa ante un material cuya exhibición había solicitado. Eso no anula el análisis. Lo obliga a ser más preciso.</p>
+
+  </div>
+
+  <div class="part-divider">
+    Parte I
+    <strong>El caso bajo la Ley Karin</strong>
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">El marco normativo</h2>
+
+    <p>La Ley N° 21.643, publicada el 15 de enero de 2024 y vigente desde el 1 de agosto de ese año, modifica el Código del Trabajo, el Estatuto Administrativo Ley N° 18.834 y la Ley Orgánica Constitucional de Bases Generales de la Administración del Estado Ley N° 18.575. Recoge el Convenio 190 de la Organización Internacional del Trabajo, ratificado por Chile en marzo de 2023, primer tratado internacional que aborda de manera expresa la violencia y el acoso por razón de género en el mundo del trabajo.</p>
+
+    <p>El acoso laboral se define como toda conducta que constituya agresión u hostigamiento, ejercida por cualquier medio, sea que se realice una sola vez o de manera reiterada, y que tenga como resultado para la persona afectada su menoscabo, maltrato o humillación, o bien que amenace o perjudique su situación laboral o sus oportunidades en el empleo. De esa definición se desprenden cuatro elementos que operan como rejilla de todo el análisis:</p>
+
+    <ul class="plain">
+      <li>Una conducta de <strong>agresión u hostigamiento</strong>.</li>
+      <li>Ejercida <strong>por cualquier medio</strong>, incluidos medios de prensa, filtraciones o mensajes transmitidos por terceros.</li>
+      <li>La novedad central: basta <strong>una sola vez</strong>. Ya no se exige reiteración.</li>
+      <li>Un <strong>resultado</strong> de menoscabo, maltrato o humillación, o bien amenaza o perjuicio a la situación laboral.</li>
+    </ul>
+
+    <p>La ley agrega una figura distinta, la violencia en el trabajo ejercida por terceros ajenos a la relación laboral, que resulta central para el ensañamiento mediático y farandulero que describe la entrevistada.</p>
+
+    <h2 class="section-head">A quién alcanza la ley en este caso</h2>
+
+    <p>Hay un punto de competencia que condiciona todo el análisis, porque la afectada ocupaba un cargo político y los presuntos hostigadores pertenecen a categorías distintas. Los ministros de Estado no son funcionarios públicos del Estatuto Administrativo. Sin embargo, el ministerio es un órgano de la Administración y le rigen las normas de probidad de la Ley N° 18.575, cuyo artículo 62 número 10 declara contravención a la probidad ejercer acoso laboral, sexual o violencia.</p>
+
+    <p>Los asesores del segundo piso, personal de exclusiva confianza, a contrata o a honorarios, quedan sujetos a los deberes estatutarios y a la Ley N° 18.575. Son los principales señalados en el relato. Los parlamentarios y dirigentes de partido, en cambio, pertenecen al Poder Legislativo o a entidades privadas y quedan fuera del régimen administrativo, aunque sus conductas podrían configurar otras responsabilidades.</p>
+
+    <p>La Contraloría General de la República confirmó en su Dictamen N° E516610 de 2024 que el estándar de probidad y de trato libre de violencia alcanza a la totalidad de los órganos de la Administración, al situar esas normas en el título de disposiciones generales.</p>
+
+    <h2 class="section-head">Mapeo de las conductas relatadas</h2>
+
+    <p>La tabla siguiente cruza cada episodio narrado con el elemento típico que podría configurarse y con su anclaje normativo. La columna de bloque indica en cuál de los dos segmentos de la entrevista fue dicho, dato que explicamos en la sección de arquitectura de la fuente.</p>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width:34%">Episodio relatado</th>
+            <th style="width:8%">Minuto</th>
+            <th style="width:30%">Elemento típico</th>
+            <th style="width:28%">Anclaje normativo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>«Este es el gobierno de los fomes. Eres actriz, actúa». Una de las tres personas más poderosas del gobierno le exige abandonar su estilo.</td>
+            <td><span class="tc">00:22</span></td>
+            <td>Hostigamiento por instrucción de anular la identidad profesional. Presión sostenida que produce menoscabo.</td>
+            <td class="norm">Art. 2° Código del Trabajo, por reenvío del art. 84 letra m Ley N° 18.834.</td>
+          </tr>
+          <tr>
+            <td>«Díganle a esta niñita que no hable más». Mensaje transmitido por terceros desde una alta autoridad.</td>
+            <td><span class="tc">00:31</span></td>
+            <td>Lenguaje denigrante e infantilizante con sesgo de género. Humillación transmitida de manera indirecta.</td>
+            <td class="norm">Acoso con perspectiva de género. Art. 46 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>Organigrama filtrado a La Tercera que la ubicaba a la altura del jefe de prensa, subordinada al director de comunicaciones, antes de asumir.</td>
+            <td><span class="tc">00:35</span></td>
+            <td>Intento de mermar atribuciones y jerarquía. Conducta que perjudica la situación laboral.</td>
+            <td class="norm">Art. 2° Código del Trabajo. Deber de trato digno, art. 13 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>«Como no me lo vas a cumplir, a partir de hoy salgo a destruirte en los medios». Represalia anunciada por no conceder cargos.</td>
+            <td><span class="tc">00:44</span></td>
+            <td>Amenaza explícita condicionada. Hostigamiento con finalidad de coacción.</td>
+            <td class="norm">Hipótesis de amenaza a la situación laboral. Art. 62 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>Papel oficial de Presidencia con un dato falso que la expuso públicamente, sin explicaciones posteriores.</td>
+            <td><span class="tc">00:52</span></td>
+            <td>Episodio de exposición. La entrevistada declina imputar intención, por lo que se consigna como indicio a verificar.</td>
+            <td class="norm">Requiere prueba. Art. 2° Código del Trabajo.</td>
+          </tr>
+          <tr>
+            <td>«Hay ministros de Estado que todavía están viviendo esas presiones, les están acerruchando el piso».</td>
+            <td><span class="tc">03:04</span></td>
+            <td>Indicio de patrón organizacional y no de episodio aislado, lo que agrava el riesgo psicosocial institucional.</td>
+            <td class="norm">Identificación de riesgos psicosociales, art. 14 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>Ensañamiento sobre atributos personales. Crítica al pelo, la ropa, el cuerpo, portada vestida de cabaret, imitaciones.</td>
+            <td><span class="tc">03:20</span></td>
+            <td>Hostigamiento con marcado sesgo de género dirigido a la dignidad.</td>
+            <td class="norm">Art. 46 Ley N° 18.575. Violencia simbólica, art. 6 N°5 Ley N° 21.675.</td>
+          </tr>
+          <tr>
+            <td>Exposición de la vida privada y de la familia. Fotos del marido y de hijos menores de edad, documentos falsos, romances inventados.</td>
+            <td><span class="tc">03:27</span></td>
+            <td>Violencia dirigida contra la persona y su entorno, proveniente de terceros ajenos a la relación laboral.</td>
+            <td class="norm">Violencia en el trabajo por terceros. Honra e intimidad, art. 13 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>Vaciamiento de funciones. Envío a regiones «para que fuera irrelevante» y vocería que «iba a morir».</td>
+            <td><span class="tc">03:44</span></td>
+            <td>Reducción deliberada del contenido del cargo. Perjudica las oportunidades de desarrollo profesional.</td>
+            <td class="norm">Perjuicio a oportunidades en el empleo. Art. 2° Código del Trabajo.</td>
+          </tr>
+          <tr>
+            <td>Aislamiento. «Me dejaron sola». Un ministro le escribe después: «cuando te atacaron nos quedamos todos callados, fuimos unos cagones».</td>
+            <td><span class="tc">03:46</span></td>
+            <td>Aislamiento social de la persona, técnica clásica del acoso laboral. El entorno refuerza la indefensión.</td>
+            <td class="norm">Menoscabo. Ambiente laboral libre de violencia, art. 13 Ley N° 18.575.</td>
+          </tr>
+          <tr>
+            <td>Humillación pública en la ceremonia de salida. «No hay nada más humillante» que dejar el cargo ante el país en televisión abierta.</td>
+            <td><span class="tc">03:51</span></td>
+            <td>Percepción de humillación en acto público. Elemento subjetivo que la ley reconoce como resultado típico.</td>
+            <td class="norm">Resultado de humillación, art. 2° Código del Trabajo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-head">Vía de denuncia y sanción</h2>
+
+    <p>Mediante el mismo Dictamen N° E516610 de 2024, la Contraloría precisó que cuando los hechos involucran al jefe del servicio, a altos directivos o a quienes deban tramitar las denuncias, los interesados pueden interponer la denuncia directamente ante ella. Ese es exactamente el escenario que describe el relato, de modo que la vía natural sería la Contraloría y no el conducto interno.</p>
+
+    <p>El acoso laboral es una infracción grave al principio de probidad administrativa y la ley contempla la destitución como sanción posible. No obstante, el Dictamen aclaratorio N° E30538 de 2025 estableció que la autoridad debe aplicar la sanción según el mérito de los antecedentes, resguardando la proporcionalidad y el debido proceso del denunciado. Acreditar el acoso no equivale a destituir sin ponderación.</p>
+
+  </div>
+
+  <div class="part-divider">
+    Parte II
+    <strong>Crítica de la fuente</strong>
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">Arquitectura del programa</h2>
+
+    <p>La entrevista no fue un bloque continuo. El archivo de cuatro horas y tres minutos tiene una estructura de tres segmentos que es imprescindible conocer para no atribuir mal el material. El primer bloque con la entrevistada va del minuto 12 al minuto 70. Entre el minuto 70 y las tres horas con un minuto hay un panel con otros invitados donde ella no está presente. El segundo bloque con ella va desde las tres horas con un minuto hasta el final.</p>
+
+    <p>El conductor lo declara de manera expresa: la primera parte se emitió de siete a ocho de la tarde y la segunda de diez a once de la noche. Durante el panel intermedio se insertan adelantos con la voz de ella, tomados del segundo bloque, lo que constituye una trampa para quien lea la transcripción por marcas de tiempo sin conocer la estructura.</p>
+
+    <p>Esa partición no es neutra. Fraccionar una entrevista en dos bloques separados por dos horas de panel, con teasers intercalados y agradecimientos a la sintonía al retomar, es un mecanismo de retención de audiencia. El testimonio fue, además de un acto de habla, un activo comercial del programa.</p>
+
+  </div>
+
+  <div class="mirror-block">
+    <h2>El pasaje que obliga a reescribir el estatuto del testimonio</h2>
+
+    <p>En el minuto 35, cuando se exhibe el organigrama filtrado a La Tercera, la entrevistada reacciona con aparente sorpresa ante el material. El conductor responde de inmediato, al aire:</p>
+
+    <p class="quote-line">«Hicieron la pega, y entiendo que una de las condiciones que tú pediste para esta entrevista, y se te fue concedida, es para argumentar en tu favor, no para condicionar la entrevista, era que tú pudieras explicar esto porque la filtración de este documento era real.»</p>
+
+    <p>Más adelante, en las tres horas con veintiún minutos, el mismo conductor introduce un segundo material señalando que se trata del <strong>otro video que ella les había pedido</strong> porque quería comentarlo.</p>
+
+    <p>De ahí se siguen tres conclusiones. La primera es que la entrevista tuvo <strong>condiciones negociadas por la entrevistada</strong>, y que su carta más preparada estaba pactada de antemano. La segunda es que hay un acto acreditado de gestión de impresiones: representar espontaneidad ante material solicitado. Eso daña de manera específica a quien, como ella, invoca la autenticidad como credencial política central. La tercera es que no estamos ante un montaje encubierto: el conductor desarma la puesta en escena en el mismo turno de palabra, ante toda la audiencia, y se adelanta a la objeción ética. Lo que el registro muestra es un reflejo actoral chocando con la transparencia del anfitrión.</p>
+
+    <p>Hay un dato adicional que ordena todo lo anterior. En las tres horas con veintitrés minutos ella menciona los cuatro o cinco años que estuvo en el programa. <strong>Su trayectoria pública nace ahí.</strong> No eligió un medio prestigioso para rehabilitarse: volvió a su casa. Eso explica de manera económica tanto la disposición del programa a conceder condiciones como su comodidad para actuar la sorpresa, y sustituye cualquier juicio sobre la reputación del panel por un dato verificable.</p>
+  </div>
+
+  <div class="body-text">
+
+    <div class="confession-box" data-label="La ironía de la fuente">
+      <p>El documento consigna como maltrato la frase «eres actriz, actúa», que ella reporta como humillación recibida. Si en esta misma entrevista está actuando, la fuente se vuelve reflexiva sobre sí misma. No valida el insulto. Obliga a leer el testimonio como construcción performativa y no como confesión transparente.</p>
+    </div>
+
+    <p>La consecuencia metodológica es acotada y precisa: hay que degradar el peso probatorio de las red flags que dependen solo de su palabra, en particular la del organigrama, que era su carta preparada. Lo que no se cae es el núcleo del análisis de género, porque descansa mayoritariamente en artefactos públicos verificables de forma independiente. El video de Jordi Castell existe y dijo lo que dijo. La editorial de Constanza Santa María existe. La portada existe. Los virales por el pelo existen. Una entrevista negociada puede curar el énfasis, no fabricar esos materiales.</p>
+
+  </div>
+
+  <div class="part-divider">
+    Parte III
+    <strong>La dimensión de género</strong>
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">Por qué la misoginia no es una falta pero sí importa</h2>
+
+    <p>La Ley Karin no contiene un tipo llamado misoginia. Ninguna de las conductas de género que atraviesan el relato, tomada de manera aislada, constituye por sí sola una infracción nominada. Criticar un peinado no es, en sí, una falta administrativa. Y sin embargo es precisamente en ese registro donde se concentra la singular dureza de la experiencia. El desafío es sostener las dos cosas: que la misoginia no es un delito con nombre y que, aun así, es el motor.</p>
+
+    <p>Para separar ambos planos sirve una distinción de Kate Manne. El <strong>sexismo</strong> es la rama justificadora del orden patriarcal: la ideología que racionaliza que la mujer no está hecha para el poder. La <strong>misoginia</strong> es la rama policial: el mecanismo que vigila y castiga a la mujer que se sale del lugar asignado. El sexismo argumenta; la misoginia sanciona.</p>
+
+    <p>El caso encaja con nitidez en esa gramática. Primero se instala el enunciado sexista, la <em>cuica tonta que no tiene idea del cargo</em>. Luego viene la ejecución: el ensañamiento estético, la sexualización, la exposición de la familia.</p>
+
+    <h2 class="section-head">La ley que sí la nombra</h2>
+
+    <p>Aquí interviene el segundo cuerpo legal. La Ley N° 21.675, publicada el 14 de junio de 2024, define en su artículo 6 nueve formas de violencia de género, y tres son directamente aplicables.</p>
+
+    <p>La <strong>violencia política</strong>, número 7, es toda conducta de hostigamiento, persecución, amenazas o agresión realizada de forma directa o a través de terceros que, basada en su género, cause daño a la mujer y tenga por objeto menoscabar, obstaculizar o anular el ejercicio de sus derechos políticos y de participación. La precisión de los elementos importa: la fórmula «a través de terceros» cubre los mensajes transmitidos por intermediarios y la campaña por prensa; «amenazas» cubre el anuncio de salir a destruirla en los medios; «menoscabar u obstaculizar» cubre el vaciamiento de funciones.</p>
+
+    <p>La <strong>violencia simbólica</strong>, número 5, es la difusión de mensajes o imágenes en cualquier medio cuyo objeto sea naturalizar estereotipos que afecten su dignidad. Ahí caben la portada de cabaret, las imitaciones y la caricatura. Es el lugar jurídico donde vive la misoginia que la Ley Karin no tipifica.</p>
+
+    <p>La <strong>violencia en el trabajo</strong>, número 8, incluye de manera expresa a las trabajadoras que ejercen autoridad o jefatura en representación del empleador, lo que ayuda a salvar el problema de su condición de ministra.</p>
+
+    <div class="caveat">
+      <strong>Límite que debe declararse.</strong> El artículo 29 restringe el título de acceso a la justicia a las violencias física, sexual, psicológica y económica. La violencia política y la simbólica están definidas pero sin ruta procesal propia, y la simbólica trae un resguardo expreso de libertad de expresión y creación. La ley las nombra, no las sanciona directamente. Tenemos categoría jurídica sin remedio judicial, y ese es justamente el hallazgo que corresponde subrayar.
+    </div>
+
+    <h2 class="section-head">Los mecanismos en el relato</h2>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width:24%">Mecanismo</th>
+            <th style="width:40%">Cómo se manifiesta</th>
+            <th style="width:36%">Qué revela</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mech">Infantilización</td>
+            <td>«Niñita» de manera recurrente. En la salida: «pobrecita la niñita que por fin va a dejar de sufrir, venga que la voy a consolar».</td>
+            <td>Le resta estatura de autoridad y la reinstala en el lugar de la menor de edad. A un ministro varón no se le llama niñito ni se lo consuela.</td>
+          </tr>
+          <tr>
+            <td class="mech">Escrutinio estético</td>
+            <td>Viral por el pelo, crítica a la ropa, al cuerpo, si estaba gorda o flaca. Portada que la representa vestida de cabaret.</td>
+            <td>El cuerpo se vuelve objeto del juicio público y desplaza la evaluación de la gestión. La apariencia sustituye al desempeño.</td>
+          </tr>
+          <tr>
+            <td class="mech">Policiamiento de lo íntimo</td>
+            <td>Difusión de un supuesto rol de amante, la figura de la mujer engañada, exposición del marido, la exesposa y niños menores.</td>
+            <td>La sexualidad se usa como descalificación política. Es una lógica que rara vez recae sobre los hombres del poder.</td>
+          </tr>
+          <tr>
+            <td class="mech">Doble vara</td>
+            <td>Un ministro varón es elogiado por el mismo estilo frontal por el que a ella se la castiga. Ella lo nombra: «nunca lo he visto criticar a los hombres cuando se agarran a chucha».</td>
+            <td>El mismo comportamiento se lee como virtud en el hombre y como falla en la mujer. Es el corazón del doble estándar.</td>
+          </tr>
+          <tr>
+            <td class="mech">Comparación entre mujeres</td>
+            <td>Confrontación permanente con la vocera del gobierno anterior, incluso física. Ella replica preguntando si a un hombre le dijeron alguna vez que era el próximo de otro.</td>
+            <td>Se enfrenta a las mujeres entre sí y se las mide por un molde ajeno. Los hombres no son leídos como versiones unos de otros.</td>
+          </tr>
+          <tr>
+            <td class="mech">Clase y género</td>
+            <td>La caricatura de cuica tonta. El monólogo público: «usted no es cuica, no pertenece, mire cómo habla, mire cómo gesticula».</td>
+            <td>El ataque opera a la vez por género y por clase. Ese doble filo la deja sin lugar posible: ni por elite ni por advenediza.</td>
+          </tr>
+          <tr>
+            <td class="mech">El doble vínculo</td>
+            <td>Cuando es visible se instala que mete mucho ruido. Cuando la envían a regiones, se dice que quedó irrelevante.</td>
+            <td>La presencia se castiga como exceso y la ausencia como insignificancia. Es la trampa clásica de la mujer en el poder.</td>
+          </tr>
+          <tr>
+            <td class="mech">Patrón entre ministras</td>
+            <td>Según su relato, a otra ministra también le publicaron una portada sobre su exmarido y su vida privada.</td>
+            <td>El ensañamiento se concentró en las mujeres del gabinete. De ser efectivo, indica sesgo estructural y no episodio individual.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-head">Lo privado como arma</h2>
+
+    <p>Hay un rasgo que conecta con una intuición clásica del pensamiento político. Hannah Arendt distinguía la esfera pública, espacio de la palabra y la acción entre iguales, de la esfera privada, ámbito del cuerpo, la necesidad y la intimidad. La misoginia política opera arrastrando lo privado al centro de lo público para descalificar a la mujer en tanto sujeto político. A ella no se la refuta en el terreno de sus argumentos: se la desactiva exhibiendo su cuerpo, su ropa, su vida sexual, su familia.</p>
+
+    <p>Mientras el adversario varón es combatido en el plano de sus ideas, a la mujer se la devuelve una y otra vez a su cuerpo, como si su condición femenina fuese el argumento definitivo. La exposición de los hijos menores, que la propia afectada señala como el límite más doloroso, es la forma extrema de esa operación: cuando el ataque a la persona ya no basta, se ataca a los suyos.</p>
+
+    <div class="pull-quote">
+      <p>«La misoginia es el residuo que queda cuando se descuenta la crítica legítima. Rara vez es sancionable pieza por pieza, y es exactamente lo que la perspectiva de género está diseñada para reconstruir.»</p>
+    </div>
+
+    <h2 class="section-head">Dos advertencias de honestidad intelectual</h2>
+
+    <p><strong>Aislar el excedente de género.</strong> No toda crítica que recibió fue misógina, y sostener lo contrario debilitaría el análisis. Los errores de gestión y el manejo comunicacional del alza de combustibles son materia legítima de escrutinio público y no tienen que ver con su condición de mujer. El ejercicio consiste en descontar esa crítica sustantiva para aislar el residuo, aquello que se le hizo por ser quien es y no por lo que hizo.</p>
+
+    <p><strong>La ironía del propio estilo.</strong> Sus detractores recuerdan que ella misma practicó un estilo agresivo en el mismo programa donde ahora se defiende. El dato es cierto y no conviene omitirlo. Pero no anula el doble estándar que denuncia. La pregunta decisiva no es si ella fue combativa, sino si a un hombre con su mismo estilo lo habrían sexualizado, infantilizado y expuesto en su vida íntima del mismo modo.</p>
+
+  </div>
+
+  <div class="part-divider">
+    Parte IV
+    <strong>El patrón chileno</strong>
+  </div>
+
+  <div class="body-text">
+
+    <p>El caso no es aislado. Existe una serie documentada de mujeres que rompieron con sectores de derecha tras episodios de maltrato, y su comparación permite identificar un mecanismo común.</p>
+
+    <div class="case-card">
+      <h4>Pía Guzmán</h4>
+      <p class="case-meta">RN · Caso Spiniak · 2003</p>
+      <p>Acusó públicamente a parlamentarios de integrar una red de pedofilia. La UDI se querelló contra ella por injurias y calumnias. Su propio partido la descartó para postulaciones a cargos. No fue a la reelección en 2005 y dejó la política en 2006. Los políticos mencionados fueron sobreseídos y siguieron sus carreras.</p>
+      <p class="verdict">El atributo golpeado: la temeridad. Se la vuelve una acusadora irresponsable.</p>
+    </div>
+
+    <div class="case-card">
+      <h4>Lily Zúñiga</h4>
+      <p class="case-meta">Exjefa de prensa UDI · Libro «Imputada» · 2016</p>
+      <p>Su libro relata discriminación, machismo, clasismo y tres episodios de acoso sexual al interior del partido. El apodo que da título al volumen es despectivo y de origen racial: una diputada se opuso a que fuera candidata por su color de piel. Ella misma había quedado imputada en el caso de financiamiento irregular.</p>
+      <p class="verdict">El atributo golpeado: la probidad. Se la vuelve una imputada resentida.</p>
+    </div>
+
+    <div class="case-card">
+      <h4>Evelyn Matthei</h4>
+      <p class="case-meta">Chile Vamos · Campaña presidencial · 2025</p>
+      <p>Denunció una campaña digital que alteraba sus videos para instalar que padecía Alzheimer, atribuyéndola al Partido Republicano. Anunció acciones legales y puso en duda su apoyo en segunda vuelta, con la frase sobre lo difícil que resulta aliarse con quien sonríe en la foto y apuñala por la espalda.</p>
+      <p class="verdict">El atributo golpeado: la lucidez. Se la vuelve una anciana en deterioro.</p>
+    </div>
+
+    <p>Sumado el caso que abre este trabajo, donde el atributo golpeado es la seriedad y se la vuelve una niñita tonta, el patrón queda a la vista. En los cuatro casos el ataque no busca refutar a la mujer sino <strong>destruir su condición de hablante creíble</strong>. Cambia el atributo, no la operación. Eso tiene nombre en la literatura, la injusticia testimonial de Miranda Fricker, y calza de manera exacta con el artículo 6 número 7 de la Ley N° 21.675, que define la violencia política como aquella dirigida a anular el ejercicio de los derechos políticos.</p>
+
+    <h2 class="section-head">Cómo pensar los espacios radicalizados</h2>
+
+    <p>Conviene resistir la tentación de afirmar que la misoginia es la naturaleza de un sector político. Ese enunciado es indefendible en revisión, permite descartar el trabajo como panfleto y además choca con la evidencia del propio caso: la afectada atribuye el hostigamiento a una izquierda agresiva y las presiones por cargos venían de su propia coalición. La hostilidad fue multidireccional.</p>
+
+    <p>La tesis defendible es más fuerte, no más débil: <strong>la misoginia opera de manera transversal al espectro político, y lo que varía entre sectores no es su existencia sino el repertorio de sanciones disponibles.</strong> Proponemos tres mecanismos verificables.</p>
+
+    <h3 class="sub-head">Disponibilidad del repertorio</h3>
+    <p>La hipótesis no es que haya más misoginia sino que hay menos necesidad de disfrazarla. Donde los roles de género tradicionales forman parte de la doctrina explícita, la mujer que transgrede puede ser sancionada invocando los valores propios del grupo, no a pesar de ellos. Donde el discurso formal es igualitario, la misma hostilidad debe lavarse en el lenguaje de la competencia o del tono. Consecuencia observable: en entornos radicalizados la agresión es más literal y por eso más documentable, lo que no equivale a que sea más frecuente.</p>
+
+    <h3 class="sub-head">Costo de la denuncia</h3>
+    <p>En espacios con fuerte disciplina interna y lógica de amigo y enemigo, denunciar hacia adentro se codifica como traición. Eso eleva el costo de salida y explica un patrón que los cuatro casos comparten: el testimonio aparece siempre después de la ruptura, nunca durante. De ahí se sigue un sesgo de archivo que debe declararse. Solo escuchamos a las mujeres que ya salieron, y salieron desacreditadas.</p>
+
+    <h3 class="sub-head">Disciplinamiento intragénero</h3>
+    <p>En el caso Zúñiga las agresoras señaladas son mujeres. Eso no debilita el análisis, lo precisa. La misoginia es una función de vigilancia del sistema y no una conducta exclusivamente masculina. En estructuras jerárquicas suelen ser mujeres quienes la ejecutan sobre las subordinadas.</p>
+
+    <div class="caveat">
+      <strong>Dos precisiones para blindar el capítulo.</strong> El caso Matthei tiene un vector etario tanto como de género, la insinuación de deterioro cognitivo, de modo que corresponde tratarlo como intersección de edad y género y no como misoginia pura. Y la clase opera en direcciones opuestas: a Zúñiga se la castiga por no pertenecer y a la exministra por pertenecer demasiado. El eje de clase es un multiplicador del ataque, no su causa.
+    </div>
+
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">Límites del análisis</h2>
+
+    <ul class="plain">
+      <li><strong>Relato unilateral.</strong> Todo procede del testimonio de la afectada en un programa de conversación, sin contradictorio ni prueba. La contraparte no ha sido oída.</li>
+      <li><strong>Fuente negociada y performativa.</strong> Hubo condiciones pactadas y al menos un acto acreditado de representación de sorpresa ante material solicitado.</li>
+      <li><strong>Sin nombres.</strong> La entrevistada evita identificar a los presuntos responsables, lo que impide toda imputación concreta.</li>
+      <li><strong>Ámbito personal discutible.</strong> La naturaleza política del cargo relativiza la aplicación estricta del Estatuto Administrativo, y algunos actores señalados quedan fuera de la Administración.</li>
+      <li><strong>No hay denuncia formal conocida.</strong> No consta que se haya activado un procedimiento bajo ninguna de las dos leyes por estos hechos.</li>
+    </ul>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <p>La conclusión es incómoda y por eso vale la pena sostenerla entera. El testimonio es poco fiable, la fuente está comprometida, la entrevistada actuó frente a la audiencia y su gestión tuvo errores graves que merecían escrutinio. Nada de eso vuelve legítimo que se la sexualizara, se la infantilizara ni que se expusieran niños que no eligieron nada de esto. La credibilidad de quien testimonia y la ilegitimidad del maltrato son cuestiones independientes, y confundirlas es precisamente la operación que este trabajo describe.</p>
+
+    <p>Nombrar ese maltrato, aunque no siempre sea sancionable pieza por pieza, es la condición para poder prevenirlo. Y esa es, en definitiva, la finalidad última de ambas leyes y el interés público de esta investigación.</p>
+
+  </div>
+
+  <div class="endnote">
+    <p><strong>Nota de referencia jurídica.</strong> La Ley N° 21.643, publicada el 15 de enero de 2024 y vigente desde el 1 de agosto de 2024, incorpora la perspectiva de género como principio rector en el artículo 46 de la Ley N° 18.575 y la identificación de riesgos psicosociales en su artículo 14. Implementa el Convenio 190 de la Organización Internacional del Trabajo, ratificado por Chile en marzo de 2023.</p>
+    <p>La Ley N° 21.675, publicada el 14 de junio de 2024, define en su artículo 6 nueve formas de violencia de género, entre ellas la simbólica, la política y la violencia en el trabajo. Su artículo 15 establece obligaciones de prevención en medios de comunicación, y su artículo 60 modifica la Ley N° 18.838 para incorporar la protección contra la difusión de imágenes que presenten a las mujeres de forma estereotipada.</p>
+    <p>Los dictámenes citados de la Contraloría General de la República son el N° E516610 de 2024, sobre competencia para conocer denuncias que involucran a altos directivos, y el N° E30538 de 2025, sobre proporcionalidad en la aplicación de sanciones.</p>
+    <p>Las marcas de tiempo remiten al registro completo del programa, de cuatro horas y tres minutos de duración. Documento de trabajo de GH HCAI Lab, uso académico.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
