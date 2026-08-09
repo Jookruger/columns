@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis y ensayos · GH HCAiLab</title>
+<meta name="description" content="Análisis político, social y tecnológico. Jorge Oyarce Kruger · GH HCAiLab · Valdivia, Chile.">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL32BW5J8B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HL32BW5J8B');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  /* CABECERA */
+  header {
+    border-bottom: 3px double var(--rule);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pub-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .pub-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .pub-meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* CONTENIDO */
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* SECCIÓN SUPERIOR: featured/nota + sidebar */
+  .top-section {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .top-main {
+    min-width: 0;
+  }
+
+  .top-side {
+    border-left: 1px solid var(--rule);
+    padding-left: 2rem;
+    min-width: 0;
+  }
+
+  .side-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .recent-list {
+    list-style: none;
+  }
+
+  .recent-item {
+    border-bottom: 1px dashed var(--rule);
+    padding: 0.9rem 0;
+  }
+
+  .recent-item:first-child {
+    padding-top: 0;
+  }
+
+  .recent-item:last-child {
+    border-bottom: none;
+  }
+
+  .recent-item a {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .recent-item a:hover h4 {
+    color: var(--accent);
+  }
+
+  .recent-item .date {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.35rem;
+  }
+
+  .recent-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+
+  .recent-item h4 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* COLUMNA DESTACADA */
+  .featured {
+    border-top: 3px solid var(--ink);
+    padding-top: 1.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .featured .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .featured h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .featured h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .featured .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+  }
+
+  .featured .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .read-link {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .read-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .read-link::after {
+    content: ' →';
+  }
+
+  /* DIVISOR */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  /* NOTA DEL AUTOR / PROPIOCOGNOSIS */
+  .author-note {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-muted);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .author-note p + p { margin-top: 1rem; }
+
+  .author-note-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .author-note em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* GRID DE COLUMNAS */
+  .columns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .column-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+  }
+
+  .column-card .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .column-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .column-card h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .column-card p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .column-card .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  /* PRÓXIMAMENTE */
+  .coming-soon {
+    border-top: 1px dashed var(--rule);
+    padding-top: 1rem;
+    opacity: 0.5;
+  }
+
+  .coming-soon .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .coming-soon .soon-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* PIE */
+  footer {
+    border-top: 3px double var(--rule);
+    background: var(--paper-warm);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .top-section {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .top-side {
+      border-left: none;
+      border-top: 1px solid var(--rule);
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    .columns-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    header { padding: 2rem 1.25rem 1.5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    .pub-meta { gap: 1rem; }
+    .author-note { font-size: 0.88rem; text-align: left; }
+    .author-note-title { font-size: 1.15rem; }
+    .columns-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="pub-eyebrow">GH HCAiLab · Valdivia, Chile</p>
+  <h1 class="pub-title">Análisis y <em>ensayos</em></h1>
+  <p class="pub-subtitle">Política · Sociedad · Tecnología · Territorio</p>
+  <div class="pub-meta">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Médico Veterinario · MBA · Máster en Innovación</span>
+    <span>GH HCAiLab</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="top-section">
+
+    <div class="top-main">
+      <span class="section-label">Publicación reciente</span>
+
+      <article class="featured">
+        <div class="tag">Educación · Inteligencia Artificial · Freire</div>
+        <h2>Niños en moto,<br>profesores <em>de a pie</em></h2>
+        <p class="deck">Cinco umbrales de cambio y una sola adaptación. Por qué la escuela llegó tarde a la disponibilización de la cognición, por qué prohibir el aparato no la va a salvar, y qué hacemos con las emociones cuando ni siquiera nos hemos puesto de acuerdo en cómo nombrarlas.</p>
+        <div class="meta">Jorge Oyarce Kruger · Agosto 2026</div>
+        <a class="read-link" href="ninos-en-moto.html">Leer columna</a>
+      </article>
+
+      <hr class="rule">
+
+      <!-- INICIO BLOQUE PROPIOCOGNOSIS -->
+      <div class="author-note">
+        <h3 class="author-note-title">Lo que encontrará en estas líneas</h3>
+        <p>¿Qué ocurre cuando la cognición humana se extiende hacia un sistema artificial? Aquí, la IA no fue un asistente, sino un socio en un proceso de co-creación con base científica. La IA no piensa ni posee verdades; mapea patrones estadísticos. Sin embargo, su interacción generó un fenómeno que acuño como <em>propiocognosis</em>.</p>
+        <p>Así como la propiocepción permite a un tenista sentir la raqueta como extensión de su cuerpo, la propiocognosis es percibir el propio proceso cognitivo al expandirse hacia afuera. La IA se volvió un "avatar cocreador": una proyección del pensamiento que sintetizó datos, proliferó ideas y mutó la escritura.</p>
+        <p>La IA no aportó ética ni verdad, sino un espejo cognitivo. El rigor y la dirección siguieron siendo estrictamente humanos.</p>
+      </div>
+      <!-- FIN BLOQUE PROPIOCOGNOSIS -->
+    </div>
+
+    <aside class="top-side">
+      <span class="side-label">Últimas publicaciones</span>
+      <ul class="recent-list">
+        <li class="recent-item">
+          <a href="ninos-en-moto.html">
+            <div class="date">Agosto 2026</div>
+            <h4>Niños en moto, <em>profesores de a pie</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="punto-equilibrio-megarreforma_1.html">
+            <div class="date">Julio 2026</div>
+            <h4>Punto de equilibrio de la <em>megarreforma</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="violencia_genero_politica.html">
+            <div class="date">Julio 2026</div>
+            <h4>Maltrato y <em>violencia de género</em> en el poder político</h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="incubacion-violencia-nominal.html">
+            <div class="date">Julio 2026</div>
+            <h4>Incubación de la <em>violencia nominal</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="magnifica-humanitas.html">
+            <div class="date">Junio 2026</div>
+            <h4>Magnifica Humanitas: <em>la persona no es un recurso</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="registro_vandalos_columna.html">
+            <div class="date">Junio 2026</div>
+            <h4>El registro de vándalos: <em>condenar la pobreza</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="marco_teorico_tgr_cae_1.html">
+            <div class="date">Junio 2026</div>
+            <h4>Marco teórico CAE: <em>el Estado puede salir para atrás</em></h4>
+          </a>
+        </li>
+        <li class="recent-item">
+          <a href="desvio_fiscal_20anos.html">
+            <div class="date">Junio 2026</div>
+            <h4>Veinte años de desvío fiscal en <em>Chile</em></h4>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <span class="section-label">Todas las publicaciones</span>
+
+  <div class="columns-grid">
+
+    <article class="column-card">
+      <div class="tag">Educación · Inteligencia Artificial · Freire</div>
+      <h3>Niños en moto, <em>profesores de a pie</em></h3>
+      <p>Cinco umbrales de cambio y una sola adaptación. La escuela sabe adaptarse, pero solo una vez por civilización: por qué prohibir el dispositivo no responde a la disponibilización de la cognición, qué hacemos con las emociones sin paradigmas acordados, y qué sigue enseñando el Chacal de Nahueltoro sobre el Estado que alfabetiza tarde.</p>
+      <div class="meta">Agosto 2026</div>
+      <a class="read-link" href="ninos-en-moto.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Violencia de Género · Poder Político · Ley Karin</div>
+      <h3>Maltrato y <em>violencia de género</em> en el poder político</h3>
+      <p>El testimonio de la exministra vocera de gobierno, leído bajo la Ley N° 21.643 y la Ley N° 21.675. Un caso donde la fuente es performativa, el relato es negociado y el maltrato es real. Sostener las tres cosas a la vez no es una concesión: es el método.</p>
+      <div class="meta">Julio 2026</div>
+      <a class="read-link" href="violencia_genero_politica.html">Leer</a>
+    </article>
+
+
+    <article class="column-card">
+      <div class="tag">Política Fiscal · Impuesto Corporativo · Boletín 18.216-05</div>
+      <h3>Punto de equilibrio de la <em>megarreforma</em></h3>
+      <p>Con el costo fiscal que declara el propio informe financiero y la ganancia de crecimiento que estima el FMI, Chile terminaría de pagar la reforma en 2098. En el escenario adverso, en 2124. Bajo el modelo estándar de crecimiento, no la paga nunca.</p>
+      <div class="meta">Julio 2026</div>
+      <a class="read-link" href="punto-equilibrio-megarreforma_1.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Riesgo Social · Violencia Nominal · Análisis Preventivo</div>
+      <h3>Incubación de la <em>violencia nominal</em></h3>
+      <p>Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja de miles de movilizados a una sola psiquis agobiada con un destinatario. Anatomía preventiva de un riesgo en incubación.</p>
+      <div class="meta">Julio 2026</div>
+      <a class="read-link" href="incubacion-violencia-nominal.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Doctrina Social · Inteligencia Artificial · Dignidad Humana</div>
+      <h3>Magnifica Humanitas: <em>la persona no es un recurso</em></h3>
+      <p>Cuatro columnas sobre la primera encíclica de León XIV reunidas en una: Rerum Novarum y su sombra en América Latina, el sujeto que el poder prefiere sin rostro, la fidelidad a la verdad como bien común y la parábola del balón que no se pasa.</p>
+      <div class="meta">Junio 2026</div>
+      <a class="read-link" href="magnifica-humanitas.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Política social · Estado · Derechos</div>
+      <h3>El registro de vándalos: <em>condenar la pobreza</em></h3>
+      <p>Un análisis de la asimetría estructural entre el vandalismo desde abajo y el vandalismo corporativo, y lo que esa asimetría revela sobre el proyecto político del gobierno.</p>
+      <div class="meta">Junio 2026</div>
+      <a class="read-link" href="registro_vandalos_columna.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Derecho Público Constitucional · Economía Pública</div>
+      <h3>Marco teórico CAE: <em>el Estado puede salir para atrás</em></h3>
+      <p>Hipótesis y metodología de cálculo sobre la estrategia de cobro CAE. Estimaciones de orden de magnitud sobre datos públicos verificables, con respaldo en las columnas "Dos varas, una misma balanza" y "El costo de equivocarse con la Constitución".</p>
+      <div class="meta">Junio 2026</div>
+      <a class="read-link" href="marco_teorico_tgr_cae_1.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Economía Pública · Política Fiscal · Filosofía del Derecho</div>
+      <h3>Veinte años de desvío fiscal en <em>Chile</em></h3>
+      <p>Reconstrucción de la serie de Balance Estructural 2006-2025 y la diferencia entre un error de cálculo y una revisión de pronóstico, aplicada a la acusación constitucional contra el exministro Nicolás Grau.</p>
+      <div class="meta">Junio 2026</div>
+      <a class="read-link" href="desvio_fiscal_20anos.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Salud Mental · Política Pública · Neurobiología</div>
+      <h3>El gobierno que <em>enferma</em></h3>
+      <p>Cuando la comunicación disonante sostenida deja de ser accidente y se vuelve método, el costo neurobiológico, económico y cívico lo paga la población. Un análisis del gobierno que administra certeza destruyéndola.</p>
+      <div class="meta">Mayo 2026</div>
+      <a class="read-link" href="el-gobierno-que-enferma.html">Leer</a>
+    </article>
+
+    <article class="column-card">
+      <div class="tag">Técnica Legislativa · Metodología · Boletín 18.216-05</div>
+      <h3>La ley <em>tutti frutti</em></h3>
+      <p>Cómo detectar el contrabando legislativo antes de que la Constitución tenga que hacerlo. Un radar de nueve sensores aplicado al Mensaje N° 018-374, con catálogo de frutos ajenos incluido.</p>
+      <div class="meta">Abril 2026</div>
+      <a class="read-link" href="ley-tutti-frutti.html">Leer</a>
+    </article>
+
+    <article class="coming-soon">
+      <div class="tag">Próximamente</div>
+      <h3>En preparación</h3>
+      <p class="soon-label">Nuevas columnas · GH HCAiLab</p>
+    </article>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>GH HCAiLab · Jorge Oyarce Kruger · Valdivia, Chile</p>
+  <p>Médico Veterinario · MBA · Máster en Innovación</p>
+</footer>
+
+</body>
+</html>
