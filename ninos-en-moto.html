@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niños en moto, profesores de a pie — GH HCAiLab</title>
+<meta name="description" content="Cinco umbrales de cambio y una sola adaptación: por qué la escuela llegó tarde a la disponibilización de la cognición, por qué prohibir el dispositivo no basta, qué hacemos con las emociones sin paradigmas acordados, y qué sigue enseñando el Chacal de Nahueltoro sobre el Estado que alfabetiza tarde.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+/* ===== Añadidos GH HCAiLab: notas, firma institucional, colofón, carrusel ===== */
+
+sup { font-size: 0.72em; vertical-align: super; line-height: 0; }
+sup a {
+  text-decoration: none;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.byline-note {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.byline-note .who { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.footnotes {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.footnotes p { margin-bottom: 0.6em; scroll-margin-top: 1.5rem; }
+.footnotes .fn-num {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+.footnotes em { font-style: italic; }
+
+.colophon {
+  max-width: var(--column-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+.colophon p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.colophon a:hover { border-color: var(--accent); }
+.colophon .mono { font-family: ui-monospace, 'Cascadia Code', Menlo, monospace; font-size: 0.8rem; }
+
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
+}
+.meta-dl .m-k {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.meta-dl .m-v { font-family: 'Source Serif 4', serif; font-size: 0.85rem; color: var(--ink); }
+
+/* ===== Carrusel "Seguir leyendo" ===== */
+.more-columns {
+  max-width: var(--column-width);
+  margin: 3.5rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 3px double var(--rule);
+}
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mc-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.mc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mc-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.mc-track::-webkit-scrollbar { height: 6px; }
+.mc-track::-webkit-scrollbar-track { background: var(--paper-warm); }
+.mc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+
+.mc-card {
+  scroll-snap-align: start;
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+.mc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(26,20,16,0.08); }
+.mc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-tag {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-family: 'Source Serif 4', serif; font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--accent); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; box-shadow: none; }
+.mc-card.is-current .mc-tag { color: var(--paper-warm); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .more-columns { padding: 2rem 1.25rem 0; }
+  .colophon { padding: 2rem 1.25rem 3rem; }
+  .mc-card { flex-basis: 82%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-track { scroll-behavior: auto; }
+  .mc-card, .mc-btn { transition: none; }
+}
+
+/* ===== Añadidos Magnifica Humanitas: divisores de parte, epígrafe, cierre «Despierta» ===== */
+
+.part-divider {
+  text-align: center;
+  color: var(--rule);
+  font-size: 1.05rem;
+  letter-spacing: 0.6em;
+  margin: 3.75rem 0 0;
+  user-select: none;
+}
+
+.part-head { margin: 1.25rem 0 1.9rem; text-align: center; }
+.part-head.first { margin-top: 0; }
+
+.part-head .part-kicker {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+
+.part-head .part-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 3.4vw, 1.95rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.16;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.part-epigraph {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 34rem;
+  margin: 0 auto 2.25rem;
+}
+
+.despierta {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin: 2.75rem 0 0.5rem !important;
+}
+
+
+
+/* ===== Añadidos «Niños en moto»: tabla de tríada, variantes de callout ===== */
+
+.tri-table {
+  margin: 2.25rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.tri-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr 1.3fr;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.tri-row:last-child { border-bottom: 0; }
+.tri-row span {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.tri-row.tri-head {
+  background: var(--paper-warm);
+  border-bottom: 2px solid var(--ink);
+}
+.tri-row.tri-head span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.tri-row .tri-k {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--accent);
+}
+
+.confession-box.pregunta::before { content: 'La pregunta'; }
+
+@media (max-width: 600px) {
+  .tri-row { grid-template-columns: 1fr; gap: 0.35rem; padding: 1rem 0.25rem; }
+  .tri-row.tri-head { display: none; }
+  .tri-row .tri-k { font-size: 1rem; margin-bottom: 0.15rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Educación · Inteligencia artificial</p>
+  <p class="masthead-pub">GH HCAiLab · Opinión</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Freire · IA · Comprensión lectora</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Niños en <em>moto</em>, profesores de a pie</h1>
+
+  <p class="deck">Cinco umbrales de cambio y una sola adaptación. Por qué la escuela llegó tarde a la disponibilización de la cognición, por qué prohibir el aparato no la va a salvar, y qué haremos con las emociones cuando ni siquiera nos hemos puesto de acuerdo en cómo nombrarlas.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia · Agosto 2026</span>
+  </div>
+
+  <div class="body-text">
+
+    <p>Hay una manera de medir el tiempo que no aparece en ningún calendario escolar. No se cuenta en semestres ni en años lectivos: se cuenta en revoluciones. Y el problema de la educación contemporánea es que está midiendo con el reloj equivocado.</p>
+
+    <p>Definamos dos magnitudes. La primera, que podemos llamar <em>tiempo formativo</em>, es la duración de un ciclo educativo completo: doce años de escolaridad, cinco de universidad. La segunda es la <em>vida media del contenido</em>: el plazo en que la mitad de lo que se enseñó deja de ser operativo.</p>
+
+    <p>Durante la revolución agrícola, la vida media del contenido se medía en generaciones. Era enormemente mayor que el tiempo formativo. El padre enseñaba al hijo lo mismo que su padre le había enseñado, y servía. Durante la revolución industrial, esa vida media cayó hasta volverse comparable a una vida laboral, y por eso aparece la escolarización masiva: la familia dejó de bastar. Fue una adaptación real, profunda y costosa.</p>
+
+    <p>En la revolución cognitiva, la vida media del contenido cruza por debajo del tiempo formativo.</p>
+
+    <p>Ese cruce es el acontecimiento. No es una queja generacional ni un asunto de actualizar mallas curriculares. Es un cambio de régimen. Cuando el contenido caduca antes de que termine el ciclo que lo transmite, la institución produce egresados obsoletos en el instante exacto de la titulación. Ninguna reforma de contenidos lo arregla, porque el problema no es qué se enseña: es que el contenido dejó de ser un vehículo viable.</p>
+
+    <div class="pull-quote">
+      <p>La escuela mide en unidades agrícolas, opera con protocolo industrial y enfrenta una revolución cognitiva. Tres relojes en el mismo edificio, ninguno sincronizado.</p>
+    </div>
+
+    <h2 class="section-head">Cinco umbrales, una sola adaptación</h2>
+
+    <p>Aquí conviene corregir un lugar común. Se repite que la escuela «no se adaptó». Es falso. Se adaptó una vez, con enorme esfuerzo, y ahí se quedó.</p>
+
+    <p>El primer umbral fue el paso de lo agrícola a lo industrial. Exigía abandonar la transmisión familiar, y la escuela respondió: inventó el aula, la cohorte por edad, el timbre, el currículum, la certificación. Fue una respuesta a la altura del desafío.</p>
+
+    <p>El segundo umbral fue la industrialización de la propia educación. Exigía escalar sin homogeneizar. La escuela escaló homogeneizando: memorización, estandarización, producción en serie de egresados idénticos. Adaptación parcial, con costo.</p>
+
+    <p>El tercero fue la digitalización del conocimiento. Exigía dejar de ser depósito. La escuela metió computadores dentro del mismo depósito.</p>
+
+    <p>El cuarto fue la universalización de lo digitalizado. Exigía dejar de premiar la recuperación de datos. La escuela siguió evaluando exactamente aquello que un buscador resuelve en tres segundos.</p>
+
+    <p>El quinto es el que estamos cruzando ahora, y no tiene nombre todavía: la disponibilización de la cognición. Exige distinguir el pensamiento propio del pensamiento disponible. La escuela prohíbe.</p>
+
+    <p>Cuatro no-reacciones consecutivas después de una adaptación exitosa. Y ahí está el diagnóstico duro: <strong>la escuela sabe adaptarse —lo demostró— pero solo sabe hacerlo una vez por civilización.</strong> El costo de la primera adaptación fue tan alto que la respuesta se convirtió en identidad. Dejó de ser una solución a un problema y pasó a ser lo que la institución <em>es</em>.</p>
+
+    <p>Aquí Freire deja de ser una referencia decorativa y pasa a ser el centro del asunto. Porque el núcleo de su propuesta nunca fue un contenido ni una técnica: fue la <em>capacidad de transformarse</em>. Praxis, no doctrina. Su tesis es que la educación no es un acto que uno ejerce sobre otro ni una hazaña solitaria: ocurre entre sujetos, con el mundo de por medio. Es un proceso dinámico por definición.</p>
+
+    <p>Y el sistema tomó esa capacidad y la convirtió en método. La fijó, la manualizó, la puso en las bases curriculares. Es la ironía perfecta y merece decirse sin anestesia:</p>
+
+    <div class="pull-quote">
+      <p>Bancarizaron a Freire.</p>
+    </div>
+
+    <p>A Freire, además, se le permitió indagar y experimentar en condiciones que hoy ningún sistema concede: tiempo largo, territorio acotado, ausencia de rendición de cuentas trimestral. Entregó un ideal, y el ideal fue desnaturalizado hasta quedar convertido en eslóganes curriculares —«aprendizaje significativo», «estudiante protagonista»— vaciados de las condiciones materiales que los hacían posibles.</p>
+
+    <h2 class="section-head">Conductismo con vocabulario dinámico</h2>
+
+    <p>Hay un fenómeno que explica por qué la escuela quedó tan expuesta frente a la inteligencia artificial, y que casi nadie está nombrando: el sistema migró al contenido dinámico conservando la estructura de refuerzo rígido.</p>
+
+    <p>Competencias, habilidades del siglo XXI, aprendizaje activo, evaluación formativa: todo el vocabulario del movimiento. Operando sobre un esqueleto de estímulo, respuesta y calificación. Skinner hablando el idioma de Freire.</p>
+
+    <p>El conductismo aplicado exactamente donde no correspondía. No como andamiaje inicial —donde tiene sentido y evidencia— sino como criterio de evaluación del pensamiento. Se premia la producción del signo correcto, no el proceso que lo genera. Se califica el producto entregado.</p>
+
+    <p>Y una máquina produce signos correctos a costo cero.</p>
+
+    <p>De modo que el sistema pasó ochenta años construyendo, con enorme disciplina institucional, el examen que la inteligencia artificial aprueba trivialmente. Y ahora se sorprende. La sorpresa es la parte más difícil de perdonar.</p>
+
+    <h2 class="section-head">La disponibilización y el problema de la propiocognosis</h2>
+
+    <p>Los cuatro primeros umbrales fueron todos sobre <em>acceso a información</em>. El quinto es otra cosa: es acceso a <em>operaciones cognitivas terminadas</em>.</p>
+
+    <p>No es que el conocimiento esté disponible. Es que el acto de conocer viene pre-ejecutado, con la fenomenología intacta —fluidez, articulación, seguridad, ausencia de duda— pero sin el proceso que normalmente la produce.</p>
+
+    <p>Aquí propongo un concepto, porque hace falta y no existe. La propiocepción es el sentido que nos informa dónde está nuestro cuerpo sin necesidad de mirarlo. Por analogía, llamemos <strong>propiocognosis</strong> a la capacidad de saber dónde termina el pensamiento propio sin necesidad de verificarlo. Es lo que permite distinguir «esto lo pensé» de «esto lo leí» de «esto me lo dijeron».</p>
+
+    <p>Es exactamente lo que un modelo de lenguaje desactiva. El estudiante siente la comprensión sin haberla producido. Y eso no es plagio: el plagio supone saber que se tomó de otro. Es algo distinto y peor. La señal interna de «entendí» se dispara sin referente.</p>
+
+    <p>La palabra correcta es parásito. Un parásito no mata al huésped: lo mantiene funcional mientras lo vacía. La escuela mide funcionalidad. Por eso no lo detecta.</p>
+
+    <h2 class="section-head">La ilusión es del modelo, la defensa es del lector</h2>
+
+    <p>Conviene ser preciso, porque la formulación complaciente circula mucho: se dice que el modelo genera texto neutro y que el lector decide qué hacer con él. No es así.</p>
+
+    <p>Un modelo de lenguaje <strong>genera activamente ilusión de conocimiento</strong>, porque su objetivo de optimización es la plausibilidad, no la verdad. Plausibilidad y corrección correlacionan alto, pero son variables distintas. En la brecha entre ambas vive el parásito.</p>
+
+    <p>Y la ilusión llega con toda la fenomenología del saber: fluidez, estructura, seguridad, ausencia de titubeo. Resulta más convincente que un experto real, porque el experto real duda. El modelo no miente —no puede, no tiene intención epistémica— pero produce el efecto de la verdad como subproducto industrial.</p>
+
+    <p>Frente a eso la defensa no es una. Son tres, y ninguna funciona sola.</p>
+
+    <div class="tri-table">
+      <div class="tri-row tri-head">
+        <span>Defensa</span><span>Qué hace</span><span>Qué pasa si falta</span>
+      </div>
+      <div class="tri-row">
+        <span class="tri-k">Comprensión lectora</span>
+        <span>Permite procesar el <em>output</em> como texto y no como respuesta</span>
+        <span>Consumo acrítico: no hay siquiera lectura</span>
+      </div>
+      <div class="tri-row">
+        <span class="tri-k">Conocimiento paralelo</span>
+        <span>Provee el referente contra el cual contrastar</span>
+        <span>No hay con qué comparar: todo es igualmente plausible</span>
+      </div>
+      <div class="tri-row">
+        <span class="tri-k">Método crítico</span>
+        <span>Discrimina la respuesta plausible de la respuesta correcta</span>
+        <span>El error se detecta solo por azar</span>
+      </div>
+    </div>
+
+    <p>Esa tabla resuelve, de paso, la objeción más seria que se le hace a toda pedagogía crítica: que no hay pensamiento crítico sin conocimiento de dominio. Es cierto. Nadie puede evaluar críticamente un texto sobre algo que ignora por completo. Pero eso no es un argumento contra Freire: es la descripción de su condición material. <strong>El conocimiento de dominio no es un lujo pre-freireano; es el órgano de detección.</strong> Freire y la ciencia cognitiva dejan de estar en bandos opuestos en el momento en que se entiende que el conocimiento es la condición del diálogo y no su alternativa.</p>
+
+    <p>Ahora bien, si la comprensión lectora es el conversor que transforma texto plausible en conocimiento —y su ausencia lo transforma en ilusión—, entonces conviene mirar el estado de ese conversor a escala planetaria.</p>
+
+    <p>Antes de la pandemia, se estimaba que el 57% de los niños de diez años en países de ingreso bajo y medio no lograba entender un texto escrito simple. Después del cierre de escuelas, la estimación subió a 70%.<sup><a href="#fn1" id="ref1">1</a></sup> Cuando la medida se creó, en 2019, la cifra estimada para 2015 ya era del 53%: más de la mitad de los niños sin las destrezas lectoras mínimas necesarias para todo aprendizaje posterior.</p>
+
+    <div class="pull-quote">
+      <p>Hemos desplegado una máquina de texto sobre una población mundial que no sabe leer texto.</p>
+    </div>
+
+    <p>Corresponde una advertencia, porque la misma vara obliga: esa cifra tiene crítica metodológica seria, y hay análisis que sostienen que las estimaciones por país exageran el problema en varios múltiplos.<sup><a href="#fn2" id="ref2">2</a></sup> La uso como orden de magnitud, no como precisión. Aun corregida hacia abajo, describe un déficit masivo y previo a la inteligencia artificial. La IA no lo creó. Lo va a detonar.</p>
+
+    <p>Y de ahí surge la objeción más difícil de toda esta discusión, que es honesto poner en el peor lugar posible para mi propio argumento: si hace falta comprensión lectora para usar la herramienta con seguridad, y la herramienta erosiona la práctica que construye comprensión lectora, entonces hay un problema de arranque. No hay entrada al circuito.</p>
+
+    <p>La única salida coherente que veo no es prohibir ni permitir: es secuenciar. Campo estéril durante la ventana de adquisición lectora; apertura progresiva después; método volcado al dispositivo recién cuando el conversor está instalado. Eso convierte la prohibición en una fase con fecha de retiro, y no en una política permanente. Volveré sobre esto.</p>
+
+    <h2 class="section-head">¿Y las emociones? El segundo frente, sin mapa</h2>
+
+    <p>Todo lo anterior trata del conocimiento, donde al menos existe un modelo tradicional. Malo, bancario, obsoleto, pero modelo al fin: hay acuerdo razonable sobre qué cuenta como saber algo, cómo se evalúa y quién está calificado para enseñarlo. Ese acuerdo es lo que permite discutir su fracaso.</p>
+
+    <p>Con las emociones no tenemos nada de eso. Y sin embargo le pedimos a la escuela que las enseñe.</p>
+
+    <p>Basta enumerar los paradigmas que conviven, sin jerarquía ni traducción entre ellos, dentro de la misma sala de profesores: conductual, psicodinámico, humanista, cognitivo-conductual, sistémico-familiar, neurobiológico, <em>mindfulness</em>, terapias de tercera ola, enfoque de trauma, competencias socioemocionales de matriz anglosajona. Y en territorios como el nuestro, además, marcos culturales propios que no se dejan traducir a ninguno de los anteriores sin perder lo esencial.</p>
+
+    <p>No hay acuerdo sobre la ontología: ¿las emociones son categorías discretas y universales, o construcciones culturales? No hay acuerdo sobre la medición: ¿autorreporte, observación, fisiología? No hay acuerdo sobre quién está calificado: ¿el profesor jefe, el orientador, el psicólogo, la comunidad? No hay acuerdo siquiera sobre el objetivo: ¿regular, expresar, comprender, tolerar?</p>
+
+    <p>Sobre esa ausencia total de consenso, el sistema instaló una exigencia. Y la instaló donde instala todo: sobre el mismo personal, sin horas adicionales, sin equipo, sin protocolo. Es el mismo mecanismo de siempre —emitir la norma, delegar la ejecución al eslabón sin recursos, evaluar a ese eslabón por el resultado— aplicado ahora a un campo donde ni los expertos se entienden.</p>
+
+    <p>Y hay un agravante que casi nadie está mirando. El conocimiento puede externalizarse a una máquina; las emociones, en principio, no. Salvo que la máquina ya está ahí, y ya es primer respondedor. Miles de adolescentes en el mundo conversan sus estados emocionales con un modelo de lenguaje antes que con un adulto, porque el modelo está disponible a las tres de la mañana, no juzga, no se cansa y no le cuenta a nadie.</p>
+
+    <p>El problema es que ese modelo produce <em>empatía plausible</em> por el mismo mecanismo con que produce conocimiento plausible. Y aquí la tríada de defensa se derrumba, porque su pieza central desaparece: <strong>en materia emocional no hay conocimiento paralelo contra el cual contrastar.</strong> Un dato falso se puede verificar. Una validación falsa, no. No existe la fuente externa que diga si lo que uno siente fue efectivamente comprendido o solamente reflejado con buena prosa.</p>
+
+    <div class="mirror-block">
+      <h2>El único antídoto no escala</h2>
+      <p>Si en el terreno cognitivo la defensa es <strong>conocimiento de dominio</strong>, en el terreno emocional la defensa es <strong>vínculo</strong>: alguien que te conoce hace tiempo, que puede notar que hoy estás distinto, que tiene memoria de tus semanas anteriores y responsabilidad sobre tus siguientes.</p>
+      <p>Eso no se automatiza, no se certifica y no se compra por licencia. Se construye con tiempo, con presencia y con una razón de adultos por estudiante que permita que alguien efectivamente te conozca. Es decir: el antídoto emocional al modelo de lenguaje es, otra vez, <strong>cobertura</strong>.</p>
+      <p>Y por eso mismo es lo primero que se recorta.</p>
+    </div>
+
+    <p>Dos advertencias, con la misma vara. La primera: la evidencia sobre programas socioemocionales escolares es más modesta y más disputada de lo que sugiere su presencia en el discurso; hay riesgo real de patologizar el malestar normal, de convertir la tristeza adolescente en diagnóstico y la timidez en déficit. La segunda: pedirle al docente que ejerza de terapeuta es exactamente la misma conversión de rol que denuncio más abajo, con signo invertido. El profesor no debe ser guardia. Tampoco debe ser clínico. Debe ser educador, y para eso necesita a alguien más en el equipo.</p>
+
+    <p>Lo que sí puede hacer la tecnología aquí es lo único honesto: no decidir por nadie, no diagnosticar a nadie, sino construir una capa de escucha temprana que permita a una comunidad escuchar mejor a sus propios estudiantes, y que devuelva la señal a un humano con tiempo para responderla. Instrumento de detección, no sustituto de vínculo. Toda la diferencia está en esa frase.</p>
+
+    <h2 class="section-head">La respuesta policial</h2>
+
+    <p>Frente a todo lo anterior, la respuesta institucional dominante en el mundo ha sido policial: detectores, retorno al lápiz, evaluación presencial vigilada, prohibición del dispositivo. Es decir, defender el producto entregado como evidencia de aprendizaje.</p>
+
+    <p>Eso es freireano de manual, en el peor sentido: la escuela está gastando su capital político en proteger el depósito. Defiende con uñas y dientes precisamente aquello que Freire identificó como el problema. Si la evidencia de aprendizaje es un texto que una máquina produce mejor, el problema nunca fue la máquina.</p>
+
+    <p>La evidencia sobre prohibiciones, además, no es la que suele invocarse. Un metaanálisis reciente encuentra un efecto significativo pero modesto, más marcado en bienestar social que en rendimiento.<sup><a href="#fn3" id="ref3">3</a></sup> El estudio más grande realizado hasta ahora, sobre miles de escuelas, encuentra efectos promedio en pruebas estandarizadas cercanos a cero: leve mejora en la enseñanza media superior, especialmente en matemática, y efectos pequeños negativos en los cursos intermedios.<sup><a href="#fn4" id="ref4">4</a></sup> Revisiones rápidas de este año concluyen que la evidencia de mejora en rendimiento es limitada e inconsistente, que no hay evidencia consistente de reducción del acoso escolar, y que aparecen consecuencias no buscadas, como mayor ansiedad en estudiantes incómodos con la separación del aparato.<sup><a href="#fn5" id="ref5">5</a></sup></p>
+
+    <p>Donde sí hay señal robusta es en un lugar específico: los beneficios se concentran en estudiantes de contextos desaventajados, y la calidad de la aplicación —no el texto de la norma— es la variable que decide si algo ocurre.</p>
+
+    <p>Chile es un caso entre varios. La Ley 21.801, publicada el 11 de febrero de 2026, modificó la Ley General de Educación para prohibir el uso de dispositivos móviles desde parvularia hasta media, con vigencia al inicio del año escolar 2026 y plazo hasta el 30 de junio para adecuar reglamentos internos; ordena además una evaluación al Congreso en marzo de 2030.<sup><a href="#fn6" id="ref6">6</a></sup> Se originó en siete mociones refundidas y se aprobó de manera transversal. Ese detalle importa, y volveré sobre él.</p>
+
+    <p>Mi lectura es esta: <strong>la prohibición es defendible como higiene atencional e indefendible como política frente a la inteligencia artificial.</strong> Recuperar la condición mínima para que algo ocurra en una sala es un objetivo legítimo. Pero el aparato regulado se usa en la casa, en la tarea, en el ensayo. La ley alcanza al dispositivo, no a la operación cognitiva. Se legisló el umbral tres estando en el quinto. Y para 2030, cuando llegue la evaluación, la pregunta habrá cambiado dos veces más.</p>
+
+    <p>Prohibir puede ser condición necesaria. El error es celebrarlo como si fuera suficiente.</p>
+
+  </div>
+
+  <div class="part-divider">❦ ❦ ❦</div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">Niños en moto, profesores de a pie</h2>
+
+    <p>La dicotomía prohibir o permitir se alimenta de algo que casi nunca se nombra, y que es la verdadera falla: una brecha generacional sin mecanismo de aproximación.</p>
+
+    <p>Tenemos estudiantes de la generación Z y menores, nativos de la saturación informacional, educados por adultos formados en la escasez de información. Niños en moto educados por profesores de a pie.</p>
+
+    <p>Y hay que decirlo con todas sus letras, porque el equívoco arruina la discusión: <strong>el problema no son los profesores.</strong> Es que el sistema no construye la aproximación. Puso a dos generaciones con velocidades distintas en la misma sala y llamó a eso educación.</p>
+
+    <p>La solución tampoco es comprarles motos a los profesores. Eso es lo que se intentó durante veinte años, es carísimo, es lento y siempre llega tarde: cuando el docente domina la herramienta, ya hay otra. Es una carrera diseñada para perderse.</p>
+
+    <p>La solución es que el profesor se suba atrás.</p>
+
+    <div class="pull-quote">
+      <p>No hay que darle una moto al profesor. Basta con que se suba a la del niño.</p>
+    </div>
+
+    <p>Y esto es Freire, aunque nadie lo haya formulado así: la moto es el mundo mediador. El niño conduce, porque tiene velocidad, reflejos y familiaridad. El profesor va atrás con lo único que el niño no tiene y no puede tener a esa edad: saber hacia dónde se va y qué pasa si te caes. Representación de la consecuencia.</p>
+
+    <p>Eso disuelve la dicotomía completa. Prohibir es bajar al niño de la moto para que todos caminen: igualar hacia abajo. Permitir sin método es dejarlo andar solo, rápido y sin destino. La tercera vía es el mismo vehículo con dos ocupantes y roles distintos. Hablando abrazados arriba de la moto.</p>
+
+    <p>La primera condición es reconocerlo. Mientras el sistema siga tratando la brecha como déficit del docente —capacitaciones, cursos, certificaciones digitales— seguirá comprando motos que no puede pagar en vez de aceptar que el asiento trasero es un lugar legítimo y pedagógicamente superior.</p>
+
+    <h2 class="section-head">El falso fracaso de un experimento incompleto</h2>
+
+    <p>Se dirá que esto ya se probó y fracasó. Un computador por niño, salas de informática, tabletas por estudiante: dos décadas de programas globales con resultados decepcionantes o nulos.</p>
+
+    <p>Pero conviene mirar qué se probó exactamente. Se entregó hardware. No se entregó método, ni modelo de organización del tiempo, ni arquitectura de restricciones, ni —sobre todo— arquitectura de estímulos y de motivos. Se probó «dispositivo sin método» y el resultado fue nulo.</p>
+
+    <p>Eso no es evidencia contra volcar el método al dispositivo. Es la identificación experimental de la variable faltante. El fracaso de aquellos programas es el mejor argumento disponible a favor de volver a intentarlo bien, siempre que se enuncie como lo que fue: un experimento con una sola condición, mal leído como conclusión sobre el fenómeno completo. Que como sociedad no hayamos sabido resolverlo entonces no implica que el camino no vaya por ahí.</p>
+
+    <p>Dos honestidades obligatorias. La primera: que algo no se haya probado no prueba que funcione, y la carga sigue sobre quien propone. La segunda, que es la que casi nunca se dice: <strong>esa carga se ha aplicado de manera asimétrica.</strong> Se le exigió evidencia experimental a la digitalización y nunca al aula tradicional, que lleva ciento cincuenta años operando sin control experimental de ninguna especie.</p>
+
+    <p>Y hay un peaje real que asumir. El dispositivo no es terreno neutral: está diseñado y optimizado por terceros cuyos incentivos son opuestos a los de la escuela. Llevar la pedagogía ahí es competir en cancha ajena contra adversarios mejor financiados. Eso no invalida la propuesta; define su condición. Volcar el método al dispositivo exige disputar también el diseño del dispositivo, y no solamente su uso.</p>
+
+    <h2 class="section-head">La mochila revisada</h2>
+
+    <p>Mientras tanto, el sistema hace lo contrario. Construye más distancia. Estresa y transfiere la responsabilidad al profesorado.</p>
+
+    <p>El mecanismo es siempre el mismo, y hay que nombrarlo como operación y no como descuido: se detecta un problema estructural, se emite una norma, se traslada la ejecución al eslabón sin recursos y se evalúa a ese eslabón por el resultado. La norma es gratuita. El diagnóstico es gratuito. La campaña comunicacional es casi gratuita. Lo único que cuesta es la intervención, y es exactamente lo que no se financia.</p>
+
+    <p>El efecto no es neutro: <strong>amplía la brecha que dice cerrar.</strong> Un docente al que se le suma una función de control, sin horas, sin equipo y sin protocolo, tiene menos tiempo y menos disposición para lo único que resolvería el problema, que es subirse atrás en la moto. La política de prohibición produce activamente el profesor de a pie que después lamenta.</p>
+
+    <p>Y hay un punto donde el modelo se rompe del todo: cuando el sistema le pide al profesor que revise bolsos y mochilas.</p>
+
+    <p>Ahí ocurre una conversión que no tiene retorno fácil. La relación pedagógica pasa a ser custodial. El educador se transforma en guardia. Y esa conversión destruye la condición de posibilidad de todo lo demás, porque cualquier aprendizaje —y con más razón el diálogo— requiere que el estudiante no perciba al educador como aparato de control.</p>
+
+    <p>Es la traición exacta. Freire dedicó su vida a mostrar que la educación bancaria es una forma de dominación. La respuesta del siglo XXI fue quitarle al educador incluso el rol de depositario y dejarle solamente el de vigilante. No degradamos la pedagogía: la reemplazamos por seguridad. Se desnaturaliza así lo que de verdad importa entregar, que es amor, conocimiento, herramientas y métodos.</p>
+
+    <h2 class="section-head">Quién instala el método, y con qué plata</h2>
+
+    <p>Queda la pregunta difícil, la que impide que este texto sea un panfleto: ¿quién decide qué método instalar?</p>
+
+    <p>La respuesta freireana es que nadie lo instala desde afuera, que se construye con la comunidad. Pero esa respuesta tiene un límite conocido y hay que declararlo: no escala, no se mide, y por eso mismo fue desnaturalizada. De ahí que la pregunta correcta no sea <em>qué método</em>, sino <strong>quién tiene tiempo protegido para construirlo</strong>.</p>
+
+    <p>Y eso tiene un nombre técnico: cobertura. La razón docente más asistente de la educación por estudiante es el indicador que traduce discurso en presupuesto, porque es el único que no se puede simular con una circular.</p>
+
+    <p>Con una advertencia que conviene poner antes de que la ponga un crítico: <strong>más adultos sin método definido rinde poco.</strong> La evidencia sobre asistentes de aula es consistente en esa dirección: desplegados de manera genérica, el efecto es marginal; desplegados en intervenciones estructuradas, con rol definido y formación específica, el efecto se multiplica.<sup><a href="#fn7" id="ref7">7</a></sup></p>
+
+    <p>Lo que cierra el círculo de manera casi perfecta: entregar computadores sin método fracasó; entregar adultos sin método también fracasa. Es la misma variable faltante en las dos puntas. Dos «fracasos» que son, en realidad, una sola demostración.</p>
+
+    <p>Sobre el financiamiento hay una discusión partidaria disponible, y es verificable que la inversión educativa crece más bajo unas administraciones que bajo otras. Pero esa discusión es un desvío cómodo, porque se zanja antes de empezar con dos hechos que nadie disputa: <strong>los recursos son insuficientes y, en parte, ineficientes.</strong> Ambas cosas a la vez. Discutir cuál de las dos pesa más es precisamente el debate que permite no resolver ninguna.</p>
+
+    <p>Insuficiencia e ineficiencia no son argumentos rivales: son el mismo diagnóstico. Se financia lo que se mide, se mide lo que resulta barato de medir, y lo barato de medir nunca es la relación de adultos por estudiante. Se compran plataformas, licencias y capacitaciones certificables —todo lo que emite comprobante— y no se compran horas de una persona sentada atrás en la moto, porque eso no genera indicador.</p>
+
+    <p>Es el clásico de toda política: <em>put your money where you put your mouth</em>. Se puede legislar el silencio de un aparato. No se puede legislar que alguien se suba atrás y hable abrazado con quien conduce. Eso cuesta horas, cuesta personas, cuesta presupuesto. Todo lo demás es administración del síntoma.</p>
+
+    <div class="confession-box pregunta">
+      <p>Y queda una pregunta que ninguna ley puede contestar por nosotros. El Estado delega en la escuela, la escuela delega en el docente, el docente termina revisando mochilas. ¿Dónde estamos los padres?</p>
+    </div>
+
+    <p>Nadie nos dio método a nosotros tampoco. Trabajamos jornadas largas, no recibimos formación alguna en esto, y una industria de miles de millones optimiza la atención de nuestros hijos mientras estamos en otra parte. No es culpa individual: es abandono también de los padres.</p>
+
+    <p>Pero eso no elimina la pregunta. La afila. Porque el aparato no entró al colegio por la puerta del ministerio: entró en un bolso que llenamos en casa. Y le pedimos al profesor que revise mochilas que nosotros llenamos.</p>
+
+  </div>
+
+  <div class="part-divider">❦ ❦ ❦</div>
+
+  <div class="body-text">
+
+    <h2 class="section-head">El hacha</h2>
+
+    <p>En agosto de 1960, en el sector de Nahueltoro, un hombre mató a una mujer y a sus cinco hijos con un hacha. La mujer se llamaba Rosa. Los niños tenían entre pocos meses y unos pocos años. Conviene nombrarlos primero, antes que a él, porque el orden del relato ya es una posición ética.</p>
+
+    <p>El hombre se llamaba José del Carmen Valenzuela Torres y la prensa lo llamó el Chacal de Nahueltoro. Era analfabeto. Producto de un abandono educativo total: sin escuela, sin oficio formal, sin familia estable, sin ninguna institución que lo hubiera alcanzado nunca.</p>
+
+    <p>Lo que hace que este caso siga doliendo sesenta y seis años después no es el crimen. Es lo que vino después. En la cárcel, el Estado le enseñó a leer y a escribir. Le enseñó carpintería. Le enseñó guitarra. Lo catequizó. Lo rehabilitó, con éxito documentado y ampliamente difundido. Y luego lo fusiló.</p>
+
+    <p>Miguel Littín filmó eso en 1969.<sup><a href="#fn8" id="ref8">8</a></sup> Freire había publicado <em>Pedagogía del oprimido</em> el año anterior. No hay coincidencia más elocuente en la historia intelectual latinoamericana.</p>
+
+    <p>Y hay un detalle en el relato del propio condenado que es el punto más agudo de todos, y el que conecta con todo lo anterior: él declara que no dimensionaba lo que estaba haciendo mientras lo hacía.</p>
+
+    <p>Eso no es ignorancia de la herramienta. Es ausencia de la capacidad de representarse la consecuencia de un acto propio antes de ejecutarlo. Y esa capacidad no es innata: <strong>es precisamente lo que produce la educación.</strong> Su ausencia no exculpa al sujeto. Firma a la institución que faltó.</p>
+
+    <div class="mirror-block">
+      <h2>El Estado llega siempre como carcelero antes que como educador</h2>
+      <p>Primero requisa. Después alfabetiza, si alcanza. La educación llega como trámite previo a la ejecución, como coartada retroactiva de una exclusión que duró toda la vida del sujeto.</p>
+      <p>Con la inteligencia artificial estamos repitiendo la secuencia en tiempo real. Repartimos el instrumento sin método. Esperamos el daño. Y planificamos la alfabetización para la evaluación de 2030.</p>
+      <p>La prohibición es la celda. La evaluación es el pelotón.</p>
+    </div>
+
+    <p>Se dice, con razón, que una herramienta poderosa en manos ignorantes es peligrosa. Es cierto y es insuficiente. El problema real no es que el hacha sea peligrosa: es que estamos discutiendo cómo repartir hachas mientras seguimos sin enseñarle a nadie a usarlas, y planificamos alfabetizar recién cuando ya haya cadáveres.</p>
+
+    <p>Un estudiante que entrega un texto generado por una máquina no está, en la mayoría de los casos, mintiendo. No se está representando que hubo un acto. No hay dolo: hay ausencia de representación de la consecuencia sobre su propio aprendizaje, sobre lo que deja de construirse dentro de él. Es un déficit de propiocognosis, y es exactamente el déficit que produce una escuela que nunca enseñó a mirar el proceso porque solo aprendió a calificar el producto.</p>
+
+    <p>La diferencia de escala es la que debería quitarnos el sueño. En 1960 hubo un hacha y una casa. Hoy hay una máquina de texto en cada bolsillo del planeta, y un setenta por ciento de niños de diez años que no puede leer críticamente lo que esa máquina le devuelve.</p>
+
+    <p>El profesor va atrás en la moto porque sabe qué pasa si te caes. El Chacal de Nahueltoro es lo que ocurre cuando nadie iba atrás.</p>
+
+    <p class="despierta">Súbete.</p>
+
+  </div>
+
+  <p class="byline-note"><span class="who">Jorge Andrés Oyarce Kruger</span> — Médico Veterinario, MBA, Máster en Innovación. Director de Geohumano y GH HCAiLab.</p>
+
+  <div class="footnotes">
+    <p id="fn1"><span class="fn-num">1</span> Banco Mundial, UNESCO, UNICEF, FCDO, USAID y Fundación Gates, <em>The State of Global Learning Poverty: 2022 Update</em> (junio de 2022). La pobreza de aprendizaje se define como el porcentaje de niños de diez años que no logra leer y comprender un texto simple; la estimación previa a la pandemia era 57% y la posterior, 70%, en países de ingreso bajo y medio. <a href="#ref1">↩</a></p>
+    <p id="fn2"><span class="fn-num">2</span> Existen críticas metodológicas publicadas al indicador de pobreza de aprendizaje, que cuestionan tanto las simulaciones como las estimaciones nacionales derivadas de ellas. La cifra se emplea aquí como orden de magnitud declarado y no como dato de precisión. <a href="#ref2">↩</a></p>
+    <p id="fn3"><span class="fn-num">3</span> Böttger, T. y Zierer, K., «To Ban or Not to Ban? A Rapid Review on the Impact of Smartphone Bans in Schools on Social Well-Being and Academic Performance», <em>Education Sciences</em>, 14(8), 906 (2024). Tamaño de efecto global d = 0,162, mayor en bienestar social que en rendimiento. <a href="#ref3">↩</a></p>
+    <p id="fn4"><span class="fn-num">4</span> Allcott, H., Baron, E. J., Dee, T., Duckworth, A. L., Gentzkow, M. y Jacob, B., «The Effects of School Phone Bans: National Evidence from Lockable Pouches», NBER Working Paper 35132 (2026). <a href="#ref4">↩</a></p>
+    <p id="fn5"><span class="fn-num">5</span> <em>Rapid Evidence Review on Mobile Phone Use in Schools</em> (enero de 2026). Evidencia limitada e inconsistente sobre rendimiento; sin evidencia consistente sobre reducción de acoso escolar; consecuencias no buscadas documentadas. <a href="#ref5">↩</a></p>
+    <p id="fn6"><span class="fn-num">6</span> Ley N.º 21.801, publicada en el Diario Oficial el 11 de febrero de 2026, que modifica la Ley General de Educación en materia de uso de dispositivos móviles electrónicos de comunicación personal en establecimientos educacionales. Origen: siete mociones refundidas (boletines 11.728-04, 12.885-04, 16.062-04, 16.520-04, 16.527-04, 16.574-04 y 16.575-04). <a href="#ref6">↩</a></p>
+    <p id="fn7"><span class="fn-num">7</span> La literatura sobre asistentes de aula converge en que el despliegue genérico produce efectos marginales y el despliegue estructurado, con rol y formación definidos, produce efectos sustantivamente mayores. Verificar cifras específicas en la síntesis de la Education Endowment Foundation antes de citarlas de manera puntual. <a href="#ref7">↩</a></p>
+    <p id="fn8"><span class="fn-num">8</span> <em>El Chacal de Nahueltoro</em>, dirigida por Miguel Littín (1969). Los antecedentes del caso —identidad y filiación exacta de las víctimas, fechas del proceso y de la ejecución— deben verificarse en fuentes primarias antes de su publicación definitiva. <a href="#ref8">↩</a></p>
+  </div>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAiLab — Geohumano · Valdivia, Región de Los Ríos, Chile</p>
+  <p>Serie de columnas de opinión. Serie completa en <span class="mono">jookruger.github.io/columns</span>. Esta entrega analiza el desfase entre los ciclos formativos y la vida útil del conocimiento, la disponibilización de la cognición y el estado de la comprensión lectora como condición de uso crítico de la inteligencia artificial.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Fecha</span><span class="m-v">Agosto 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Columna · Serie GH HCAiLab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card is-current" href="ninos-en-moto.html" aria-current="page">
+      <span class="mc-tag">Educación · IA</span>
+      <span class="mc-title">Niños en moto, profesores de a pie</span>
+      <span class="mc-deck">Cinco umbrales de cambio y una sola adaptación. Por qué prohibir el aparato no salva a la escuela.</span>
+    </a>
+    <a class="mc-card" href="magnifica-humanitas.html">
+      <span class="mc-tag">León XIV · IA · Dignidad</span>
+      <span class="mc-title">Magnifica Humanitas</span>
+      <span class="mc-deck">La primera encíclica de León XIV frente a la IA, el poder y la verdad. Cuatro entregas en una.</span>
+    </a>
+    <a class="mc-card" href="ley-tutti-frutti.html">
+      <span class="mc-tag">Técnica legislativa</span>
+      <span class="mc-title">La ley tutti frutti</span>
+      <span class="mc-deck">Nueve sensores de radar aplicados a la incoherencia legislativa y a los quórums orgánico-constitucionales.</span>
+    </a>
+    <a class="mc-card" href="incubacion-violencia-nominal.html">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card" href="el-gobierno-que-enferma.html">
+      <span class="mc-tag">Salud mental · Estado</span>
+      <span class="mc-title">El gobierno que enferma</span>
+      <span class="mc-deck">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
