@@ -2454,6 +2454,7 @@ const CONFIG = {
   scaleMax:     7,
   labelA:       "Respuesta individual",   // Radar A
   labelB:       "Contexto colectivo",     // Radar B
+  groups:       4,           // Ronda B: nº de grupos elegibles (figuras superpuestas). Ponlo en 2 si solo tienes 2.
 };
 /* ==================================================================== */
 </script>
@@ -2542,7 +2543,7 @@ function makeFirebaseStore(){
     setState(patch){ return root.child("state").update(patch); },
     setStateFull(st){ return root.child("state").set(st); },
     submitSelect(arr){ return root.child("votes/select/"+CLIENT).set(arr); },
-    submitRate(round,obj){ return root.child("votes/"+round+"/"+CLIENT).set(obj); },
+    submitRate(round,obj,key){ return root.child("votes/"+round+"/"+(key||CLIENT)).set(obj); },
     heartbeat(){ const r=root.child("votes/presence/"+CLIENT); r.set(Date.now());
       r.onDisconnect().remove(); },
     resetVotes(){ return root.child("votes").remove(); }
@@ -2577,12 +2578,13 @@ function makeDemoStore(){
   function simRate(round,cnt){ stopSim(); votes[round]={}; emitV();
     const top=state.top8||[]; let i=0; const total=cnt||N; const mid=(CONFIG.scaleMin+CONFIG.scaleMax)/2;
     simTimer=setInterval(()=>{ if(i>=total||!state||state.stage!==round){stopSim();return;}
-      const cid=fake[i++]; votes.presence[cid]=Date.now(); const o={};
+      const voter=fake[i]; const key = round==="rateB" ? String(i+1) : voter; i++;
+      votes.presence[voter]=Date.now(); const o={};
       top.forEach((vi,k)=>{ let base;
         if(round==="rateA"){ base = mid + Math.sin(k*1.3)*1.6; }             // promedio individual suave
         else { base = mid + Math.sin((k + i*1.9)*0.85)*2.1; }               // cada grupo con forma distinta
         o[vi]=clamp(Math.round(base+(Math.random()*1.4-0.7)),CONFIG.scaleMin,CONFIG.scaleMax); });
-      votes[round][cid]=o; emitV(); }, round==="rateB"?320:150); }
+      votes[round][key]=o; emitV(); }, round==="rateB"?320:150); }
   const api={
     demo:true,
     onState(cb){ stateCbs.push(cb); cb(state); },
@@ -2595,7 +2597,7 @@ function makeDemoStore(){
       return Promise.resolve(); },
     setStateFull(st){ state=st; emitS(); return Promise.resolve(); },
     submitSelect(arr){ votes.select[CLIENT]=arr; votes.presence[CLIENT]=Date.now(); emitV(); return Promise.resolve(); },
-    submitRate(round,obj){ votes[round][CLIENT]=obj; votes.presence[CLIENT]=Date.now(); emitV(); return Promise.resolve(); },
+    submitRate(round,obj,key){ votes[round][key||CLIENT]=obj; votes.presence[CLIENT]=Date.now(); emitV(); return Promise.resolve(); },
     heartbeat(){ votes.presence[CLIENT]=Date.now(); emitV(); },
     resetVotes(){ votes={presence:{},select:{},rateA:{},rateB:{}}; emitV(); return Promise.resolve(); }
   };
@@ -2621,13 +2623,16 @@ function radarAverages(votes,round,top8){ // -> {avg:[...], count}
 }
 function presenceCount(votes){ const p=votes.presence||{}; const now=Date.now();
   return Object.values(p).filter(ts=> now-ts < 60000 ).length; }
-// Ronda B: cada envío es su propia figura (NO se promedia). Devuelve hasta `cap` inputs superpuestos.
+// Ronda B: cada grupo es su propia figura (NO se promedia). Claves = nº de grupo ("1".."4").
 function rateSubmissions(votes,round,top8,cap){
-  const r=votes[round]||{}; const ids=Object.keys(r);
-  const shown=ids.slice(0,cap||B_MAX);
-  return { total: ids.length,
-    series: shown.map((cid,i)=>({ label:"Grupo "+(i+1),
-      avg: top8.map(vi=> (r[cid]&&r[cid][vi]!=null)? r[cid][vi] : 0 ) })) };
+  const r=votes[round]||{};
+  let keys=Object.keys(r).filter(k=>r[k]);                 // filtra huecos de arrays de Firebase
+  keys.sort((a,b)=> (!isNaN(a)&&!isNaN(b))? (+a-+b) : (a<b?-1:1) );
+  const shown=keys.slice(0,cap||B_MAX);
+  return { total: keys.length,
+    series: shown.map(k=>({ key:k, label:"Grupo "+k,
+      gi: (!isNaN(k)? (+k-1) : 0) % GROUPCOL.length,        // color estable por nº de grupo
+      avg: top8.map(vi=> (r[k]&&r[k][vi]!=null)? r[k][vi] : 0 ) })) };
 }
 
 /* =====================================================================
@@ -2720,6 +2725,13 @@ function start(){
   STORE.heartbeat();
   setInterval(()=>STORE.heartbeat(), 20000);
   if(IS_PRESENT && !STATE){ /* presentador arranca en setup */ renderPresenter(); }
+  // vista previa de pantallas del participante:  ?preview=select|rateA|rateB   (solo en demo)
+  const pv=qparam("preview");
+  if(USE_DEMO && !IS_PRESENT && pv){
+    STATE={stage:pv, meta:{title:CONFIG.title,variables:DEFAULT_VARIABLES,
+      scaleMin:CONFIG.scaleMin,scaleMax:CONFIG.scaleMax,labelA:CONFIG.labelA,labelB:CONFIG.labelB},
+      top8:[0,1,2,3,4,5,6,7]};
+  }
   render();
 }
 
@@ -2885,9 +2897,9 @@ function presenterRate(round){
     countTxt=count+" respuestas · promedio";
   } else {
     const {total,series:subs}=rateSubmissions(VOTES,round,top8,B_MAX);
-    series=subs.map((s,i)=>({avg:s.avg,color:GROUPCOL[i].c,fill:GROUPCOL[i].f}));
-    legendItems=subs.map((s,i)=>({color:GROUPCOL[i].c,label:s.label}));
-    countTxt = total+" "+(total===1?"entrada":"entradas");
+    series=subs.map(s=>({avg:s.avg,color:GROUPCOL[s.gi].c,fill:GROUPCOL[s.gi].f}));
+    legendItems=subs.map(s=>({color:GROUPCOL[s.gi].c,label:s.label}));
+    countTxt = total+" "+(total===1?"grupo":"grupos");
     if(total>B_MAX) note="Mostrando las primeras "+B_MAX+" de "+total+" (superpuestas, sin promediar).";
   }
   const svg=radarSVG(labels,series,{px:760,size:560,fontSize:15});
@@ -2896,7 +2908,7 @@ function presenterRate(round){
       el("h2",{}, isA?"Ronda A · "+STATE.meta.labelA : "Ronda B · "+STATE.meta.labelB),
       el("div",{class:"spacer"}),
       el("div",{class:"pill"},"✍️ ",countTxt)),
-    isA? null : el("div",{class:"mut",style:"margin:-2px 0 8px"},"Cada grupo es una figura propia — no se promedian (hasta "+B_MAX+")."),
+    isA? null : el("div",{class:"mut",style:"margin:-2px 0 8px"},"Cada grupo es una figura propia — no se promedian (hasta "+(CONFIG.groups||B_MAX)+")."),
     el("div",{class:"radar-grid"},svg),
     legendItems.length? legendRow(legendItems) : el("div",{class:"mut"},"Esperando envíos…"),
     note? el("div",{class:"mut",style:"margin-top:6px;font-size:.85rem"},note) : null,
@@ -2918,10 +2930,10 @@ function presenterOverlay(){
   const A=radarAverages(VOTES,"rateA",top8).avg;
   const {series:subs}=rateSubmissions(VOTES,"rateB",top8,B_MAX);
   const series=[{avg:A,color:COL.A,fill:COL.Afill}]
-    .concat(subs.map((s,i)=>({avg:s.avg,color:GROUPCOL[i].c,fill:"none"})));
+    .concat(subs.map(s=>({avg:s.avg,color:GROUPCOL[s.gi].c,fill:"none"})));
   const svg=radarSVG(labels,series,{px:860,size:560,fontSize:15});
   const legendItems=[{color:COL.A,label:STATE.meta.labelA+" · promedio"}]
-    .concat(subs.map((s,i)=>({color:GROUPCOL[i].c,label:s.label+" · "+STATE.meta.labelB})));
+    .concat(subs.map(s=>({color:GROUPCOL[s.gi].c,label:s.label+" · "+STATE.meta.labelB})));
   const card=el("div",{class:"card center"},
     el("h2",{},"Radar superpuesto"),
     el("div",{class:"mut",style:"margin:-2px 0 8px"},STATE.meta.labelA+" (promedio) vs. los grupos de "+STATE.meta.labelB),
@@ -3009,23 +3021,46 @@ function partRate(round){
   const vars=STATE.meta.variables, top8=STATE.top8||[];
   const isA=round==="rateA";
   const label=isA?STATE.meta.labelA:STATE.meta.labelB;
-  const min=CONFIG.scaleMin,max=CONFIG.scaleMax;
-  const prev=(VOTES[round]&&VOTES[round][CLIENT])||{};
-  const vals={}; top8.forEach(vi=> vals[vi]= prev[vi]!=null?prev[vi]:Math.round((min+max)/2));
+  const min=CONFIG.scaleMin,max=CONFIG.scaleMax, midv=Math.round((min+max)/2);
+  const prev= isA ? ((VOTES[round]&&VOTES[round][CLIENT])||{}) : {};
+  const vals={}; top8.forEach(vi=> vals[vi]= prev[vi]!=null?prev[vi]:midv);
+
+  // selector de grupo (solo Ronda B): garantiza figuras separadas por grupo
+  let group = isA ? null : (localStorage.getItem("radar_groupB")||null);
+  const groupWrap = el("div",{class:"chips",style:"margin:8px 0 4px"});
+  const gBtns=[];
+  if(!isA){
+    for(let g=1; g<=(CONFIG.groups||4); g++){
+      const gb=el("div",{class:"chip"+(String(g)===group?" sel":""),
+        style:"justify-content:center;flex:1 1 40%",
+        onclick:()=>{ group=String(g); localStorage.setItem("radar_groupB",group);
+          gBtns.forEach((b,bi)=> b.classList.toggle("sel", String(bi+1)===group)); }},
+        el("span",{class:"t",style:"text-align:center"},"Grupo "+g));
+      gBtns.push(gb); groupWrap.append(gb);
+    }
+  }
+
   const list=el("div",{});
   top8.forEach((vi)=>{ const valEl=el("div",{class:"val"},String(vals[vi]));
     const rng=el("input",{type:"range",min:String(min),max:String(max),step:"1",value:String(vals[vi]),
       oninput:e=>{ vals[vi]=+e.target.value; valEl.textContent=e.target.value; }});
     list.append(el("div",{class:"rate"+(isA?"":" rangeB")},
       el("div",{class:"top"}, el("div",{style:"font-weight:700"},vars[vi]), valEl), rng)); });
-  const done=el("div",{class:"banner hidden",style:"margin-top:10px"},"✔ Recibido. Puedes ajustar hasta que cierre la ronda.");
-  const btn=el("button",{class:"big"+ (isA?"":""),style: isA?"":"background:var(--B)",onclick:()=>{
-    STORE.submitRate(round,vals); toast("¡Enviado!"); done.classList.remove("hidden");
+
+  const done=el("div",{class:"banner hidden",style:"margin-top:10px"},"✔ Recibido. Puedes ajustar y reenviar hasta que cierre la ronda.");
+  const btn=el("button",{class:"big",style: isA?"":"background:var(--B)",onclick:()=>{
+    if(!isA && !group){ toast("Primero elige tu grupo"); return; }
+    STORE.submitRate(round,vals, isA? null : group);
+    toast(isA?"¡Enviado!":"¡Enviado como Grupo "+group+"!"); done.classList.remove("hidden");
   }},"Enviar puntuaciones");
+
   app.append(el("div",{class:"card"},
     el("h2",{}, isA?"Ronda A":"Ronda B"),
-    el("div",{class:"banner"}, "Puntúa cada variable de "+min+" a "+max+" según: "),
-    el("h3",{style:"margin:8px 0 0;color:"+(isA?"var(--A)":"var(--B)")}, label),
+    el("h3",{style:"margin:6px 0 0;color:"+(isA?"var(--A)":"var(--B)")}, label),
+    el("div",{class:"banner",style:"margin-top:8px"}, "Puntúa cada variable de "+min+" a "+max+"."),
+    !isA? el("div",{class:"mut",style:"margin-top:12px;font-weight:700;color:var(--txt)"},"¿Qué grupo eres?") : null,
+    !isA? groupWrap : null,
+    !isA? el("div",{style:"height:6px"}) : null,
     list, btn, done ));
 }
 
