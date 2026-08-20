@@ -2497,6 +2497,14 @@ function participantURL(){
 const BRAND = { name:"Taller DTI UACh", kicker:"Universidad Austral de Chile",
   tagline:"Solución desarrollada por GH · HCAiLab-Valdivia" };
 const COL = { A:"#2f6bff", Afill:"rgba(47,107,255,.20)", B:"#ff4d6d", Bfill:"rgba(255,77,109,.18)" };
+// paleta para los grupos de la Ronda B (superpuestos, sin promediar) — hasta 4, sin usar el azul de la Ronda A
+const GROUPCOL = [
+  {c:"#ff4d6d", f:"rgba(255,77,109,.12)"},  // rosa/rojo
+  {c:"#f5a623", f:"rgba(245,166,35,.12)"},  // ámbar
+  {c:"#8b5cf6", f:"rgba(139,92,246,.12)"},  // violeta
+  {c:"#12b3a3", f:"rgba(18,179,163,.12)"}   // teal
+];
+const B_MAX = 4; // máximo de inputs superpuestos en la Ronda B
 function markSVG(px){ // pequeño emblema de radar
   return `<svg class="mark" viewBox="0 0 48 48" width="${px||42}" height="${px||42}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
@@ -2566,14 +2574,15 @@ function makeDemoStore(){
       const cid=fake[i++]; votes.presence[cid]=Date.now();
       votes.select[cid]=pickWeighted(state.meta.variables,state.meta?state.top8?state.top8.length:CONFIG.pick:CONFIG.pick);
       emitV(); },140); }
-  function simRate(round){ stopSim(); votes[round]={}; emitV();
-    const top=state.top8||[]; let i=0;
-    simTimer=setInterval(()=>{ if(i>=N||!state||state.stage!==round){stopSim();return;}
+  function simRate(round,cnt){ stopSim(); votes[round]={}; emitV();
+    const top=state.top8||[]; let i=0; const total=cnt||N; const mid=(CONFIG.scaleMin+CONFIG.scaleMax)/2;
+    simTimer=setInterval(()=>{ if(i>=total||!state||state.stage!==round){stopSim();return;}
       const cid=fake[i++]; votes.presence[cid]=Date.now(); const o={};
-      top.forEach((vi,k)=>{ const base = round==="rateA"
-          ? 4+ (Math.sin(k*1.3)+1)*2.4 : 3+ (Math.cos(k*0.9)+1)*2.9;
-        o[vi]=clamp(Math.round(base+(Math.random()*3-1.5)),CONFIG.scaleMin,CONFIG.scaleMax); });
-      votes[round][cid]=o; emitV(); },150); }
+      top.forEach((vi,k)=>{ let base;
+        if(round==="rateA"){ base = mid + Math.sin(k*1.3)*1.6; }             // promedio individual suave
+        else { base = mid + Math.sin((k + i*1.9)*0.85)*2.1; }               // cada grupo con forma distinta
+        o[vi]=clamp(Math.round(base+(Math.random()*1.4-0.7)),CONFIG.scaleMin,CONFIG.scaleMax); });
+      votes[round][cid]=o; emitV(); }, round==="rateB"?320:150); }
   const api={
     demo:true,
     onState(cb){ stateCbs.push(cb); cb(state); },
@@ -2581,7 +2590,7 @@ function makeDemoStore(){
     setState(patch){ state=Object.assign({},state,patch); emitS();
       if(patch.stage==="select") simSelect();
       if(patch.stage==="rateA") simRate("rateA");
-      if(patch.stage==="rateB") simRate("rateB");
+      if(patch.stage==="rateB") simRate("rateB",3);
       if(patch.stage==="reveal"||patch.stage==="overlay"||patch.stage==="lobby") stopSim();
       return Promise.resolve(); },
     setStateFull(st){ state=st; emitS(); return Promise.resolve(); },
@@ -2612,6 +2621,14 @@ function radarAverages(votes,round,top8){ // -> {avg:[...], count}
 }
 function presenceCount(votes){ const p=votes.presence||{}; const now=Date.now();
   return Object.values(p).filter(ts=> now-ts < 60000 ).length; }
+// Ronda B: cada envío es su propia figura (NO se promedia). Devuelve hasta `cap` inputs superpuestos.
+function rateSubmissions(votes,round,top8,cap){
+  const r=votes[round]||{}; const ids=Object.keys(r);
+  const shown=ids.slice(0,cap||B_MAX);
+  return { total: ids.length,
+    series: shown.map((cid,i)=>({ label:"Grupo "+(i+1),
+      avg: top8.map(vi=> (r[cid]&&r[cid][vi]!=null)? r[cid][vi] : 0 ) })) };
+}
 
 /* =====================================================================
    RADAR SVG
@@ -2849,22 +2866,40 @@ function presenterReveal(){
   app.append(card);
 }
 
+function legendRow(items){
+  const lg=el("div",{class:"legend"});
+  items.forEach(it=> lg.append(el("div",{class:"k"},
+    el("div",{class:"sw",style:"background:"+it.color}), it.label)));
+  return lg;
+}
+
 function presenterRate(round){
   const vars=STATE.meta.variables, top8=STATE.top8||[];
   const labels=top8.map(i=>vars[i]);
   const isA = round==="rateA";
-  const {avg,count}=radarAverages(VOTES,round,top8);
-  const svg=radarSVG(labels,[{avg,color:isA?COL.A:COL.B,
-    fill:isA?COL.Afill:COL.Bfill}],{px:760,size:560,fontSize:15});
+  let series, legendItems, countTxt, note=null;
+  if(isA){
+    const {avg,count}=radarAverages(VOTES,round,top8);
+    series=[{avg,color:COL.A,fill:COL.Afill}];
+    legendItems=[{color:COL.A,label:STATE.meta.labelA}];
+    countTxt=count+" respuestas · promedio";
+  } else {
+    const {total,series:subs}=rateSubmissions(VOTES,round,top8,B_MAX);
+    series=subs.map((s,i)=>({avg:s.avg,color:GROUPCOL[i].c,fill:GROUPCOL[i].f}));
+    legendItems=subs.map((s,i)=>({color:GROUPCOL[i].c,label:s.label}));
+    countTxt = total+" "+(total===1?"entrada":"entradas");
+    if(total>B_MAX) note="Mostrando las primeras "+B_MAX+" de "+total+" (superpuestas, sin promediar).";
+  }
+  const svg=radarSVG(labels,series,{px:760,size:560,fontSize:15});
   const card=el("div",{class:"card center"},
     el("div",{class:"row"},
       el("h2",{}, isA?"Ronda A · "+STATE.meta.labelA : "Ronda B · "+STATE.meta.labelB),
       el("div",{class:"spacer"}),
-      el("div",{class:"pill"},"✍️ ",String(count)," respuestas")),
+      el("div",{class:"pill"},"✍️ ",countTxt)),
+    isA? null : el("div",{class:"mut",style:"margin:-2px 0 8px"},"Cada grupo es una figura propia — no se promedian (hasta "+B_MAX+")."),
     el("div",{class:"radar-grid"},svg),
-    el("div",{class:"legend"}, el("div",{class:"k"},
-      el("div",{class:"sw",style:"background:"+(isA?COL.A:COL.B)}),
-      isA?STATE.meta.labelA:STATE.meta.labelB)),
+    legendItems.length? legendRow(legendItems) : el("div",{class:"mut"},"Esperando envíos…"),
+    note? el("div",{class:"mut",style:"margin-top:6px;font-size:.85rem"},note) : null,
     el("div",{style:"height:10px"}),
     isA
       ? el("button",{class:"big",onclick:()=>STORE.setState({stage:"rateB"})},
@@ -2881,17 +2916,17 @@ function presenterOverlay(){
   const vars=STATE.meta.variables, top8=STATE.top8||[];
   const labels=top8.map(i=>vars[i]);
   const A=radarAverages(VOTES,"rateA",top8).avg;
-  const B=radarAverages(VOTES,"rateB",top8).avg;
-  const svg=radarSVG(labels,[
-    {avg:A,color:COL.A,fill:COL.Afill},
-    {avg:B,color:COL.B,fill:COL.Bfill}
-  ],{px:860,size:560,fontSize:15});
+  const {series:subs}=rateSubmissions(VOTES,"rateB",top8,B_MAX);
+  const series=[{avg:A,color:COL.A,fill:COL.Afill}]
+    .concat(subs.map((s,i)=>({avg:s.avg,color:GROUPCOL[i].c,fill:"none"})));
+  const svg=radarSVG(labels,series,{px:860,size:560,fontSize:15});
+  const legendItems=[{color:COL.A,label:STATE.meta.labelA+" · promedio"}]
+    .concat(subs.map((s,i)=>({color:GROUPCOL[i].c,label:s.label+" · "+STATE.meta.labelB})));
   const card=el("div",{class:"card center"},
     el("h2",{},"Radar superpuesto"),
+    el("div",{class:"mut",style:"margin:-2px 0 8px"},STATE.meta.labelA+" (promedio) vs. los grupos de "+STATE.meta.labelB),
     el("div",{class:"radar-grid"},svg),
-    el("div",{class:"legend"},
-      el("div",{class:"k"}, el("div",{class:"sw",style:"background:var(--A)"}), STATE.meta.labelA),
-      el("div",{class:"k"}, el("div",{class:"sw",style:"background:var(--B)"}), STATE.meta.labelB)),
+    legendRow(legendItems),
     el("div",{style:"height:12px"}),
     el("div",{class:"row",style:"justify-content:center"},
       el("button",{class:"ghost",onclick:()=>STORE.setState({stage:"rateB"})},"◂ Volver a Ronda B"),
