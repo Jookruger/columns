@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La crisis del pellet y el PM10 — GH HCAiLab</title>
+<meta name="description" content="Por qué la fracción gruesa del material particulado, la más barata de medir, puede ser el instrumento que hoy le falta a la política de calidad del aire en el sur de Chile.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+/* ===== Añadidos GH HCAiLab: notas, firma institucional, colofón, carrusel ===== */
+
+sup { font-size: 0.72em; vertical-align: super; line-height: 0; }
+sup a {
+  text-decoration: none;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.byline-note {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.byline-note .who { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.footnotes {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.footnotes p { margin-bottom: 0.6em; scroll-margin-top: 1.5rem; }
+.footnotes .fn-num {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+.footnotes em { font-style: italic; }
+
+.colophon {
+  max-width: var(--column-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+.colophon p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.colophon a:hover { border-color: var(--accent); }
+.colophon .mono { font-family: ui-monospace, 'Cascadia Code', Menlo, monospace; font-size: 0.8rem; }
+
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
+}
+.meta-dl .m-k {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.meta-dl .m-v { font-family: 'Source Serif 4', serif; font-size: 0.85rem; color: var(--ink); }
+
+/* ===== Carrusel "Seguir leyendo" ===== */
+.more-columns {
+  max-width: var(--column-width);
+  margin: 3.5rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 3px double var(--rule);
+}
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mc-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.mc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mc-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.mc-track::-webkit-scrollbar { height: 6px; }
+.mc-track::-webkit-scrollbar-track { background: var(--paper-warm); }
+.mc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+
+.mc-card {
+  scroll-snap-align: start;
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+.mc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(26,20,16,0.08); }
+.mc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-tag {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-family: 'Source Serif 4', serif; font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--accent); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; box-shadow: none; }
+.mc-card.is-current .mc-tag { color: var(--paper-warm); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .more-columns { padding: 2rem 1.25rem 0; }
+  .colophon { padding: 2rem 1.25rem 3rem; }
+  .mc-card { flex-basis: 82%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-track { scroll-behavior: auto; }
+  .mc-card, .mc-btn { transition: none; }
+}
+
+/* ===== Añadidos Magnifica Humanitas: divisores de parte, epígrafe, cierre «Despierta» ===== */
+
+.part-divider {
+  text-align: center;
+  color: var(--rule);
+  font-size: 1.05rem;
+  letter-spacing: 0.6em;
+  margin: 3.75rem 0 0;
+  user-select: none;
+}
+
+.part-head { margin: 1.25rem 0 1.9rem; text-align: center; }
+.part-head.first { margin-top: 0; }
+
+.part-head .part-kicker {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+
+.part-head .part-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.35rem, 3.4vw, 1.95rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.16;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.part-epigraph {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 34rem;
+  margin: 0 auto 2.25rem;
+}
+
+.despierta {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin: 2.75rem 0 0.5rem !important;
+}
+
+
+
+/* ===== Añadidos «Niños en moto»: tabla de tríada, variantes de callout ===== */
+
+.tri-table {
+  margin: 2.25rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.tri-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr 1.3fr;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.tri-row:last-child { border-bottom: 0; }
+.tri-row span {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.tri-row.tri-head {
+  background: var(--paper-warm);
+  border-bottom: 2px solid var(--ink);
+}
+.tri-row.tri-head span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.tri-row .tri-k {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--accent);
+}
+
+.confession-box.pregunta::before { content: 'La pregunta'; }
+
+@media (max-width: 600px) {
+  .tri-row { grid-template-columns: 1fr; gap: 0.35rem; padding: 1rem 0.25rem; }
+  .tri-row.tri-head { display: none; }
+  .tri-row .tri-k { font-size: 1rem; margin-bottom: 0.15rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Medio ambiente · Salud pública</p>
+  <p class="masthead-pub">GH HCAiLab · Opinión</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Calidad del aire · Biomasa · Territorio</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">La crisis del pellet y el <em>PM10</em></h1>
+
+  <p class="deck">La partícula maldita que podría resolver un grave problema al sur. Por qué la fracción gruesa, la más barata de medir, es el instrumento que le falta a una política que decidió limpiar el sur y terminó calefaccionando el centro.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia · Septiembre 2026</span>
+  </div>
+
+  <div class="body-text">
+
+    <p>Deshagamos primero el maleficio del título. El PM10 no es maldito. Es material particulado de hasta diez micras, el elemento grueso del smog, presente en nuestro inconsciente en: humo, invierno, alerta, restricción. Pero es el PM2,5, la fracción fina, quien merecería el apellido. El PM10 es más bien el testigo «visible». Y esa condición podría, con cierta ironía, convertirlo en un aliado para nuestro sur.</p>
+
+    <p>Conviene saber qué hace cada uno.</p>
+
+    <p>El PM10 queda mayormente atrapado en nariz, faringe y bronquios grandes: irrita mucosas, gatilla tos, agrava asma y EPOC, abre la puerta a infecciones respiratorias en niños y adultos mayores. Es la partícula que pica en la garganta, el cuarto maleficio imperdonable para los alérgicos. Es el principal factor de predisposición de las enfermedades respiratorias de invierno. Actúa de manera indirecta: es el mejor amigo de nuestro peor enemigo en invierno.<sup><a href="#fn1" id="ref1">1</a></sup></p>
+
+    <p>El PM2,5, en cambio, recorre todo el tracto respiratorio y atraviesa los alveolos. Traduzco: pasa del pulmón a la sangre. Desde ahí actúa como agente sistémico, asociado a infarto, accidente cerebrovascular, hipertensión, cáncer de pulmón, parto prematuro y deterioro cognitivo. Su daño es sistémico y potencialmente mortal.</p>
+
+    <p>Nuestra regulación ambiental nació con ADN de higiene ocupacional. Ahora, con la revisión de la norma de PM10 iniciada recientemente,<sup><a href="#fn2" id="ref2">2</a></sup> tenemos la oportunidad de corregir el encuadre completo: no solo para contener la continuidad de emisiones en el Santiago urbano, sino para pensar en la epidemiología de un país y no en el bolsillo de sus sectores acomodados. Porque el relato instalado dice que el pellet es limpio, y no es limpio: es el menos malo frente a la leña, y solo en PM10 y PM2,5. Bajo esa frontera, en la fracción ultrafina, el pellet se defiende peor. Frente a los combustibles fósiles, en cambio, gana con holgura en cancerígenos. Ninguna de las dos comparaciones alcanza para llamarlo energía limpia.</p>
+
+    <p>Hace una década la política pública empujó el pellet como el combustible limpio que sustituiría a la leña húmeda. El foco era el sur, cuya matriz de calefacción era y sigue siendo la peor del país. Y es cierto que el pellet emite menos: entre 2 y 3 gramos de PM2,5 por kilo, contra unos 5 gramos de la leña seca y decenas cuando está húmeda o mal manejada.<sup><a href="#fn3" id="ref3">3</a></sup> La diferencia es real y no hay que negarla. Pero lo que sale por el ducto es la misma familia química: material particulado que es 96% PM10, y de ese 93% PM2,5, cargados de cancerígenos.<sup><a href="#fn4" id="ref4">4</a></sup> Baja la cantidad, no la naturaleza. Y entonces la norma dejó un vacío: prohibió la leña en Santiago, pero no el pellet. La capital se pelletizó por la puerta que nadie cerró, y cada cierto tiempo el sur hace filas por un saco. Los Ríos depende en un 80% de pellet producido en otras regiones, porque acá casi no se fabrica.<sup><a href="#fn5" id="ref5">5</a></sup> Se diseñó una política para limpiar el sur y terminamos financiando la calefacción del centro con un combustible que no producimos, que ahora no alcanza y que vuelve a ensuciar el aire de los capitalinos.</p>
+
+    <div class="pull-quote">
+      <p>El pellet no es un combustible sucio. Es un combustible aceptable en la densidad equivocada.</p>
+    </div>
+
+    <p>Meterlo a una cuenca de ocho millones de habitantes es repetir el experimento sabiendo el resultado.<sup><a href="#fn6" id="ref6">6</a></sup> En el sur el asunto es más incómodo, porque nos toca. Aquí la leña es infraestructura cultural, no elección de mercado, y eso no se prohíbe por decreto. Lo que sí puede regularse con urgencia es la distribución: trazabilidad, humedad medida en punto de venta, sanción real a la camionada informal de origen incierto. Ese último eslabón mete al sistema la peor combustión posible.</p>
+
+    <p>Queda la paradoja doméstica que ningún plan de descontaminación mira de frente. Pasamos el invierno viendo cerca el manto de los guardianes de Azkaban: ese velo que la inversión térmica sostiene sobre la ciudad, cerca pero nunca del todo encima. Cerramos ventanas, revisamos la app, creemos que la amenaza está afuera. Hasta que llega la hora del aseo de la máquina, el método estándar, el soplido. Y entonces aparece entero: de cada estufa sale un dementor a quitarnos las alegrías del invierno cálido, y no es figura literaria, es lo que se ve. Ceniza y material particulado reproduciendo la forma exacta. Lo más fino de todo lo quemado esa semana termina en los pulmones de un niño, para absorber en parte su alegría, salud y vida. Ningún manual de usuario lo aborda con la seriedad de una hoja de seguridad, y seguimos soplando eso en nuestro propio metro cuadrado.</p>
+
+    <div class="mirror-block">
+      <h2>La norma que no observa no protege</h2>
+      <p>Chile tiene veintidós zonas declaradas latentes o saturadas por PM10 en trece regiones, y una red de monitoreo estructurada en torno a grandes ciudades y grandes fuentes industriales. Futrono, La Unión, Río Bueno y Paillaco viven episodios invernales que sus habitantes reconocen sin necesidad de instrumentos y que el Estado no registra.</p>
+      <p>Sin monitoreo no hay declaratoria. Sin declaratoria no hay plan. Sin plan no hay inversión en monitoreo. <strong>El círculo se cierra sobre las comunidades que menos capacidad tienen de romperlo.</strong></p>
+      <p>Bajar el valor límite de una norma que no observa a buena parte de la población expuesta mejora el instrumento y no mejora nada más.</p>
+    </div>
+
+    <p>Y aquí está la ironía útil. El PM10 tiene una virtud práctica sobre las otras fracciones: se mide bien con tecnología accesible. Los sensores ópticos de bajo costo se desempeñan mejor en la fracción gruesa que en la fina,<sup><a href="#fn7" id="ref7">7</a></sup> cuestan tres órdenes de magnitud menos que un equipo de referencia, y la Directiva europea ya los incorpora bajo un régimen distinto, llamado indicativo en oposición al regulatorio.<sup><a href="#fn8" id="ref8">8</a></sup> No sirven para declarar una zona saturada. Sirven para saber que existe.</p>
+
+    <p>En territorios donde la fuente dominante es la combustión de biomasa, además, medir PM10 es una aproximación razonable a la exposición a la fracción fina, porque el 93% de lo que se emite va ahí adentro. El testigo visible declara por el asesino invisible.</p>
+
+    <p>Hay una consulta abierta hasta el 19 de octubre. Cualquier persona puede aportar antecedentes a la revisión de la norma escribiendo a <span class="mono">norma.mp10@mma.gob.cl</span>, o dejando una carta en la Seremi del Medio Ambiente de su región. No es un trámite decorativo: es el momento en que se decide qué se va a medir durante los próximos años y dónde.</p>
+
+    <p>El PM10, entonces, no es maldito. Es un mensajero. Nos dice que la biomasa no cabe en Santiago, que en el sur cabe pero bajo reglas nuevas, y que el problema no termina cuando se apaga el fuego, sino cuando entendemos que también respiramos lo que barremos.</p>
+
+  </div>
+
+  <p class="byline-note"><span class="who">Jorge Andrés Oyarce Kruger</span> — Médico Veterinario, MBA, Máster en Innovación. Director de Geohumano y GH HCAiLab.</p>
+
+  <div class="footnotes">
+    <p id="fn1"><span class="fn-num">1</span> El mecanismo indirecto opera por deterioro del aclaramiento mucociliar: la inflamación crónica de la mucosa respiratoria reduce la eliminación de virus y bacterias, elevando la susceptibilidad a neumonía adquirida en la comunidad. En términos epidemiológicos, el PM10 se comporta como causa componente en el sentido de Rothman: no es el agente etiológico del desenlace fatal, pero sin su concurrencia el círculo causal no se completa. Véase Rothman, K. J., «Causes», <em>American Journal of Epidemiology</em>, 104(6), 587-592 (1976). <a href="#ref1">↩</a></p>
+    <p id="fn2"><span class="fn-num">2</span> Ministerio del Medio Ambiente, resolución de inicio del proceso de revisión de la norma primaria de calidad del aire para MP10 (D.S. N.º 12/2021), 13 de agosto de 2026. El proceso contempla doce meses para la elaboración del anteproyecto y una primera etapa de recepción de antecedentes de 45 días hábiles, con vencimiento el 19 de octubre de 2026. El Ministerio consigna veintidós zonas declaradas latentes o saturadas por MP10 en trece regiones del país. <a href="#ref2">↩</a></p>
+    <p id="fn3"><span class="fn-num">3</span> Los factores de emisión de los calefactores a pellet varían en márgenes estrechos por tratarse de combustible estandarizado con operación automatizada; los de leña dependen de humedad, especie, tiraje y hábito de operación, y por eso la literatura reporta rangos amplios y no valores puntuales. Las cifras de este párrafo deben leerse como órdenes de magnitud. <a href="#ref3">↩</a></p>
+    <p id="fn4"><span class="fn-num">4</span> Composición del material particulado de combustión residencial de biomasa según antecedentes de la norma de emisión para artefactos que combustionen leña y pellet de madera: 96% MP10, y de ese total 93% MP2,5, compuesto por materia orgánica, carbono elemental y sales inorgánicas, incluyendo formaldehído, benceno, tolueno e hidrocarburos aromáticos policíclicos. El benceno, el formaldehído y el benzo(a)pireno están clasificados en el Grupo 1 por la Agencia Internacional de Investigación sobre el Cáncer. El tolueno no es cancerígeno; su relevancia es neurotóxica. <a href="#ref4">↩</a></p>
+    <p id="fn5"><span class="fn-num">5</span> Durante el invierno de 2026 se registraron quiebres de stock, racionamiento de venta y alzas de precio del pellet en Valdivia, Osorno, Temuco y el Gran Concepción. La cobertura de prensa atribuye la escasez al peak de demanda estacional, al cierre de un productor relevante y a fallas logísticas; la dependencia de producción externa de la Región de Los Ríos es un dato estructural consignado por la autoridad sectorial. La atribución de una parte del fenómeno al crecimiento del consumo en la Región Metropolitana es una lectura del autor y no está establecida en esa cobertura. <a href="#ref5">↩</a></p>
+    <p id="fn6"><span class="fn-num">6</span> Un análisis de dilución de la Universidad de Chile establece que, bajo inversión térmica, cada calefactor a pellet requeriría del orden de una hectárea para diluir sus emisiones hasta 200 µg/m³ de MP2,5, mientras que un domicilio urbano ocupa entre 150 y 250 m² incluyendo antejardín. Su conclusión explícita: aunque la sustitución alcanzara el 100% del parque de calefactores a leña, subsistirían días con problemas de contaminación. <a href="#ref6">↩</a></p>
+    <p id="fn7"><span class="fn-num">7</span> Una evaluación de dos redes de bajo costo desarrollada durante una temporada completa de calefacción en la Llanura Padana, comparando diecinueve estaciones para MP2,5 y veinte para MP10 contra estaciones de grado regulatorio, concluyó que ambas redes mostraron mayor exactitud en el ajuste de las magnitudes de MP10 que de MP2,5. Estudios en la región capital de Delhi reportan correlaciones de Spearman entre 0,64 y 0,83 para MP10 respecto de instrumentos de referencia. Las limitaciones documentadas —sensibilidad a temperatura y humedad, deriva del sensor, necesidad de calibración cruzada— no impiden el uso indicativo, pero exigen protocolo. <a href="#ref7">↩</a></p>
+    <p id="fn8"><span class="fn-num">8</span> Directiva 2008/50/CE del Parlamento Europeo y del Consejo, relativa a la calidad del aire ambiente y a una atmósfera más limpia en Europa, que asigna a los monitores de bajo costo un régimen de exigencia distinto del de los monitores de referencia, bajo la categoría de mediciones indicativas. <a href="#ref8">↩</a></p>
+  </div>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAiLab — Geohumano · Valdivia, Región de Los Ríos, Chile</p>
+  <p>Serie de columnas de opinión. Serie completa en <span class="mono">jookruger.github.io/columns</span>. Esta entrega analiza el vacío regulatorio del pellet en la Región Metropolitana, la crisis de abastecimiento en el sur y la brecha de observación territorial que condiciona la eficacia de la norma de calidad del aire en revisión.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Fecha</span><span class="m-v">Septiembre 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Columna · Serie GH HCAiLab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card is-current" href="crisis-pellet-pm10.html" aria-current="page">
+      <span class="mc-tag">Calidad del aire</span>
+      <span class="mc-title">La crisis del pellet y el PM10</span>
+      <span class="mc-deck">La fracción gruesa como instrumento: por qué la norma que no observa no protege.</span>
+    </a>
+    <a class="mc-card" href="ninos-en-moto.html">
+      <span class="mc-tag">Educación · IA</span>
+      <span class="mc-title">Niños en moto, profesores de a pie</span>
+      <span class="mc-deck">Cinco umbrales de cambio y una sola adaptación. Por qué prohibir el aparato no salva a la escuela.</span>
+    </a>
+    <a class="mc-card" href="magnifica-humanitas.html">
+      <span class="mc-tag">León XIV · IA · Dignidad</span>
+      <span class="mc-title">Magnifica Humanitas</span>
+      <span class="mc-deck">La primera encíclica de León XIV frente a la IA, el poder y la verdad. Cuatro entregas en una.</span>
+    </a>
+    <a class="mc-card" href="ley-tutti-frutti.html">
+      <span class="mc-tag">Técnica legislativa</span>
+      <span class="mc-title">La ley tutti frutti</span>
+      <span class="mc-deck">Nueve sensores de radar aplicados a la incoherencia legislativa y a los quórums orgánico-constitucionales.</span>
+    </a>
+    <a class="mc-card" href="incubacion-violencia-nominal.html">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card" href="el-gobierno-que-enferma.html">
+      <span class="mc-tag">Salud mental · Estado</span>
+      <span class="mc-title">El gobierno que enferma</span>
+      <span class="mc-deck">Cuando la incertidumbre es política y la salud mental, decoración.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
