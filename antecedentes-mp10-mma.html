@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aporte de antecedentes — Revisión norma MP10 · GH HCAiLab</title>
+<meta name="description" content="Aporte de antecedentes al proceso de revisión de la norma primaria de calidad del aire para MP10 (D.S. 12/2021): densificación territorial del monitoreo mediante estaciones indicativas de bajo costo.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+    --accent-light: #9C83A4;
+    --column-width: 680px;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 3rem 1.5rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .masthead-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-pub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .article-wrapper {
+    max-width: var(--column-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1.headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .byline {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 1.4em;
+  }
+
+  .body-text p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--accent);
+  }
+
+  h2.section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2.section-head::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.75rem;
+    font-style: normal;
+  }
+
+  .mirror-block {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+  }
+
+  .mirror-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--paper);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #4a4055;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .mirror-block p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.78;
+    color: #d4c9b8;
+    font-weight: 300;
+    margin-bottom: 1.2em;
+  }
+
+  .mirror-block p:last-child { margin-bottom: 0; }
+
+  .mirror-block strong {
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .example-card {
+    padding: 1.2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .example-card .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .example-card .offense {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .example-card .consequence {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem;
+  }
+
+  .example-card.poor .label { color: var(--accent); }
+  .example-card.poor { border-color: var(--accent); }
+  .example-card.rich .label { color: var(--ink-faint); }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .comparison-header .col-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .comparison-header .col-label.poor-col { color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .comparison-header .col-label.rich-col { color: var(--ink-faint); border-bottom: 2px solid var(--ink-faint); }
+
+  .confession-box {
+    border: 2px solid var(--accent);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .confession-box::before {
+    content: 'La confesión';
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .confession-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .endnote {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--rule);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 2rem 0;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    .article-wrapper { padding: 2rem 1.25rem 4rem; }
+    .mirror-block { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .comparison-header { grid-template-columns: 1fr; }
+    h1.headline { font-size: 1.85rem; }
+    .pull-quote p { font-size: 1.1rem; }
+  }
+
+
+/* ===== columna más ancha para documento con tablas ===== */
+:root { --column-width: 780px; }
+
+/* ===== byline note, colofón, carrusel (compartido con las columnas de opinión) ===== */
+.byline-note {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.byline-note .who { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.colophon {
+  max-width: var(--column-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+.colophon p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.colophon a:hover { border-color: var(--accent); }
+.colophon .mono { font-family: ui-monospace, 'Cascadia Code', Menlo, monospace; font-size: 0.8rem; }
+.meta-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
+}
+.meta-dl .m-k {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.meta-dl .m-v { font-family: 'Source Serif 4', serif; font-size: 0.85rem; color: var(--ink); }
+
+/* ===== Carrusel "Seguir leyendo" ===== */
+.more-columns {
+  max-width: var(--column-width);
+  margin: 3.5rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 3px double var(--rule);
+}
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1;
+  width: 2.1rem; height: 2.1rem;
+  border: 1px solid var(--rule); background: var(--paper-warm); color: var(--accent);
+  cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mc-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.mc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-track {
+  display: flex; gap: 1rem; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding-bottom: 1.5rem; -webkit-overflow-scrolling: touch;
+}
+.mc-track::-webkit-scrollbar { height: 6px; }
+.mc-track::-webkit-scrollbar-track { background: var(--paper-warm); }
+.mc-track::-webkit-scrollbar-thumb { background: var(--rule); }
+.mc-card {
+  scroll-snap-align: start; flex: 0 0 240px;
+  display: flex; flex-direction: column;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule); background: var(--paper-warm);
+  text-decoration: none; color: var(--ink);
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+.mc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(26,20,16,0.08); }
+.mc-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-tag { font-family: 'Playfair Display', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-family: 'Source Serif 4', serif; font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--accent); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; box-shadow: none; }
+.mc-card.is-current .mc-tag { color: var(--paper-warm); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: 0.85; }
+
+/* ===== Documento técnico: meta, TOC, tablas, código, ledger, notas, listas numeradas ===== */
+.doc-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem 1.75rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.15rem 0;
+  margin: 1.5rem 0 2rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.86rem;
+}
+.doc-meta > div { margin: 0; }
+.doc-meta dt {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.2rem;
+}
+.doc-meta dd { margin: 0; font-weight: 400; color: var(--ink); }
+
+.doc-toc {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.15rem 1.4rem;
+  margin: 0 0 2.75rem;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.92rem;
+}
+.doc-toc strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+.doc-toc ol { margin: 0; padding-left: 1.35em; color: var(--ink); }
+.doc-toc li { margin: 0.25rem 0; }
+.doc-toc a { color: var(--accent); text-decoration: none; }
+.doc-toc a:hover { text-decoration: underline; }
+
+.body-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  margin: 3.5rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  scroll-margin-top: 1.5rem;
+}
+.body-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  margin: 2rem 0 0.6rem;
+  color: var(--ink);
+}
+.body-text strong { color: var(--ink); font-weight: 700; }
+
+.hipotesis {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.04rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.body-text blockquote {
+  margin: 1.2rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--accent-light);
+  background: transparent;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  font-weight: 300;
+}
+.body-text blockquote p { margin: 0; }
+.body-text blockquote strong { color: var(--ink); font-style: normal; }
+
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.body-text table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
+  background: transparent;
+  color: var(--ink);
+}
+.body-text caption {
+  caption-side: top;
+  text-align: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0 0 0.6rem;
+  font-weight: 700;
+}
+.body-text th {
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid var(--ink);
+  padding: 0.55rem 0.75rem;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.82rem;
+}
+.body-text td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.55rem 0.75rem;
+  vertical-align: top;
+}
+.body-text tr:last-child td { border-bottom: 1px solid var(--ink); }
+.body-text td.num, .body-text th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.body-text code {
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.85em;
+  background: var(--paper-warm);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+.body-text pre {
+  background: var(--accent);
+  color: var(--paper);
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  padding: 1.15rem 1.3rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-radius: 3px;
+}
+.body-text pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+.ledger {
+  background: var(--paper-warm);
+  border: 1px solid var(--ink);
+  margin: 1.75rem 0;
+  font-family: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+.ledger .l-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.1rem;
+  border-bottom: 2px solid var(--ink);
+}
+.ledger .l-section {
+  padding: 0.4rem 1.1rem 0.15rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+.ledger .l-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.32rem 1.1rem;
+}
+.ledger .l-row span:last-child {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ledger .l-sub { border-top: 1px solid var(--rule); font-weight: 500; }
+.ledger .l-total {
+  border-top: 2px solid var(--ink);
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
+}
+.ledger .l-total.final { border-bottom: 3px double var(--ink); }
+.pos { color: #2e6b4f; font-weight: 700; }
+.neg { color: var(--accent); font-weight: 700; }
+
+.nota-metodo {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  border: 1px dashed var(--accent-light);
+  padding: 0.85rem 1.1rem;
+  margin: 1rem 0;
+  font-weight: 300;
+  background: transparent;
+  line-height: 1.55;
+}
+.nota-metodo strong { color: var(--ink); font-weight: 700; }
+
+.body-text ol.limitaciones,
+.body-text ol.preguntas {
+  counter-reset: lim;
+  list-style: none;
+  padding-left: 0;
+  margin: 1.25rem 0;
+}
+.body-text ol.limitaciones li,
+.body-text ol.preguntas li {
+  counter-increment: lim;
+  position: relative;
+  padding: 0 0 0.9rem 3.2rem;
+  margin: 0 0 0.4rem;
+  font-family: 'Source Serif 4', serif;
+  line-height: 1.6;
+}
+.body-text ol.limitaciones li::before,
+.body-text ol.preguntas li::before {
+  content: counter(lim, decimal-leading-zero);
+  position: absolute;
+  left: 0; top: 0.15rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid var(--rule);
+  padding: 0.18rem 0.55rem;
+  background: var(--paper-warm);
+  color: var(--accent);
+}
+.body-text em { font-style: italic; }
+
+@media (max-width: 600px) {
+  .more-columns, .colophon { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .mc-card { flex-basis: 82%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-track { scroll-behavior: auto; }
+  .mc-card, .mc-btn { transition: none; }
+}
+
+
+  .ref-item {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 1.6rem;
+    text-indent: -1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink-muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Documento de trabajo · Repositorio de respaldo · v1</p>
+  <p class="masthead-pub">GH HCAiLab · Aporte normativo</p>
+</div>
+
+<div class="article-wrapper">
+
+  <span class="section-tag">Calidad del aire · Norma MP10 · Monitoreo</span>
+
+  <a href="index.html" style="display:inline-block;font-family:'Playfair Display',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--ink-faint);padding-bottom:2px;margin-bottom:1.5rem;">← Volver a Columnas</a>
+  <br>
+
+  <h1 class="headline">Aporte de antecedentes al proceso de revisión de la <em>norma MP10</em></h1>
+
+  <p class="deck">Norma primaria de calidad del aire para material particulado respirable MP10 (D.S. N.º 12/2021, MMA). Densificación territorial del monitoreo mediante estaciones indicativas de bajo costo.</p>
+
+  <div class="byline">
+    <span>GH HCAiLab</span>
+    <span>Valdivia · Invierno 2026</span>
+  </div>
+
+  <div class="body-text">
+
+  <div class="doc-meta">
+    <p><strong>Dirigido a:</strong> Ministerio del Medio Ambiente, División de Calidad del Aire y Cambio Climático. <span class="mono">norma.mp10@mma.gob.cl</span></p>
+    <p><strong>Materia:</strong> Aporte de antecedentes técnicos y sociales conforme al plazo de 45 días hábiles abierto el 13 de agosto de 2026, con vencimiento el 19 de octubre de 2026.</p>
+    <p><strong>Estado del documento:</strong> versión de respaldo público. Los datos de identificación del presentante se consignan únicamente en la versión ingresada al Ministerio.</p>
+  </div>
+
+  <nav class="doc-toc" aria-label="Tabla de contenidos">
+    <strong>Contenido</strong>
+    <ol>
+      <li><a href="#motivacion">Motivación</a></li>
+      <li><a href="#resumen">Resumen ejecutivo</a></li>
+      <li><a href="#marco">Antecedentes del proceso y marco normativo vigente</a></li>
+      <li><a href="#diagnostico">Diagnóstico: la brecha de observación territorial</a></li>
+      <li><a href="#propuesta">Propuesta técnica: estaciones indicativas de bajo costo</a></li>
+      <li><a href="#concretas">Propuestas concretas</a></li>
+      <li><a href="#final">Consideración final</a></li>
+      <li><a href="#referencias">Referencias</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="motivacion">Motivación</h2>
+
+  <p>Estos antecedentes se presentan desde una trayectoria que combina el ejercicio profesional en ciencias biológicas con varios años de trabajo en el servicio público municipal, en funciones de fiscalización ambiental. Esa experiencia expuso de manera directa una asimetría que consideramos central para el proceso en curso: la distancia entre lo que la normativa ambiental permite exigir y lo que efectivamente puede medirse en territorio.</p>
+
+  <p>Ese trabajo se desarrolló en comunas pequeñas, sin presupuesto para adquirir ni mantener sistemas de monitoreo estandarizados. La restricción obligó a buscar alternativas. Se desarrollaron, por iniciativa propia y con recursos limitados, metodologías de levantamiento territorial mediante ortofotogrametría con drones para la fiscalización de extracción de áridos, y se prototiparon dispositivos basados en plataformas Arduino y componentes de bajo costo que permitieron obtener referencias de afectación de la calidad del aire en entornos de alta vulnerabilidad social, allí donde no existía ni existe medición oficial alguna. Esos prototipos no producen datos regulatorios, y no es esa su función. Producen algo que antes no había: evidencia de que el problema existe, dónde ocurre y con qué intensidad.</p>
+
+  <p>La lección que sostiene esta presentación es esa. Buena parte de los vacíos de fiscalización ambiental en Chile no se explican por ausencia de norma ni por falta de voluntad, sino por ausencia de datos, y la ausencia de datos es con frecuencia un problema de costo del instrumento antes que un problema técnico. Cuando el instrumento se abarata, la observación se vuelve posible, y con ella la gestión.</p>
+
+  <p>Este laboratorio trabaja desde la Región de Los Ríos, donde cada invierno se repite un fenómeno que los habitantes reconocen sin necesidad de mediciones y que el Estado, sin embargo, no registra en la mayoría de nuestras comunas. Esa contradicción entre lo que la comunidad experimenta y lo que el sistema observa es la que motiva este aporte. No se propone aquí una solución novedosa, sino la extensión a escala nacional de un principio ya verificado en terreno: que la tecnología accesible, bien protocolizada, puede cerrar brechas de información que el presupuesto público, por sí solo, no ha logrado cerrar en tres décadas.</p>
+
+  <h2 id="resumen">1. Resumen ejecutivo</h2>
+
+  <p>Presentamos antecedentes técnicos orientados a un punto que, a nuestro juicio, condiciona la eficacia de cualquier ajuste al valor límite de la norma: la insuficiencia de la cobertura espacial del monitoreo de MP10 en Chile. Una norma más exigente aplicada sobre una red que no observa la mayor parte del territorio poblado no mejora la protección de la salud; solo mejora la protección de las zonas ya observadas.</p>
+
+  <p>Los antecedentes que se exponen sustentan tres propuestas concretas:</p>
+
+  <ul>
+    <li>Incorporar a la norma, o al instrumento reglamentario que la complemente, la categoría de <strong>estación indicativa de bajo costo</strong>, con régimen de exigencia diferenciado respecto de las estaciones de referencia, siguiendo el precedente de la Directiva 2008/50/CE de la Unión Europea.</li>
+    <li>Establecer como meta nacional alcanzar del orden de <strong>mil puntos de medición de MP10</strong> en un plazo de cuatro años, con una densidad mínima de un punto cada cinco kilómetros cuadrados en las zonas declaradas latentes o saturadas.</li>
+    <li>Extender la obligación de contar con al menos un punto de medición permanente a <strong>toda localidad de más de diez mil habitantes</strong>, con prioridad para las comunas del centro-sur y sur del país que presentan episodios recurrentes de contaminación por combustión residencial de biomasa y que hoy carecen de registro público alguno.</li>
+  </ul>
+
+  <p>Adicionalmente, exponemos antecedentes sobre un vacío regulatorio conexo: la exclusión de los artefactos a pellet de las restricciones de calefacción residencial aplicadas en la Región Metropolitana, y sus consecuencias sobre el mercado de biomasa del sur del país.</p>
+
+  <h2 id="marco">2. Antecedentes del proceso y marco normativo vigente</h2>
+
+  <p>El Ministerio del Medio Ambiente dio inicio el 13 de agosto de 2026 al proceso de revisión de la norma primaria de calidad del aire para MP10, en cumplimiento del plazo legal de cuatro años que rige este tipo de instrumentos. El proceso contempla doce meses para la elaboración del anteproyecto, con posibilidad de ampliación, y una primera etapa de recepción de antecedentes de personas naturales y jurídicas hasta el 19 de octubre de 2026.</p>
+
+  <p>Según información del propio Ministerio, existen actualmente veintidós zonas del país declaradas latentes o saturadas por MP10, distribuidas en trece regiones, desde Antofagasta hasta Aysén, de las cuales veinte cuentan con Plan de Prevención y/o Descontaminación Atmosférica vigente. Esta cifra describe un problema de alcance nacional y no localizado.</p>
+
+  <h3>2.1 Fundamento sanitario de la fracción gruesa</h3>
+
+  <p>El MP10 corresponde a partículas sólidas y líquidas suspendidas en la atmósfera con diámetro aerodinámico igual o inferior a diez micrómetros. Su relevancia sanitaria opera por dos vías. La primera es directa: depositación en vías respiratorias superiores y bronquios de mayor calibre, con irritación de mucosas, exacerbación de asma y enfermedad pulmonar obstructiva crónica, e incremento de consultas y hospitalizaciones respiratorias.</p>
+
+  <p>La segunda vía es indirecta y, a nuestro juicio, subvalorada en el diseño normativo vigente. La inflamación crónica de la mucosa respiratoria deteriora la función del aparato mucociliar, reduciendo el aclaramiento de agentes infecciosos y elevando la susceptibilidad a neumonía adquirida en la comunidad. En términos epidemiológicos, el MP10 opera como <strong>causa componente</strong> en el sentido de Rothman: no constituye por sí mismo el agente etiológico del desenlace fatal, pero sin su concurrencia el círculo causal no se completa. Esta condición explica por qué la carga de mortalidad asociada a episodios de contaminación por MP10 se expresa con rezago y bajo códigos diagnósticos de causa infecciosa, lo que tiende a subestimar su contribución real en las estadísticas de mortalidad.</p>
+
+  <p>Conviene además consignar una relación de composición relevante para la discusión normativa: la fracción MP10 contiene íntegramente a la fracción fina MP2,5. En el caso específico de la combustión residencial de biomasa, la literatura técnica recogida por el propio Ministerio establece que el material particulado emitido corresponde en un 96% a MP10, y que de ese total un 93% corresponde a MP2,5, compuesto principalmente por materia orgánica, carbono elemental y sales inorgánicas, e incluyendo formaldehído, benceno, tolueno e hidrocarburos aromáticos policíclicos, varios de ellos clasificados como cancerígenos para humanos por la Agencia Internacional de Investigación sobre el Cáncer.</p>
+
+  <p>La consecuencia práctica es que, en territorios cuya principal fuente es la calefacción residencial a leña, la medición de MP10 constituye un indicador razonablemente proporcional de la exposición a la fracción fina. Esta propiedad tiene valor operativo directo para el diseño de redes de vigilancia, según se argumenta en la sección 4.</p>
+
+  <h2 id="diagnostico">3. Diagnóstico: la brecha de observación territorial</h2>
+
+  <h3>3.1 Estado actual de la red</h3>
+
+  <p>El Sistema de Información Nacional de Calidad del Aire administra la red pública de monitoreo desde 2012. Un análisis publicado en la revista <em>Atmosphere</em> durante 2025, desarrollado por la Universidad de Chile, el Centro de Ciencia del Clima y la Resiliencia, el Ministerio del Medio Ambiente y la Universidad del Desarrollo, sistematizó ciento ochenta millones de registros horarios provenientes de ciento noventa y una estaciones del sistema, constituyendo el primer análisis exhaustivo a escala nacional para cinco contaminantes.</p>
+
+  <p>Ese trabajo documenta mejoras sustantivas, entre ellas una reducción cercana al cuarenta por ciento en las concentraciones máximas de MP2,5 en Santiago desde comienzos de los años dos mil. Documenta también, y este es el punto que nos interesa destacar, que las brechas territoriales persisten con fuerza, y que el uso intensivo de leña húmeda continúa siendo la principal causa de contaminación atmosférica en el sur del país.</p>
+
+  <p>La distribución de la red revela el problema con claridad. La Región Metropolitana cuenta con la Red MACAM, de diez estaciones para una población cercana a los ocho millones de habitantes. La Región de La Araucanía dispone de tres estaciones con equipos de referencia, dos en Temuco y una en Padre Las Casas, más una cuarta estación para MP2,5 en Villarrica operativa desde mayo de 2023. La red nacional, aun siendo la más extensa de América Latina, se ha estructurado históricamente en torno a dos criterios: grandes centros urbanos y áreas de influencia de fuentes industriales relevantes.</p>
+
+  <h3>3.2 El territorio no observado</h3>
+
+  <p>El criterio anterior deja fuera un conjunto de localidades cuyo perfil de emisión es, en proporción a su población, comparable o peor al de las capitales regionales monitoreadas. Se trata de ciudades intermedias y pequeñas del centro-sur y sur del país, con alta penetración de calefacción residencial a leña, viviendas de baja eficiencia térmica, y condiciones topográficas y meteorológicas favorables a la formación de inversiones térmicas nocturnas.</p>
+
+  <p>En la Región de Los Ríos, comunas como Futrono, La Unión, Río Bueno y Paillaco presentan episodios invernales de deterioro de la calidad del aire perceptibles a simple vista y reconocidos por sus habitantes, sin que exista registro público continuo que permita caracterizarlos, dimensionarlos ni incorporarlos a la gestión de episodios críticos. La situación se replica en decenas de localidades a lo largo del país.</p>
+
+  <p>Esta ausencia de datos produce tres efectos concretos. Primero, impide la declaratoria de zona latente o saturada, puesto que dicha declaratoria requiere evidencia de superación de norma que solo puede generarse mediante monitoreo. Segundo, excluye a esas comunidades de los instrumentos de gestión y de los programas de recambio de calefactores y mejoramiento térmico asociados a los planes de descontaminación. Tercero, y de mayor gravedad metodológica, sesga sistemáticamente la evaluación nacional del problema: el país no puede afirmar que conoce su exposición poblacional a MP10 cuando no observa a una fracción significativa de su población.</p>
+
+  <div class="hipotesis">
+  Se configura así un círculo que se retroalimenta. Sin monitoreo no hay declaratoria; sin declaratoria no hay plan; sin plan no hay inversión en monitoreo. La revisión en curso es la oportunidad institucional para interrumpirlo.
+  </div>
+
+  <h3>3.3 Un vacío conexo: los artefactos a pellet en la Región Metropolitana</h3>
+
+  <p>Los instrumentos de gestión de episodios críticos vigentes en la provincia de Santiago y las comunas de San Bernardo y Puente Alto prohíben el uso de calefactores a leña, exceptuando expresamente los artefactos a pellet. Esta excepción se fundó en el menor factor de emisión del combustible densificado, lo que es efectivo pero no equivale a ausencia de emisión.</p>
+
+  <p>Los antecedentes disponibles establecen para los calefactores a pellet un factor de emisión efectivo del orden de dos a tres gramos de MP2,5 por kilogramo de combustible, con variación en márgenes estrechos por tratarse de un combustible estandarizado con operación automatizada. Los calefactores a leña presentan cifras que van desde aproximadamente cinco gramos por kilogramo en condiciones óptimas hasta valores de un orden de magnitud superior en condiciones de humedad elevada o mala operación. La diferencia es real y no la discutimos.</p>
+
+  <p>Sí observamos que un análisis de dilución desarrollado por la Universidad de Chile establece que, bajo condiciones de inversión térmica y viento reducido, cada calefactor a pellet requeriría del orden de una hectárea de superficie para diluir sus emisiones hasta alcanzar una concentración de doscientos microgramos por metro cúbico de MP2,5, mientras que los domicilios urbanos ocupan típicamente entre ciento cincuenta y doscientos cincuenta metros cuadrados incluyendo antejardín. La conclusión explícita de dicho análisis es que, incluso si la sustitución por pellet alcanzara el cien por ciento del parque de calefactores a leña, subsistirían días con problemas de contaminación.</p>
+
+  <p>Este antecedente sugiere que la excepción del pellet en la Región Metropolitana no es neutra en términos de calidad del aire y merece ser evaluada. Consignamos además un efecto de segundo orden documentado durante el invierno de 2026: los quiebres de stock, racionamiento de venta y alzas de precio del pellet registrados en Valdivia, Osorno, Temuco y el Gran Concepción, en un contexto donde la Región de Los Ríos depende en aproximadamente un ochenta por ciento de pellet producido en otras regiones. Una política diseñada para descontaminar el sur no debería tener como efecto colateral la competencia por su propio suministro de combustible de transición.</p>
+
+  <h2 id="propuesta">4. Propuesta técnica: estaciones indicativas de bajo costo</h2>
+
+  <h3>4.1 Precedente normativo internacional</h3>
+
+  <p>La incorporación de sensores de bajo costo al marco regulatorio de calidad del aire cuenta con precedente consolidado. La Directiva 2008/50/CE de la Unión Europea incorpora oficialmente los monitores de bajo costo asignándoles un régimen distinto del de los monitores de referencia, con exigencias de exactitud menores, bajo la categoría de mediciones indicativas en oposición a las mediciones regulatorias. Este esquema de dos niveles permite densificar la observación territorial sin comprometer la validez jurídica de las mediciones que sustentan declaratorias y verificación de cumplimiento.</p>
+
+  <p>Chile exige actualmente, para validar información de monitoreo, el uso de métodos de referencia o equivalentes aprobados por la Agencia de Protección Ambiental de los Estados Unidos o por las directivas de la Comunidad Europea. Proponemos mantener íntegramente ese estándar para las mediciones de carácter regulatorio, e incorporar en paralelo una categoría indicativa con requisitos propios.</p>
+
+  <h3>4.2 Desempeño documentado de los sensores ópticos</h3>
+
+  <p>La literatura de validación disponible respalda el uso de sensores ópticos de bajo costo para propósitos indicativos, con una particularidad favorable al caso chileno. Una evaluación de dos redes de bajo costo desarrollada durante una temporada completa de calefacción en la Llanura Padana, en el norte de Italia, comparando diecinueve estaciones para MP2,5 y veinte para MP10 contra estaciones de grado regulatorio, concluyó que ambas redes mostraron mayor exactitud en el ajuste de las magnitudes de MP10 que de MP2,5.</p>
+
+  <p>Este resultado es relevante: el sensor de bajo costo se desempeña mejor precisamente en la fracción que esta norma regula. Un estudio de validación desarrollado en la región capital de Delhi reportó correlaciones de rangos de Spearman entre 0,64 y 0,83 para MP10 respecto de instrumentos de referencia, incluso sin calibración local previa. Trabajos de calibración y validación de estaciones basadas en plataformas Arduino, sometidas a campañas de terreno de cinco meses y medio junto a estaciones oficiales, reportaron ausencia de fallas y derivas de sensor durante todo el período.</p>
+
+  <p>La literatura documenta con igual claridad las limitaciones que deben quedar reflejadas en el diseño del protocolo: sensibilidad a temperatura, humedad y presión; degradación del sensor en el tiempo; y necesidad de calibración contra instrumento de referencia. Ninguna de estas limitaciones impide el uso indicativo; todas exigen protocolo.</p>
+
+  <h3>4.3 Estructura de costos</h3>
+
+  <p>Los sensores ópticos de material particulado presentan costos de adquisición del orden de tres órdenes de magnitud inferiores a los instrumentos de grado regulatorio. Consideramos, sin embargo, que la comparación honesta debe realizarse sobre costo total de propiedad, incorporando instalación, mantención, calibración periódica, telemetría y recambio de sensor, componentes cuya cuantificación está menos establecida en la literatura. Bajo ese criterio conservador, estimamos el costo total de propiedad de una estación indicativa entre un cinco y un diez por ciento del de una estación de referencia.</p>
+
+  <div class="table-wrap">
+  <table>
+  <caption>Tabla 4.1 — Comparación entre estación de referencia y estación indicativa</caption>
+  <thead><tr><th>Componente</th><th>Equipo de referencia</th><th>Estación indicativa de bajo costo</th></tr></thead>
+  <tbody>
+  <tr><td>Principio de medición</td><td>Gravimetría o atenuación beta (BAM/TEOM)</td><td>Dispersión óptica de luz (nefelometría / contador óptico)</td></tr>
+  <tr><td>Costo de adquisición</td><td class="num">Referencia base = 100</td><td class="num">Entre 0,1% y 1% del equipo de referencia</td></tr>
+  <tr><td>Costo total de propiedad a 5 años</td><td class="num">Referencia base = 100</td><td class="num">Entre 5% y 10%, incluyendo instalación, calibración cruzada, telemetría y recambio de sensor</td></tr>
+  <tr><td>Régimen normativo propuesto</td><td>Regulatorio (declaratoria de zonas, verificación de cumplimiento)</td><td>Indicativo (vigilancia territorial, alerta temprana, gradiente espacial)</td></tr>
+  </tbody>
+  </table>
+  </div>
+
+  <p>Aun bajo el supuesto más conservador, la relación costo-cobertura resulta decisiva: el presupuesto de una sola estación de referencia adicional permite instalar y operar entre diez y veinte puntos indicativos, con la consiguiente ganancia en resolución espacial y en capacidad de identificar gradientes intraurbanos que la red actual, por su baja densidad, no puede detectar.</p>
+
+  <h2 id="concretas">5. Propuestas concretas</h2>
+
+  <h3>5.1 Categoría normativa</h3>
+
+  <p>Solicitamos que el anteproyecto incorpore, en la norma o en el instrumento reglamentario complementario que corresponda, la categoría de <strong>estación indicativa de calidad del aire</strong>, definida por: método de medición óptico; obligación de calibración cruzada inicial y periódica contra estación de referencia mediante colocalización; publicación obligatoria del factor de corrección aplicado; y prohibición expresa de su uso como fundamento único para declaratorias de zona latente o saturada o para verificación de cumplimiento de norma.</p>
+
+  <h3>5.2 Metas de cobertura</h3>
+
+  <p>Proponemos establecer como meta nacional, en un horizonte de cuatro años:</p>
+
+  <ul>
+    <li>Alcanzar del orden de mil puntos de medición de MP10 a escala nacional, sumando estaciones de referencia e indicativas.</li>
+    <li>Garantizar una densidad mínima de un punto de medición cada cinco kilómetros cuadrados en el área urbana de las veintidós zonas declaradas latentes o saturadas.</li>
+    <li>Asegurar al menos un punto de medición permanente en toda localidad de más de diez mil habitantes, con prioridad de implementación en las comunas del centro-sur y sur que presenten uso intensivo de calefacción residencial a biomasa y que actualmente carezcan de monitoreo.</li>
+    <li>Publicar los datos de la red indicativa en el portal del Sistema de Información Nacional de Calidad del Aire, en capa diferenciada y con advertencia explícita sobre su carácter indicativo, en formato abierto y descargable.</li>
+  </ul>
+
+  <h3>5.3 Modelo de implementación</h3>
+
+  <p>Proponemos un modelo habilitante antes que uno directamente financiado por el Estado. El Ministerio definiría el estándar técnico, el protocolo de calibración, el formato de reporte y el mecanismo de validación; la instalación y operación quedaría abierta a municipios, universidades, servicios de salud, establecimientos educacionales, organizaciones comunitarias y particulares que cumplan el protocolo y acepten publicar sus datos en la plataforma pública.</p>
+
+  <p>Este modelo presenta tres ventajas. Reduce sustancialmente el costo fiscal de la densificación. Distribuye la capacidad de observación entre los propios territorios afectados, con efectos formativos y de apropiación comunitaria del problema. Y genera, en un plazo breve, la evidencia necesaria para que las comunidades hoy invisibles al sistema puedan acceder a los instrumentos de gestión que les corresponden.</p>
+
+  <p>Sugerimos que el Ministerio considere un programa piloto en la Región de Los Ríos, cuyas condiciones la hacen particularmente representativa del problema descrito: dependencia externa de combustible densificado, alta penetración de calefacción a leña, múltiples localidades sobre diez mil habitantes sin monitoreo, y presencia de capacidades universitarias y técnicas locales para operar y validar la red.</p>
+
+  <h3>5.4 Aprovechamiento analítico de la red densificada</h3>
+
+  <p>La densificación de la red genera un activo que excede el valor de cada medición individual: una serie de datos abiertos susceptible de análisis por cualquier institución o persona interesada, sin costo adicional para el Estado.</p>
+
+  <p>La literatura reciente documenta tres usos con respaldo empírico. El primero es la corrección del dato mediante aprendizaje automático: un estudio publicado en 2025 que combinó sensores de bajo costo con corrección algorítmica redujo el error cuadrático medio de 72,1 a 16,8 microgramos por metro cúbico al validar contra una estación nacional no utilizada en el ajuste, concluyendo que los sensores de bajo costo permiten compensar la insuficiencia de cobertura espacial de las redes tradicionales. La limitación de exactitud que justifica clasificar estos equipos como indicativos resulta, entonces, parcialmente corregible por vía computacional una vez que la red existe.</p>
+
+  <p>El segundo es el pronóstico de episodios con resolución comunal, hoy inviable por baja densidad de estaciones. Anticipar un episodio crítico con margen operativo en localidades que actualmente no cuentan con medición alguna tiene consecuencias sanitarias directas sobre las decisiones de exposición de población vulnerable.</p>
+
+  <p>El tercero, y el de mayor valor público, es el cruce con otros registros del Estado. La literatura documenta sistemas que identifican zonas críticas de MP10 correlacionando lecturas de sensores con densidad poblacional, proximidad vial y datos meteorológicos, produciendo mapeo predictivo que releva barrios vulnerables y habilita intervenciones focalizadas. Chile dispone de los insumos para un ejercicio equivalente: egresos hospitalarios y atenciones de urgencia, datos de la Dirección Meteorológica, información censal y de caracterización socioeconómica, y catastros asociados a los planes de descontaminación.</p>
+
+  <p>Esa convergencia permitiría avanzar desde la constatación de concentraciones hacia la estimación de carga de enfermedad atribuible con resolución territorial. Atañe directamente al fundamento de la norma: el mecanismo indirecto descrito en la sección 2.1, donde el MP10 opera como causa componente de desenlaces respiratorios infecciosos, solo puede caracterizarse empíricamente si existen simultáneamente series de exposición local y series epidemiológicas. La red propuesta es la condición material para esa investigación, y su disponibilidad pública permitiría que universidades, servicios de salud, memoristas y tesistas la realicen sin que el Ministerio deba financiarla.</p>
+
+  <p>Solicitamos, en consecuencia, que el diseño contemple desde su origen requisitos de interoperabilidad: formatos abiertos y estandarizados, series completas con marca temporal y georreferencia, publicación de metadatos de calibración y acceso programático a los datos. Una red cuyos datos no pueden cruzarse con otros registros públicos entrega una fracción menor del valor que podría entregar, y esa decisión se toma en el diseño, no después.</p>
+
+  <h3>5.5 Monitoreo de espacios interiores</h3>
+
+  <p>La norma primaria regula concentraciones de aire ambiente exterior. Sin embargo, la población de las zonas afectadas por combustión residencial de biomasa pasa la mayor parte del período de exposición crítica en espacios interiores, y precisamente allí se concentran operaciones que liberan material particulado directamente en el ambiente respirado: encendido, recarga y limpieza de calefactores, retiro de ceniza y manejo del combustible, y por lo tanto es en ese lugar donde se expone el mayor desarrollo de patologías respiratorias.</p>
+
+  <p>No existe en Chile registro sistemático de concentraciones interiores de MP10 asociadas a calefacción residencial. Esta ausencia es relevante porque la exposición efectiva de la población no equivale a la concentración medida por la estación exterior más cercana, y porque las medidas de gestión de episodios críticos, que recomiendan permanecer en interiores, suponen implícitamente que el interior constituye un refugio, supuesto que en viviendas calefaccionadas con biomasa no ha sido verificado con datos nacionales.</p>
+
+  <p>Proponemos que el diseño de la red indicativa contemple un componente de monitoreo interior acotado a recintos de acceso público y uso institucional: establecimientos educacionales, salas cuna, consultorios de atención primaria, hogares de larga estadía, bibliotecas, oficinas municipales y edificios públicos. La selección de estos recintos responde a tres criterios: concentran población de mayor susceptibilidad, no plantean cuestiones de privacidad domiciliaria, y sus administradores pueden autorizar la instalación sin necesidad de mecanismos de consentimiento individual.</p>
+
+  <p>Respecto del monitoreo en viviendas particulares, reconocemos que presenta un valor científico superior y también una complejidad regulatoria mayor. Una serie temporal continua de concentración interior georreferenciada permite inferir patrones de ocupación y hábitos domésticos, y constituye por tanto dato personal en los términos de la Ley 21.719 sobre protección de datos personales. Proponemos que, de incorporarse este componente, se haga bajo condiciones expresas: consentimiento informado y revocable del ocupante; publicación de datos únicamente en forma agregada por unidad territorial y con resolución temporal reducida; y prohibición de publicar series individuales georreferenciadas. Bajo ese diseño, el aporte científico se conserva y el riesgo de identificación se elimina.</p>
+
+  <p>Consignamos finalmente que la evidencia internacional respalda el uso de sensores de bajo costo en ambientes interiores y exteriores, con validación contra muestreadores de referencia conforme a la norma EN 12341:2014, lo que permite incorporar este componente sin desarrollar instrumentación específica.</p>
+
+  <h2 id="final">6. Consideración final</h2>
+
+  <p>La revisión de una norma de calidad del aire suele concentrarse en el valor límite. Sostenemos que, en el caso del MP10 en Chile, el valor límite es una condición necesaria pero claramente insuficiente. Un estándar más exigente aplicado sobre una red que no observa a buena parte de la población expuesta produce una mejora nominal en el instrumento y ninguna mejora real en la protección sanitaria de quienes hoy no aparecen en ningún registro.</p>
+
+  <p>El MP10 tiene, respecto de otras fracciones, una virtud práctica: se mide bien con tecnología accesible, y en territorios dominados por combustión de biomasa constituye un indicador proporcional de la exposición a la fracción fina. Esa combinación lo convierte en el instrumento idóneo para una política de vigilancia territorial extendida. Solicitamos que la revisión en curso considere este uso.</p>
+
+  <p>Quedamos a disposición del Ministerio para aportar antecedentes complementarios, especificaciones técnicas detalladas del diseño de red propuesto, o para participar en las instancias de consulta que el proceso contemple.</p>
+
+  <h2 id="referencias">Referencias</h2>
+
+  <p class="ref-item">Calibration of Low-Cost Sensors for PM10 and PM2.5 Based on Artificial Intelligence for Smart Cities. PubMed Central, PMC12899426.</p>
+
+  <p class="ref-item">Cavaliere, A., Carotenuto, F., Di Gennaro, F., Gioli, B., Gualtieri, G., Martelli, F., Matese, A., Toscano, P., Vagnoli, C. y Zaldei, A. (2018). Development of Low-Cost Air Quality Stations for Next Generation Monitoring Networks: Calibration and Validation of PM2.5 and PM10 Sensors. <em>Sensors</em>, 18(9), 2843. https://doi.org/10.3390/s18092843</p>
+
+  <p class="ref-item">Cheng, Y. et al. (2025). PM2.5 Concentration Prediction: Ultrahigh Spatiotemporal Resolution Achieved by Combining Machine Learning and Low-Cost Sensors. PubMed Central, PMC12431061.</p>
+
+  <p class="ref-item">Gualtieri, G. et al. (2024). Performance Assessment of Two Low-Cost PM2.5 and PM10 Monitoring Networks in the Padana Plain (Italy). [Evaluación de temporada de calefacción 2022-2023, redes PurpleAir y AirQino frente a estaciones regulatorias].</p>
+
+  <p class="ref-item">Kumar, P. et al. (2020). Validation of Low-Cost Sensors in Measuring Real-Time PM10 Concentrations at Two Sites in Delhi National Capital Region. <em>Sensors</em>, 20(5).</p>
+
+  <p class="ref-item">Leiva, M. A. et al. (2025). [Análisis nacional de calidad del aire en Chile basado en 180 millones de registros horarios de 191 estaciones SINCA]. <em>Atmosphere</em>. Universidad de Chile, Centro de Ciencia del Clima y la Resiliencia (CR2), Ministerio del Medio Ambiente y Universidad del Desarrollo.</p>
+
+  <p class="ref-item">Machine learning for air quality prediction and data analysis: Review on recent advancements, challenges, and outlooks (2025). <em>Science of the Total Environment</em>. https://doi.org/10.1016/j.scitotenv.2025.180311</p>
+
+  <p class="ref-item">Machine learning-driven framework for real-time air quality assessment and predictive environmental health risk mapping (2025). <em>Scientific Reports</em>. https://doi.org/10.1038/s41598-025-14214-6</p>
+
+  <p class="ref-item">Ministerio del Medio Ambiente (2021). Decreto Supremo N.º 12/2021. Norma primaria de calidad del aire para material particulado respirable MP10.</p>
+
+  <p class="ref-item">Ministerio del Medio Ambiente (2026, 13 de agosto). Resolución de inicio del proceso de revisión de la norma primaria de calidad del aire para MP10.</p>
+
+  <p class="ref-item">Ministerio del Medio Ambiente. Norma de emisión para material particulado para los artefactos que combustionen o puedan combustionar leña y pellet de madera. Antecedentes sobre composición del material particulado de combustión de biomasa.</p>
+
+  <p class="ref-item">Parlamento Europeo y Consejo de la Unión Europea (2008). Directiva 2008/50/CE relativa a la calidad del aire ambiente y a una atmósfera más limpia en Europa.</p>
+
+  <p class="ref-item">Reliability Validation of a Low-Cost Particulate Matter IoT Sensor in Indoor and Outdoor Environments Using a Reference Sampler (2019). <em>Sustainability</em>, 11(24), 7220. https://doi.org/10.3390/su11247220</p>
+
+  <p class="ref-item">Rothman, K. J. (1976). Causes. <em>American Journal of Epidemiology</em>, 104(6), 587-592. [Modelo de causas componentes y causas suficientes].</p>
+
+  <p class="ref-item">Universidad de Chile, Facultad de Ciencias Forestales y de la Conservación de la Naturaleza. Biomasa para calefacción residencial: ¿energía limpia o fuente de contaminación? [Análisis de factores de emisión y capacidad de dilución de calefactores a pellet].</p>
+
+  </div>
+
+</div>
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAiLab — Geohumano · Valdivia, Región de Los Ríos, Chile</p>
+  <p>Documento de trabajo. Repositorio de respaldo público del aporte de antecedentes presentado al Ministerio del Medio Ambiente en el marco de la revisión de la norma primaria de calidad del aire para MP10. Serie completa en <span class="mono">jookruger.github.io/columns</span>.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Edición</span><span class="m-v">GH HCAiLab</span></div>
+    <div class="m-item"><span class="m-k">Versión</span><span class="m-v">v1 — invierno 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Aporte normativo · Serie GH HCAiLab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card is-current" href="antecedentes-mp10-mma.html" aria-current="page">
+      <span class="mc-tag">Aporte normativo</span>
+      <span class="mc-title">Aporte de antecedentes — Norma MP10</span>
+      <span class="mc-deck">Densificación territorial del monitoreo mediante estaciones indicativas de bajo costo.</span>
+    </a>
+    <a class="mc-card" href="crisis-pellet-pm10.html">
+      <span class="mc-tag">Calidad del aire</span>
+      <span class="mc-title">La crisis del pellet y el PM10</span>
+      <span class="mc-deck">La fracción gruesa como instrumento: por qué la norma que no observa no protege.</span>
+    </a>
+    <a class="mc-card" href="ninos-en-moto.html">
+      <span class="mc-tag">Educación · IA</span>
+      <span class="mc-title">Niños en moto, profesores de a pie</span>
+      <span class="mc-deck">Cinco umbrales de cambio y una sola adaptación. Por qué prohibir el aparato no salva a la escuela.</span>
+    </a>
+    <a class="mc-card" href="magnifica-humanitas.html">
+      <span class="mc-tag">León XIV · IA · Dignidad</span>
+      <span class="mc-title">Magnifica Humanitas</span>
+      <span class="mc-deck">La primera encíclica de León XIV frente a la IA, el poder y la verdad. Cuatro entregas en una.</span>
+    </a>
+    <a class="mc-card" href="ley-tutti-frutti.html">
+      <span class="mc-tag">Técnica legislativa</span>
+      <span class="mc-title">La ley tutti frutti</span>
+      <span class="mc-deck">Nueve sensores de radar aplicados a la incoherencia legislativa y a los quórums orgánico-constitucionales.</span>
+    </a>
+    <a class="mc-card" href="incubacion-violencia-nominal.html">
+      <span class="mc-tag">Análisis de riesgo</span>
+      <span class="mc-title">Incubación de la violencia nominal</span>
+      <span class="mc-deck">Cuando la violencia estructural adquiere nombre y apellido, el umbral del estallido baja a una sola psiquis agobiada.</span>
+    </a>
+    <a class="mc-card" href="registro_vandalos_columna.html">
+      <span class="mc-tag">Política social</span>
+      <span class="mc-title">El registro de vándalos</span>
+      <span class="mc-deck">Retirar beneficios sociales a los «vándalos»: un mecanismo de expulsión progresiva de los más pobres.</span>
+    </a>
+    <a class="mc-card" href="desvio_fiscal_20anos.html">
+      <span class="mc-tag">Política fiscal</span>
+      <span class="mc-title">Veinte años de desvío fiscal en Chile</span>
+      <span class="mc-deck">Meta, ciclo y la diferencia entre equivocarse en un cálculo y revisar una proyección.</span>
+    </a>
+  </div>
+</nav>
+
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      track.scrollBy({ left: dir * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
