@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La coartada del profesor y el algoritmo · GH HCAiLab</title>
+<meta name="description" content="PISA 2025, el ruido periodístico y las variables estructurales que nadie quiere mirar. Por Jorge Oyarce Kruger, GH HCAiLab." />
+<meta name="author" content="Jorge Oyarce Kruger" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --crema:#DCDBC9;
+    --crema-suave:#e6e4d1;
+    --salvia:#A3BCBA;
+    --rosa:#D8C4D2;
+    --purpura:#563F67;
+    --purpura-medio:#9C83A4;
+    --negro:#000000;
+    --gris:#5a5a5a;
+    --gris-borde:#c3c0ae;
+    --gris-suave:#efedde;
+    --up:#3e5f30;
+    --up-bg:#d8e3c9;
+    --down:#8a2a1f;
+    --down-bg:#ecd1c6;
+    --flat:#7a6f4f;
+    --flat-bg:#e2ddc4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--crema);color:var(--negro);font-family:"Source Serif 4","Georgia",serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--purpura);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+  a:hover{color:var(--negro)}
+  main{max-width:1180px;margin:0 auto;padding:0}
+
+  /* MASTHEAD */
+  .masthead{border-bottom:2px solid var(--negro);padding:28px 40px 20px}
+  .lab-name{font-family:"Playfair Display",serif;font-size:15px;letter-spacing:0.08em;font-weight:600;color:var(--purpura);margin:0}
+  .lab-name .divider{margin:0 8px;color:var(--purpura-medio)}
+  .lab-name .section{font-style:italic;font-weight:400;color:var(--negro)}
+  .lab-meta{font-family:"Source Serif 4",serif;font-size:12px;color:var(--gris);margin-top:6px;letter-spacing:0.02em}
+
+  /* HERO */
+  .hero{padding:60px 40px 36px;border-bottom:1px solid var(--gris-borde)}
+  .hero .kicker{font-family:"Playfair Display",serif;font-style:italic;font-size:16px;color:var(--purpura);margin:0 0 14px}
+  h1.title{font-family:"Playfair Display",serif;font-weight:700;font-size:58px;line-height:1.03;letter-spacing:-0.015em;margin:0 0 20px;max-width:14ch}
+  h1.title em{font-style:italic;font-weight:400}
+  .lede{font-family:"Source Serif 4",serif;font-size:20px;line-height:1.5;color:#222;max-width:64ch;margin:0 0 26px;font-weight:400}
+  .lede em{color:var(--purpura);font-style:italic}
+  .byline{font-family:"Source Serif 4",serif;font-size:13px;color:var(--gris);margin:0;padding-top:16px;border-top:1px solid var(--gris-borde);display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+  .byline .author{font-weight:600;color:var(--negro);letter-spacing:0.01em}
+  .byline .sep{color:var(--purpura-medio)}
+
+  /* TOC */
+  .toc{padding:24px 40px;background:var(--crema-suave);border-bottom:1px solid var(--gris-borde)}
+  .toc-title{font-family:"Playfair Display",serif;font-style:italic;font-size:13px;color:var(--purpura);margin:0 0 8px;letter-spacing:0.05em}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 24px;font-size:14px}
+  .toc li{counter-increment:toc;position:relative;padding-left:26px}
+  .toc li::before{content:counter(toc, decimal-leading-zero);position:absolute;left:0;font-family:"Playfair Display",serif;font-style:italic;color:var(--purpura-medio);font-size:12px;top:2px}
+  .toc a{color:var(--negro);text-decoration:none;border-bottom:1px dotted var(--purpura-medio)}
+  .toc a:hover{color:var(--purpura);border-bottom-color:var(--purpura)}
+
+  /* BODY */
+  article{padding:40px 40px 60px}
+  section{max-width:680px;margin:0 auto 40px}
+  section.wide{max-width:none}
+  h2.section-title{font-family:"Playfair Display",serif;font-size:32px;line-height:1.1;font-weight:600;margin:56px 0 20px;letter-spacing:-0.01em;position:relative;padding-top:20px;border-top:1px solid var(--negro)}
+  h2.section-title .num{display:block;font-family:"Playfair Display",serif;font-style:italic;font-size:14px;color:var(--purpura);font-weight:400;letter-spacing:0.05em;margin-bottom:8px}
+  section > p{margin:0 0 18px;text-align:justify;hyphens:auto}
+  section > p:first-of-type::first-letter{
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:74px;
+    float:left;
+    line-height:0.85;
+    padding:6px 10px 0 0;
+    color:var(--purpura);
+  }
+  section > p.no-drop:first-of-type::first-letter{font-size:inherit;float:none;padding:0;color:inherit;font-family:inherit;font-weight:inherit}
+  section p em{font-style:italic}
+  section p strong{font-weight:600}
+
+  /* PULL QUOTE */
+  .pull{margin:32px 0;padding:8px 0 8px 24px;border-left:3px solid var(--purpura);font-family:"Playfair Display",serif;font-style:italic;font-size:24px;line-height:1.3;color:var(--purpura);max-width:none}
+
+  /* CALLOUTS */
+  .callout{margin:28px 0;padding:20px 24px;border:1px solid var(--gris-borde);background:var(--crema-suave);border-radius:2px;position:relative}
+  .callout::before{content:attr(data-label);position:absolute;top:-9px;left:16px;background:var(--crema);padding:0 8px;font-family:"Playfair Display",serif;font-style:italic;font-size:12px;color:var(--purpura);letter-spacing:0.05em}
+  .callout p{margin:0 0 10px;font-size:15.5px;line-height:1.55}
+  .callout p:last-child{margin-bottom:0}
+  .callout.hipotesis{background:#e8e0e6;border-color:var(--purpura-medio)}
+  .callout.hipotesis::before{background:var(--crema)}
+  .callout.metodo{background:#d9e5e3;border-color:var(--salvia)}
+  .callout.metodo::before{background:var(--crema)}
+  .callout.simple{background:#efe1d8;border-color:#c99b7a}
+  .callout.simple::before{background:var(--crema)}
+
+  /* DATA VIZ SECTION */
+  .viz-section{max-width:1080px;margin:60px auto 60px;padding:0 20px}
+  .viz-title{font-family:"Playfair Display",serif;font-size:28px;font-weight:600;margin:0 0 6px;text-align:center}
+  .viz-subtitle{font-size:14px;color:var(--gris);text-align:center;max-width:60ch;margin:0 auto 24px}
+  .viz-tabs{display:flex;justify-content:center;gap:0;margin-bottom:20px;border-bottom:1px solid var(--gris-borde)}
+  .viz-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;padding:10px 20px;font-family:"Playfair Display",serif;font-size:15px;font-style:italic;cursor:pointer;color:var(--gris);transition:all 0.15s}
+  .viz-tabs button.active{color:var(--purpura);border-bottom-color:var(--purpura);font-style:normal;font-weight:600}
+  .viz-tabs button:hover{color:var(--negro)}
+  .chart-wrap{position:relative;background:#fbfaf3;border:1px solid var(--gris-borde);padding:20px 12px 10px;height:60vh;min-height:400px;max-height:560px}
+  .chart-legend-note{font-size:11.5px;color:var(--gris);text-align:center;margin-top:10px;font-style:italic}
+
+  /* TENDENCIAS MATRIX */
+  .trend-matrix{max-width:1080px;margin:60px auto;padding:0 20px}
+  .trend-header{text-align:center;margin-bottom:20px}
+  .trend-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:12px 0;font-size:13px}
+  .trend-chip{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:100px;font-family:"Source Serif 4",monospace}
+  .trend-chip.up{background:var(--up-bg);color:var(--up)}
+  .trend-chip.down{background:var(--down-bg);color:var(--down)}
+  .trend-chip.flat{background:var(--flat-bg);color:var(--flat)}
+  .trend-chip svg{width:14px;height:14px}
+
+  .matrix{border-top:2px solid var(--negro);border-bottom:2px solid var(--negro)}
+  .row{display:grid;grid-template-columns:minmax(150px,1.8fr) 1fr 1fr 1fr;border-bottom:1px solid var(--gris-borde);align-items:stretch}
+  .row:last-child{border-bottom:0}
+  .row.head{background:var(--crema-suave);border-bottom:2px solid var(--negro)}
+  .row.head .cell{font-family:"Playfair Display",serif;font-style:italic;font-size:13px;color:var(--purpura);padding:12px 14px;font-weight:400}
+  .cell{padding:16px 14px;border-right:1px solid var(--gris-suave);display:flex;flex-direction:column;justify-content:center;min-height:84px}
+  .cell:last-child{border-right:0}
+  .country-name{font-family:"Playfair Display",serif;font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.15}
+  .country-base{display:block;font-family:"Source Serif 4",serif;font-weight:300;font-style:italic;font-size:11px;color:var(--gris);margin-top:3px}
+  .country-scores{display:block;font-family:"Source Serif 4",serif;font-size:11px;color:var(--gris);margin-top:3px;letter-spacing:0.02em}
+
+  .trend-cell{display:flex;align-items:center;gap:10px}
+  .arrow{width:26px;height:26px;flex-shrink:0}
+  .delta{font-family:"Source Serif 4",serif;font-size:16px;font-weight:600;letter-spacing:-0.01em}
+  .up-cell .arrow, .up-cell .delta{color:var(--up)}
+  .down-cell .arrow, .down-cell .delta{color:var(--down)}
+  .flat-cell .arrow, .flat-cell .delta{color:var(--flat)}
+
+  .group-title{font-family:"Playfair Display",serif;font-style:italic;font-size:12px;color:var(--purpura);padding:14px 14px 6px;background:var(--crema-suave);border-bottom:1px solid var(--gris-borde);letter-spacing:0.05em}
+
+  /* FOOTNOTES */
+  .footnotes{max-width:680px;margin:80px auto 40px;padding:24px 0 0;border-top:1px solid var(--negro);font-size:13px;line-height:1.55;color:var(--gris)}
+  .footnotes-title{font-family:"Playfair Display",serif;font-style:italic;font-size:14px;color:var(--purpura);margin:0 0 14px;letter-spacing:0.05em}
+  .footnotes ol{padding-left:20px;margin:0}
+  .footnotes li{margin-bottom:10px}
+  .footnotes li strong{color:var(--negro)}
+
+  /* COLOPHON */
+  .colofon{max-width:1080px;margin:40px auto;padding:24px 30px;background:var(--crema-suave);border:1px solid var(--gris-borde);border-radius:2px}
+  .colofon-title{font-family:"Playfair Display",serif;font-style:italic;font-size:14px;color:var(--purpura);margin:0 0 14px;letter-spacing:0.05em}
+  .colofon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px 30px;font-size:13px}
+  .colofon-item strong{display:block;font-family:"Playfair Display",serif;font-style:italic;color:var(--purpura-medio);font-size:11px;letter-spacing:0.04em;margin-bottom:2px;font-weight:400}
+  .colofon-item span{color:var(--negro)}
+
+  /* SEGUIR LEYENDO */
+  .seguir{max-width:1080px;margin:40px auto 60px;padding:0 20px}
+  .seguir-title{font-family:"Playfair Display",serif;font-style:italic;font-size:20px;color:var(--purpura);margin:0 0 18px;border-bottom:1px solid var(--purpura);padding-bottom:8px;display:flex;justify-content:space-between;align-items:baseline}
+  .seguir-title .nav{font-size:14px;color:var(--purpura-medio)}
+  .seguir-title .nav button{background:none;border:1px solid var(--purpura-medio);color:var(--purpura);width:28px;height:28px;cursor:pointer;font-size:14px;padding:0;margin-left:4px}
+  .seguir-title .nav button:hover{background:var(--purpura);color:var(--crema)}
+  .seguir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .seguir-card{padding:16px 18px;border:1px solid var(--gris-borde);background:#fbfaf3;transition:border-color 0.15s}
+  .seguir-card:hover{border-color:var(--purpura)}
+  .seguir-card .tag{font-family:"Playfair Display",serif;font-style:italic;font-size:11px;color:var(--purpura);letter-spacing:0.05em;margin:0 0 6px}
+  .seguir-card h4{font-family:"Playfair Display",serif;font-size:17px;font-weight:600;line-height:1.2;margin:0 0 8px}
+  .seguir-card h4 a{color:var(--negro);text-decoration:none}
+  .seguir-card h4 a:hover{color:var(--purpura)}
+  .seguir-card p{margin:0;font-size:13px;color:var(--gris);line-height:1.4}
+
+  /* FOOTER */
+  footer{border-top:2px solid var(--negro);padding:24px 40px;font-size:12px;color:var(--gris);text-align:center;font-family:"Source Serif 4",serif}
+  footer strong{color:var(--purpura);font-family:"Playfair Display",serif;font-weight:600;letter-spacing:0.02em}
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-track{background:var(--crema-suave)}
+  ::-webkit-scrollbar-thumb{background:var(--purpura-medio);border-radius:4px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--purpura)}
+
+  /* RESPONSIVE */
+  @media (max-width:900px){
+    .hero{padding:40px 24px 28px}
+    h1.title{font-size:44px}
+    .lede{font-size:18px}
+    article{padding:24px 24px 40px}
+    .masthead{padding:20px 24px 16px}
+    .toc{padding:20px 24px}
+    h2.section-title{font-size:26px}
+    .row{grid-template-columns:1.4fr 1fr 1fr 1fr}
+    .arrow{width:22px;height:22px}
+    .delta{font-size:14px}
+    footer{padding:20px 24px}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    h1.title{font-size:34px}
+    .lede{font-size:16.5px}
+    .hero{padding:28px 18px 20px}
+    article{padding:20px 18px 30px}
+    section > p:first-of-type::first-letter{font-size:56px;padding:4px 8px 0 0}
+    .pull{font-size:19px;padding-left:18px}
+    .chart-wrap{height:65vh}
+    .row{grid-template-columns:1.3fr 1fr 1fr 1fr}
+    .cell{padding:12px 8px;min-height:74px}
+    .country-name{font-size:14px}
+    .country-scores{font-size:10px}
+    .delta{font-size:13px}
+    .arrow{width:18px;height:18px}
+    h2.section-title{font-size:22px}
+    .viz-title{font-size:22px}
+    .colofon{padding:18px 20px;margin:30px 12px}
+    .colofon-grid{grid-template-columns:1fr 1fr;gap:12px}
+    .seguir{padding:0 12px}
+    footer{padding:16px 18px;font-size:11px}
+    .masthead{padding:16px 18px}
+    .lab-name{font-size:13px}
+    .toc{padding:16px 18px}
+    .toc ol{grid-template-columns:1fr;gap:4px}
+  }
+</style>
+</head>
+<body>
+<main>
+
+<div class="masthead">
+  <p class="lab-name">GH HCAiLab<span class="divider">·</span><span class="section">Columnas</span></p>
+  <p class="lab-meta">Análisis territorial · Educación pública · Política de datos</p>
+</div>
+
+<div class="hero">
+  <p class="kicker">Análisis · Educación pública · 09 septiembre 2026</p>
+  <h1 class="title">La coartada del profesor y el <em>algoritmo</em></h1>
+  <p class="lede">PISA 2025 dejó una foto amarga y una <em>coartada perfecta</em>: culpar a la Inteligencia Artificial y a los docentes chilenos por una caída que también arrastran España, Estados Unidos, Corea y Japón. La tesis se cae con un dato de calendario y una revisión de la letra chica del informe.</p>
+  <p class="byline">
+    <span class="author">Jorge Oyarce Kruger</span>
+    <span class="sep">·</span>
+    <span>Director, Geohumano · GH HCAiLab</span>
+    <span class="sep">·</span>
+    <span>Tiempo de lectura: 12 minutos</span>
+  </p>
+</div>
+
+<div class="toc">
+  <p class="toc-title">Estructura</p>
+  <ol>
+    <li><a href="#s1">El hoy y el titular</a></li>
+    <li><a href="#s2">La coartada del algoritmo</a></li>
+    <li><a href="#s3">La coartada del profesor</a></li>
+    <li><a href="#s4">La señal y el ruido</a></li>
+    <li><a href="#s5">Trayectorias de 25 años</a></li>
+    <li><a href="#s5b">Tendencias con banda de incertidumbre</a></li>
+    <li><a href="#s6">Al alza, a la baja, estancados</a></li>
+    <li><a href="#s7">Los sospechosos que sí importan</a></li>
+    <li><a href="#s8">Cierre y colofón</a></li>
+  </ol>
+</div>
+
+<article>
+
+<section id="s1">
+  <h2 class="section-title"><span class="num">i.</span>El hoy y el titular</h2>
+  <p>El martes 8 de septiembre de 2026 la OCDE publicó los resultados de PISA 2025 y el ecosistema mediático chileno reaccionó con la coreografía habitual. Titulares alarmistas sobre la caída en matemática, comentaristas exigiendo a los profesores más productividad, dirigentes vinculados a la Inteligencia Artificial pidiendo prohibir su uso en aula. Todo esto en el mismo día, sin que nadie se detuviera a leer más allá del comunicado de prensa.</p>
+
+  <p class="no-drop">Los números chilenos son los que son. Ciencias 442, Lectura 436 y Matemática 403, contra promedios OCDE de 482, 461 y 463 respectivamente. Chile lidera América Latina en lectura y comparte el liderazgo regional con Uruguay en ciencias, donde el país vecino nos superó por tres puntos (Uruguay 445, Chile 442). En matemática es donde el problema se torna crudo: 59% de los estudiantes chilenos no alcanza el nivel dos, considerado el mínimo funcional, mientras el promedio OCDE está en 35%.</p>
+
+  <p>El asunto es que Chile no cayó solo. La OCDE completa registró el peor promedio histórico en las tres competencias desde que se aplica la prueba. España tocó el suelo de su serie con 477 en ciencias, 451 en lectura y 457 en matemática. Estados Unidos hizo su peor lectura desde el año 2000 con 490 puntos, y la OCDE tuvo que ponerle asterisco por incumplir los mínimos técnicos de muestreo. Portugal, la que fue "una de las mayores historias de éxito europeas", regresó a los niveles del año 2006 en las tres áreas, revirtiendo por completo la mejora de dos décadas. Argentina hizo su peor puntaje desde 2006.</p>
+
+  <div class="pull">
+    Si el fenómeno se repite en 37 países de la OCDE, la causa no puede estar dentro de una sala de clases chilena.
+  </div>
+
+  <p>El punto no es minimizar el retroceso. El punto es lógico: si el fenómeno se repite en 37 países de la OCDE, la causa no puede estar dentro de una sala de clases chilena. Y sin embargo, el reflejo público es exactamente ese, apuntar al docente que tenemos al frente y al chatbot que usa el hijo. Ambas coartadas se caen con el mismo argumento, y merecen desarmarse con la misma vara.</p>
+</section>
+
+<section id="s2">
+  <h2 class="section-title"><span class="num">ii.</span>La coartada del algoritmo</h2>
+
+  <p>La primera línea de escape mediática fue simple. La IA generativa hizo tontos a los niños. El informe PISA 2025 sí incluyó, por primera vez, una medición sobre uso de IA en tareas escolares. Y sí, encontró correlación negativa entre uso de IA y desempeño en ciencias: aproximadamente 20 puntos menos, equivalente a un año de escolarización. El titular fue devorado en horas.</p>
+
+  <p>El problema es lo que la OCDE dijo y la prensa no reportó. La correlación negativa aparece en los estudiantes que usan IA para <em>delegar</em> tareas: redactar por ellos, resumir textos, hacer trabajos completos. Los que la usan como <em>andamiaje cognitivo</em>, es decir para consultar, aprender conceptos, practicar problemas, obtuvieron mejores puntajes que quienes no la usaron en absoluto. La diferencia es entre delegación cognitiva y aprendizaje asistido. No es la herramienta, es el uso.</p>
+
+  <div class="callout metodo" data-label="Nota metodológica">
+    <p>La correlación no implica causalidad. Los estudiantes que delegan tareas en IA probablemente ya tenían hábitos de estudio menos consistentes antes de que la herramienta existiera. El informe no controla por variables como motivación previa, contexto familiar o nivel socioeconómico, aunque la propia OCDE reconoce el problema en la lectura de sus tablas.</p>
+  </div>
+
+  <p>Pero hay un dato de calendario que basta para clausurar esta coartada. Los estudiantes que rindieron PISA 2025 hicieron la prueba entre agosto y octubre del año 2024. En agosto de 2024, la adopción masiva de ChatGPT y otros chatbots en aulas latinoamericanas no era todavía un fenómeno estabilizado, mucho menos en la primera etapa formativa de estos jóvenes de quince años. Los aprendizajes evaluados por PISA se construyen a lo largo de diez años de escolaridad, desde primero básico. Culpar a la IA de una caída medida en 2024 es equivalente a culpar al 5G del cambio climático. La línea de causalidad simplemente no cabe en el tiempo.</p>
+
+  <p>Los mismos que tejen la teoría del algoritmo culpable rara vez explican por qué Perú, Brasil o Portugal en los años 2015 a 2018 vinieron mejorando sostenidamente sin ChatGPT. La coartada del algoritmo funciona solo si uno se niega a mirar los datos con la misma vara.</p>
+</section>
+
+<section id="s3">
+  <h2 class="section-title"><span class="num">iii.</span>La coartada del profesor</h2>
+
+  <p>La segunda línea de escape apunta al docente. Los profesores chilenos, sindicalizados, mal formados, protegidos por el Colegio de Profesores, resistentes al cambio, culpables de la caída. Este argumento circula sin datos porque quienes lo esgrimen se sienten dispensados de aportarlos. Basta con que el resultado sea malo para que el profesor tenga la culpa. Circular.</p>
+
+  <p>Aplicar la misma vara a esta coartada exige preguntar por qué los docentes de Finlandia, Corea y Japón, considerados durante dos décadas modelos de excelencia, también vieron caer los resultados de sus sistemas. Los profesores coreanos no han cambiado tanto en cuatro años, y sin embargo Corea del Sur cayó en las tres competencias entre 2022 y 2025. ¿Se contagiaron los profesores coreanos del sindicalismo chileno? El argumento se desmorona apenas se lo tensiona.</p>
+
+  <p>El otro elemento incómodo es que los indicadores subjetivos de PISA 2025 que sí van bien en Chile son los que dependen directamente de la relación docente-estudiante. Los estudiantes chilenos declaran, en mayor proporción que el promedio OCDE, tener capacidad de esfuerzo adicional frente a dificultades y sostener las tareas que comienzan. Además reportan una percepción favorable del apoyo recibido por sus docentes en clases de ciencia. Esos indicadores no se producen con profesores desinteresados o mal formados. Son incompatibles con el estereotipo que el discurso mediático necesita para sostener el argumento.</p>
+
+  <div class="callout hipotesis" data-label="Hipótesis de trabajo">
+    <p>Culpar al profesor es útil porque distrae. Cada vez que la conversación pública se estaciona en el docente individual, deja de investigar el diseño del sistema. Es la variable política más barata: se puede movilizar sin costo fiscal, sin reformas legales, sin negociar con nadie. Al final del ciclo, cuando la próxima medición traiga los mismos resultados, se podrá volver a culpar al mismo actor sin haber tocado ninguna variable estructural.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2 class="section-title"><span class="num">iv.</span>La señal y el ruido</h2>
+
+  <p>Descartar las coartadas no significa que no haya un problema. Lo hay, y es significativo. Pero identificar dónde está la señal exige distinguirla del ruido estadístico, un ejercicio que la prensa chilena casi no hace y que el propio informe OCDE resuelve con más honestidad que sus lectores.</p>
+
+  <p>La caída del promedio OCDE entre 2022 y 2025, de 14 puntos en lectura y 9 en matemática, es estadísticamente significativa. El error estándar del promedio de la OCDE es minúsculo porque agrega 37 países con miles de estudiantes cada uno, y la caída es sistemática. Ahí sí hay señal robusta, y merece explicación.</p>
+
+  <p>El problema es leer los rankings país por país como si tuvieran esa misma precisión. Los errores estándar típicos por país en PISA rondan entre dos y cuatro puntos, lo que produce intervalos de confianza al 95% de aproximadamente más o menos cuatro a ocho puntos por medición. Cuando se comparan dos rondas, esos errores se suman en cuadratura y el error combinado supera fácilmente los siete puntos. Traducido: cambios menores a diez puntos entre un ciclo y otro difícilmente son estadísticamente significativos, y la OCDE lo marca así en sus propias tablas.</p>
+
+  <div class="callout simple" data-label="En simple">
+    <p>La diferencia entre Chile y Uruguay en ciencias este año es de tres puntos (442 versus 445). Los intervalos de confianza de ambos países se traslapan por completo. Estadísticamente, empataron. Cualquier titular que hable de "Uruguay superó a Chile por primera vez" está confundiendo ruido con dato.</p>
+  </div>
+
+  <p>Además, comparar acumuladamente 25 años tiene tres piedras metodológicas que no se pueden esconder. Primero, PISA cambió de aplicación en papel a computador en 2015, y ese cambio rompió comparabilidad estricta con las rondas anteriores. La OCDE aplicó ajustes de escala, pero técnicos independientes siguen debatiendo si la ruptura de tendencia quedó bien resuelta. Portugal y España sufrieron caídas post-2015 que parte de la literatura atribuye al cambio metodológico y no a los sistemas educativos.</p>
+
+  <p>Segundo, la cobertura escolar cambió. El Chile del año 2006 escolarizaba a 15 años a menos jóvenes que el Chile del año 2025. Cuando un sistema atrae a más estudiantes de contextos vulnerables al aula, el promedio puede bajar aunque cada subgrupo mejore. Es la paradoja de Simpson vestida de política educativa. La propia OCDE menciona explícitamente este fenómeno para Colombia y Costa Rica en el reporte 2025.</p>
+
+  <p>Tercero, las tasas de exclusión varían entre países y entre rondas. La OCDE marcó a Estados Unidos en PISA 2025 por incumplir los mínimos de respuesta y exceder los límites de exclusión permitidos. Su puntaje de 490 en lectura tiene una advertencia técnica que la prensa mundial no reportó. Chile no tiene esa advertencia, pero sí Estados Unidos, y eso importa cuando el mismo comentarista compara ambos números como si fueran equivalentes.</p>
+</section>
+
+</article>
+
+<div class="viz-section" id="s5">
+  <h2 class="section-title" style="text-align:center;border-top:2px solid var(--negro);padding-top:24px">
+    <span class="num">v.</span>
+    Trayectorias de 25 años
+  </h2>
+  <p class="viz-subtitle">Evolución del puntaje promedio por país en cada dominio, desde PISA 2000 hasta PISA 2025. Selecciona el dominio con las pestañas.</p>
+
+  <div class="viz-tabs" role="tablist">
+    <button data-domain="ciencias" class="active">Ciencias</button>
+    <button data-domain="lectura">Lectura</button>
+    <button data-domain="matematica">Matemática</button>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="trendChart"></canvas>
+  </div>
+
+  <p class="chart-legend-note">Fuente: OCDE PISA 2000-2022 (tablas oficiales) y OCDE PISA 2025 (publicación 8 septiembre 2026). Línea segmentada indica dato estimado (Japón, Corea, Rep. Dominicana, Camboya, Filipinas 2025 pendientes de tabla oficial). Ausencia de línea indica no participación en esa ronda.</p>
+</div>
+
+<div class="viz-section" id="s5b">
+  <h2 class="section-title" style="text-align:center;border-top:2px solid var(--negro);padding-top:24px">
+    <span class="num">v.b</span>
+    Tendencias de largo plazo con banda de incertidumbre
+  </h2>
+  <p class="viz-subtitle">Regresión lineal por mínimos cuadrados sobre las mediciones disponibles de cada país. La recta es la tendencia central, el sombreado es el intervalo de confianza al 95%. Si la banda cruza la horizontal de pendiente cero, la tendencia no es estadísticamente distinguible del ruido.</p>
+
+  <div class="viz-tabs" role="tablist">
+    <button data-domain-trend="ciencias" class="active">Ciencias</button>
+    <button data-domain-trend="lectura">Lectura</button>
+    <button data-domain-trend="matematica">Matemática</button>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="regressionChart"></canvas>
+  </div>
+
+  <p class="chart-legend-note">Método: mínimos cuadrados ordinarios sobre puntajes observados, con intervalo de confianza al 95% calculado a partir del error estándar de la regresión. Los países se muestran solo cuando disponen de al menos cuatro mediciones. Las estimaciones 2025 se incluyen en el ajuste con la misma advertencia que en el gráfico anterior.</p>
+</div>
+
+<div class="trend-matrix" id="s6">
+  <div class="trend-header">
+    <h2 class="section-title" style="text-align:center;border-top:2px solid var(--negro);padding-top:24px;max-width:none;margin:56px auto 20px">
+      <span class="num">vi.</span>
+      Al alza, a la baja, estancados
+    </h2>
+    <p class="viz-subtitle">Cambio acumulado desde la primera medición del país hasta PISA 2025. Umbrales calibrados a la significancia OCDE.</p>
+  </div>
+
+  <div class="trend-legend">
+    <span class="trend-chip up">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 15 L12 8 L19 15"/></svg>
+      Al alza (≥ +20 puntos)
+    </span>
+    <span class="trend-chip down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 9 L12 16 L19 9"/></svg>
+      A la baja (≤ −20 puntos)
+    </span>
+    <span class="trend-chip flat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12 L20 12"/></svg>
+      Se mantiene (entre −20 y +20)
+    </span>
+  </div>
+
+  <div class="matrix" id="matrix"></div>
+
+  <p class="viz-subtitle" style="margin-top:20px;font-size:12.5px">Umbral fijado en ±20 puntos porque esa magnitud equivale, según la propia OCDE, a un año escolar de aprendizaje. Cambios menores están dentro de la banda de incertidumbre combinada al comparar puntajes de mediciones separadas por más de una década.</p>
+</div>
+
+<article>
+
+<section id="s7">
+  <h2 class="section-title"><span class="num">vii.</span>Los sospechosos que sí importan</h2>
+
+  <p>La matriz de tendencias muestra algo que la conversación pública se niega a discutir. La caída no es uniforme. Hay sistemas que suben contra la corriente y sistemas que se hunden. Si la causa fuera realmente la IA o la pandemia, la caída sería homogénea. No lo es. Y ese contraste es donde aparecen los sospechosos reales.</p>
+
+  <p>Perú es el caso más incómodo para los alarmistas. Empezó en el fondo del fondo, sin infraestructura digital, con crisis políticas encadenadas, con salarios docentes precarios. Y desde el año 2009 subió sistemáticamente en las tres competencias. Ganó aproximadamente 36 puntos en ciencias, 30 en lectura y 20 en matemática. La OCDE lo nombra como el país de mayor mejora sostenida de América Latina en quince años. Nadie va a explicar esa curva ascendente por la ausencia de ChatGPT en Lima, entre otras razones porque la curva empezó a subir mucho antes de que ChatGPT existiera.</p>
+
+  <p>Brasil ganó 43 puntos en matemática entre 2000 y 2025. Portugal, en su fase virtuosa de 2000 a 2015, ganó 38 puntos en matemática y 28 en lectura, y fue nombrado por la OCDE como una de las principales historias de éxito europeas. Todos esos sistemas comparten un rasgo estructural: consistencia temporal. Políticas sostenidas por más de una década, incluso cuando cambió el gobierno. Sistemas de evaluación estables. Inversión pública sostenida en formación docente.</p>
+
+  <div class="pull">
+    Los sistemas que sostuvieron políticas por más de una década están arriba o al menos amortiguan la caída. Los que reformaron y contrarreformaron cada cuatro años, están abajo.
+  </div>
+
+  <p>España es el caso ibérico de manual y funciona como control experimental brutal. Siete leyes educativas en cuarenta años, cada gobierno derogando la anterior. LOECE, LODE, LOGSE, LOCE, LOE, LOMCE, LOMLOE. El nombre importa menos que la cadencia. Cada cuatro años el aula recibía un currículum distinto, una nueva estructura, una nueva evaluación. Los resultados de PISA 2025 muestran a España en su peor puntaje histórico en las tres competencias desde el año 2000. La correlación entre inestabilidad regulatoria y deterioro de aprendizajes no es un accidente.</p>
+
+  <p>Estados Unidos merece un párrafo aparte. Sus 490 puntos en lectura son la peor marca desde que se aplica la prueba. Cayó catorce puntos en tres años y su matemática también tocó fondo. Ese es el país que la retórica local sigue tomando como referente para atacar el modelo público chileno. El país cuyo sistema educativo la OCDE tuvo que marcar con asterisco por incumplir mínimos técnicos. Nuestra propia élite comentarista, en fin, aplica dos varas.</p>
+
+  <div class="callout hipotesis" data-label="Tesis">
+    <p>Los factores que sí explican los resultados PISA a largo plazo no son individuales sino estructurales, y responden a tres variables entrelazadas: consistencia temporal del diseño del sistema, inversión pública sostenida en formación docente y equidad de acceso, y gestión estable de los mecanismos de evaluación. Ningún país con esos tres pilares se ha desplomado en la última década. Ningún país sin ellos ha logrado subir.</p>
+  </div>
+
+  <p>Volvamos a Chile. El sistema arrastra una arquitectura de mercado educativo diseñada en los años ochenta, capas de reforma superpuestas desde los años noventa hasta hoy, un régimen de financiamiento vía subvención por asistencia, tres subsistemas paralelos (municipal, particular subvencionado, privado) que compiten por matrícula y no cooperan por aprendizaje, y una descentralización a través de los Servicios Locales de Educación Pública en pleno proceso de implementación conflictiva. Cambiar de un ministro a otro no altera la arquitectura. Y ese es el problema.</p>
+
+  <p>La pregunta que debiéramos estar haciendo, en vez de si prohibimos ChatGPT o si evaluamos a los profesores con más frecuencia, es esta: ¿qué política educativa chilena se ha mantenido intacta por veinte años? La respuesta es preocupantemente breve. Y por ahí es donde hay que empezar a buscar al verdadero culpable.</p>
+</section>
+
+<section id="s8">
+  <h2 class="section-title"><span class="num">viii.</span>Cierre y colofón</h2>
+
+  <p>PISA no es un juicio a los profesores ni una condena a la Inteligencia Artificial. Es un termómetro, con toda la imprecisión de un termómetro tomado en distintas condiciones y con distintos instrumentos a lo largo del tiempo. Su lectura útil no está en el titular sino en los deltas de largo plazo, y esa lectura pone en aprieto a quienes prefieren coartadas rápidas.</p>
+
+  <p class="no-drop">La caída OCDE es real y significativa. Chile es parte de esa caída, pero también lo son España, Portugal, Corea, Japón y Estados Unidos. Perú, Brasil y Uruguay, con arquitecturas de sistema muy distintas, muestran que el fenómeno no es fatalidad global. Es el resultado de decisiones estructurales sostenidas durante décadas. Y esas decisiones no las toma el profesor que tenemos al frente ni las escribe el chatbot que consulta el estudiante. Las toma un cuerpo político que ha usado la educación como campo de batalla ideológico en vez de como política de Estado.</p>
+
+  <p>Aplicarle la misma vara a las coartadas es solo un ejercicio de higiene intelectual. Lo urgente es identificar de una vez, con datos y no con reflejos, cuál es la variable estructural que sí podemos mover en Chile. Y sobre todo, dejar de mover cada cuatro años la variable equivocada.</p>
+</section>
+
+</article>
+
+<div class="footnotes">
+  <p class="footnotes-title">Notas y fuentes</p>
+  <ol>
+    <li><strong>Puntajes PISA 2025:</strong> OCDE, <em>PISA 2025 Results (Volume I): Future-Ready Students</em>, publicado el 8 de septiembre de 2026. Los datos por país que aparecen en esta columna provienen de la nota de país correspondiente y de las tablas B1.2 del volumen I.</li>
+    <li><strong>Serie histórica 2000-2022:</strong> tablas oficiales OCDE de cada ciclo, cruzadas con las bases de datos consolidadas por el Departamento de Educación de EE.UU. (NCES) y por el BID para América Latina.</li>
+    <li><strong>Análisis IA:</strong> OCDE, <em>PISA 2025 Results (Volume I)</em>, capítulo 4. Los estudiantes que usan IA para redactar tareas obtienen aproximadamente 20 puntos menos en ciencias; los que la usan como andamiaje cognitivo obtienen mejores puntajes que los que no la usan.</li>
+    <li><strong>Aplicación en Chile:</strong> la muestra chilena fue aplicada entre agosto y octubre de 2024 en más de 200 establecimientos, en modalidad online. Fuente: Agencia de Calidad de la Educación de Chile.</li>
+    <li><strong>Advertencia EE.UU.:</strong> OCDE marcó los resultados de Estados Unidos porque las tasas de respuesta del estudiante y de la escuela quedaron bajo los mínimos técnicos, y el volumen de exclusiones excedió los límites permitidos.</li>
+    <li><strong>Estimaciones:</strong> los valores 2025 de Japón, Corea del Sur, República Dominicana, Camboya y Filipinas usados en el gráfico y en la matriz son estimaciones basadas en la variación promedio OCDE entre 2022 y 2025. Se reemplazarán cuando la OCDE publique las notas de país completas.</li>
+    <li><strong>Umbrales de significancia:</strong> 20 puntos PISA equivalen, según la propia OCDE, a un año escolar de aprendizaje. Cambios menores caen dentro de la banda de incertidumbre combinada entre dos mediciones separadas por más de una década.</li>
+  </ol>
+</div>
+
+<div class="colofon">
+  <p class="colofon-title">Colofón</p>
+  <div class="colofon-grid">
+    <div class="colofon-item"><strong>Autor</strong><span>Jorge Oyarce Kruger</span></div>
+    <div class="colofon-item"><strong>Editorial</strong><span>GH HCAiLab</span></div>
+    <div class="colofon-item"><strong>Publicado</strong><span>9 de septiembre de 2026</span></div>
+    <div class="colofon-item"><strong>Ubicación</strong><span>Valdivia, Región de Los Ríos</span></div>
+    <div class="colofon-item"><strong>Tema</strong><span>Educación pública</span></div>
+    <div class="colofon-item"><strong>Extensión</strong><span>≈ 2.400 palabras</span></div>
+    <div class="colofon-item"><strong>Metodología</strong><span>Análisis de datos secundarios</span></div>
+    <div class="colofon-item"><strong>Reproducibilidad</strong><span>Datos y código en repositorio</span></div>
+  </div>
+</div>
+
+<div class="seguir">
+  <h3 class="seguir-title">
+    Seguir leyendo
+    <span class="nav">
+      <button aria-label="Anterior">‹</button>
+      <button aria-label="Siguiente">›</button>
+    </span>
+  </h3>
+  <div class="seguir-grid">
+    <div class="seguir-card">
+      <p class="tag">Política ambiental</p>
+      <h4><a href="#">La crisis del pellet y el PM10</a></h4>
+      <p>Una propuesta técnica al MMA para expandir el monitoreo indicativo a todas las comunas sobre diez mil habitantes.</p>
+    </div>
+    <div class="seguir-card">
+      <p class="tag">Educación · IA</p>
+      <h4><a href="#">Niños en moto, profesores de a pie</a></h4>
+      <p>Sobre texto generado por IA, pedagogía freireana y la propiocognosis en el aula chilena.</p>
+    </div>
+    <div class="seguir-card">
+      <p class="tag">Análisis</p>
+      <h4><a href="#">Nominalizar con responsabilidad</a></h4>
+      <p>Democracia y su incubación en la violencia territorial. Cinco entradas al debate.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>GH HCAiLab</strong> · Geohumano · Valdivia, Chile · <a href="https://jookruger.github.io/columns">jookruger.github.io/columns</a></p>
+  <p style="margin-top:6px;font-size:11px;opacity:0.8">© 2026 Jorge Oyarce Kruger. Este trabajo se publica bajo Creative Commons BY-NC 4.0. Datos y código en repositorio abierto.</p>
+</footer>
+
+</main>
+
+<script>
+// ============================
+// DATOS PISA 2000–2025
+// ============================
+const years = [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2022, 2025];
+
+const paises = {
+  "Chile": {
+    color:"#563F67", group:"chile", base:2006,
+    ciencias:   [null, null, 438, 447, 445, 447, 444, 444, 442],
+    lectura:    [null, null, 442, 449, 441, 459, 452, 448, 436],
+    matematica: [null, null, 411, 421, 423, 423, 417, 412, 403],
+    est2025:false
+  },
+  "Argentina": {
+    color:"#8B5A3C", group:"latam", base:2006,
+    ciencias:   [null, null, 391, 401, 406, 432, 404, 406, 393],
+    lectura:    [null, null, 374, 398, 396, 425, 402, 401, 389],
+    matematica: [null, null, 381, 388, 388, 409, 379, 378, 367],
+    est2025:false
+  },
+  "Perú": {
+    color:"#B87A50", group:"latam", base:2009,
+    ciencias:   [null, null, null, 369, 373, 397, 404, 408, 406],
+    lectura:    [null, null, null, 370, 384, 398, 401, 408, 390],
+    matematica: [null, null, null, 365, 368, 387, 400, 391, 382],
+    est2025:false
+  },
+  "Uruguay": {
+    color:"#5A8C7E", group:"latam", base:2003,
+    ciencias:   [null, null, 428, 427, 416, 435, 426, 435, 445],
+    lectura:    [null, 434, 413, 426, 411, 437, 427, 430, 423],
+    matematica: [null, 422, 427, 427, 409, 418, 418, 409, 405],
+    est2025:false
+  },
+  "Brasil": {
+    color:"#4B7C8A", group:"latam", base:2000,
+    ciencias:   [375, 397, 390, 405, 405, 401, 404, 403, 409],
+    lectura:    [396, 403, 393, 412, 410, 407, 413, 410, 408],
+    matematica: [334, 356, 370, 386, 391, 377, 384, 379, 377],
+    est2025:false
+  },
+  "Estados Unidos": {
+    color:"#3E4E6C", group:"benchmark", base:2000,
+    ciencias:   [499, 491, null, 502, 497, 496, 502, 499, 501],
+    lectura:    [504, 495, null, 500, 498, 497, 505, 504, 490],
+    matematica: [493, 483, 474, 487, 481, 470, 478, 465, 463],
+    est2025:false
+  },
+  "España": {
+    color:"#9C83A4", group:"iberia", base:2000,
+    ciencias:   [491, 487, 488, 488, 496, 493, 483, 485, 477],
+    lectura:    [493, 481, 461, 481, 488, 496, null, 474, 451],
+    matematica: [476, 485, 480, 483, 484, 486, 481, 473, 457],
+    est2025:false
+  },
+  "Portugal": {
+    color:"#7A5A47", group:"iberia", base:2000,
+    ciencias:   [459, 471, 474, 493, 489, 501, 492, 484, 482],
+    lectura:    [470, 478, 472, 489, 488, 498, 492, 477, 462],
+    matematica: [454, 466, 466, 487, 487, 492, 492, 472, 460],
+    est2025:false
+  },
+  "Singapur": {
+    color:"#1C4A8A", group:"top", base:2009,
+    ciencias:   [null, null, null, 542, 551, 556, 551, 561, 570],
+    lectura:    [null, null, null, 526, 542, 535, 549, 543, 535],
+    matematica: [null, null, null, 562, 573, 564, 569, 575, 578],
+    est2025:true, estMask:{ciencias:true, lectura:false, matematica:true}
+  },
+  "Japón": {
+    color:"#2B6A8A", group:"top", base:2000,
+    ciencias:   [550, 546, 531, 539, 547, 538, 529, 547, 545],
+    lectura:    [522, 498, 498, 520, 538, 516, 504, 516, 508],
+    matematica: [557, 534, 523, 529, 536, 532, 527, 536, 530],
+    est2025:true
+  },
+  "Corea del Sur": {
+    color:"#3A8AA8", group:"top", base:2000,
+    ciencias:   [552, 516, 522, 538, 538, 516, 519, 528, 525],
+    lectura:    [525, 534, 556, 539, 536, 517, 514, 515, 503],
+    matematica: [547, 542, 547, 546, 554, 524, 526, 527, 520],
+    est2025:true
+  },
+  "China (B-S-J-Z, top)": {
+    color:"#0B2A4A", group:"top", base:2009,
+    ciencias:   [null, null, null, 575, 580, 518, 590, null, 597],
+    lectura:    [null, null, null, 556, 570, 494, 555, null, 527],
+    matematica: [null, null, null, 600, 613, 531, 591, null, 612],
+    est2025:false
+  },
+  "Rep. Dominicana": {
+    color:"#8A3A3A", group:"bottom", base:2015,
+    ciencias:   [null, null, null, null, null, 332, 336, 360, 355],
+    lectura:    [null, null, null, null, null, 358, 342, 351, 348],
+    matematica: [null, null, null, null, null, 328, 325, 339, 335],
+    est2025:true
+  },
+  "Filipinas": {
+    color:"#A55A5A", group:"bottom", base:2018,
+    ciencias:   [null, null, null, null, null, null, 357, 356, 355],
+    lectura:    [null, null, null, null, null, null, 340, 347, 345],
+    matematica: [null, null, null, null, null, null, 353, 355, 350],
+    est2025:true
+  },
+  "Camboya": {
+    color:"#8A5A3A", group:"bottom", base:2022,
+    ciencias:   [null, null, null, null, null, null, null, 347, 345],
+    lectura:    [null, null, null, null, null, null, null, 329, 325],
+    matematica: [null, null, null, null, null, null, null, 336, 332],
+    est2025:true
+  }
+};
+
+// ============================
+// CHART.JS TRAYECTORIAS
+// ============================
+let currentDomain = "ciencias";
+const ctx = document.getElementById("trendChart").getContext("2d");
+let chart;
+
+function buildDatasets(){
+  const ds = [];
+  Object.entries(paises).forEach(([name, cfg]) => {
+    const series = cfg[currentDomain];
+    const isEst = cfg.est2025 && (!cfg.estMask || cfg.estMask[currentDomain] !== false);
+    const solid = series.slice();
+    if (isEst && series[8] != null) solid[8] = null;
+    ds.push({
+      label: name,
+      data: solid,
+      borderColor: cfg.color,
+      backgroundColor: cfg.color,
+      borderWidth: name === "Chile" ? 2.6 : 1.8,
+      tension: 0.15,
+      pointRadius: name === "Chile" ? 3 : 2,
+      pointHoverRadius: 5,
+      spanGaps: true,
+      hidden: false
+    });
+    if (isEst && series[7] != null && series[8] != null){
+      const dashed = new Array(9).fill(null);
+      dashed[7] = series[7];
+      dashed[8] = series[8];
+      ds.push({
+        label: name + " (est.)",
+        data: dashed,
+        borderColor: cfg.color,
+        backgroundColor: cfg.color,
+        borderWidth: 1.8,
+        borderDash: [4,4],
+        tension: 0,
+        pointRadius: [0,0,0,0,0,0,0,0,3],
+        pointStyle: "rectRot",
+        pointHoverRadius: 5,
+        showLine: true
+      });
+    }
+  });
+  return ds;
+}
+
+function renderChart(){
+  const datasets = buildDatasets();
+  const data = { labels: years.map(String), datasets };
+  const opts = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: "nearest", intersect: false },
+    plugins: {
+      legend: {
+        display: true,
+        position: "bottom",
+        labels: {
+          font: { family: "Source Serif 4, serif", size: 11 },
+          color: "#000",
+          boxWidth: 12,
+          padding: 8,
+          filter: (item) => !item.text.includes("(est.)")
+        }
+      },
+      tooltip: {
+        backgroundColor: "#000",
+        titleFont: { family: "Playfair Display, serif", size: 14, weight: "600" },
+        bodyFont: { family: "Source Serif 4, serif", size: 12 },
+        padding: 10,
+        callbacks: {
+          label: (c) => {
+            const isEst = c.dataset.label.includes("(est.)");
+            const clean = c.dataset.label.replace(" (est.)","");
+            return `${clean}: ${c.parsed.y}${isEst ? " (estimado)" : ""}`;
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 300, max: 620,
+        grid: { color: "#e0dcc5" },
+        ticks: { font: { family: "Source Serif 4, serif", size: 11 }, color: "#5a5a5a" },
+        title: { display: true, text: "Puntaje PISA (escala 100-1000)", font: { family: "Playfair Display, serif", size: 12, style: "italic" }, color: "#563F67" }
+      },
+      x: {
+        grid: { color: "#efedde" },
+        ticks: { font: { family: "Source Serif 4, serif", size: 12 }, color: "#000" }
+      }
+    }
+  };
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, { type: "line", data, options: opts });
+}
+
+document.querySelectorAll(".viz-tabs button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".viz-tabs button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentDomain = btn.dataset.domain;
+    renderChart();
+  });
+});
+
+renderChart();
+
+// ============================
+// MATRIZ DE TENDENCIAS
+// ============================
+function computeDelta(country, dom){
+  const s = paises[country][dom];
+  const first = s.find(v => v != null);
+  const last = s[s.length - 1];
+  if (first == null || last == null) return null;
+  return last - first;
+}
+
+function classify(d){
+  if (d == null) return "flat";
+  if (d >= 20) return "up";
+  if (d <= -20) return "down";
+  return "flat";
+}
+
+const groupOrder = ["chile","latam","iberia","benchmark","top","bottom"];
+const groupLabels = {
+  chile: "CHILE",
+  latam: "AMÉRICA LATINA",
+  iberia: "PENÍNSULA IBÉRICA",
+  benchmark: "AMÉRICA DEL NORTE",
+  top: "TOP GLOBAL",
+  bottom: "COLA GLOBAL"
+};
+
+function arrowSVG(kind){
+  if (kind === "up") return `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 L12 8 L19 15"/></svg>`;
+  if (kind === "down") return `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9 L12 16 L19 9"/></svg>`;
+  return `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12 L20 12"/></svg>`;
+}
+
+function fmt(d){
+  if (d == null) return "—";
+  return d > 0 ? `+${d}` : `${d}`;
+}
+
+const matrixEl = document.getElementById("matrix");
+matrixEl.innerHTML = `
+  <div class="row head">
+    <div class="cell">País y año base</div>
+    <div class="cell">Ciencias</div>
+    <div class="cell">Lectura</div>
+    <div class="cell">Matemática</div>
+  </div>
+`;
+
+groupOrder.forEach(g => {
+  const countries = Object.keys(paises).filter(k => paises[k].group === g);
+  if (!countries.length) return;
+  const label = document.createElement("div");
+  label.className = "group-title";
+  label.textContent = groupLabels[g];
+  matrixEl.appendChild(label);
+
+  countries.forEach(name => {
+    const p = paises[name];
+    const dC = computeDelta(name, "ciencias");
+    const dL = computeDelta(name, "lectura");
+    const dM = computeDelta(name, "matematica");
+    const cC = classify(dC), cL = classify(dL), cM = classify(dM);
+    const s2025 = { c: p.ciencias[8], l: p.lectura[8], m: p.matematica[8] };
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = `
+      <div class="cell">
+        <span class="country-name">${name}</span>
+        <span class="country-base">Base ${p.base}</span>
+        <span class="country-scores">2025: Cie ${s2025.c ?? '—'} · Lec ${s2025.l ?? '—'} · Mat ${s2025.m ?? '—'}</span>
+      </div>
+      <div class="cell ${cC}-cell">
+        <div class="trend-cell">${arrowSVG(cC)}<span class="delta">${fmt(dC)}</span></div>
+      </div>
+      <div class="cell ${cL}-cell">
+        <div class="trend-cell">${arrowSVG(cL)}<span class="delta">${fmt(dL)}</span></div>
+      </div>
+      <div class="cell ${cM}-cell">
+        <div class="trend-cell">${arrowSVG(cM)}<span class="delta">${fmt(dM)}</span></div>
+      </div>
+    `;
+    matrixEl.appendChild(row);
+  });
+});
+
+// ============================
+// REGRESIÓN LINEAL + BANDA IC95%
+// ============================
+// Regresión OLS sobre pares (año, puntaje). Devuelve pendiente, intercepto,
+// R², error estándar de la regresión, y una función que predice con IC95%.
+function regresionLineal(points){
+  const n = points.length;
+  if (n < 3) return null;
+  const meanX = points.reduce((a,p) => a + p.x, 0) / n;
+  const meanY = points.reduce((a,p) => a + p.y, 0) / n;
+  let sxx = 0, syy = 0, sxy = 0;
+  points.forEach(p => {
+    sxx += (p.x - meanX) ** 2;
+    syy += (p.y - meanY) ** 2;
+    sxy += (p.x - meanX) * (p.y - meanY);
+  });
+  if (sxx === 0) return null;
+  const slope = sxy / sxx;
+  const intercept = meanY - slope * meanX;
+  // Suma de residuos al cuadrado
+  let sse = 0;
+  points.forEach(p => {
+    const yhat = intercept + slope * p.x;
+    sse += (p.y - yhat) ** 2;
+  });
+  // Error estándar de la regresión (grados de libertad n-2)
+  const df = n - 2;
+  const se = Math.sqrt(sse / df);
+  const r2 = 1 - (sse / syy);
+  // Valor crítico t aproximado al 95% (Student, 2 colas)
+  // Aproximación aceptable: para df>=8 se usa 2.31→2.10; interpolamos con tabla
+  const tTable = {2:4.303, 3:3.182, 4:2.776, 5:2.571, 6:2.447, 7:2.365, 8:2.306, 9:2.262, 10:2.228, 12:2.179, 15:2.131, 20:2.086, 30:2.042};
+  const keys = Object.keys(tTable).map(Number).sort((a,b) => a-b);
+  let tCrit = 2.0;
+  if (df in tTable) tCrit = tTable[df];
+  else {
+    for (let i = 0; i < keys.length - 1; i++){
+      if (df >= keys[i] && df <= keys[i+1]){
+        // Interpolación lineal simple
+        const frac = (df - keys[i]) / (keys[i+1] - keys[i]);
+        tCrit = tTable[keys[i]] + frac * (tTable[keys[i+1]] - tTable[keys[i]]);
+        break;
+      }
+    }
+    if (df > 30) tCrit = 1.96;
+  }
+  // Predicción con intervalo de confianza al 95% para la media condicional
+  const predict = (x) => {
+    const yhat = intercept + slope * x;
+    const seMean = se * Math.sqrt(1/n + ((x - meanX) ** 2) / sxx);
+    const margin = tCrit * seMean;
+    return { yhat, lower: yhat - margin, upper: yhat + margin };
+  };
+  return { slope, intercept, r2, se, n, predict };
+}
+
+let currentDomainTrend = "ciencias";
+const ctxRegr = document.getElementById("regressionChart").getContext("2d");
+let chartRegr;
+
+// Helper para convertir color hex a rgba con alpha
+function hexToRgba(hex, alpha){
+  const h = hex.replace("#","");
+  const r = parseInt(h.substring(0,2), 16);
+  const g = parseInt(h.substring(2,4), 16);
+  const b = parseInt(h.substring(4,6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function buildRegressionDatasets(){
+  const ds = [];
+  Object.entries(paises).forEach(([name, cfg]) => {
+    const series = cfg[currentDomainTrend];
+    const points = [];
+    series.forEach((v, i) => {
+      if (v != null) points.push({ x: years[i], y: v });
+    });
+    const reg = regresionLineal(points);
+    if (!reg) return;
+
+    // Puntos observados (sin línea, solo marker)
+    ds.push({
+      label: name,
+      data: points,
+      borderColor: cfg.color,
+      backgroundColor: cfg.color,
+      pointRadius: 2.5,
+      pointHoverRadius: 4,
+      showLine: false,
+      type: "scatter"
+    });
+
+    // Recta de regresión: dos puntos, del primer año al último año del rango
+    const xMin = years[0];
+    const xMax = years[years.length - 1];
+    const steps = 20;
+    const stepSize = (xMax - xMin) / steps;
+    const lineData = [];
+    const upperData = [];
+    const lowerData = [];
+    for (let i = 0; i <= steps; i++){
+      const x = xMin + stepSize * i;
+      const p = reg.predict(x);
+      lineData.push({ x, y: p.yhat });
+      upperData.push({ x, y: p.upper });
+      lowerData.push({ x, y: p.lower });
+    }
+
+    // Banda de confianza como área rellena (upper y luego lower invertida)
+    const bandData = upperData.concat(lowerData.slice().reverse());
+
+    // Banda IC95% (área)
+    ds.push({
+      label: name + " IC95%",
+      data: bandData,
+      borderColor: "transparent",
+      backgroundColor: hexToRgba(cfg.color, 0.12),
+      pointRadius: 0,
+      fill: true,
+      tension: 0,
+      showLine: true,
+      borderWidth: 0,
+      order: 10
+    });
+
+    // Recta ajustada (bisectriz)
+    ds.push({
+      label: name + " tendencia",
+      data: lineData,
+      borderColor: cfg.color,
+      backgroundColor: "transparent",
+      borderWidth: name === "Chile" ? 2.6 : 1.8,
+      pointRadius: 0,
+      pointHoverRadius: 0,
+      fill: false,
+      tension: 0,
+      showLine: true,
+      order: 1
+    });
+  });
+  return ds;
+}
+
+function renderRegressionChart(){
+  const datasets = buildRegressionDatasets();
+  const data = { datasets };
+  const opts = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: "nearest", intersect: false },
+    plugins: {
+      legend: {
+        display: true,
+        position: "bottom",
+        labels: {
+          font: { family: "Source Serif 4, serif", size: 11 },
+          color: "#000",
+          boxWidth: 12,
+          padding: 8,
+          filter: (item) => !item.text.includes("IC95%") && !item.text.includes("tendencia"),
+          generateLabels: (chart) => {
+            const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+            const seen = new Set();
+            return labels.filter(l => {
+              if (l.text.includes("IC95%") || l.text.includes("tendencia")) return false;
+              if (seen.has(l.text)) return false;
+              seen.add(l.text);
+              return true;
+            });
+          }
+        }
+      },
+      tooltip: {
+        backgroundColor: "#000",
+        titleFont: { family: "Playfair Display, serif", size: 14, weight: "600" },
+        bodyFont: { family: "Source Serif 4, serif", size: 12 },
+        padding: 10,
+        filter: (item) => !item.dataset.label.includes("IC95%"),
+        callbacks: {
+          label: (c) => {
+            const clean = c.dataset.label.replace(" tendencia","");
+            return `${clean}: ${Math.round(c.parsed.y)}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: "linear",
+        min: 2000, max: 2025,
+        grid: { color: "#efedde" },
+        ticks: {
+          font: { family: "Source Serif 4, serif", size: 12 },
+          color: "#000",
+          stepSize: 5,
+          callback: (v) => String(v)
+        }
+      },
+      y: {
+        min: 300, max: 620,
+        grid: { color: "#e0dcc5" },
+        ticks: { font: { family: "Source Serif 4, serif", size: 11 }, color: "#5a5a5a" },
+        title: { display: true, text: "Puntaje PISA (escala 100-1000)", font: { family: "Playfair Display, serif", size: 12, style: "italic" }, color: "#563F67" }
+      }
+    }
+  };
+  if (chartRegr) chartRegr.destroy();
+  chartRegr = new Chart(ctxRegr, { type: "line", data, options: opts });
+}
+
+document.querySelectorAll("[data-domain-trend]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("[data-domain-trend]").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentDomainTrend = btn.dataset.domainTrend;
+    renderRegressionChart();
+  });
+});
+
+renderRegressionChart();
+</script>
+
+</body>
+</html>
