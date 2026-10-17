@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis y ensayos+ · GH HCAiLab</title>
+<meta name="description" content="Análisis político, social y tecnológico. Jorge Oyarce Kruger · GH HCAiLab · Valdivia, Chile.">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL32BW5J8B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HL32BW5J8B');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #000000;
+    --ink-muted: #4a4055;
+    --ink-faint: #786680;
+    --paper: #DCDBC9;
+    --paper-warm: #A3BCBA;
+    --rule: #D8C4D2;
+    --accent: #563F67;
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  /* CABECERA */
+  header {
+    border-bottom: 3px double var(--rule);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    background: var(--paper-warm);
+  }
+
+  .pub-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+
+  .pub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .pub-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .pub-meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* CONTENIDO */
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* SECCIÓN SUPERIOR: featured/nota + sidebar */
+  .top-section {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .top-main {
+    min-width: 0;
+  }
+
+  .top-side {
+    border-left: 1px solid var(--rule);
+    padding-left: 2rem;
+    min-width: 0;
+  }
+
+  .side-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .recent-list {
+    list-style: none;
+  }
+
+  .recent-item {
+    border-bottom: 1px dashed var(--rule);
+    padding: 0.9rem 0;
+  }
+
+  .recent-item:first-child {
+    padding-top: 0;
+  }
+
+  .recent-item:last-child {
+    border-bottom: none;
+  }
+
+  .recent-item a {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .recent-item a:hover h4 {
+    color: var(--accent);
+  }
+
+  .recent-item .date {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.35rem;
+  }
+
+  .recent-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+
+  .recent-item h4 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* COLUMNA DESTACADA */
+  .featured {
+    border-top: 3px solid var(--ink);
+    padding-top: 1.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .featured .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .featured h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .featured h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .featured .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+  }
+
+  .featured .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .read-link {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .read-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .read-link::after {
+    content: ' →';
+  }
+
+  /* DIVISOR */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  /* NOTA DEL AUTOR / PROPIOCOGNOSIS */
+  .author-note {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-muted);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .author-note p + p { margin-top: 1rem; }
+
+  .author-note-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .author-note em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* GRID DE COLUMNAS */
+  .columns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .column-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+  }
+
+  .column-card .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .column-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .column-card h3 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .column-card p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .column-card .meta {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.6rem;
+  }
+
+  /* PRÓXIMAMENTE */
+  .coming-soon {
+    border-top: 1px dashed var(--rule);
+    padding-top: 1rem;
+    opacity: 0.5;
+  }
+
+  .coming-soon .tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .coming-soon .soon-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* PIE */
+  footer {
+    border-top: 3px double var(--rule);
+    background: var(--paper-warm);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .top-section {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .top-side {
+      border-left: none;
+      border-top: 1px solid var(--rule);
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    .columns-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    header { padding: 2rem 1.25rem 1.5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    .pub-meta { gap: 1rem; }
+    .author-note { font-size: 0.88rem; text-align: left; }
+    .author-note-title { font-size: 1.15rem; }
+    .columns-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ÍNDICE AUTOMÁTICO */
+  .state {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-faint);
+    padding: 1rem 0;
+  }
+  .grid-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+  }
+  .grid-head input[type=search] {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink);
+    width: min(280px, 100%);
+    margin-bottom: 2rem;
+  }
+  .grid-head input[type=search]:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .grid-head input[type=search]::placeholder { color: var(--ink-faint); }
+  .featured .read-link { justify-self: start; }
+</style>
+</head>
+<body>
+<!--
+  ÍNDICE AUTOMÁTICO · GH HCAI Lab
+  No hay que editar este archivo al subir una columna nueva.
+  El índice lista los .html de la raíz del repositorio con la API de GitHub y lee de cada uno:
+    · Título:    el <h1>, conservando las cursivas <em>; si no hay, el <title>
+    · Etiqueta:  <meta name="etiqueta" content="...">, o el .section-tag, el .masthead-label o el kicker
+    · Resumen:   <meta name="description" content="...">, o el primer párrafo largo
+    · Fecha:     <meta name="fecha" content="2026-10-17">, o la tabla RESPALDO de abajo, o la fecha del último commit
+  Para que un archivo no aparezca: <meta name="indice" content="ocultar">, o agregarlo a EXCLUIR,
+  o que su nombre empiece con guion bajo, por ejemplo _borrador.html.
+  Las dos publicaciones más recientes van destacadas arriba.
+-->
+
+<header>
+  <p class="pub-eyebrow">GH HCAiLab · Valdivia, Chile</p>
+  <h1 class="pub-title">Análisis y <em>ensayos+</em></h1>
+  <p class="pub-subtitle">Política · Sociedad · Tecnología · Territorio</p>
+  <div class="pub-meta">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Médico Veterinario · MBA · Máster en Innovación</span>
+    <span>GH HCAiLab</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="top-section">
+
+    <div class="top-main">
+      <span class="section-label">Publicación reciente</span>
+
+      <div id="destacadas"><p class="state">Cargando publicaciones…</p></div>
+
+      <!-- INICIO BLOQUE PROPIOCOGNOSIS -->
+      <div class="author-note">
+        <h3 class="author-note-title">Lo que encontrará en estas líneas</h3>
+        <p>¿Qué ocurre cuando la cognición humana se extiende hacia un sistema artificial? Aquí, la IA no fue un asistente, sino un socio en un proceso de co-creación con base científica. La IA no piensa ni posee verdades; mapea patrones estadísticos. Sin embargo, su interacción generó un fenómeno que acuño como <em>propiocognosis</em>.</p>
+        <p>Así como la propiocepción permite a un tenista sentir la raqueta como extensión de su cuerpo, la propiocognosis es percibir el propio proceso cognitivo al expandirse hacia afuera. La IA se volvió un "avatar cocreador": una proyección del pensamiento que sintetizó datos, proliferó ideas y mutó la escritura.</p>
+        <p>La IA no aportó ética ni verdad, sino un espejo cognitivo. El rigor y la dirección siguieron siendo estrictamente humanos.</p>
+      </div>
+      <!-- FIN BLOQUE PROPIOCOGNOSIS -->
+    </div>
+
+    <aside class="top-side">
+      <span class="side-label">Últimas publicaciones</span>
+      <ul class="recent-list" id="recientes"><li class="recent-item"><p class="state">Cargando…</p></li></ul>
+    </aside>
+
+  </div>
+
+  <div class="grid-head">
+    <span class="section-label" id="todas">Todas las publicaciones</span>
+    <input type="search" id="q" placeholder="Buscar por título, tema o resumen" aria-label="Buscar publicaciones">
+  </div>
+
+  <div class="columns-grid" id="grilla"></div>
+
+</main>
+
+<footer>
+  <p>GH HCAiLab · Jorge Oyarce Kruger · Valdivia, Chile</p>
+  <p>Médico Veterinario · MBA · Máster en Innovación</p>
+</footer>
+
+<script>
+// ===== Configuración =====
+const FALLBACK_OWNER = "Jookruger";
+const FALLBACK_REPO  = "columns";
+const BRANCH = "";        // vacío = rama por defecto
+const RECIENTES = 14;     // cuántas van en la barra lateral
+const DESTACADAS = 2;     // cuántas van arriba como "Publicación reciente"
+
+// Archivos que no se muestran: versiones duplicadas o material que no es columna.
+const EXCLUIR = [
+  "index.html",
+  "incubacion-violencia-nominal_2.html",
+  "punto-equilibrio-megarreforma.html",
+  "radar-vivo.html"
+];
+
+// Fechas de las columnas publicadas antes del índice automático.
+// Las columnas nuevas no necesitan estar aquí: basta con <meta name="fecha" content="AAAA-MM-DD">,
+// y si tampoco lo tienen, se usa la fecha del commit. Un valor de solo año se muestra como año.
+const RESPALDO = {
+  "revueltas-y-revoluciones.html":       "2026-10-17",
+  "trilogia-patio-trasero.html":         "2026-09-28",
+  "cartas-dos-generales.html":           "2026-09-20",
+  "pisa-2025-coartada.html":             "2026-09-09",
+  "crisis-pellet-pm10.html":             "2026-09-05",
+  "antecedentes-mp10-mma.html":          "2026-09-03",
+  "ninos-en-moto.html":                  "2026-08-15",
+  "punto-equilibrio-megarreforma_1.html":"2026-07-25",
+  "violencia_genero_politica.html":      "2026-07-20",
+  "incubacion-violencia-nominal.html":   "2026-07-10",
+  "magnifica-humanitas.html":            "2026-06-28",
+  "registro_vandalos_columna.html":      "2026-06-20",
+  "marco_teorico_tgr_cae_1.html":        "2026-06-12",
+  "desvio_fiscal_20anos.html":           "2026-06-05",
+  "el-gobierno-que-enferma.html":        "2026-05-15",
+  "ley-tutti-frutti.html":               "2026-04-15",
+  "liderazgo-empatico.html":             "2025"
+};
+
+// ===== Motor =====
+const host = location.hostname;
+const OWNER = host.endsWith(".github.io") ? host.split(".")[0] : FALLBACK_OWNER;
+const seg = location.pathname.split("/").filter(Boolean);
+const REPO = host.endsWith(".github.io") && seg.length && !seg[0].endsWith(".html") ? seg[0] : FALLBACK_REPO;
+const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+const VERSION = "v1";
+const TTL = 30 * 60 * 1000; // media hora de caché por visitante
+
+const MESES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const recorta = (s, n) => { s = (s || "").replace(/\s+/g, " ").trim(); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s; };
+
+function cache(key, val){
+  try{
+    const k = "gh-columns:" + VERSION + ":" + key;
+    if (val === undefined){ const o = JSON.parse(localStorage.getItem(k)); return o && Date.now() - o.t < TTL ? o.v : null; }
+    localStorage.setItem(k, JSON.stringify({t: Date.now(), v: val}));
+  }catch(e){ return null; }
+}
+
+// Título con cursivas: solo deja pasar <em>; los <br> pasan a espacio.
+function tituloSeguro(h1){
+  const out = [];
+  (function walk(n){
+    n.childNodes.forEach(c => {
+      if (c.nodeType === 3) out.push(esc(c.textContent));
+      else if (c.nodeName === "BR") out.push(" ");
+      else if (c.nodeName === "EM" || c.nodeName === "I"){ out.push("<em>"); walk(c); out.push("</em>"); }
+      else walk(c);
+    });
+  })(h1);
+  return out.join("").replace(/\s+/g, " ").trim();
+}
+
+function parseFecha(v){
+  if (!v) return null;
+  v = String(v).trim();
+  if (/^\d{4}$/.test(v)) return { d: new Date(+v, 0, 1, 12), soloAnio: true };
+  if (/^\d{4}-\d{2}$/.test(v)) v += "-01";
+  const d = new Date(v + "T12:00:00");
+  return isNaN(d) ? null : { d, soloAnio: false };
+}
+const muestraFecha = f => !f ? "" : f.soloAnio ? String(f.d.getFullYear()) : `${MESES[f.d.getMonth()]} ${f.d.getFullYear()}`;
+
+async function listar(){
+  const c = cache("lista"); if (c) return c;
+  try{
+    const r = await fetch(`${API}/contents/${BRANCH ? "?ref=" + BRANCH : ""}`);
+    if (!r.ok) throw 0;
+    const files = (await r.json())
+      .filter(f => f.type === "file" && /\.html?$/i.test(f.name) && !f.name.startsWith("_") && !EXCLUIR.includes(f.name))
+      .map(f => f.name);
+    cache("lista", files); return files;
+  }catch(e){
+    // Si la API no responde o limita las consultas, se usa la lista conocida.
+    return Object.keys(RESPALDO).filter(n => !EXCLUIR.includes(n));
+  }
+}
+
+async function fechaCommit(name){
+  try{
+    const r = await fetch(`${API}/commits?path=${encodeURIComponent(name)}&per_page=1${BRANCH ? "&sha=" + BRANCH : ""}`);
+    if (!r.ok) return null;
+    const j = await r.json(); return j[0]?.commit?.committer?.date?.slice(0, 10) || null;
+  }catch(e){ return null; }
+}
+
+async function leer(name){
+  const c = cache("meta:" + name); if (c) return c.oculto ? null : c;
+  let html = "";
+  try{ const r = await fetch(name, {cache: "no-cache"}); if (!r.ok) return null; html = await r.text(); }catch(e){ return null; }
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const meta = n => doc.querySelector(`meta[name="${n}"]`)?.getAttribute("content")?.trim();
+  if ((meta("indice") || "").toLowerCase() === "ocultar"){ cache("meta:" + name, {oculto: true}); return null; }
+
+  const h1 = doc.querySelector("h1.headline") || doc.querySelector("h1");
+  const titulo = h1 ? tituloSeguro(h1)
+    : esc((doc.querySelector("title")?.textContent || name.replace(/\.html?$/i, "")).split(/\s+[—·|]\s+/)[0]);
+  const etiqueta = meta("etiqueta")
+    || [".section-tag", ".kicker", ".eyebrow", ".masthead-label"].map(q => doc.querySelector(q)?.textContent?.replace(/\s+/g, " ").trim()).find(Boolean)
+    || "";
+  let resumen = meta("description");
+  if (!resumen){
+    doc.querySelectorAll("script,style,noscript,header,nav,.masthead,.byline,.colophon,.more-columns").forEach(n => n.remove());
+    resumen = [...doc.querySelectorAll("p")].map(n => n.textContent.replace(/\s+/g, " ").trim()).find(t => t.length > 80) || "";
+  }
+  const fecha = meta("fecha") || RESPALDO[name] || await fechaCommit(name) || "";
+  const item = { url: name, titulo, etiqueta, resumen, fecha };
+  cache("meta:" + name, item);
+  return item;
+}
+
+function pintar(items){
+  const dest = items.slice(0, DESTACADAS);
+  document.getElementById("destacadas").innerHTML = dest.map(i => `
+      <article class="featured">
+        ${i.etiqueta ? `<div class="tag">${esc(i.etiqueta)}</div>` : ""}
+        <h2>${i.titulo}</h2>
+        ${i.resumen ? `<p class="deck">${esc(recorta(i.resumen, 320))}</p>` : ""}
+        <div class="meta">Jorge Oyarce Kruger${i.f ? " · " + muestraFecha(i.f) : ""}</div>
+        <a class="read-link" href="${esc(i.url)}">Leer</a>
+      </article>
+      <hr class="rule">`).join("");
+
+  document.getElementById("recientes").innerHTML = items.slice(0, RECIENTES).map(i => `
+        <li class="recent-item">
+          <a href="${esc(i.url)}">
+            <div class="date">${esc(muestraFecha(i.f))}</div>
+            <h4>${i.titulo}</h4>
+          </a>
+        </li>`).join("");
+
+  const $q = document.getElementById("q");
+  const grilla = () => {
+    const q = $q.value.trim().toLowerCase();
+    const plano = i => (i.titulo.replace(/<[^>]+>/g, "") + " " + i.etiqueta + " " + i.resumen).toLowerCase();
+    const vis = items.filter(i => !q || plano(i).includes(q));
+    document.getElementById("grilla").innerHTML = (vis.length ? vis.map(i => `
+    <article class="column-card">
+      ${i.etiqueta ? `<div class="tag">${esc(i.etiqueta)}</div>` : ""}
+      <h3>${i.titulo}</h3>
+      ${i.resumen ? `<p>${esc(recorta(i.resumen, 260))}</p>` : ""}
+      <div class="meta">${esc(muestraFecha(i.f))}</div>
+      <a class="read-link" href="${esc(i.url)}">Leer</a>
+    </article>`).join("") : `<p class="state">Ninguna publicación coincide con la búsqueda.</p>`)
+      + (q ? "" : `
+    <article class="coming-soon">
+      <div class="tag">Próximamente</div>
+      <h3>En preparación</h3>
+      <p class="soon-label">Nuevas columnas · GH HCAiLab</p>
+    </article>`);
+  };
+  grilla();
+  $q.addEventListener("input", grilla);
+  document.getElementById("todas").textContent = `Todas las publicaciones · ${items.length}`;
+}
+
+(async () => {
+  try{
+    const nombres = await listar();
+    const items = (await Promise.all(nombres.map(leer))).filter(Boolean);
+    items.forEach(i => i.f = parseFecha(i.fecha));
+    items.sort((a, b) => (b.f?.d || 0) - (a.f?.d || 0));
+    if (!items.length) throw new Error("Todavía no hay publicaciones en el repositorio.");
+    pintar(items);
+  }catch(e){
+    document.getElementById("destacadas").innerHTML = `<p class="state">${esc(e.message || "No se pudo cargar el índice.")}</p>`;
+    document.getElementById("recientes").innerHTML = "";
+  }
+})();
+</script>
+
+</body>
+</html>
