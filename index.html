@@ -574,8 +574,8 @@ const OWNER = host.endsWith(".github.io") ? host.split(".")[0] : FALLBACK_OWNER;
 const seg = location.pathname.split("/").filter(Boolean);
 const REPO = host.endsWith(".github.io") && seg.length && !seg[0].endsWith(".html") ? seg[0] : FALLBACK_REPO;
 const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
-const VERSION = "v1";
-const TTL = 30 * 60 * 1000; // media hora de caché por visitante
+const VERSION = "v2";
+const TTL = 7 * 24 * 60 * 60 * 1000; // la ficha de cada archivo se guarda hasta que el archivo cambie
 
 const MESES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -614,17 +614,16 @@ function parseFecha(v){
 const muestraFecha = f => !f ? "" : f.soloAnio ? String(f.d.getFullYear()) : `${MESES[f.d.getMonth()]} ${f.d.getFullYear()}`;
 
 async function listar(){
-  const c = cache("lista"); if (c) return c;
   try{
     const r = await fetch(`${API}/contents/${BRANCH ? "?ref=" + BRANCH : ""}`);
     if (!r.ok) throw 0;
     const files = (await r.json())
       .filter(f => f.type === "file" && /\.html?$/i.test(f.name) && !f.name.startsWith("_") && !EXCLUIR.includes(f.name))
-      .map(f => f.name);
-    cache("lista", files); return files;
+      .map(f => ({ name: f.name, sha: f.sha }));
+    return files;
   }catch(e){
     // Si la API no responde o limita las consultas, se usa la lista conocida.
-    return Object.keys(RESPALDO).filter(n => !EXCLUIR.includes(n));
+    return Object.keys(RESPALDO).filter(n => !EXCLUIR.includes(n)).map(name => ({ name, sha: null }));
   }
 }
 
@@ -636,13 +635,15 @@ async function fechaCommit(name){
   }catch(e){ return null; }
 }
 
-async function leer(name){
-  const c = cache("meta:" + name); if (c) return c.oculto ? null : c;
+async function leer({ name, sha }){
+  // La lista se consulta en cada visita; la ficha se reutiliza solo si el archivo no ha cambiado (mismo sha).
+  const clave = sha ? "meta:" + name + ":" + sha : null;
+  const c = clave && cache(clave); if (c) return c.oculto ? null : c;
   let html = "";
   try{ const r = await fetch(name, {cache: "no-cache"}); if (!r.ok) return null; html = await r.text(); }catch(e){ return null; }
   const doc = new DOMParser().parseFromString(html, "text/html");
   const meta = n => doc.querySelector(`meta[name="${n}"]`)?.getAttribute("content")?.trim();
-  if ((meta("indice") || "").toLowerCase() === "ocultar"){ cache("meta:" + name, {oculto: true}); return null; }
+  if ((meta("indice") || "").toLowerCase() === "ocultar"){ if (clave) cache(clave, {oculto: true}); return null; }
 
   const h1 = doc.querySelector("h1.headline") || doc.querySelector("h1");
   const titulo = h1 ? tituloSeguro(h1)
@@ -657,7 +658,7 @@ async function leer(name){
   }
   const fecha = meta("fecha") || RESPALDO[name] || await fechaCommit(name) || "";
   const item = { url: name, titulo, etiqueta, resumen, fecha };
-  cache("meta:" + name, item);
+  if (clave) cache(clave, item);
   return item;
 }
 
