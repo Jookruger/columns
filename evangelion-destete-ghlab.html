@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Genesis Evangelion: el destete de un otaku — GH HCAI Lab</title>
+<meta name="description" content="Ensayo sobre Evangelion, la individuación junguiana, el padre de posguerra y el destete paterno.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #000000;
+  --ink-muted: #41304f;
+  --ink-faint: #6e5c80;
+  --paper: #DCDBC9;
+  --paper-warm: #CFD9BE;
+  --rule: #CDB9DB;
+  --accent: #4B2A6B;
+  --accent-light: #8F6FB0;
+  --eva-green: #4E8A1F;
+  --eva-glow: #8FE04A;
+  --column-width: 680px;
+}
+html { background: var(--paper); }
+body { font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); background: var(--paper); min-height: 100vh; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-color: var(--eva-green); color: var(--eva-green); }
+
+.masthead { background: var(--accent); border-bottom: 4px double var(--eva-glow); padding: 2rem 3rem 1.5rem; text-align: center; }
+.masthead-label { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--eva-glow); margin-bottom: 0.5rem; }
+.masthead-pub { font-family: 'Playfair Display', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); }
+
+.hero { background: var(--accent); border-bottom: 3px solid var(--eva-green); }
+.hero figure { margin: 0; text-align: center; }
+.hero img { display: block; width: 100%; max-height: 72vh; object-fit: cover; border: 0; }
+.hero a { border: 0; }
+.hero .fallback { display: none; padding: 3.5rem 1.5rem; background: repeating-linear-gradient(135deg, rgba(143,224,74,.10) 0 2px, transparent 2px 14px), var(--accent); }
+.hero.no-img img { display: none; }
+.hero.no-img .fallback { display: block; }
+.hero .fallback a { font-family: 'Playfair Display', serif; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--eva-glow); border: 1px solid var(--eva-glow); padding: 0.7rem 1rem; }
+.hero figcaption { font-family: 'Playfair Display', serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rule); padding: 0.5rem 1rem 0.7rem; }
+.hero figcaption a { color: var(--eva-glow); border: 0; }
+
+.article-wrapper { max-width: var(--column-width); margin: 0 auto; padding: 3rem 2rem 5rem; }
+.back { display: inline-block; font-family: 'Playfair Display', serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-faint); border-bottom: 1px solid var(--ink-faint); padding-bottom: 2px; margin-bottom: 1.5rem; }
+.section-tag { font-family: 'Playfair Display', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--eva-green); border-bottom: 1px solid var(--eva-green); display: inline-block; padding-bottom: 2px; margin-bottom: 1.5rem; }
+h1.headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; letter-spacing: -0.02em; }
+h1.headline em { font-style: italic; color: var(--accent); }
+.deck { font-size: 1.05rem; font-weight: 300; line-height: 1.6; color: var(--ink-muted); border-left: 3px solid var(--eva-green); padding-left: 1rem; margin-bottom: 2rem; font-style: italic; }
+.byline { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0.6rem 0; margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+
+.body-text { font-size: 1.05rem; line-height: 1.82; color: var(--ink); font-weight: 300; }
+.body-text p { margin-bottom: 1.4em; }
+.body-text em { color: var(--accent); }
+.body-text strong { font-weight: 600; color: var(--accent); }
+.body-text.first > p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 4.2em; font-weight: 900; float: left; line-height: 0.8; margin: 0.05em 0.08em 0 0; color: var(--accent); text-shadow: 3px 3px 0 var(--eva-glow); }
+h2.section-head { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+h2.section-head::before { content: '§ '; color: var(--eva-green); font-style: italic; }
+.jp { font-family: 'Noto Serif JP', serif; }
+
+.pull-quote { margin: 2.5rem 0; padding: 1.5rem 2rem; border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent); text-align: center; background: var(--paper-warm); }
+.pull-quote p { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; font-style: italic; line-height: 1.4; color: var(--accent); margin: 0; }
+
+.intento { border: 2px solid var(--accent-light); padding: 1.6rem 1.75rem 0.4rem; margin: 2rem 0; position: relative; }
+.intento .label { font-family: 'Playfair Display', serif; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--paper); background: var(--accent-light); position: absolute; top: -0.65rem; left: 1rem; padding: 0 0.5rem; }
+.intento h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.6rem; }
+.intento.ultimo { border-color: var(--eva-green); background: linear-gradient(90deg, rgba(143,224,74,.12), transparent 70%); }
+.intento.ultimo .label { background: var(--eva-green); }
+
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.9rem; line-height: 1.45; font-weight: 300; }
+th { background: var(--accent); color: var(--paper); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.82rem; text-align: left; padding: 0.55rem 0.7rem; border-bottom: 3px solid var(--eva-glow); }
+td { padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:nth-child(even) td { background: var(--paper-warm); }
+td.num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem; color: var(--eva-green); width: 2.5em; }
+.table-wrap { overflow-x: auto; }
+
+.footnotes { margin-top: 1rem; font-size: 0.85rem; line-height: 1.6; color: var(--ink-muted); font-weight: 300; }
+.footnotes h3 { font-family: 'Playfair Display', serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eva-green); margin: 1.4rem 0 0.6rem; }
+.footnotes ul { padding-left: 1.1rem; }
+.footnotes li { margin-bottom: 0.5em; }
+
+.colophon { max-width: var(--column-width); margin: 0 auto; padding: 2rem 2rem 3rem; }
+.colophon-rule { border: 0; border-top: 3px double var(--rule); margin-bottom: 1.5rem; }
+.colophon-brand { font-family: 'Playfair Display', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.6rem; }
+.colophon p { font-size: 0.85rem; line-height: 1.65; color: var(--ink-muted); font-weight: 300; }
+.colophon .mono { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; }
+.meta-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem 1.5rem; margin-top: 1.5rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.meta-dl .m-k { display: block; font-family: 'Playfair Display', serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eva-green); margin-bottom: 0.25rem; }
+.meta-dl .m-v { font-size: 0.85rem; color: var(--ink); }
+
+.more-columns { max-width: var(--column-width); margin: 3.5rem auto 0; padding: 2rem 2rem 0; border-top: 3px double var(--rule); }
+.mc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.mc-label { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
+.mc-controls { display: flex; gap: 0.5rem; }
+.mc-btn { font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1; width: 2.1rem; height: 2.1rem; border: 1px solid var(--rule); background: var(--paper-warm); color: var(--accent); cursor: pointer; }
+.mc-btn:hover { background: var(--accent); color: var(--eva-glow); border-color: var(--accent); }
+.mc-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 1.5rem; }
+.mc-card { scroll-snap-align: start; flex: 0 0 240px; display: flex; flex-direction: column; padding: 1.15rem 1.25rem; border: 1px solid var(--rule); background: var(--paper-warm); color: var(--ink); transition: transform .18s, border-color .18s; }
+.mc-card:hover { border-color: var(--eva-green); transform: translateY(-3px); color: var(--ink); }
+.mc-tag { font-family: 'Playfair Display', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.mc-title { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+.mc-deck { font-size: 0.82rem; font-weight: 300; line-height: 1.45; color: var(--ink-muted); flex-grow: 1; }
+.mc-card.is-current { border-color: var(--eva-glow); background: var(--accent); cursor: default; }
+.mc-card.is-current:hover { transform: none; }
+.mc-card.is-current .mc-tag { color: var(--eva-glow); }
+.mc-card.is-current .mc-title { color: var(--paper); }
+.mc-card.is-current .mc-deck { color: var(--paper); opacity: .85; }
+
+@media (max-width: 600px) {
+  .article-wrapper { padding: 2rem 1.25rem 4rem; }
+  .masthead { padding: 1.5rem 1.25rem 1.2rem; }
+  h1.headline { font-size: 1.85rem; }
+  .pull-quote p { font-size: 1.1rem; }
+  .more-columns { padding: 2rem 1.25rem 0; }
+  .colophon { padding: 2rem 1.25rem 3rem; }
+  .mc-card { flex-basis: 82%; }
+  .byline { flex-direction: column; align-items: flex-start; gap: .2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="masthead-label">Anime · Jung · Posguerra · Paternidad</p>
+  <p class="masthead-pub">GH HCAI Lab · Ensayo</p>
+</div>
+
+<header class="hero" id="hero">
+  <figure>
+    <a href="https://share.gemini.google/SouxA3JZ1R96" target="_blank" rel="noopener"><img src="imgs/jung-eva.png" alt="Carl Gustav Jung sentado frente a la Unidad-01, morada y verde, arrodillada sobre el agua; entre ambos flota un mandala de luz." onerror="document.getElementById('hero').classList.add('no-img')"></a>
+    <div class="fallback"><a href="https://share.gemini.google/SouxA3JZ1R96" target="_blank" rel="noopener">Ver ilustración: Jung frente a la Unidad-01</a></div>
+    <figcaption>Jung frente a la Unidad-01 · <a href="https://share.gemini.google/SouxA3JZ1R96" target="_blank" rel="noopener">ilustración generada con Gemini</a></figcaption>
+  </figure>
+</header>
+
+<div class="article-wrapper">
+
+  <a class="back" href="index.html">← Volver a Columnas</a>
+  <br>
+  <span class="section-tag">Ensayo · Evangelion · Individuación</span>
+
+  <h1 class="headline">Neon Genesis <em>Evangelion</em>: el destete de un otaku</h1>
+
+  <p class="deck">Tres intentos de individuación, dos fallidos y uno logrado: la línea de tiempo de una obra que su autor no pudo cerrar hasta estar listo para soltarla.</p>
+
+  <div class="byline">
+    <span>Jorge Oyarce Kruger</span>
+    <span>Valdivia · 25 de octubre de 2026</span>
+  </div>
+
+<h2 class="section-head">Volver a Tokio-3</h2>
+
+<div class="body-text first">
+<p>Vi Evangelion por primera vez en torno al año 2000. No recuerdo la fecha exacta, pero sí la sensación: un anime de robots gigantes que, a mitad de camino, dejaba de serlo y se volvía un espejo incómodo. Lo volví a ver casi veinticinco años después, y ya no era el mismo espectador. Ahora soy adulto y soy padre.</p>
+<p>Entre una mirada y otra hubo también un largo trabajo terapéutico, del que solo diré lo necesario. En ese trabajo, Carl Gustav Jung dejó de ser un nombre de biblioteca y se volvió un mentor. Su lenguaje me dio palabras para nombrar lo que hasta entonces solo padecía: la Sombra, el arquetipo, la individuación. Nombrar no cura, pero ordena. Y lo que se ordena puede empezar a aceptarse, que es distinto de resignarse.</p>
+<p>Por eso me conmovió descubrir que Anno, que antes de Evangelion no tenía ningún interés por la psicología, empezó a buscar esas mismas palabras cuando quiso contar su propia historia y le faltó con qué decirla. No llegó a Jung por erudición, sino por necesidad. Yo tampoco.</p>
+<p>Esa distancia cambia todo. A los veinte años uno ve en Shinji a un chico quejumbroso que no quiere subirse al robot. Siendo padre, uno ve a Gendō, y se pregunta qué clase de padre fue, qué clase de padre es uno, y qué heredamos sin pedirlo.</p>
+<p>Este ensayo nace de ese segundo visionado y de las lecturas que lo acompañaron: crítica japonesa, psicoanálisis británico, una tesis polaca, una banda de rock inglesa y Carl Gustav Jung. Mi propuesta es simple de enunciar y larga de demostrar: Evangelion es la historia de tres intentos de individuación, dos fallidos y uno logrado, y su autor no pudo cerrarla hasta que él mismo estuvo listo para soltarla. La obra habla de las etapas de la vida, de lo que el arte hace con nosotros y de algo tan difícil como aceptarse.</p>
+</div>
+
+<h2 class="section-head">El otaku, antesala de la sombra</h2>
+
+<div class="body-text">
+<p>La palabra otaku encierra una paradoja desde su raíz. Se escribe <span class="jp">お宅</span>: el prefijo honorífico <em>o</em> y <em>taku</em>, que significa casa, hogar, residencia. En su uso tradicional era un pronombre de segunda persona respetuoso y distante, algo así como "su casa" o "su familia", propio de algunos dialectos del oeste de Japón y del trato cortés entre amas de casa. Uno no se dirigía a la persona, sino a su morada.</p>
+<p>Hacia fines de los sesenta, los aficionados a la ciencia ficción empezaron a usarlo para tratarse entre ellos, quizás porque conservaba la distancia de quien no sabe bien cómo acercarse al otro. A comienzos de los ochenta se volvió habitual en el fandom del manga y del anime: aparece en un ensayo de la escritora Arai Motoko de 1981 y en boca de los personajes de <em>Macross</em>, de 1982. La ironía es perfecta: la palabra que nombraba la casa del otro terminó nombrando a quien no sale de la suya.</p>
+<p>En 1983 el ensayista Nakamori Akio la convirtió en etiqueta despectiva en su serie "Investigación sobre los otaku", publicada en la revista <em>Manga Burikko</em>: se burlaba de la ropa, el aspecto y la torpeza social de los fanáticos, a quienes había oído tratarse así en las convenciones.</p>
+<p>En 1989 la palabra se volvió estigma nacional. La detención de Miyazaki Tsutomu, asesino de cuatro niñas y dueño de miles de cintas de video, bautizado por la prensa como "el asesino otaku", hizo que el término se asociara a lo enfermo y lo peligroso. Ese mismo año, la revista <em>Bessatsu Takarajima</em> le dedicó un número completo, y la discriminación se mantuvo intensa hasta mediados de los noventa: exactamente cuando se gestó Evangelion.</p>
+<p>Gainax, el estudio de Anno, nació de un club de fanáticos de la ciencia ficción. Sus fundadores eran otaku y lo sabían. En 1991 produjeron <em>Otaku no Video</em>, una parodia en la que el protagonista se proclama "Otaking", rey de los otaku. Entre episodios intercalaron falsos documentales con fanáticos de rostro pixelado y voz distorsionada, avergonzados de su afición: ladrones de celuloides, coleccionistas compulsivos, un encerrado que graba televisión que nunca ve. Muchos de esos entrevistados eran del propio equipo. Se reían de sí mismos con desprecio, que es una forma de no aceptarse.</p>
+<p>Aquí aparece la figura junguiana que articula este ensayo, la <strong>Sombra</strong>: todo aquello que no queremos reconocer como propio y que, sin embargo, nos persigue. Pero el otaku no es la Sombra. Es lo previo a ella. Es la búsqueda, la condición incómoda de quien ya se reconoce distinto, que intuye lo que carga, y que todavía no tiene la capacidad de convivir con su Sombra ni de aceptarla. El otaku vive en lo oscuro, viste de opaco, actúa hacia adentro, se encierra con sus objetos: no porque sea la Sombra, sino porque la está mirando de reojo sin atreverse a darle la cara.</p>
+<p>Y lo incómodo es que, lo queramos o no, nos refleja. Todos hemos estado en ese cuarto cerrado: sabiendo que algo en nosotros pide ser mirado, y prefiriendo el refugio a la mirada.</p>
+<p>Evangelion es la obra de un otaku que se miró al espejo. A mitad de la emisión, según el crítico Azuma Hiroki, Anno empezó a criticar a los fanáticos obsesivos por cerrados e introvertidos, y torció la serie hacia la introspección. Pero criticaba a los suyos y a sí mismo con la misma vara. Ese desprecio hacia la propia tribu es el síntoma exacto de esa etapa previa: quien busca y se reconoce, pero todavía no se acepta.</p>
+</div>
+
+<h2 class="section-head">La línea de tiempo de una vida</h2>
+
+<div class="body-text">
+<p>La línea de tiempo de Evangelion no es la de un producto, sino la de una vida: la de alguien que recorre el camino de la búsqueda de sí mismo, lo que Joseph Campbell llamó el viaje del héroe y otras tradiciones llaman el camino del guerrero. En ese camino no se avanza en línea recta. Se parte, se cae, se vuelve a partir, y cada caída enseña algo que el éxito anterior ocultaba. La obra oscila como un péndulo, y cada oscilación coincide con un momento interior de su autor.</p>
+<p>Anno nació en 1960 en Ube, prefectura de Yamaguchi. Antes de Evangelion ya había atravesado una depresión de cuatro años tras dirigir <em>Nadia</em>. La serie se emitió entre octubre de 1995 y marzo de 1996, y el propio Anno escribió en el primer tomo del manga que había intentado poner todo de sí en ella. Los dos episodios finales, rodados con prisa y sin presupuesto, abandonaron la trama y se metieron en la cabeza de Shinji. Hubo furia, amenazas y debate nacional.</p>
+<p>En 1997 llegó <em>The End of Evangelion</em>, el final "de verdad". Fue un éxito y una herida. Tras la serie, Anno se hundió en una depresión más profunda, con pensamientos suicidas, y dijo sentirse vacío: lo había entregado todo. En una entrevista con <em>Animage</em> de 1996 llegó a decir que no tenía un yo, que estaba vacío, porque no se gustaba a sí mismo.</p>
+<p>Se alejó, hizo cine con actores, se casó en 2002 con la mangaka Anno Moyoco, fundó su propio estudio, Khara, y en 2006 anunció que volvería a contar la historia: los cuatro filmes <em>Rebuild</em>. El tercero, de 2012, lo dejó otra vez quebrado. En una carta de 2015 contó que pasó todo 2013 sin poder acercarse al estudio, con un cansancio persistente y una inquietud psicológica que lo corroía, y que lo sostuvieron su esposa y sus amigos. Prestar su voz al protagonista de <em>El viento se levanta</em> de Miyazaki y dirigir un Godzilla lo ayudaron a moverse.</p>
+<p>El cuarto filme se estrenó en marzo de 2021, tras retrasos por la pandemia, y superó los diez mil millones de yenes en Japón, más que todos sus trabajos anteriores de la saga y que <em>Shin Godzilla</em>. Éxito, caída, éxito, caída y, por fin, cierre.</p>
+<p>No es casual que el ritmo de la obra calque el del hombre. Lo que viene después intenta explicar por qué.</p>
+</div>
+
+<h2 class="section-head">Un país sin padre</h2>
+
+<div class="body-text">
+<p>Evangelion no es una autobiografía, pero sí la línea de tiempo de una vida: la de un japonés de posguerra con una figura paterna compleja. El padre de Anno se hirió la pierna izquierda con una sierra en un accidente de juventud y usó prótesis toda su vida. Según el propio Anno, el accidente lo volvió emocionalmente inestable, y él creció en una casa tensa, con castigos físicos y emocionales. Cuesta no ver ahí a Gendō, ese padre que mira desde lo alto, da órdenes secas y no sabe tocar a su hijo.</p>
+<p>Anno, sin embargo, se resiste a la lectura literal. Dijo que no concibió a Gendō como un padre concreto, unido a Shinji por la sangre, sino como representación de la sociedad, del sistema y sus límites. Y agregó algo decisivo: describió a Gendō como su <strong>Sombra</strong>. En otra entrevista, con el crítico Ueno Toshiya, dijo sentir cercanos a sí mismo a Shinji, Misato y Asuka, que Kaworu era su Sombra y que Rei estaba hecha de su parte más central y profunda. Los personajes son fragmentos de una sola psique.</p>
+<p>Esa psique no flota en el vacío. En 1967 el crítico Etō Jun publicó <em>Madurez y pérdida: el colapso de la madre</em>, donde sostuvo que en la cultura japonesa de fusión entre madre e hijo no hay maduración posible sin el colapso de la madre. El padre, en ese esquema, ya había caído: derrotado en 1945, humillado, reemplazado por la tutela estadounidense. El artista Murakami Takashi llevó la idea al extremo con su exposición <em>Little Boy</em>, de 2005: la cultura otaku como síntoma de un país infantilizado bajo la protección del vencedor, un hijo que nunca se desteta.</p>
+<p>En 2024, Sasaki Atsushi publicó <em>La pérdida de la madurez: Anno Hideaki y el colapso del padre</em>, que lee toda la obra de Anno, de <em>Shin Evangelion</em> a <em>Shin Kamen Rider</em>, desde ese par de Etō. Su tesis es que adquirir la paternidad por la vía de la "madurez" es una ficción, y propone en su lugar la pregunta por la herencia: qué se transmite y cómo. El psiquiatra Kabasawa Shion, por su parte, leyó Evangelion como la obra que marcó época por retratar el trauma familiar, en un libro cuyo título juega con la idea del padre desaparecido.</p>
+<p>La generación de Anno, nacida a quince años de la derrota, creció entre padres heridos, madres que lo sostenían todo y una nación que no sabía si llorar a sus muertos o esconderlos. Shinji, criado por parientes y llamado por su padre solo cuando sirve, es la versión animada de esa orfandad con padre vivo.</p>
+</div>
+
+<h2 class="section-head">Anzio y Tokio</h2>
+
+<div class="body-text">
+<p>El 18 de febrero de 1944, el subteniente Eric Fletcher Waters murió en Aprilia, durante la batalla de Anzio. Su hijo Roger tenía cinco meses. Tampoco Eric había conocido a su padre, caído en 1916. Mary Waters, profesora, crió sola a sus hijos. Años después, Roger convertiría esa ausencia en el cimiento de <em>The Wall</em>: un niño sin padre, criado por una madre sobreprotectora que, como dice la canción, ayuda a construir el muro.</p>
+<p>Lo que más le dolía a Waters era un detalle burocrático: la carta de condolencias del Estado venía timbrada, no firmada a mano. El padre mártir y héroe había sido reducido a un trámite. En 2013, de visita en Cassino, dijo que su abuelo había muerto en 1916, su padre en Anzio, y que ahí terminaba su viaje. En 2014 develó un memorial a su padre cerca del lugar donde cayó. En el documental de <em>The Wall</em>, frente a ese memorial, saca una trompeta y toca la introducción de "Outside the Wall".</p>
+<div class="pull-quote"><p>Al padre mártir no se le puede superar compitiendo, porque un muerto heroico es invencible; solo se le puede hacer el duelo.</p></div>
+<p>La posguerra británica pensó este problema mejor que nadie. En 1939, al comenzar las evacuaciones de niños de Londres, Donald Winnicott, John Bowlby y Emanuel Miller publicaron una carta abierta en el <em>British Medical Journal</em> advirtiendo del daño a largo plazo de separar a los niños pequeños de sus padres. De esa experiencia nació la teoría del apego de Bowlby, que puso a la madre en el centro en un momento en que los padres estaban ausentes, perdidos o muertos. Una matriz matriarcal impuesta por la guerra y convertida después en política pública. La historiadora Michal Shapira estudió ese giro en <em>The War Inside</em>.</p>
+<p>Evangelion conversa con esa escuela de manera explícita. El episodio 16 lleva en inglés el título "Splitting of the Breast", la escisión del pecho de Melanie Klein, figura central del psicoanálisis londinense: para Klein el primer objeto es el pecho, escindido en uno bueno y uno malo. La Eva-01, que contiene el alma de la madre de Shinji y lo protege mientras lo devora, es casi una ilustración literal de ese pecho doble. Y fue justamente con el episodio 16, confesó Anno, que se lanzó por primera vez de lleno a su mundo interior.</p>
+<p>Alemania aporta el tercer vértice. El psicosomatista Matthias Franz, de la Universidad Heinrich Heine de Düsseldorf, estudió a los <em>Kriegskinder</em>: un cuarto de los niños alemanes creció sin padre tras la guerra, y sesenta años después seguían sufriendo las consecuencias.</p>
+<p>Tres posguerras, tres padres: el héroe muerto británico, el caído y culpable alemán, el derrotado japonés. En las tres, la madre sostiene sola un mundo que se ha quedado sin ley paterna, y el hijo tiene que aprender a crecer sin modelo, o contra un modelo herido.</p>
+</div>
+
+<h2 class="section-head">Gendō, el padre de posguerra</h2>
+
+<div class="body-text">
+<p>Gendō no es solo el padre de una psiquis mutilada, la de un hijo y la de un autor. Es el padre de posguerra en una de sus representaciones más tristes: el mártir, el héroe y el ausente reunidos en un mismo hombre.</p>
+<p>Es <strong>héroe</strong> porque comanda la organización que protege a la humanidad. Ante el mundo es la figura que se sacrifica por todos, el hombre de la causa mayor, y esa grandeza pública es justamente lo que lo vuelve intocable para su hijo.</p>
+<p>Es <strong>mártir</strong> porque carga una pérdida que no se permite llorar y la convierte en misión. Igual que el padre de Waters, reducido por el Estado a una carta timbrada, Gendō existe para Shinji como función antes que como persona: un rango, un uniforme, una orden dada desde lo alto.</p>
+<p>Es <strong>ausente</strong> porque dejó a su hijo con parientes tras la muerte de la madre y solo lo llamó cuando lo necesitó. Su ausencia no es la del muerto en Anzio, sino la del que está vivo y no está. Es la forma japonesa de la orfandad de posguerra: el padre que sobrevivió a la derrota y volcó su vida en el trabajo, en la reconstrucción, en el milagro económico, mientras la casa quedaba en manos de la madre. Terletskyi lo nota en su tesis: todos los padres de Evangelion descuidan a su familia por ambición profesional o personal, y esa negligencia pesa en la muerte o en la ruina de sus esposas.</p>
+<p>Ahí está lo más triste del retrato. El padre británico murió y se volvió monumento; el japonés vivió y se volvió muro. Gendō se tapa la boca con las manos enguantadas, se esconde tras lentes oscuros, mira desde una plataforma. Todo en él dice: no me alcances. Y un hijo que no puede alcanzar a su padre no puede tampoco superarlo, porque no se supera lo que no se conoce. Esa es la herida que la obra tardará veinticinco años en atender.</p>
+</div>
+
+<h2 class="section-head">Matar al padre no es parricidio</h2>
+
+<div class="body-text">
+<p>Cuando digo "matar al padre" no hablo de parricidio. Hablo del destete paterno: dejar de necesitar la aprobación del modelo y superarlo. Harold Bloom lo pensó para la literatura en <em>La ansiedad de la influencia</em>: el poeta fuerte no asesina a su precursor, lo corrige. Con esa distinción, los tres períodos de Evangelion se leen como tres intentos de individuación y de mantenerse despierto, con dos fracasos antes del logro.</p>
+
+<div class="intento">
+  <span class="label">Primer intento</span>
+  <h3>La serie de televisión, 1995 y 1996</h3>
+  <p>Shinji pilotea para oír a su padre decir "buen trabajo". Su identidad depende de ese reconocimiento. Cuando la trama se detiene y la serie se mete en su cabeza, Shinji avanza hacia sí mismo, pero el padre queda intacto, fuera de escena: una individuación sin destete. Críticos japoneses como Ōtsuka Eiji y Miyazaki Tetsuya acusaron ese cierre de terapia de autoayuda y de autoafirmación del escapismo otaku. Manabu Tsuribe, en cambio, en un ensayo de 1999 que dialoga con Sartre, Hegel y Lévi-Strauss, lo leyó como ironía: la interioridad cerrada sobre sí misma es una forma de muerte, la muerte del yo por pérdida del otro.</p>
+</div>
+
+<div class="intento">
+  <span class="label">Segundo intento</span>
+  <h3><em>The End of Evangelion</em>, 1997</h3>
+  <p>Shinji enfrenta la tentación de disolverse en lo materno y se asoma a lo otro, a aquello con lo que nunca podrá fundirse. Para Tsuribe la película plantea que la realidad es el fin de un sueño: despertar. Pero el padre no es superado por el hijo; su destino se resuelve por otras manos. El modelo paterno no es corregido, solo apartado. La investigadora Betty Stojnic, desde <em>El Anti-Edipo</em> de Deleuze y Guattari, criticó cómo la obra queda atrapada en la familia nuclear. Segundo fracaso, aunque más lúcido que el primero.</p>
+</div>
+
+<div class="intento ultimo">
+  <span class="label">Tercer intento</span>
+  <h3><em>Shin Evangelion</em>, 2021</h3>
+  <p>No voy a contar cómo termina; esa experiencia le pertenece a quien la vea. Solo diré que aquí, por primera vez, el encuentro entre Shinji y Gendō no se decide por la fuerza, y que lo que ocurre entre ellos se parece mucho más a un destete que a un parricidio.</p>
+</div>
+
+<p>Hay un dato que ilumina ese giro sin revelarlo: durante los años de <em>Rebuild</em>, Anno dijo que ya no se sentía tan cerca de Shinji y que se identificaba más con Gendō. El autor había pasado de la posición del hijo a la del padre. Solo desde ahí podía escribir esa escena. Y el lema del filme ya lo anunciaba: "Adiós, todos los Evangelion". Es una despedida que vale para Shinji y vale para Anno.</p>
+<p>Tres capas, entonces: hijo y padre, autor y personaje, autor y obra. La obra eludió la individuación mientras su autor no estuvo listo para individuarse de ella. Su apego le impidió durante veinticinco años cualquier final que no fuera abierto y casi incomprensible: todo y nada a la vez, una cinta de Möbius, como la llamó Tsuribe. Para entender ese todo había que levantar capa tras capa.</p>
+</div>
+
+<h2 class="section-head">La circunvalación del sí mismo</h2>
+
+<div class="body-text">
+<p>Para Jung, la individuación es el proceso por el cual una persona integra lo inconsciente en la conciencia y llega a ser quien es. No se completa de una vez: se recorre y se vuelve a recorrer, con paciencia y con dolor. Su símbolo es el mandala, un círculo que gira en torno a un centro que nunca se alcanza en línea recta.</p>
+<p>Escribo esto desde adentro de ese proceso, no desde la cátedra. Jung no fue para mí una teoría que aplicar a una serie, sino el traductor de algo que llevaba años sin nombre. Me enseñó que lo que rechazamos de nosotros no desaparece: se esconde, se proyecta en otros, vuelve disfrazado. Y que la salida no es vencerlo, sino sentarse con ello hasta reconocerlo como propio. Avanzar, ahora, consiste en aceptarlo. Ver Evangelion con esa clave es ver a alguien hacer en público, durante veinticinco años, el mismo trabajo que muchos hacemos en silencio.</p>
+<p>En 2013, el investigador Oleksandr Terletskyi, en una tesis de magíster de la Universidad SWPS de Varsovia, leyó Evangelion como el mandala de Anno. Distinguió una etapa infantil, la del niño abandonado, que termina cuando Shinji vuelve por su voluntad donde Gendō a pilotear; y una etapa del mito del héroe, que empieza en el episodio 16, cuando el niño interior le dice en un tren que en realidad huyó de sí mismo. Terletskyi escribió sin conocer el tercer arco, y aun así concluyó que el final de 1997 era solo uno de los muchos renacimientos necesarios. Citó a Jung: no hay evolución lineal, solo una circunvalación del sí mismo. Y observó que Anno, desoyendo el consejo de Miyazaki de soltar Evangelion, seguía reconstruyendo la vieja historia, rodeando ese centro.</p>
+<p>Terletskyi vio el ciclo, pero lo leyó a la manera clásica, como parricidio, junto a <em>Edipo rey</em>, <em>Hamlet</em> y <em>Los hermanos Karamázov</em>. Lo que no podía ver es que el tercer giro llegaría a su término, y que lo haría por destete y no por parricidio. En clave junguiana, integrar la Sombra no es destruirla: es reconocerla como propia. Anno llamó a Gendō su Sombra, y en su último filme por fin se sentó con ella.</p>
+<p>Lo mismo vale para el otaku. El estudio que en 1991 se burlaba de los suyos con rostros pixelados estaba en esa etapa previa: buscaba, se reconocía y se despreciaba. Treinta años después, su autor ya no necesita burlarse de nadie, ni de sí mismo. No hay desprecio en esa madurez. Hay aceptación: de la obra que fuimos, del refugio que necesitamos, del padre que tuvimos y del que somos.</p>
+<p>Por eso la vuelvo a ver hoy con otros ojos. De joven, Evangelion me habló de la soledad. Hoy me habla de algo más difícil: que madurar no es vencer al padre ni huir de la madre, sino comprenderlos lo suficiente para dejarlos ir. Y que el arte, cuando es honesto, puede tardar veinticinco años en decir eso.</p>
+</div>
+
+<h2 class="section-head">Una invitación: verla al revés</h2>
+
+<div class="body-text">
+<p>Propongo volver a Evangelion recorriendo sus tres intentos en sentido inverso: primero el último, el que logra cerrar; después el segundo; al final, la serie original. No se trata de ver cada obra al revés, sino de cambiar el lugar desde donde se mira. El adulto que ya hizo el duelo va descendiendo por las capas de su propia historia, y cada intento anterior se vuelve un recuerdo comprendido, no una herida abierta. Es, en el fondo, lo que hace la terapia: mirar el pasado desde un lugar donde ya no duele igual.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Paso</th><th>Intento</th><th>Obras, en su orden</th><th>Dónde verla</th></tr></thead>
+  <tbody>
+    <tr><td class="num">1</td><td>Tercer intento: el destete</td><td><em>1.0 You Are (Not) Alone</em>, 2007 · <em>2.0 You Can (Not) Advance</em>, 2009 · <em>3.0 You Can (Not) Redo</em>, 2012 · <em>3.0+1.0 Thrice Upon a Time</em>, 2021</td><td>Prime Video</td></tr>
+    <tr><td class="num">2</td><td>Segundo intento: el despertar</td><td><em>The End of Evangelion</em>, 1997</td><td>Netflix</td></tr>
+    <tr><td class="num">3</td><td>Primer intento: la búsqueda</td><td><em>Neon Genesis Evangelion</em>, 26 episodios, 1995 a 1996</td><td>Netflix</td></tr>
+  </tbody>
+</table>
+</div>
+<p><em>Death and Rebirth</em>, de 1997, y su versión revisada <em>Death (True)²</em> resumen la serie y no son imprescindibles.</p>
+<p>La disponibilidad cambia según el país y el momento. Prime Video ofrece la tetralogía <em>Rebuild</em> en la mayoría de las regiones desde agosto de 2021; Netflix tiene la serie a nivel mundial desde 2019, y en Latinoamérica lista también <em>The End of Evangelion</em>. Conviene confirmarlo en <a href="https://www.justwatch.com/cl" target="_blank" rel="noopener">JustWatch Chile</a> antes de sentarse a ver.</p>
+<p>Al llegar a la serie de 1995, la misma que muchos vimos hace veinticinco años, el chico que no quiere subirse al robot ya no parecerá un quejumbroso. Parecerá alguien que todavía no sabe que va a estar bien.</p>
+</div>
+
+<h2 class="section-head">Fuentes</h2>
+<div class="footnotes">
+<h3>Bibliografía</h3>
+<ul>
+  <li>Etō Jun, <span class="jp">『成熟と喪失 "母"の崩壊』</span>, <em>Madurez y pérdida: el colapso de la madre</em>, 1967; <a href="https://www.kodansha.co.jp/book/products/0000167646">edición Kōdansha Bungei Bunko</a>.</li>
+  <li>Sasaki Atsushi, <span class="jp">『成熟の喪失 庵野秀明と〈父〉の崩壊』</span>, Asahi Shinsho, 2024; <a href="https://www.maruzenjunkudo.co.jp/products/9784022952738">ficha</a>.</li>
+  <li>Ōizumi Mitsunari y Anno Hideaki, <span class="jp">『スキゾ・エヴァンゲリオン』</span> y <span class="jp">『パラノ・エヴァンゲリオン』</span>, Ōta Shuppan, 1997; <a href="https://hackmd.io/@f6bfb5/B1twrR3kr?type=view">índice de entrevistas de Anno</a>.</li>
+  <li>Terletskyi, Oleksandr. "Oedipus, Castration and Archetypes of the Otaku Unconscious: <em>Neon Genesis Evangelion</em> as a Postmodern Simulation of the Fairytale." Tesis de magíster, Szkoła Wyższa Psychologii Społecznej, Varsovia, 2013; <a href="https://www.scribd.com/doc/293639786/Evangelion-Thesis-PDF">copia del autor</a>.</li>
+  <li>Tsuribe Manabu, <a href="https://landolt-c.com/archives/10">"Prison of Self-consciousness: An Essay on Evangelion"</a>, 1999.</li>
+  <li>Stojnic, Betty, <a href="https://www.ideals.illinois.edu/items/122748">"Boy with Machine: A Deleuzoguattarian Critique of Neon Genesis Evangelion"</a>, <em>Journal of Anime and Manga Studies</em>, 2021.</li>
+  <li>Nebbia, Virginie, <a href="https://new-game-plus.fr/saga-evangelion-third-editions/"><em>La Saga Evangelion</em></a>, Third Éditions.</li>
+  <li>Malone, Paul M., "My Own Private Apocalypse: Shinji Ikari as Schreberian Paranoid Superhero", en <em>Super/Heroes: from Hercules to Superman</em>, New Academia Publishing, 2007.</li>
+  <li>Shapira, Michal, <em>The War Inside: Psychoanalysis, Total War and the Making of the Democratic Self in Postwar Britain</em>, Cambridge; <a href="https://reviews.history.ac.uk/review/1600/print">reseña</a>.</li>
+  <li>Bloom, Harold, <em>La ansiedad de la influencia</em>, 1973.</li>
+</ul>
+<h3>Hechos y datos</h3>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Otaku">Otaku</a>: etimología, Nakamori 1983, caso de 1989.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Otaku_no_Video">Otaku no Video</a>.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Gendo_Ikari">Gendo Ikari</a>: el padre de Anno, Gendō como Sombra.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Hideaki_Anno">Hideaki Anno</a>.</li>
+  <li><a href="https://wiki.evageeks.org/Statements_by_Evangelion_Staff">Statements by Evangelion Staff, EvaWiki</a>.</li>
+  <li><a href="https://soranews24.com/2015/04/02/evangelion-creator-hideaki-anno-opens-up-about-his-latest-bout-with-depression-movie-delays/amp/">Carta de Anno de 2015, SoraNews24</a>.</li>
+  <li><a href="https://www.evamonkey.com/?p=2672">Recaudación de 3.0+1.0, Eva Monkey</a>.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Splitting_of_the_Breast">Splitting of the Breast</a>.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Roger_Waters">Roger Waters</a> y <a href="https://www.thelocal.com/20140219/pink-floyd-star-pays-tribute-to-father-who-died-in-italy">memorial en Anzio, The Local</a>.</li>
+  <li><a href="https://psychoanalysis.org.uk/who-we-are/100-years-of-history/winnicott-bowlby-and-miller-publish-open-letter-warning-against">Carta de Winnicott, Bowlby y Miller, 1939</a>.</li>
+  <li><a href="https://www.michiganwarstudiesreview.com/2014/downloads/2014-064.pdf">Kriegskinder, Matthias Franz, Michigan War Studies Review</a>.</li>
+  <li><a href="https://president.jp/articles/-/42405">Kabasawa Shion sobre Evangelion, President</a>.</li>
+  <li><a href="https://www.senpairanks.com/es/news/neon-genesis-evangelion-where-to-watch-criterion-netflix-ranking-2026">Dónde ver Evangelion en 2026, SenpaiRanks</a>.</li>
+</ul>
+</div>
+
+
+
+</div><!-- /article-wrapper -->
+
+<div class="colophon">
+  <hr class="colophon-rule">
+  <p class="colophon-brand">GH HCAI Lab — Valdivia, Región de Los Ríos, Chile</p>
+  <p>Serie de columnas de opinión y ensayos. Serie completa en <span class="mono">jookruger.github.io/columns</span>.</p>
+  <div class="meta-dl">
+    <div class="m-item"><span class="m-k">Autor</span><span class="m-v">Jorge Oyarce Kruger</span></div>
+    <div class="m-item"><span class="m-k">Fecha</span><span class="m-v">25 de octubre de 2026</span></div>
+    <div class="m-item"><span class="m-k">Lugar</span><span class="m-v">Valdivia, Región de Los Ríos</span></div>
+    <div class="m-item"><span class="m-k">Tipo</span><span class="m-v">Ensayo · GH HCAI Lab</span></div>
+  </div>
+</div>
+
+<nav class="more-columns" aria-label="Más columnas de la serie">
+  <div class="mc-head">
+    <span class="mc-label">Seguir leyendo</span>
+    <div class="mc-controls">
+      <button class="mc-btn" type="button" data-dir="-1" aria-label="Columnas anteriores">&#8249;</button>
+      <button class="mc-btn" type="button" data-dir="1" aria-label="Más columnas">&#8250;</button>
+    </div>
+  </div>
+  <div class="mc-track" id="mcTrack">
+    <a class="mc-card is-current" href="evangelion-destete.html" aria-current="page">
+      <span class="mc-tag">Anime · Jung</span>
+      <span class="mc-title">Evangelion: el destete de un otaku</span>
+      <span class="mc-deck">Tres intentos de individuación y un padre de posguerra.</span>
+    </a>
+    <a class="mc-card" href="liderazgo-empatico.html">
+      <span class="mc-tag">Neurodiversidad</span>
+      <span class="mc-title">Liderazgo empático</span>
+      <span class="mc-deck">La paradoja de liderar desde un cerebro que comprende más rápido de lo que conecta.</span>
+    </a>
+    <a class="mc-card" href="magnifica-humanitas.html">
+      <span class="mc-tag">León XIV · IA · Dignidad</span>
+      <span class="mc-title">Magnifica Humanitas</span>
+      <span class="mc-deck">La primera encíclica de León XIV frente a la IA, el poder y la verdad.</span>
+    </a>
+    <a class="mc-card" href="ninos-en-moto.html">
+      <span class="mc-tag">Educación · Pedagogía</span>
+      <span class="mc-title">Niños en moto, profesores de a pie</span>
+      <span class="mc-deck">Freire, propiocognosis y el umbral de cambio civilizatorio.</span>
+    </a>
+    <a class="mc-card" href="pisa-2025-coartada.html">
+      <span class="mc-tag">Educación · Datos</span>
+      <span class="mc-title">La coartada del profesor y el algoritmo</span>
+      <span class="mc-deck">Análisis PISA 2025 con regresión OLS y umbrales recalibrados.</span>
+    </a>
+    <a class="mc-card" href="crisis-pellet-pm10.html">
+      <span class="mc-tag">Medio ambiente</span>
+      <span class="mc-title">La crisis del pellet y el PM10</span>
+      <span class="mc-deck">Calidad del aire, monitoreo y la norma que no mide.</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var track = document.getElementById('mcTrack');
+  if (!track) return;
+  document.querySelectorAll('.mc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      track.scrollBy({ left: parseInt(b.getAttribute('data-dir'), 10) * 264, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
